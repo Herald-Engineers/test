@@ -21,6 +21,7 @@ import User from './SignUp/User';
 import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
 import Admin from'./Admin.js/Register';
+import EditProfile from './HomePage/EditProfile';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/" element={<Landingpage />} />
         <Route path="/chart" element={<Graph />} />
         <Route path="/popUp" element={<PopUpBox />} />
+        <Route path="/editprofile" element={<EditProfile />} />
         
         
       </Routes>
