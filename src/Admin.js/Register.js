@@ -103,6 +103,7 @@ function Register(){
                 <option value={""}>Doti</option>
                 <option value={""}>Kailali</option>
                 <option value={""}>Kanchanpur</option>
+                <option value={""}>shreya</option>
             
 
             </select>{'\n'}
