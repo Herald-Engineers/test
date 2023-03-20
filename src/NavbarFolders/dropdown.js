@@ -18,6 +18,10 @@ function Drop() {
   const handleLogOut = () => {
     navigate('/');
   };
+  const handleEditProfile = () => {
+    navigate('/editprofile');
+  };
+
 
   return (
     <div>
@@ -27,8 +31,8 @@ function Drop() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Setting</Dropdown.Item>
-        <Dropdown.Item >Edit Profile</Dropdown.Item>
+        <Dropdown.Item onClick={handleShow}>Setting</Dropdown.Item>
+        <Dropdown.Item onClick={handleEditProfile}>Edit Profile</Dropdown.Item>
         <Dropdown.Item onClick={handleShow}>Log Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

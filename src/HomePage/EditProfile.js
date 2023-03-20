@@ -1,4 +1,4 @@
-import MyImage from './Images/profile.png';
+import MyImage from '../Image/profile.png';
 import Nav from '../NavbarFolders/Navbar';
 function EditProfile(){
     return(
