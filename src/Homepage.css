@@ -1,0 +1,107 @@
+.left{
+    width: 190px;
+    float: left;
+    margin: 10px;
+    text-align: center;
+    border-right: 0.5px solid ;
+}
+.right{
+    float: right;
+    width: 1284px;
+}
+
+/* Banner css*/
+.banner-css{
+    
+    height: 200px;
+    margin-bottom: 80px;
+  }
+
+.containerHome{
+    width: 1490px;
+    margin: 0px;
+    height: 750px;
+    /* text-align: center; */
+  }
+.center{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  
+}
+
+.left-left-nav{
+    float: left;
+    width: 190px;
+    height: 100%;
+    border-right: 2.5px solid #F5F5F5;
+    padding: 6px;;
+}
+.right-right-nav{
+    float: right;
+    height: 100%;
+}
+
+.margin-username{
+    /* margin-bottom: 0px;
+    padding-bottom: 2px;
+    padding-left: 0%;
+    float: right;
+    padding-right: 60px; */
+    margin:0px;
+    padding-left: 7%;
+    height:29px;
+    max-width:100%;
+    float:left;
+    overflow:auto;
+    color: gray;
+    
+    
+}
+
+.left1{
+    width: 50%;
+    float: left;
+    margin: 10px;
+    text-align: center;
+   
+}
+.right1{
+    
+    float: right;
+    
+    margin-right: 10px;
+    text-align: center;
+   
+}
+
+.left-down-all{
+    padding-left: 8px;
+}
+.oneBlock{
+    width: 100%;
+    text-align: center;
+}
+.oneBox{
+    width: 300px ;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 0px;
+    padding-right: 40px;
+}
+.secondBox{
+    width: 300px ;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.images3{
+    width: 270px;
+    height: 200px;
+    margin: 20px;
+}

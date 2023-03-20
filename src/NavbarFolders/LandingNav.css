@@ -1,0 +1,91 @@
+ .navbar_wrapper{
+    background-color: #043460;
+    height: 60px;
+    color: white;
+    padding-top: 10px;
+    padding-right: 10px;
+    
+}
+/* .nav_pills {
+    justify-content: flex-end;
+     text-align: center;
+  }
+.nav-link {
+    color: white;
+    align-items: center;
+   
+}
+
+  
+
+.nav_pills .nav_justified .nav{
+    
+        display: flex;
+        align-items: center;
+      
+}
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-links .nav-item:last-child {
+    margin-left: auto;
+  } */ */
+
+  .nav_pills {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; 
+  
+  }
+  
+  .nav_pills .navbar-brand {
+    margin-right: auto;
+  }
+  
+  .nav_pills .nav-link {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .nav_pills .nav-link:last-child {
+    margin-right: 0;
+  }
+  
+  .nav_pills .nav_right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav_pills .nav_right .nav-link {
+    margin-left: 1rem;
+  }
+  
+  .nav-link {
+    padding-top: 5px;
+    color: white;
+    margin-left: 0px;
+    padding-left: 0px;
+    
+  }
+  
+  @media (max-width: 768px) {
+    .nav_pills .nav_right {
+      display: none;
+    }
+  }
+  
+  .signup_css {
+    border-radius: 5px;
+    background-color: #F3913B;
+  }
+  .nav_pills .nav_justified .navbar-links .nav{
+    margin-top: 20px;
+   
+  }
+
+
+  

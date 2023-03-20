@@ -1,0 +1,30 @@
+.navbar-wrapper {
+  background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 0px;
+    margin: 5px 5px;
+    width: 97%; /* set the width of navbar-wrapper to 100% */
+  }
+  
+  .nav-pills {
+    
+    margin: 0;
+    width: 990px; /* set the width of nav-pills container to a fixed width */
+  }
+  
+  .nav-account {
+    position: absolute;
+    right: 10px;
+    padding: 0px;
+    margin-left: auto;
+  }
+
+  .btn-success{
+   --bs-btn-bg: none;
+   
+   --bs-btn-border-color: none;
+   --bs-btn-hover-bg: none;
+  }

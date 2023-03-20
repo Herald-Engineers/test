@@ -1,0 +1,32 @@
+.my-specific-image {
+    width: 120px;
+    height: 120px;
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.my-specific-image2 {
+    width: 28px;
+    height: 25px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    float: left;
+    clear: left;
+}
+.my-specific-image3 {
+    position: absolute;
+    bottom: 10px;
+    width: 28px;
+    height: 25px;
+    padding: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    float: left;
+}
