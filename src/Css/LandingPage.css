@@ -193,6 +193,24 @@ input[type=password], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
+input[type=file], select {
+    
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.choosefile{
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 1px solid green;
+   
+}
+
 input[type=number], select {
     
     padding: 12px 20px;
@@ -272,4 +290,8 @@ input[type=email], select {
   }
   .rights{
     padding-top: 10px;
+  }
+
+  .container{
+    width: 50%;
   }
