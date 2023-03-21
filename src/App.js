@@ -22,6 +22,7 @@ import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
 import Admin from'./SignUp/Register';
 import EditProfile from './HomePage/EditProfile';
+import Sidebar from './HomePage/Sidebar';
 
 
 
@@ -50,6 +51,8 @@ function App() {
         <Route path="/chart" element={<Graph />} />
         <Route path="/popUp" element={<PopUpBox />} />
         <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/sidebar" element={<Sidebar />} />
+
         
         
       </Routes>

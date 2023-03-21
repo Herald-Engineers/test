@@ -6,7 +6,7 @@
     height: 60px;
     padding: 0 0px;
     margin: 5px 5px;
-    width: 97%; /* set the width of navbar-wrapper to 100% */
+    width: 100%;
   }
   
   .nav-pills {
