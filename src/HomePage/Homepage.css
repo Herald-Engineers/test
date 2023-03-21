@@ -8,6 +8,8 @@
 .right{
     float: right;
     width: 1284px;
+    padding-top: 40px;
+    display: inline;
 }
 
 /* Banner css*/
@@ -18,7 +20,7 @@
   }
 
 .containerHome{
-    width: 1490px;
+    width: 100%;
     margin: 0px;
     height: 750px;
     /* text-align: center; */
@@ -41,6 +43,7 @@
 .right-right-nav{
     float: right;
     height: 100%;
+   width: 1329px;
 }
 
 .margin-username{

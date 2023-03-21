@@ -5,7 +5,7 @@ import MyImage4 from '../Image/logout1.png';
 import MyImage5 from '../Image/iconuniqueid.png';
 import  '../Components/SmallLogo.css';
 import { useLocation } from 'react-router-dom';
-import  '../Homepage.css';
+import  '../HomePage/Homepage.css';
 import MyGraph from '../HomePage/Chart';
 function HomeLayout(){
     const location = useLocation();

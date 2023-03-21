@@ -12,7 +12,7 @@ function Signin() {
     const location = useLocation();
     const { inputValue } = location.state || {};
   return (
-    <div>
+    
       <div className='d-flex justify-content-center text-center SignIn' >
         <h1 style={myStyle}>Sign In</h1>
         <h3  style={myStyle}>As</h3>
@@ -38,10 +38,10 @@ function Signin() {
             <p style={myStyle}>Distributor</p>
           </div>
 
-        </div>
+        </div> <Link to='/'><button className='btn btn-primary'>Go Back</button></Link>
       </div>
-      <Link to='/'><button>Go Back</button></Link>
-    </div>
+     
+    
   );
 }
 

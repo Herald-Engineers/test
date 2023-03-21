@@ -151,13 +151,14 @@ function Register(){
 
 
                 <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
-                <label class="form-check-label" for="flexCheckChecked">
-                    Agreed to all terms and conditions.
-                </label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Agreed to all terms and conditions.
+                    </label>
                 </div>
                 {errorMsg && <p className="error">{errorMsg}</p>}
-                <button type="submit">Submit</button>
+                <input type="submit" value="Submit" id="my-button" />
+                
             </form>
         </div>
     );
