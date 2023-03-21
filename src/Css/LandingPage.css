@@ -297,9 +297,18 @@ input[type=email], select {
 
   .container{
     width: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
   }
   .container-box{
     width: 100px;
+  }
+  #my-button {
+    background-color: #0095ff; /*Change color to blue*/
+    color: white; /*Change text color to white*/
+    font-size: 20px; /*Change font size to 20px*/
+    padding: 10px 20px; /*Add padding to increase button size*/
+    width: 200px;
   }
   .spacing{
     margin: 20px;
@@ -316,16 +325,40 @@ input[type=email], select {
   input[type=file], select .spacing {
     margin-right: 20px;
   }
-  #first-name{
-    padding: 12px 70px;
+  #myemail{
+    width: 463px;
+  }
+  .goBack{
+    background-color: #777c80; /*Change color to blue*/
+    color: white; /*Change text color to white*/
+    font-size: 20px; /*Change font size to 20px*/
+    padding: 10px 20px; /*Add padding to increase button size*/
+    width: 200px;
+    border: none;
+    border-radius: 4px;
+    
+  }
+  
+  /* #first-name{
+    padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-right: 20px;
+    margin-right: 5px;
+    
   }
   #last-name{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  } */
+  /* #houseNo{
     padding: 12px 70px;
     margin: 8px 0;
     display: inline-block;
@@ -333,13 +366,4 @@ input[type=email], select {
     border-radius: 4px;
     box-sizing: border-box;
     
-  }
-  #houseNo{
-    padding: 12px 70px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    
-  }
+  } */

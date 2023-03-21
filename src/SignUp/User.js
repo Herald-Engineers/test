@@ -1,12 +1,37 @@
-function user() {
-  return (
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { Link, useNavigate } from 'react-router-dom';
+function User() {
+  const color_style ={
+    color: '#525252',
+};
+const supplementary ={
+  color: '#525252',
+  marginTop: '30px',
+  marginBottom: '10px',
+};
+const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const [showPopUp, setShowPopUp] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleLogOut = () => {
+    navigate('/user');
+  };
+  const handleEditProfile = () => {
+    navigate('/editprofile');
+  };
+  
+  return ( 
     <div className="container">
       <div className="contanier-box">
-        <h1>User account request</h1>
-        <h5>Please fill in this form to create an account.</h5>
+        <h1 style={color_style}>User account request</h1>
+        <p style={color_style}>Please fill in this form to create an account.</p>
         <br/>
+        
         <h4>
-          <b>Personal Information</b>
+          <b style={color_style}>Personal Information</b>
         </h4>
         <form action="#" method="post">
           <label for="first-name" className="align_items">Name:</label><br/>
@@ -20,23 +45,35 @@ function user() {
           </div>  
       
       <label for="address">Address:</label><br/>
+      <div className="d-flex">
+        <div>
+         <input type="text" id="houseNo" name="address" placeholder="House No" required/>{'\n'}</div>
+        <div>  <input type="number" id="tol" name="address" placeholder="Tol" required/><br/>{'\n'}</div>
+          
+        </div>
+        <div className="d-flex">
+       
+          <div><input type="number" id="ward" name="address" placeholder="Ward" required/>{'\n'} </div>
+          <div><input type="text" id="municipality" name="address" placeholder="Municipality" required/><br/></div>
+        
+     
+      </div>
       
-      <input type="text" id="houseNo" name="address" placeholder="House No" required/>{'\n'}
-      <input type="number" id="tol" name="address" placeholder="Tol" required/><br/>{'\n'}
-      <input type="number" id="ward" name="address" placeholder="Ward" required/>{'\n'}
-      <input type="text" id="municipality" name="address" placeholder="Municipality" required/><br/>
       <div className="d-flex">
         <div>
 
-            <label for="telephone">Telephone:</label><br/>
-      <input type="tel" id="telephone" name="telephone" placeholder="Telephone No." required/><br/>
+            <label for="telephone">Telephone(1):</label><br/>
+      <input type="tel" id="telephone" name="telephone" placeholder="Telephone No. 1" required/><br/>
         </div>
+
         <div>
-      <label for="email">Email Address:</label><br/>
-      <input type="email" id="email" name="email" placeholder="Email Address" required/><br/>
+        <label for="telephone">Telephone(2):</label><br/>
+      <input type="tel" id="telephone2" name="telephone" placeholder="Telephone no. 2(Optional)" required/><br/>
+     
       </div>
       </div>
-      
+       <label for="email">Email Address:</label><br/>
+      <input type="email" id="myemail" name="email" placeholder="Email Address" required/><br/>
       <div className="d-flex">
           <div>
             <label for="nationality">Nationality:</label><br/>
@@ -55,7 +92,7 @@ function user() {
         
       </div>
       
-      <h4>
+      <h4 style={supplementary}>
           <b>Add Supplementary Information(Optional)</b>
         </h4>
       <div className="d-flex ">
@@ -75,7 +112,7 @@ function user() {
         
       </div>
     
-      <h4>
+      <h4 style={supplementary}>
           <b>Please submit the softcopy of the following documents:</b>
         </h4>
       <div className="d-flex">
@@ -91,11 +128,28 @@ function user() {
       
       </div>
       
+      <input type="submit" value="Submit" id="my-button" onClick={handleShow}/>
+      <Link  to='/signinas'>  <button className='goBack'> Go Back</button></Link>
+
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create an account </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure, you want to create an account?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleLogOut}>
+            Confirm
+          </Button>
       
-      <input type="submit" value="Submit"/>
+        </Modal.Footer>
+      </Modal>
+    
     </form>
 
     </div>
   </div>);
 }
-export default user;
+export default User;

@@ -6,7 +6,7 @@ function EditProfile(){
     const textcolor = {
         color: '#525252',
         
-      };
+    };
     return(
         <div className='whole-sec'>
             <div className='Navbar'>
@@ -39,9 +39,6 @@ function EditProfile(){
                                 </select>{'\n'}<br/>
                             </div>
                            
-                        
-                        
-                
                         <button className='btn btn-primary'  style={{  marginTop: '20px' }}>Save Changes</button>
 
                     </form>

@@ -20,8 +20,9 @@ import MeterReader from './SignUp/MeterReader';
 import User from './SignUp/User';
 import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
-import Admin from'./Admin.js/Register';
+import Admin from'./SignUp/Register';
 import EditProfile from './HomePage/EditProfile';
+
 
 
 function App() {

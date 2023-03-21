@@ -12,33 +12,35 @@ function Signin() {
     const location = useLocation();
     const { inputValue } = location.state || {};
   return (
-   
-    <div className='d-flex justify-content-center text-center SignIn' >
-      <h1 style={myStyle}>Sign In</h1>
-      <h3  style={myStyle}>As</h3>
-      <div className="image-container">
+    <div>
+      <div className='d-flex justify-content-center text-center SignIn' >
+        <h1 style={myStyle}>Sign In</h1>
+        <h3  style={myStyle}>As</h3>
+        <div className="image-container">
 
-        <div className='box-container'>
-        <Link to='/user'><img src={Sign1} alt="User" className="image_spacing" /></Link>
-          <p style={myStyle}>User</p>
+          <div className='box-container'>
+          <Link to='/user'><img src={Sign1} alt="User" className="image_spacing" /></Link>
+            <p style={myStyle}>User</p>
+          </div>
+
+          <div className='box-container'>
+          <Link to='/admin'><img src={Sign2} alt="Admin" className="image_spacing" /></Link>
+            <p style={myStyle}>Admin</p>
+          </div>
+
+          <div className='box-container'>
+          <Link to='/nextpage'> <img src={Sign1} alt="Meter Reader" className="image_spacing" /></Link>
+            <p style={myStyle}>Meter Reader</p>
+          </div>
+
+          <div className='box-container'>
+          <Link to='/nextpage'> <img src={Sign1} alt="Meter Reader" className="image_spacing" /></Link>
+            <p style={myStyle}>Distributor</p>
+          </div>
+
         </div>
-
-        <div className='box-container'>
-        <Link to='/admin'><img src={Sign2} alt="Admin" className="image_spacing" /></Link>
-          <p style={myStyle}>Admin</p>
-        </div>
-
-        <div className='box-container'>
-        <Link to='/nextpage'> <img src={Sign1} alt="Meter Reader" className="image_spacing" /></Link>
-          <p style={myStyle}>Meter Reader</p>
-        </div>
-
-        <div className='box-container'>
-        <Link to='/nextpage'> <img src={Sign1} alt="Meter Reader" className="image_spacing" /></Link>
-          <p style={myStyle}>Distributor</p>
-        </div>
-
       </div>
+      <Link to='/'><button>Go Back</button></Link>
     </div>
   );
 }
