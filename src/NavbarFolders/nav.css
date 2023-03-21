@@ -10,9 +10,12 @@
   }
   
   .nav-pills {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
     
-    margin: 0;
-    width: 990px; /* set the width of nav-pills container to a fixed width */
+   
+    
   }
   
   .nav-account {
@@ -28,3 +31,16 @@
    --bs-btn-border-color: none;
    --bs-btn-hover-bg: none;
   }
+  .smallsize {
+    width: 40x;
+    height: 50px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    float: left;
+    clear: left;
+}
+.full_width {
+  width: 100%;
+}

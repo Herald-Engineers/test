@@ -292,6 +292,54 @@ input[type=email], select {
     padding-top: 10px;
   }
 
+
+  /* user section */
+
   .container{
-    width: 50%;
+    width: 100%;
+  }
+  .container-box{
+    width: 100px;
+  }
+  .spacing{
+    margin: 20px;
+  }
+  input[type=text], select .spacing {
+    margin-right: 20px;
+  }
+  input[type=tel], select .spacing {
+    margin-right: 20px;
+  }
+  input[type=number], select .spacing {
+    margin-right: 20px;
+  }
+  input[type=file], select .spacing {
+    margin-right: 20px;
+  }
+  #first-name{
+    padding: 12px 70px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-right: 20px;
+  }
+  #last-name{
+    padding: 12px 70px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  }
+  #houseNo{
+    padding: 12px 70px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
   }
