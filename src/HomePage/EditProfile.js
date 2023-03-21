@@ -4,13 +4,17 @@ import '../Css/EditProfile.css';
 
 function EditProfile(){
     return(
-        <div>
+        <div className=''>
             <Nav/>
-            <h1>Edit Profile</h1>
-            <img src={MyImage} alt='My Profile'  className='' />
+            <div className='justify-content-center align-items-center'>
+                <div>
+                    <h1>Edit Profile</h1> 
+                    <img src={MyImage} alt='My Profile'  className='' />
+                </div>
+                
             <h4>Change avatar</h4>
             <p>
-                Name: {'\n'}
+                Name: {'\n'}<br/>
                 <span className='MyName'>Shreeya Maharjan</span> <br/>
                 Address: {'\n'}<br/>
                 <span className='MyName'>Dallu, Kathmandu</span> {'\n'}<br/>
@@ -21,8 +25,10 @@ function EditProfile(){
                     <option value="Esewa">E-sewa</option>
                     <option value="Khalti">Khalti</option>
                 </select>{'\n'}<br/>
-                <button className='btn btn-primary'>Save</button>
+                <button className='btn btn-primary'>Save Changes</button>
             </p>
+            </div>
+            
             
         </div>
     )
