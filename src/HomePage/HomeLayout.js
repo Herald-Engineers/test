@@ -11,6 +11,7 @@ import Sidebar from '../HomePage/Sidebar';
 function HomeLayout(){
     const location = useLocation();
     const { inputValue } = location.state || {};
+    
   
     return (
         <div className='containerHome'>
@@ -45,7 +46,15 @@ function HomeLayout(){
                 </div>
             
                 <div className='right'>
-                    <MyGraph />
+                    <div className='buttons-spacing'>
+                        <button className='btn btn-primary my-buttons'>Report and Analytics</button>
+                        <button className='btn btn-primary my-buttons2'>Conversation Tips</button>
+                        <button className='btn btn-primary my-buttons3'>Pay Now</button>
+                    </div>
+                    <div>
+                        <MyGraph />
+                    </div>
+                    
                     
                     
 

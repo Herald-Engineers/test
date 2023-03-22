@@ -108,3 +108,34 @@
     height: 200px;
     margin: 20px;
 }
+
+.my-buttons{
+    font-size: 15px; /*Change font size to 20px*/
+    padding: 10px 20px; /*Add padding to increase button size*/
+    width: 200px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    background-color: #F0750A;
+}
+
+.my-buttons3{
+    font-size: 15px; /*Change font size to 20px*/
+    padding: 10px 20px; /*Add padding to increase button size*/
+    width: 200px;
+    border: none;
+    border-radius: 4px;
+    background-color: green;
+}
+.my-buttons2{
+    font-size: 15px; /*Change font size to 20px*/
+    padding: 10px 20px; /*Add padding to increase button size*/
+    width: 200px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F0750A;
+    margin-right: 5px;
+}
+.buttons-spacing{
+    margin-bottom: 40px;
+}

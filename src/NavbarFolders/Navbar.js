@@ -14,17 +14,15 @@ function NavbarHomePage() {
   const [activeLink, setActiveLink] = useState(location.pathname);
   
   return (
-    <div className='navbar_wrapper full-width'>
+    <div className='navbar-wrapper full-width'>
   
     <Nav className='nav_pills nav_justified navbar-links'>
-      <Link to='/homela' className='navbar-brand'>
-        <img src={MyImage} alt='Wave Billing System Logo' className='smallsize'/>
-      </Link>
-      <NavItem>
+      
+      {/* <NavItem>
             <Nav.Link  as={Link} to='/homela' active={activeLink === 'services'} onClick={() => setActiveLink('services')}>
             My Home
             </Nav.Link>
-      </NavItem>
+      </NavItem> */}
       
        
       <NavItem className=''>

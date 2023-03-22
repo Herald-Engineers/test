@@ -26,12 +26,12 @@ function Mychart(){
      return(
         <div>
             <div className='row'>
-                <div className='col-4'>
+                <div className='col-3'>
                     <Chart
                                 options={state.options}
                                 series={state.series}
                                 type="bar"
-                                width="500"
+                                width="800"
                                 />
                 </div>
             </div>

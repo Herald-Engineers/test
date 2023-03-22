@@ -55,7 +55,8 @@ function Login() {
         // Invalid password
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
-        setIsSubmitted(true);
+        // setIsSubmitted(true);
+        navigate('/homela', { state: { inputValue: inputValue } });
       }
     } else {
       // Username not found
