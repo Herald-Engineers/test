@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import '../Css/Sidebar.css';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import DashboardIcon from '../Image/PayBill.png';
 
 function Sidebar(){
     const style={
@@ -19,10 +20,14 @@ function Sidebar(){
             <Link to='/homela' className='navbar-brand'>
                 <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" /> </Link>
                 <Nav className="flex-column">
-                    <Nav.Link as={Link} to='/homela' active={activeLink === 'dashboard'} onClick={() => setActiveLink('dashboard')} className='sidebar-fonts'>Dashboard</Nav.Link>
+                    <Nav.Link as={Link} to='/homela' active={activeLink === 'dashboard'} onClick={() => setActiveLink('dashboard')} className='sidebar-fonts'>
+                        
+                        dashboard
+                    </Nav.Link>
                     <Nav.Link as={Link} to='/editprofile' active={activeLink === 'dashboard'} onClick={() => setActiveLink('dashboard')}  className='sidebar-fonts'>My Bills</Nav.Link>
                 </Nav>
             </div>
+            <img src={DashboardIcon} alt="Wave Billing System" className="my-specific-image" /> 
         </div>
     );
 }

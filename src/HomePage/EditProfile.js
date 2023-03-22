@@ -9,11 +9,11 @@ function EditProfile(){
         
     };
     return(
-        <div className='whole-sec'>
+        <div className='containerHome'>
             <div className='left-left-nav'>
                 <Sidebars/>
             </div>
-            <div className='right-right-nav'>
+            <div className='right-right-nav-Home'>
 
             
             <div className=''>

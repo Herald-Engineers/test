@@ -41,7 +41,7 @@ function HomeLayout(){
 
             </div>
             
-            <div className='right-right-nav'>
+            <div className='right-right-nav-Home'>
                 <div >
                     <MyNav />
                 </div>

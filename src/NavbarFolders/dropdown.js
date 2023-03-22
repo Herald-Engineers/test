@@ -25,7 +25,7 @@ function Drop() {
     navigate('/report');
   };
   const handleContactUs = () => {
-    navigate('/contact');
+    navigate('/contactushome');
   };
 
 

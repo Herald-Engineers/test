@@ -9,7 +9,7 @@ import profile1 from './Image/Sugam.png';
 import profile2 from './Image/Sube.png';
 import profile3 from './Image/Shreya.png';
 import profile4 from './Image/Sabin.png';
-
+import Contact from './Components/ContactUs';
 
 //import Icon4 from './Image/icon4.png';
 import './Css/LandingPage.css';
@@ -119,7 +119,7 @@ function Landingpage(){
 
             <section id='ContactUs'  >
                 <div className='contactus-section'>
-                    <h2 className='service_heading'>Contact Us</h2>
+                    <h2 className='service_heading text-center'>Contact Us</h2>
                     <div className='contact'>
                         <div className='address-section'>
                             
@@ -142,46 +142,7 @@ function Landingpage(){
                              </p>
                         </div> 
 
-                        <div className='form-section'> 
-                            
-                            <div className='d-flex justify-content-center'>
-                                <div className='line_space'>
-                                    <form>
-                                        <label>First Name</label><br></br>
-                                    <input type="text" placeholder="First Name" className='input_name'/><br></br>
-                               
-                                    <label>Email</label><br></br>
-                                    <input type="text" placeholder="Email Address" className='input_name'/>
-                                    </form>
-                                    
-                                
-                                </div>
-
-                                <div className=''>
-                                    <form>
-                                         <label>Last Name</label><br></br>
-                                         <input type="text" placeholder="Last Name" className='input_name'/><br></br> 
-                                        
-                                        <label>Phone Number</label><br></br>
-                                        <input type="text" placeholder="Phone Number" className='input_name'/>
-                                    
-                                    </form>
-                                   
-                                </div> 
-                                
-                        
-                            
-                        
-                            </div>
-                            <div className='line_space'>
-                             <p >Queries</p>
-                            <textarea name="queries" id="queries" cols="60" rows="10" className='input_name'></textarea><br>
-                           
-                            
-                            </br> <form><input type="submit" value="Submit" /></form>
-                           </div>
-                          
-                        </div>
+                        <Contact />
                     </div>
                 </div>
             </section>    

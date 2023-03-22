@@ -23,6 +23,10 @@ import PopUpBox from './Components/PopUpMenu';
 import Admin from'./SignUp/Register';
 import EditProfile from './HomePage/EditProfile';
 import Sidebar from './HomePage/Sidebar';
+import ContactUs from './Components/ContactUs';
+import ContactUsHome from './HomePage/ContactHome';
+import Report from './HomePage/Report';
+
 
 
 
@@ -52,7 +56,9 @@ function App() {
         <Route path="/popUp" element={<PopUpBox />} />
         <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/sidebar" element={<Sidebar />} />
-
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/contactushome" element={<ContactUsHome />} />
+        <Route path="/report" element={<Report />} />
         
         
       </Routes>

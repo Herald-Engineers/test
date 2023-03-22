@@ -43,7 +43,13 @@
 .right-right-nav{
     float: right;
     height: 100%;
-   width: 1329px;
+   width: 1343px;
+}
+.right-right-nav-Home{
+    float: right;
+    height: 100%;
+   width: 1328px;
+
 }
 
 .margin-username{
@@ -182,4 +188,23 @@
 }
 .button-width{
     width: 100%;
+}
+
+
+/* report issue */
+ #submit-report{
+    width: 100px;
+    padding: 5px;
+}
+.report-section{
+    padding-left: 30px;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+/* contact section */
+#contact-section{
+    padding-left: 30px;
+    padding-top: 20px;
+    margin-top: 10px;
 }

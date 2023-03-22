@@ -16,9 +16,10 @@ function NavbarHomePage() {
   return (
     <div className='navbar-wrapper'>
     <Nav className=' navbar-nav ml-auto'>
+      <NavItem>
       <div className=''>
         <h3 style={{color: 'white', margin: '0'} }className="">Welcome User</h3>
-      </div>
+      </div></NavItem>
       <div>
         <NavItem>
           <Dropp/>
