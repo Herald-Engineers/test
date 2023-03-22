@@ -16,7 +16,7 @@ function NavbarHomePage() {
   return (
     <div className='navbar-wrapper full-width'>
   
-    <Nav className='nav_pills nav_justified navbar-links'>
+    <Nav className='nav_pills nav_justified navbar-links justify-content-end'>
       
       {/* <NavItem>
             <Nav.Link  as={Link} to='/homela' active={activeLink === 'services'} onClick={() => setActiveLink('services')}>

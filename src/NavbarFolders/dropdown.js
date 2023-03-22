@@ -26,19 +26,17 @@ function Drop() {
   return (
     <div>
       <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-      <img src={Account}  className="" />
-      </Dropdown.Toggle>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <img src={Account}  className="" />
+        </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item onClick={handleShow}>Setting</Dropdown.Item>
-        <Dropdown.Item onClick={handleEditProfile}>Edit Profile</Dropdown.Item>
-        <Dropdown.Item onClick={handleShow}>Log Out</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
-
-
-  
+        <Dropdown.Menu style={{ backgroundColor: "#fff" }}>
+          
+          <Dropdown.Item onClick={handleEditProfile} style={{ color: "#212529" }}>Edit Profile</Dropdown.Item>
+          <Dropdown.Item onClick={handleShow} style={{ color: "#212529" }}>Setting</Dropdown.Item>
+          <Dropdown.Item onClick={handleShow} style={{ color: "#212529" }}>Log Out</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
