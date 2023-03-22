@@ -43,9 +43,7 @@
     float: left;
     clear: left;
 }
-.full_width {
-  width: 100%;
-}
+
 .btn-check:checked+.btn,
 .btn.active,
 .btn.show,

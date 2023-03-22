@@ -14,25 +14,20 @@ function NavbarHomePage() {
   const [activeLink, setActiveLink] = useState(location.pathname);
   
   return (
-    <div className='navbar-wrapper full-width'>
-  
-    <Nav className='nav_pills nav_justified navbar-links justify-content-end'>
-      
-      {/* <NavItem>
-            <Nav.Link  as={Link} to='/homela' active={activeLink === 'services'} onClick={() => setActiveLink('services')}>
-            My Home
-            </Nav.Link>
-      </NavItem> */}
-      
-       
-      <NavItem className=''>
-       
-       <Dropp/>
-       
-      </NavItem>
+    <div className='navbar-wrapper'>
+    <Nav className=' navbar-nav ml-auto'>
+      <div className=''>
+        <h3 style={{color: 'white', margin: '0'} }className="">Welcome User</h3>
+      </div>
+      <div>
+        <NavItem>
+          <Dropp/>
+        </NavItem>
+      </div>
     </Nav>
- 
-</div>
+  </div>
+  
+
 
   );
 }

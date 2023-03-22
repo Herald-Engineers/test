@@ -14,12 +14,13 @@ function Mychart(){
           },
           yaxis: {
             categories: [20,30,40,50,60,70,80,90,100]
-          }
+          },
+          colors : ['#6092C0']
         },
         series: [
           {
             name: "series-1",
-            data: [4000,5000,7000,8000,11000]
+            data: [4000,5000,7000,8000,11000,7283,12000,3000,2000,5000,6888,7000]
           }
         ]
       });
@@ -32,6 +33,8 @@ function Mychart(){
                                 series={state.series}
                                 type="bar"
                                 width="800"
+                                height="400"
+                                
                                 />
                 </div>
             </div>

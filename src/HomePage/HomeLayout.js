@@ -46,11 +46,7 @@ function HomeLayout(){
                 </div>
             
                 <div className='right'>
-                    <div className='buttons-spacing'>
-                        <button className='btn btn-primary my-buttons'>Report and Analytics</button>
-                        <button className='btn btn-primary my-buttons2'>Conversation Tips</button>
-                        <button className='btn btn-primary my-buttons3'>Pay Now</button>
-                    </div>
+                   <p>My Report</p>
                     <div>
                         <MyGraph />
                     </div>
