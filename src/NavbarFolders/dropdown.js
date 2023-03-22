@@ -21,6 +21,12 @@ function Drop() {
   const handleEditProfile = () => {
     navigate('/editprofile');
   };
+  const handleReport = () => {
+    navigate('/report');
+  };
+  const handleContactUs = () => {
+    navigate('/contact');
+  };
 
 
   return (
@@ -33,6 +39,9 @@ function Drop() {
         <Dropdown.Menu style={{ backgroundColor: "#fff" }}>
           
           <Dropdown.Item onClick={handleEditProfile} style={{ color: "#212529" }}>Edit Profile</Dropdown.Item>
+          <Dropdown.Item onClick={handleContactUs} style={{ color: "#212529" }}>Contact</Dropdown.Item>
+          <Dropdown.Item onClick={handleReport} style={{ color: "#212529" }}>Report and Issue</Dropdown.Item>
+
           <Dropdown.Item onClick={handleShow} style={{ color: "#212529" }}>Setting</Dropdown.Item>
           <Dropdown.Item onClick={handleShow} style={{ color: "#212529" }}>Log Out</Dropdown.Item>
         </Dropdown.Menu>

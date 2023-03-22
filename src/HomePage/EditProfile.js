@@ -1,5 +1,6 @@
 import MyImage from '../Image/profile.png';
 import Nav from '../NavbarFolders/Navbar';
+import Sidebars from '../HomePage/Sidebar';
 import '../Css/EditProfile.css';
 
 function EditProfile(){
@@ -9,7 +10,13 @@ function EditProfile(){
     };
     return(
         <div className='whole-sec'>
-            <div className='Navbar'>
+            <div className='left-left-nav'>
+                <Sidebars/>
+            </div>
+            <div className='right-right-nav'>
+
+            
+            <div className=''>
                 <Nav/>
             </div>
             
@@ -49,7 +56,7 @@ function EditProfile(){
 
                 </div>
                 </div >       
-               
+                </div>
             
             </div>
         </div>

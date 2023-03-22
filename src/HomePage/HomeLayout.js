@@ -40,16 +40,57 @@ function HomeLayout(){
                {/* </div> */}
 
             </div>
+            
             <div className='right-right-nav'>
                 <div >
                     <MyNav />
                 </div>
             
                 <div className='right'>
-                   <p>My Report</p>
-                    <div>
-                        <MyGraph />
+                    <div className='d-flex'>
+                         
+                   
+                        <div className='leftSection'>
+                            <p>My Report</p>
+                            <div className='graph'>
+                                 <MyGraph />
+                            </div>
+                           
+                        </div>
+                        <div className='RightSection'>
+                            <div className='top-part'>
+                                <div>
+                                    <h1 className='text-center bills'>Bill</h1>
+                                </div>
+                                <p className='paragraph'>Bill no: 543</p>
+                                <div className='paragraph-bills'>
+                                    <p>
+                                        
+                                        Total: Rs. 2896<br/>
+                                        Delivery Charge: Rs. 100<br/>
+
+                                    </p>
+                                </div>
+                                <div style={{padding: '30px'}}>
+                                    <p className='align-right'>
+                                    Total<hr id="hr-width"/>
+                                    </p>
+                                    <p className='align-right'>
+                                        Rs. 2996
+                                    </p>
+
+                                </div>                                  
+                                
+                            </div> {/*top part*/}
+
+
+                            {/* button part */}
+                            <div>
+                                <button className='btn btn-primary button-width'>Checkout</button>
+                            </div>
+                        </div>
                     </div>
+                  
                     
                     
                     

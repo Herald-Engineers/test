@@ -13,6 +13,7 @@ import profile4 from './Image/Sabin.png';
 
 //import Icon4 from './Image/icon4.png';
 import './Css/LandingPage.css';
+import { Link } from 'react-router-dom';
 function Landingpage(){
     return(
         <div className="landingpage">
@@ -30,7 +31,7 @@ function Landingpage(){
                         
                     <br></br>
                     </p>
-                    <button className='button button1'> Get started</button>
+                    <Link to="/signinas"><button className='button button1'> Get started</button></Link>
                     
                 </div>
                 <div className='image_section'>
