@@ -48,6 +48,24 @@ function HomeLayout(){
             
                 <div className='right'>
                     <div className='d-flex'>
+                        <div className='FirstBox'>
+                                
+                                <p>Total Payments</p>
+                                <p className=''>Rs. 2996</p>
+                        </div>
+                        <div className='FirstBox'>
+                                
+                                <p>Late Payments</p>
+                                <p className=''>2</p>
+                        </div>
+                        <div className='FirstBox'>
+                                
+                                <p>Advance Payments</p>
+                                <p className=''>5</p>
+                        </div>
+                    </div>
+                    
+                    <div className='d-flex'>
                          
                    
                         <div className='leftSection'>
@@ -58,27 +76,41 @@ function HomeLayout(){
                            
                         </div>
                         <div className='RightSection'>
+                            <p>My Current Bill</p>
                             <div className='top-part'>
                                 <div>
-                                    <h1 className='text-center bills'>Bill</h1>
+                                    <h3 className='text-center bills'>Bill</h3>
                                 </div>
-                                <p className='paragraph'>Bill no: 543</p>
+                                
                                 <div className='paragraph-bills'>
+                                    <div>
+                                        <table>
+                                            <tr>
+                                                <td className='space-between-element'>Bill no:</td>
+                                                <td>543</td>
+                                            </tr>
+                                            <tr><td  className='space-between-element'>Water charges:</td>
+                                                <td>Rs. 456</td> </tr>
+                                            <tr><td  className='space-between-element'>Sewage charges:</td>
+                                                <td>Rs. 46</td></tr>
+                                            <tr><td  className='space-between-element'>Tax and VAT</td>
+                                                <td>Rs. 50</td></tr>
+                                            <tr><td  className='space-between-element'>
+                                                Reader Charge</td>
+                                                <td>Rs. 20</td></tr>
+                                        </table>
+                                    </div>
                                     <p>
                                         
-                                        Water Charge: Rs. 1896<br/>
-                                        Sewage Charge: Rs. 170<br/>
-                                        Tax and VAT: Rs.190<br/>
-                                        Reader Charge: Rs. 100<br/>
-
-
+                                        
                                     </p>
                                 </div>
-                                <div style={{padding: '30px'}}>
+                                <div style={{paddingTop: '10px',paddingRight: '30px'}}>
                                     <p className='align-right'>
-                                    Total</p><hr id="hr-width"/>
+                                    Total</p>
+                                    <hr id="hr-width"/>
                                     
-                                    <p className='align-right'>
+                                    <p className='align-right totalamt'>
                                         Rs. 2996
                                     </p>
 

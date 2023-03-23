@@ -1,4 +1,4 @@
-import MyImage from '../Image/profile.png';
+import History from '../Components/Table';
 import Nav from '../NavbarFolders/Navbar';
 import Sidebars from '../HomePage/Sidebar';
 import '../Css/EditProfile.css';
@@ -16,15 +16,18 @@ function BillHistory(){
             <div className='right-right-nav-Home'>
 
             
-            <div className=''>
-                <Nav/>
-            </div>
-            
-            <div className='text-center' id='EditProfile'>
-
-                
+                <div className=''>
+                    <Nav/>
                 </div>
-            
+                
+                <div className='' id='bill-history-section'>
+                    <p>My Bill History</p>
+                    <div>
+                        <History/>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
     );

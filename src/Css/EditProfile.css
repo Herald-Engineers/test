@@ -59,8 +59,8 @@ select#PaymentSelection{
 #EditProfile{
     
     padding-top: 30px; 
-        margin: 0 auto;
-        text-align: center;
+    margin: 0 auto;
+    text-align: center;
       
 }
 .whole-sec{
@@ -76,4 +76,10 @@ select#PaymentSelection{
  
 .sorry_small{
     font-size: 10px;
-  }
+}
+#bill-history-section{
+    padding-top: 30px;
+    padding-left: 20px;
+    width: 50%;
+    
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import HistoryTable from '../Components/Table';
 const data = [
   { id: 1, name: 'John', age: 25 },
   { id: 2, name: 'Mary', age: 30 },
@@ -15,7 +16,9 @@ const columns = [
 
 function PaymentHistory() {
   return (
-    <BootstrapTable keyField='id' data={ data } columns={ columns } />
+    <div> <HistoryTable />
+    </div>
+   
 
   );
 }

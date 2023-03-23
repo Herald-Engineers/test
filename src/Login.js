@@ -200,8 +200,8 @@ import axios from 'axios';
     
 <div className='container-login'>
     <div className="form">
-      <img src={MyImage} alt='Wave Billing System Logo'  className='forgetLogo' />
-      <h4 className='fontfamily'>LOGIN TO CONTINUE</h4>
+     <center> <img src={MyImage} alt='Wave Billing System Logo'  className='forgetLogo text-center' /></center>
+      <h4 className='fontfamily text-center'>LOGIN TO CONTINUE</h4>
       <form onSubmit={handleSubmit}>
       {/* {error && <p>{error}</p>} */}
         <div className="input-container">
@@ -220,7 +220,7 @@ import axios from 'axios';
         </div>
       </form>
       
-      <Link to='/nextpage'><p >Forgot Password?</p></Link>
+      <Link to='/nextpage'><p style={{paddingTop: '8px'}}className='text-center' >Forgot Password?</p></Link>
       <CopyRightTag />
     </div></div>
   

@@ -33,7 +33,7 @@ function Mychart(){
                                 series={state.series}
                                 type="bar"
                                 width="800"
-                                height="400"
+                                height="300"
                                 
                                 />
                 </div>

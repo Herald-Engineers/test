@@ -49,6 +49,7 @@
     float: right;
     height: 100%;
    width: 1328px;
+  
 
 }
 
@@ -155,14 +156,16 @@
     width: 400px;
 }
 .bills{
-    padding-bottom: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     border-bottom: 1px solid #989898;
     margin-bottom: 10px;
-    color: #5C5C5C;
+    color: white;
+    background-color: #6092C0;
 }
 .paragraph-bills{
     padding-left: 30px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 .paragraph{
     padding-left: 30px;
@@ -178,13 +181,17 @@
 }
 .align-right{
     text-align: right;
-    
-    padding-bottom: 5px;
-    
-    
+    padding-bottom: 1px;
+    margin-bottom: 3px;
+}
+.totalamt{
+    color: red;
 }
 .hr-width{
-    width: 200px
+    width: 10px;
+    margin: 0.8rem -2px;
+    margin-right:0px;
+    padding-right:0px;
 }
 .button-width{
     width: 100%;
@@ -207,4 +214,20 @@
     padding-left: 30px;
     padding-top: 20px;
     margin-top: 10px;
+}
+
+
+/* pay bill section */
+.space-between-element{
+    padding-right: 170px;
+}
+
+
+.FirstBox{
+    padding: 20px;
+    background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    width: 200px;
+    height:115px;
+    margin-right: 20px;
+    margin-bottom: 25px;
 }

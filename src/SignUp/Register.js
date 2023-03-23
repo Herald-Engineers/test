@@ -42,13 +42,13 @@ function Register(){
                     <option value={"Khotang"}>Khotang</option>
                     <option value={"Morang"}>Morang</option>
                     <option value={"Okhaldhunga"}>Okhaldhunga</option>
-                    <option value={""}>Panchthar</option>
-                    <option value={""}>Sankhuwasabha</option>
-                    <option value={""}>Solukhumbu</option>
-                    <option value={""}>Sunsari</option>
-                    <option value={""}>Taplejung</option>
-                    <option value={""}>Terhathum</option>
-                    <option value={""}>Udayapur</option>
+                    <option value={"Panchthar"}>Panchthar</option>
+                    <option value={"Sankhuwasabha"}>Sankhuwasabha</option>
+                    <option value={"Solukhumbu"}>Solukhumbu</option>
+                    <option value={"Sunsari"}>Sunsari</option>
+                    <option value={"Taplejung"}>Taplejung</option>
+                    <option value={"Terhathum"}>Terhathum</option>
+                    <option value={"Udayapur"}>Udayapur</option>
 
                     <option value={""}>Bara</option>
                     <option value={""}>Dhanusa</option>
@@ -135,14 +135,27 @@ function Register(){
                     
                 </select><br/>
                 <select id="Municipalities" name="Municipalities" className="select_option" >
-                    <option value="" style={color_style} >Address(Municipality)</option>
-                    <option value="Province 1">Koshi Province</option>
-                    <option value="Province 2">Madhesh Province</option>
-                    <option value="Bagmati Province">Bagmati Province</option>
-                    <option value="Gandaki Province">Gandaki Province</option>
-                    <option value="Province 5">Lumbini Province </option>
-                    <option value="Karnali Province">Karnali Province</option>
-                    <option value="Sudurpashchim Province">Sudurpashchim Province</option>
+                    <option value="">    Address(Municiplaity)</option>
+                    <option value="">    Kathmandu Metropolitan City  </option>
+                    <option value="">    Lalitpur Metropolitan City </option>
+                    <option value="">    Bhaktapur Municipality</option>
+                    <option value="">    Pokhara Metropolitan City</option>
+                    <option value="">    Biratnagar Metropolitan City</option>
+                    <option value="">    Dharan Sub-metropolitan City</option>
+                    <option value="">    Birgunj Metropolitan City</option>
+                    <option value="">    Janakpur Sub-metropolitan City</option>
+                    <option value="">    Hetauda Sub-metropolitan City</option>
+                    <option value="">    Butwal Sub-metropolitan City</option>
+                    <option value="">    Nepalgunj Sub-metropolitan City</option>
+                    <option value="">    Tulsipur Sub-metropolitan City</option>
+                    <option value="">    Siddharthanagar Municipality</option>
+                    <option value="">    Dhangadhi Sub-metropolitan City</option>
+                    <option value="">    Mahendranagar Municipality</option>
+                    <option value="">    Birendranagar Municipality</option>
+                    <option value="">    Surkhet Municipality</option>
+                    <option value="">    Gulariya Municipality</option>
+                    <option value="">   Rajbiraj Municipality</option>
+                    <option value="">    Dhankuta Municipality</option>
                     
                 </select><br/>
                     
