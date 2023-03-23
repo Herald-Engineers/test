@@ -15,66 +15,218 @@ import axios from 'axios';
 
 // const url = 'https://wavebilling-backend-sabinlohani.onrender.com/login ';
  function Login() {
-  const myStyle = {
-    color: '#0A83F0',
-  }
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [loggedIn, setLoggedIn] = useState(false);
+
+  // function handleUsernameChange(event) {
+  //   setUsername(event.target.value);
+  // }
+
+  // function handlePasswordChange(event) {
+  //   setPassword(event.target.value);
+  // }
+
+  // function handleLoginSubmit(event) {
+  //   event.preventDefault();
+
+  //   axios.post("/api/login", {
+  //     username: username,
+  //     password: password
+  //   })
+  //   .then(res => {
+  //     console.log(res.data);
+  //     setLoggedIn(true);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   // Check if the user is already logged in
+  //   axios.get("https://wavebilling-backend-sabinlohani.onrender.com/login")
+  //   .then(res => {
+  //     console.log(res.data);
+  //     setLoggedIn(true);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  // }, []);
+  // if (loggedIn) {
+  //   return <div>You are logged in.</div>;
+  // } else {
+
+
+
+
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
+      username: username,
+      password: password
+    })
+    .then(res => {
+      console.log(res.data);
+      // Redirect to the user's dashboard or some other page
+      navigate("/homela");
+    })
+    .catch(error => {
+      console.log(error);
+      setErrorMessage("Invalid username or password");
+    });
+  };
+
+//   const myStyle = {
+//     color: '#0A83F0',
+//   }
    
-//     width: '320px',
-//    height: '40px',
-//   };
+// //     width: '320px',
+// //    height: '40px',
+// //   };
 
 //   const [username, setUsername] = useState('');
 //   const [password, setPassword] = useState('');
 //   const [error, setError] = useState('');
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
+    
+//   const handleUsernameChange = (event) => {
+//     setUsername(event.target.value);
+//   }
 
-//     try {
-//       const response = await axios.post('https://wavebilling-backend-sabinlohani.onrender.com/login', {
-//         username,
-//         password,
-//       });
+//   const handlePasswordChange = (event) => {
+//     setPassword(event.target.value);
+//   }
 
-//       if (response.data.success) {
-//         // Username and password are correct, user is authenticated
-//         console.log('Login successful');
-//       } else {
-//         setError('Invalid username or password');
-//       }
-//     } catch (error) {
-//       setError('An error occurred. Please try again later.');
-//     }
-//   };
+//   const [data, setData] = useState();
+
+// useEffect(() => {
+//   axios.post(url, {
+//     username: username,
+//     password: password
+//   })
+//   .then(res => {
+//     setData(res.data);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+// }, []);
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   try {
+  //     const response = await axios.post('https://wavebilling-backend-sabinlohani.onrender.com/login', {
+  //       username,
+  //       password,
+  //     });
+
+  //     if (response.data.success) {
+  //       // Username and password are correct, user is authenticated
+  //       console.log('Login successful');
+  //     } else {
+  //       setError('Invalid username or password');
+  //     }
+  //   } catch (error) {
+  //     setError('An error occurred. Please try again later.');
+  //   }
+  // };
+  // const handleLoginSubmit = (event) => {
+  //   event.preventDefault();
+  
+  //   const data = {
+  //     username: username,
+  //     password: password
+  //   }
+  
+  //   axios.post('/api/login', data)
+  //     .then(response => {
+  //       console.log(response.data);
+  //       if (response.data.success) {
+  //              console.log('Login successful');
+  //             } else {
+  //               setError('Invalid username or password');
+  //             }
+            
+  //       // handle successful login
+  //     })
+  //     .catch(error => {
+  //       console.log(error.response.data);
+  //       // handle login error
+  //     });
+  // }
 
   return (
-    <div className='container-login'>
-      <div className="form">
-        <img src={MyImage} alt='Wave Billing System Logo'  className='forgetLogo' />
-        <h4 className='fontfamily'>LOGIN TO CONTINUE</h4>
-        <form>
-          <div className="input-container">
+    // <div className='container-login'>
+    //   <div className="form">
+    //     <img src={MyImage} alt='Wave Billing System Logo'  className='forgetLogo' />
+    //     <h4 className='fontfamily'>LOGIN TO CONTINUE</h4>
+    //     <form>
+    //       <div className="input-container">
           
-            <input type="text"   placeholder='Username' className='login-field'  />
+    //         <input type="text"   placeholder='Username' className='login-field'  />
           
-          </div>
-          <div className="input-container">
+    //       </div>
+    //       <div className="input-container">
             
-            <input type="password"      placeholder='Password' className='login-field' />
+    //         <input type="password"      placeholder='Password' className='login-field' />
           
-          </div>
-          <div className="button-container">
-            <Link to='/homela'> <button type="submit">Login</button></Link>
-          </div>
-        </form>
+    //       </div>
+    //       <div className="button-container">
+    //         <Link to='/homela'> <button type="submit">Login</button></Link>
+    //       </div>
+    //     </form>
         
-        <Link to='/nextpage'><p style={myStyle}>Forgot Password?</p></Link>
-        <CopyRightTag />
-    </div>
-    </div>
+    //     <Link to='/nextpage'><p style={myStyle}>Forgot Password?</p></Link>
+    //     <CopyRightTag />
+    // </div>
+    // </div>
+
+    
+<div className='container-login'>
+    <div className="form">
+      <img src={MyImage} alt='Wave Billing System Logo'  className='forgetLogo' />
+      <h4 className='fontfamily'>LOGIN TO CONTINUE</h4>
+      <form onSubmit={handleSubmit}>
+      {/* {error && <p>{error}</p>} */}
+        <div className="input-container">
+         
+          <input type="text" required value={username} placeholder='Username' className='login-field'  onChange={handleUsernameChange}/>
+         
+        </div>
+        <div className="input-container">
+          
+          <input type="password"  required  value={password} placeholder='Password' className='login-field'  onChange={handlePasswordChange}/>
+         
+        </div>
+        {errorMessage && <div>{errorMessage}</div>}
+        <div className="button-container">
+        <button type="submit" className='btn btn-primary'>Login</button>
+        </div>
+      </form>
+      
+      <Link to='/nextpage'><p >Forgot Password?</p></Link>
+      <CopyRightTag />
+    </div></div>
   
       
   );
+  
 }
 
 export default Login;
