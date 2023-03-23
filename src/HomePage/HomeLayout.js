@@ -50,18 +50,18 @@ function HomeLayout(){
                     <div className='d-flex'>
                         <div className='FirstBox'>
                                 
-                                <p>Total Payments</p>
-                                <p className=''>Rs. 2996</p>
+                                <p style={{fontSize:'14px',fontWeight:'700',color:'#0A83F0'}}>Total Payments</p>
+                                <p style={{fontSize:'22px',fontWeight:'700'}}>Rs. 2996</p>
                         </div>
                         <div className='FirstBox'>
                                 
-                                <p>Late Payments</p>
-                                <p className=''>2</p>
+                                <p  style={{fontSize:'14px',fontWeight:'700',color:'#0A83F0'}}>Late Payments</p>
+                                <p style={{fontSize:'22px',fontWeight:'700'}} className=''>2</p>
                         </div>
                         <div className='FirstBox'>
                                 
-                                <p>Advance Payments</p>
-                                <p className=''>5</p>
+                                <p style={{fontSize:'14px',fontWeight:'700',color:'#0A83F0'}}>Advance Payments</p>
+                                <p  style={{fontSize:'22px',fontWeight:'700'}} className=''>5</p>
                         </div>
                     </div>
                     
@@ -69,14 +69,14 @@ function HomeLayout(){
                          
                    
                         <div className='leftSection'>
-                            <p>My Report</p>
+                            <p style={{color: '#8C8E8D'}}>My Report</p>
                             <div className='graph'>
                                  <MyGraph />
                             </div>
                            
                         </div>
                         <div className='RightSection'>
-                            <p>My Current Bill</p>
+                            <p style={{color: '#8C8E8D'}}>My Current Bill</p>
                             <div className='top-part'>
                                 <div>
                                     <h3 className='text-center bills'>Bill</h3>

@@ -1,5 +1,5 @@
 .navbar-wrapper {
-  background-color: #0A83F0;
+  border-bottom: 2.5px solid #F5F5F5;
   display: flex;
   justify-content: space-between;
 
@@ -11,7 +11,7 @@
 }
 .Dropp {
   margin-left: auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
   
   .nav-pills {

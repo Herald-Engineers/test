@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useState} from 'react';
 import '../SignUp/Sign.css';
+import axios from 'axios';
+
+import { useNavigate } from 'react-router-dom';
 
 function Register(){
+    const navigate = useNavigate();
     const color_style ={
             color: '#525252',
     };
@@ -16,6 +20,22 @@ function Register(){
             // handle form submission
         }
     };
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const data = {
+    //         companyName: event.target.companyName.value,
+    //       addressDistrict: event.target.addressDistrict.value,
+    //       addressProvince: event.target.addressProvince.value,
+    //       addressWardNum: event.target.addressWardNum.value,
+    //       addressMunicipality: event.target.addressMunicipality.value,
+    //       addressTole: event.target.addressMunicipality.value,
+    //       contactNum: event.target.contactNum.value,
+
+    //     };
+    //     axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
+    //       .then(response => console.log(response))
+    //       .catch(error => console.log(error));
+    //   };
     return(
         <div>
 
@@ -23,7 +43,7 @@ function Register(){
         <div className='register_company '> 
             <h1 style={color_style}>Register Your Company</h1>
             <form action="/action_page.php" onSubmit={handleSubmit} className="myForms ">
-                <input type="text" id="inputField" placeholder='Company Name' className='login-field'/><br />
+                <input type="text" value=""id="inputField" placeholder='Company Name' className='login-field'/><br />
                 <select id="district" name="district" className="select_option" >
                     <option value="" style={color_style} >Address(District)</option>
                     <option value={"Bhaktapur"}> Bhaktapur </option>
@@ -49,15 +69,35 @@ function Register(){
                     <option value={"Taplejung"}>Taplejung</option>
                     <option value={"Terhathum"}>Terhathum</option>
                     <option value={"Udayapur"}>Udayapur</option>
+                    
 
-                    <option value={""}>Bara</option>
-                    <option value={""}>Dhanusa</option>
-                    <option value={""}>Mahottari</option>
-                    <option value={""}>Parsa</option>
-                    <option value={""}>Rautahat</option>
-                    <option value={""}>Saptari</option>
-                    <option value={""}>Sarlahi</option>
-                    <option value={""}>Siraha</option>
+
+                    <option value={"Bara"}>Bara</option>
+                    <option value={"Dhanusa"}>Dhanusa</option>
+                    <option value={"Mahottari"}>Mahottari</option>
+                    <option value={"Parsa"}>Parsa</option>
+                    <option value={"Rautahat"}>Rautahat</option>
+                    <option value={"Saptari"}>Saptari</option>
+                    <option value={"Sarlahi"}>Sarlahi</option>
+                    <option value={"Siraha"}>Siraha</option>
+                    <option value={"Bhaktapur"}>	Bhaktapur District</option> 
+                    <option value={"Chitwan"}>	Chitwan</option>
+                    <option value={"Dhading"}>Dhading</option>
+                    <option value={"Dolakha"}>Dolakha</option>
+                    <option value={"Kathmandu"}>Kathmandu</option>
+                    <option value={"Kavrepalanchok"}>Kavrepalanchok</option>
+                    <option value={"Lalitpur"}>Lalitpur</option>
+                    <option value={"Makawanpur"}>Makawanpur</option>
+                    <option value={"Nuwakot District"}>Nuwakot District</option>
+                    <option value={"Ramechhap"}>	Ramechhap</option>
+                    <option value={"Rasuwa"}>	Rasuwa</option>
+                    <option value={"Sindhuli"}>	Sindhuli</option>
+                    <option value={"Sindhupalchok"}>	Sindhupalchok</option>
+
+
+
+
+
 
                     <option value={""}>Bhaktapur</option>
                     <option value={""}>Chitwan</option>
@@ -160,7 +200,7 @@ function Register(){
                 </select><br/>
                     
                 <input type="number" id="inputField" placeholder='Ward No.'   className='login-field'/><br/>
-                <input type="number" id="inputField" placeholder='Tole'  className='login-field'/><br/>
+                <input type="text" id="inputField" placeholder='Tole'  className='login-field'/><br/>
                 <input type="number" id="inputField" placeholder='Contact '  className='login-field'/><br/>
                 <input type="text" id="inputField" placeholder='Username for admin '  className='login-field'/><br/>
                 <input type="password" id="inputField" placeholder='Create Password '  className='login-field'/><br/>
