@@ -25,6 +25,18 @@
     padding-right: 10px;
   }
   
+  .register_company{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 600px;
   
+    width: 800px;
+  }
   
-  
+  .myForms{
+    background-color: antiquewhite;
+    padding: 20px;
+    width: 400px;
+  }

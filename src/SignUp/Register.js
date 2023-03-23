@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import '../SignUp/Sign.css';
 
 function Register(){
     const color_style ={
@@ -17,8 +18,11 @@ function Register(){
     };
     return(
         <div>
-            <h1 sty>Register Your Company</h1>
-            <form action="/action_page.php" onSubmit={handleSubmit}>
+
+      
+        <div className='register_company '> 
+            <h1 style={color_style}>Register Your Company</h1>
+            <form action="/action_page.php" onSubmit={handleSubmit} className="myForms ">
                 <input type="text" id="inputField" placeholder='Company Name' className='login-field'/><br />
                 <select id="district" name="district" className="select_option" >
                     <option value="" style={color_style} >Address(District)</option>
@@ -160,6 +164,7 @@ function Register(){
                 <input type="submit" value="Submit" id="my-button" />
                 
             </form>
+        </div>
         </div>
     );
 }
