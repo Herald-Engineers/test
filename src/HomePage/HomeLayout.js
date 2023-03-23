@@ -66,15 +66,18 @@ function HomeLayout(){
                                 <div className='paragraph-bills'>
                                     <p>
                                         
-                                        Total: Rs. 2896<br/>
-                                        Delivery Charge: Rs. 100<br/>
+                                        Water Charge: Rs. 1896<br/>
+                                        Sewage Charge: Rs. 170<br/>
+                                        Tax and VAT: Rs.190<br/>
+                                        Reader Charge: Rs. 100<br/>
+
 
                                     </p>
                                 </div>
                                 <div style={{padding: '30px'}}>
                                     <p className='align-right'>
-                                    Total<hr id="hr-width"/>
-                                    </p>
+                                    Total</p><hr id="hr-width"/>
+                                    
                                     <p className='align-right'>
                                         Rs. 2996
                                     </p>

@@ -26,7 +26,8 @@ import Sidebar from './HomePage/Sidebar';
 import ContactUs from './Components/ContactUs';
 import ContactUsHome from './HomePage/ContactHome';
 import Report from './HomePage/Report';
-
+import BillHistory from './HomePage/BillHIstory';
+import Payment from './HomePage/PaymentHistory';
 
 
 
@@ -59,6 +60,8 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/contactushome" element={<ContactUsHome />} />
         <Route path="/report" element={<Report />} />
+        <Route path="/billHistory" element={<BillHistory />} />
+        <Route path="/paymentHistory" element={<Payment />} />
         
         
       </Routes>

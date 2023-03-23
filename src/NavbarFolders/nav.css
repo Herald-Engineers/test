@@ -1,17 +1,18 @@
 .navbar-wrapper {
   background-color: #0A83F0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-   
-   
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
 
-    margin: 0px;
-    padding-top: 10px;
-    padding-right: 10px;
-  }
+  height: 60px;
+  width: 100%;
+  margin: 0px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.Dropp {
+  margin-left: auto;
+  margin-bottom: 20px;
+}
   
   .nav-pills {
       display: flex;

@@ -30,8 +30,8 @@ function Drop() {
 
 
   return (
-    <div>
-      <Dropdown>
+    <div className="Dropp ml-auto">
+      <Dropdown className='Dropp'>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
         <img src={Account}  className="" />
         </Dropdown.Toggle>

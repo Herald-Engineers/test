@@ -15,16 +15,20 @@ function NavbarHomePage() {
   
   return (
     <div className='navbar-wrapper'>
-    <Nav className=' navbar-nav ml-auto'>
+    <Nav className=' navbar-nav ml-auto' style={{ display: 'flex', alignItems: 'center' }}>
       <NavItem>
-      <div className=''>
-        <h3 style={{color: 'white', margin: '0'} }className="">Welcome User</h3>
-      </div></NavItem>
-      <div>
+        <div className=''>
+          <h3 style={{color: 'white', marginRight: '1067px',paddingLeft:'10px'} }className="">Welcome User</h3>
+        </div>
+      </NavItem>
+      
         <NavItem>
-          <Dropp/>
+          <div style={{color: 'white', marginBottom:'10px'} }>
+            <Dropp/>
+          </div>
+          
         </NavItem>
-      </div>
+      
     </Nav>
   </div>
   
