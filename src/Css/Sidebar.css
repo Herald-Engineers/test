@@ -1,6 +1,9 @@
 .sidebar-fonts{
     font-size: 24px;
     color: #8C8E8D;
+    padding-right: 0px;
+    
+    
 
 }
 
@@ -8,3 +11,17 @@
 .sidebar-section{
     
 }
+.sidebar-link {
+    background-color: #ffffff;
+  }
+  
+  .sidebar-link.active {
+    background-color: #0A83F0;
+    border-radius: 20px;
+  }
+  .myfontcolor.active{
+    color: #ffffff;
+  }
+  .sidebar-link.active > p {
+    color: white;
+  }
