@@ -116,37 +116,48 @@ function Landingpage(){
             </section>  
 
 
-
+            <center>
             <section id='ContactUs'  >
-                <div className='contactus-section'>
-                    <h2 className='service_heading text-center'>Contact Us</h2>
+                <div className='contactus-section '>
+                    <center><h2 className='MyContact '>Contact Us</h2></center>
+                    <center><div className=''>
+                        <Contact />
+                    </div></center><br/>
+                    
                     <div className='contact'>
                         <div className='address-section'>
                             
                             <p>
                                 <h2>Wave Billing</h2><br></br>
-                                <b>Address</b> <br></br>
-                                Herald College Kathmandu<br></br>
-                                Naxal, Kathmandu<br></br>
-                                Street No: 5<br></br>
-                                <br></br>
-                                <b>Our Contact</b>
-                                <br></br>
-                                01-4444444<br></br>
-                                wavebill@gmail.com<br></br>
-                                P.O.Box: 17375<br></br>
-                                Fax: 4117327 <br></br>
-                                <br></br>
-                                <b>Powered by: Herald Engineers</b>
-
+                                <div className='d-flex justify-content-center'>
+                                    <div>
+                                         <b>Address</b> <br></br>
+                                            Herald College Kathmandu<br></br>
+                                            Naxal, Kathmandu<br></br>
+                                            Street No: 5<br></br>
+                                    </div>
+                                    <div>
+                                            
+                                            <b>Our Contact</b>
+                                            <br></br>
+                                            01-4444444<br></br>
+                                            wavebill@gmail.com<br></br>
+                                            P.O.Box: 17375<br></br>
+                                            Fax: 4117327 <br></br>
+                                            <br></br>
+                                    </div>
+                                </div>
+                               
+                                
+                               
                              </p>
                         </div> 
 
-                        <Contact />
+                        
                     </div>
                 </div>
             </section>    
-            
+            </center>
 
             <div className='footer-section'>
                 <div>

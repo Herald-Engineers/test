@@ -33,11 +33,11 @@ links.forEach(link => {
                 <Nav className="flex-column">
                     <Nav.Link as={Link} to='/homela' active={activeLink === 'dashboard'} onClick={() => setActiveLink('dashboard')} className='sidebar-fonts sidebar-link' >
                         <img src={DashboardIcon2} alt="Wave Billing System" className="" /> <br/>
-                       <p style={{fontSize: '19px', padding: '1px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
+                       <p style={{fontSize: '16px', padding: '1px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
                     </Nav.Link>
                     <Nav.Link as={Link} to='/billHistory' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')}  className='sidebar-fonts sidebar-link'>
                     <img src={DashboardIcon} alt="Wave Billing System" className="" /> <br/>
-                    <p style={{fontSize: '19px', padding: '1px',margin: '0px'}}>My Bill</p></Nav.Link>
+                    <p style={{fontSize: '16px', padding: '1px',margin: '0px'}}>My Bill</p></Nav.Link>
                 </Nav>
             </div>
             

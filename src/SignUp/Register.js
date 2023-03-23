@@ -6,36 +6,36 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Register(){
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const color_style ={
             color: '#525252',
     };
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const selectedDistrict = event.target.district.value;
         if (!isChecked) {
             setErrorMsg('Please agree to all terms and conditions');
         } else {
             // handle form submission
-        }
-    };
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const data = {
-    //         companyName: event.target.companyName.value,
-    //       addressDistrict: event.target.addressDistrict.value,
-    //       addressProvince: event.target.addressProvince.value,
-    //       addressWardNum: event.target.addressWardNum.value,
-    //       addressMunicipality: event.target.addressMunicipality.value,
-    //       addressTole: event.target.addressMunicipality.value,
-    //       contactNum: event.target.contactNum.value,
+        
+        const data = {
+            companyName: event.target.companyName.value,
+            addressDistrict: event.target.addressDistrict.value,
+            addressProvince: event.target.addressProvince.value,
+            addressWardNum: event.target.addressWardNum.value,
+            addressMunicipality: event.target.addressMunicipality.value,
+            addressTole: event.target.addressMunicipality.value,
+            contactNum: event.target.contactNum.value,
 
-    //     };
-    //     axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
-    //       .then(response => console.log(response))
-    //       .catch(error => console.log(error));
-    //   };
+        };
+        axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
+          .then(response => console.log(response))
+          .catch(error => console.log(error));
+    }
+      };
     return(
         <div>
 
@@ -43,8 +43,8 @@ function Register(){
         <div className='register_company '> 
             <h1 style={color_style}>Register Your Company</h1>
             <form action="/action_page.php" onSubmit={handleSubmit} className="myForms ">
-                <input type="text" value=""id="inputField" placeholder='Company Name' className='login-field'/><br />
-                <select id="district" name="district" className="select_option" >
+                <input type="text" name = "companyName"id="inputField" placeholder='Company Name' className='login-field'/><br />
+                <select id="district" name="addressDistrict" className="select_option" >
                     <option value="" style={color_style} >Address(District)</option>
                     <option value={"Bhaktapur"}> Bhaktapur </option>
                     <option value={"Chitwan"}> Chitwan </option>

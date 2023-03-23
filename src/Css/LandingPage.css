@@ -161,6 +161,16 @@ p{
 /* contact us section */
 .contactus-section{
     display: inline-block;
+    height: 856px;
+    align-items: center;
+    justify-content: center;
+}
+#ContactUs{
+  
+}
+.MyContact{
+  margin-bottom: 40px;
+    color: #F3913B;
 }
 .line_space{
     padding-left: 10px;
@@ -264,12 +274,10 @@ input[type=email], select {
     background-color: #45a049;
   }
   .address-section{
-    float: left;
-    padding-left: 40px;
-    margin-left: 50px;
+
   }
   .form-section{
-    float: right;
+    
   }
 
 
@@ -280,6 +288,7 @@ input[type=email], select {
     background-color: black;
     margin-bottom: 0px;
     padding-bottom: 0px;
+    display: inline-block;
   }
   .footer-section p{
     font-size: 12px;

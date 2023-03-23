@@ -3,7 +3,7 @@ function Contact(){
     return(
         <div className='form-section'> 
                             
-                            <div className='d-flex justify-content-center'>
+                            <div className='d-flex '>
                                 <div className='line_space'>
                                     <form>
                                         <label>First Name</label><br></br>
