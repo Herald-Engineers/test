@@ -2,28 +2,130 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 function User() {
   const color_style ={
     color: '#525252',
-};
-const supplementary ={
-  color: '#525252',
-  marginTop: '30px',
-  marginBottom: '10px',
-};
-const [show, setShow] = useState(false);
-  const navigate = useNavigate();
-  const [showPopUp, setShowPopUp] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleLogOut = () => {
-    alert('Your account has been successfully created!');
-    navigate('/');
   };
-  const handleEditProfile = () => {
-    navigate('/editprofile');
+  const supplementary ={
+    color: '#525252',
+    marginTop: '30px',
+    marginBottom: '10px',
+  };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [houseNo, setHouseNo] = useState("");
+  const [tole, setTole] = useState("");
+  const [wardNo, setwardNo] = useState("");
+  const [tel1, settel] = useState("");
+  const [tel2, settel2] = useState("");
+  const [email, setEmail] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [citizenshipNo, setcitizenshipNo] = useState("");
+  const [passportNo, setpassportNo] = useState("");
+  const [supName, setSupName] = useState("");
+  const [supTelephone, setSupTelephone] = useState("");
+  const [supEmail, setSupEmail] = useState("");
+  const [citizenshipDoc, setcitizenshipDoc] = useState("");
+  const [landOwnershipDoc, setlandOwnershipDoc] = useState("");
+
+  const handleFirstName = (event) => {
+          setFirstName(event.target.value);
+  };
+      
+  const handleLastName = (event) => {
+          setLastName(event.target.value);
+  };
+  const handleHouseNo = (event) => {
+          setHouseNo(event.target.value);
+  };
+      
+  const handleTole = (event) => {
+          setTole(event.target.value);
+  };
+  const handleWard = (event) => {
+          setwardNo(event.target.value);
+  };
+  const handleTel1 = (event) => {
+      settel(event.target.value);
+    };
+  const handleTel2 = (event) => {
+      settel2(event.target.value);
+  };
+  const handleEmail = (event) => {
+    setEmail(event.target.value); 
+  };
+  const handleNationality = (event) => {
+    setNationality(event.target.value); 
+  };
+  const handleCitizen = (event) => {
+    setcitizenshipNo(event.target.value);
+  };
+  const handlePassport = (event) => {
+    setpassportNo(event.target.value);
+  };
+  const handleSupName = (event) => {
+    setSupName(event.target.value);
+  };
+  const handleSupTel = (event) => {
+    setSupTelephone(event.target.value);
+  };
+  const handleSupEmail = (event) => {
+    setSupEmail(event.target.value);
+  };
+  const handleCitizenDoc = (event) => {
+    setcitizenshipDoc(event.target.value);
+  };
+  const handleLandDoc = (event) => {
+    setlandOwnershipDoc(event.target.value);
   };
   
+
+
+  // const [show, setShow] = useState(false);
+  // const navigate = useNavigate();
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+  //  const handleLogOut = () => {
+  //     alert('Your account has been successfully created!');
+  //     navigate('/');
+  //   };
+  //   const handleEditProfile = () => {
+  //     navigate('/editprofile');
+  //   };
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const selectedDistrict = event.target.district.value;
+      
+      
+      const data = {
+          firstName: firstName,
+          lastName: lastName,
+          houseNo: houseNo,
+          tole: tole,
+          wardNo: wardNo,
+          municipality: event.target.municipality.value,
+          tel1: tel1,
+          tel2: tel2,
+          email: email,
+          nationality: nationality,
+          citizenshipNo: citizenshipNo,
+          passportNo: passportNo,
+          supName: supName,
+          supTelephone: supTelephone,
+          supEmail: supEmail,
+          citizenshipDoc: citizenshipDoc,
+          landOwnershipDoc: landOwnershipDoc,
+      };
+      axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', data)
+        .then(response => {
+         
+          console.log(response)})
+        .catch(error => console.log(error));
+
+        }
   return ( 
     <div className="container">
       <div className="contanier-box">
@@ -34,28 +136,53 @@ const [show, setShow] = useState(false);
         <h4>
           <b style={color_style}>Personal Information</b>
         </h4>
-        <form action="#" method="post">
-          <label for="first-name" className="align_items">Name:</label><br/>
+        <form action="" onSubmit={handleSubmit}>
+          <label for="first-name" className="align_items" >Name:</label><br/>
           <div className="d-flex">
             <div>
-              <input type="text" id="first-name" name="first-name" placeholder="Firstname" required /><br/>
+              <input type="text" id="first-name"  value={firstName}placeholder="Firstname" required  onChange={handleFirstName}/><br/>
             </div>
             <div>
-              <input type="text" id="last-name" name="last-name" placeholder="Lastname"  required/><br/>
+              <input type="text" id="last-name" value={lastName}placeholder="Lastname"  required  onChange={handleLastName}/><br/>
             </div>
           </div>  
       
-      <label for="address">Address:</label><br/>
+            <label for="address">Address:</label><br/>
       <div className="d-flex">
         <div>
-         <input type="text" id="houseNo" name="address" placeholder="House No" required/>{'\n'}</div>
-        <div>  <input type="number" id="tol" name="address" placeholder="Tol" required/><br/>{'\n'}</div>
+         <input type="text" id="houseNo" name="houseNo" placeholder="House No" required onChange={handleHouseNo}/>{'\n'}</div>
+        <div>  <input type="text" id="tol" name="tole" placeholder="Tol" required onChange={handleTole}/><br/>{'\n'}</div>
           
         </div>
         <div className="d-flex">
        
-          <div><input type="number" id="ward" name="address" placeholder="Ward" required/>{'\n'} </div>
-          <div><input type="text" id="municipality" name="address" placeholder="Municipality" required/><br/></div>
+          <div><input type="number" id="ward" name="wardNo" placeholder="Ward" required onChange={handleWard}/>{'\n'} </div>
+          <div>
+            <select id="Municipalities" name="municipality" className="select_option" >
+                <option value="">    Address(Municiplaity)</option>
+                    <option value="Kathmandu">    Kathmandu Metropolitan City  </option>
+                    <option value="Lalitpur">    Lalitpur Metropolitan City </option>
+                    <option value="Bhaktapur">    Bhaktapur Municipality</option>
+                    <option value="Pokhara">    Pokhara Metropolitan City</option>
+                    <option value="Biratnagar">    Biratnagar Metropolitan City</option>
+                    <option value="Dharan">    Dharan Sub-metropolitan City</option>
+                    <option value="">    Birgunj Metropolitan City</option>
+                    <option value="">    Janakpur Sub-metropolitan City</option>
+                    <option value="">    Hetauda Sub-metropolitan City</option>
+                    <option value="">    Butwal Sub-metropolitan City</option>
+                    <option value="">    Nepalgunj Sub-metropolitan City</option>
+                    <option value="">    Tulsipur Sub-metropolitan City</option>
+                    <option value="">    Siddharthanagar Municipality</option>
+                    <option value="">    Dhangadhi Sub-metropolitan City</option>
+                    <option value="">    Mahendranagar Municipality</option>
+                    <option value="">    Birendranagar Municipality</option>
+                    <option value="">    Surkhet Municipality</option>
+                    <option value="">    Gulariya Municipality</option>
+                    <option value="">   Rajbiraj Municipality</option>
+                    <option value="">    Dhankuta Municipality</option>
+                    
+            </select>
+          </div>
         
      
       </div>
@@ -64,30 +191,30 @@ const [show, setShow] = useState(false);
         <div>
 
             <label for="telephone">Telephone(1):</label><br/>
-      <input type="tel" id="telephone" name="telephone" placeholder="Telephone No. 1" required/><br/>
+      <input type="tel" id="telephone" name="tel1" placeholder="Telephone No. 1" required value={tel1} onChange={handleTel1}/><br/>
         </div>
 
         <div>
         <label for="telephone">Telephone(2):</label><br/>
-      <input type="tel" id="telephone2" name="telephone" placeholder="Telephone no. 2(Optional)" required/><br/>
+      <input type="tel" id="telephone2" name="tel2" placeholder="Telephone no. 2(Optional)" value={tel2} onChange={handleTel2}/><br/>
      
       </div>
       </div>
        <label for="email">Email Address:</label><br/>
-      <input type="email" id="myemail" name="email" placeholder="Email Address" required/><br/>
+      <input type="email" id="myemail" name="email" placeholder="Email Address" required value={email}onChange={handleEmail}/><br/>
       <div className="d-flex">
           <div>
             <label for="nationality">Nationality:</label><br/>
-        <input type="text" id="nationality" name="nationality" placeholder="Nationality" required/><br/>
+        <input type="text" id="nationality" name="nationality"value={nationality} placeholder="Nationality" required onChange={handleNationality}/><br/>
           </div>
         <div>
           <label for="citizenship-number">Citizenship Number:</label><br/>
-          <input type="text" id="citizenship-number" name="citizenship-number" placeholder="Citizenship No." required/><br/>
+          <input type="text" id="citizenship-number"  value={citizenshipNo} placeholder="Citizenship No." required onChange={handleCitizen}/><br/>
 
         </div>
         <div>
-          <label for="passport-number">Passport Number(Optional):</label><br/>
-          <input type="text" id="passport-number" name="passport-number(Optional)" placeholder="Passport No."/><br/>
+          <label>Passport Number(Optional):</label><br/>
+          <input type="text" id="passport-number"  value={passportNo}placeholder="Passport No." onChange={handlePassport}/><br/>
 
         </div>
         
@@ -99,16 +226,16 @@ const [show, setShow] = useState(false);
       <div className="d-flex ">
         <div>
           
-      <input type="text" id="supplementary-name" name="supplementary-name" placeholder="Name" className="spacing"/><br/>
+      <input type="text" id="supplementary-name" name="supName"value={supName} placeholder="Name" className="spacing" onChange={handleSupName}/><br/>
         </div>
         <div>
         
-      <input type="tel" id="supplementary-telephone" name="supplementary-telephone" placeholder="Telephone" className="spacing"/><br/>
+      <input type="tel" id="supplementary-telephone" name="supTelephone" value={supTelephone} placeholder="Telephone" className="spacing"  onChange={handleSupTel}/><br/>
       
         </div>
         <div>
           
-      <input type="email" id="supplementary-email" name="supplementary-email" placeholder="Email" className="spacing"/><br/>
+      <input type="email" id="supplementary-email" name="supEmail" value={supEmail}placeholder="Email" className="spacing"  onChange={handleSupEmail}/><br/>
         </div>
         
       </div>
@@ -118,21 +245,21 @@ const [show, setShow] = useState(false);
         </h4>
       <div className="d-flex">
         <div>
-          <label for="citizenship-doc">- Citizenship Document:</label><br/>
-      <input type="file" id="citizenship-doc" name="citizenship-doc" accept=".pdf,.doc,.docx" className="choosefile"required/><br/>
+          <label >- Citizenship Document:</label><br/>
+      <input type="file" id="citizenshipDoc" value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required/><br/>
         </div>
         <div>
-          <label for="land-doc">- Land Ownership Document:</label><br/>
-      <input type="file" id="land-doc" name="land-doc" accept=".pdf,.doc,.docx" required/><br/>
+          <label >- Land Ownership Document:</label><br/>
+      <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required/><br/>
         </div>
       
       
       </div>
       
-      <input type="submit" value="Submit" id="my-button" onClick={handleShow}/>
+      <input type="submit" value="submit" id="my-button" onClick={handleSubmit}/>
       <Link  to='/signinas'>  <button className='goBack'> Go Back</button></Link>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      {/* <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Create an account </Modal.Title>
         </Modal.Header>
@@ -146,11 +273,13 @@ const [show, setShow] = useState(false);
           </Button>
       
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     
-    </form>
+      </form>
 
+      </div>
     </div>
-  </div>);
-}
+  );
+    }
+
 export default User;

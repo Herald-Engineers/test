@@ -1,9 +1,6 @@
-
-import React, { useEffect } from 'react';
-import PasswordTextField from './Components/passworld_field';
+import React from 'react';
 import MyImage from './Image/logo123.png';
 import './App.css';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Components/form.css';
 import { Link } from 'react-router-dom';
@@ -76,13 +73,13 @@ import axios from 'axios';
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log("hello");
     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
       username: username,
       password: password
     })
     .then(res => {
-      console.log(res.data);
+      
       // Redirect to the user's dashboard or some other page
       navigate("/homela");
     })

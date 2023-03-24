@@ -10,8 +10,32 @@ function Register(){
     const color_style ={
             color: '#525252',
     };
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [addressTole, setTole] = useState("");
+    const [contactNum, setContact] = useState("");
+    const [addressWardNum, setWard] = useState("");
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    };
+    
+      const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+    const handleTole = (event) => {
+        setTole(event.target.value);
+    };
+    
+    const handleWard = (event) => {
+        setWard(event.target.value);
+    };
+    const handleContact = (event) => {
+        setContact(event.target.value);
+    };
+    
+
     
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,14 +49,18 @@ function Register(){
             companyName: event.target.companyName.value,
             addressDistrict: event.target.addressDistrict.value,
             addressProvince: event.target.addressProvince.value,
-            addressWardNum: event.target.addressWardNum.value,
+            addressWardNum: addressWardNum,
             addressMunicipality: event.target.addressMunicipality.value,
-            addressTole: event.target.addressMunicipality.value,
-            contactNum: event.target.contactNum.value,
+            addressTole: addressTole,
+            contactNum: contactNum,
+            username: username,
+            password: password,
 
         };
         axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
-          .then(response => console.log(response))
+          .then(response => {
+            <p>successful</p>
+            console.log(response)})
           .catch(error => console.log(error));
     }
       };
@@ -46,14 +74,14 @@ function Register(){
                 <input type="text" name = "companyName"id="inputField" placeholder='Company Name' className='login-field'/><br />
                 <select id="district" name="addressDistrict" className="select_option" >
                     <option value="" style={color_style} >Address(District)</option>
-                    <option value={"Bhaktapur"}> Bhaktapur </option>
-                    <option value={"Chitwan"}> Chitwan </option>
-                    <option value={"Dhading"}> Dhading </option>
-                    <option value={"Dolakha"}> Dolakha </option>
-                    <option value={"Kathmandu"} >Kathmandu </option>
-                    <option value={"Kavrepalanchok"}> Kavrepalanchok </option>
-                    <option value={"Lalitpur"}> Lalitpur </option>
-                    <option value={"Makwanpur"}> Makwanpur </option>
+                    <option value="Bhaktapur"> Bhaktapur </option>
+                    <option value="Chitwan"> Chitwan </option>
+                    <option value="Dhading"> Dhading </option>
+                    <option value="Dolakha"> Dolakha </option>
+                    <option value="Kathmandu" >Kathmandu </option>
+                    <option value="Kavrepalanchok"> Kavrepalanchok </option>
+                    <option value="Lalitpur"> Lalitpur </option>
+                    <option value="Makwanpur"> Makwanpur </option>
 
                     <option value={"Bhojpur"}>Bhojpur</option>
                     <option value={"Dhankuta"}>Dhankuta</option>
@@ -163,10 +191,10 @@ function Register(){
 
                 </select>{'\n'}
 
-                <select id="province" name="province" className="select_option" >
+                <select id="province" name="addressProvince" className="select_option" >
                     <option value="" style={color_style} >Address(Province)</option>
-                    <option value="Province 1">Koshi Province</option>
-                    <option value="Province 2">Madhesh Province</option>
+                    <option value="Koshi Province">Koshi Province</option>
+                    <option value="Madhesh Province">Madhesh Province</option>
                     <option value="Bagmati Province">Bagmati Province</option>
                     <option value="Gandaki Province">Gandaki Province</option>
                     <option value="Province 5">Lumbini Province </option>
@@ -174,10 +202,10 @@ function Register(){
                     <option value="Sudurpashchim Province">Sudurpashchim Province</option>
                     
                 </select><br/>
-                <select id="Municipalities" name="Municipalities" className="select_option" >
+                <select id="Municipalities" name="addressMunicipality" className="select_option" >
                     <option value="">    Address(Municiplaity)</option>
-                    <option value="">    Kathmandu Metropolitan City  </option>
-                    <option value="">    Lalitpur Metropolitan City </option>
+                    <option value="Kathmandu">    Kathmandu Metropolitan City  </option>
+                    <option value="Lalitpue">    Lalitpur Metropolitan City </option>
                     <option value="">    Bhaktapur Municipality</option>
                     <option value="">    Pokhara Metropolitan City</option>
                     <option value="">    Biratnagar Metropolitan City</option>
@@ -199,17 +227,17 @@ function Register(){
                     
                 </select><br/>
                     
-                <input type="number" id="inputField" placeholder='Ward No.'   className='login-field'/><br/>
-                <input type="text" id="inputField" placeholder='Tole'  className='login-field'/><br/>
-                <input type="number" id="inputField" placeholder='Contact '  className='login-field'/><br/>
-                <input type="text" id="inputField" placeholder='Username for admin '  className='login-field'/><br/>
-                <input type="password" id="inputField" placeholder='Create Password '  className='login-field'/><br/>
-                <input type="password" id="inputField" placeholder='Confirm Password '  className='login-field'/><br/>
+                <input type="number" id="inputField" placeholder='Ward No.' name = "adressWardNum" value={addressWardNum} className='login-field' onChange={handleWard}/><br/>
+                <input type="text" id="inputField" placeholder='Tole'  value={addressTole}className='login-field' onChange={handleTole}/><br/>
+                <input type="number" id="inputField" placeholder='Contact '  value={contactNum} className='login-field' onChange={handleContact}/><br/>
+                <input type="text" id="inputField" placeholder='Username for admin ' value={username} className='login-field' onChange={handleUsernameChange}/><br/>
+                <input type="password" id="inputField" placeholder='Create Password ' value={password} className='login-field' onChange={handlePasswordChange}/><br/>
+                {/* <input type="password" id="inputField" placeholder='Confirm Password '  className='login-field'/><br/> */}
 
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
-                    <label class="form-check-label" for="flexCheckChecked">
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+                    <label className="form-check-label">
                         Agreed to all terms and conditions.
                     </label>
                 </div>

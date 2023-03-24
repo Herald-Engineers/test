@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Account from '../Image/myaccount.png';
 import '../NavbarFolders/nav.css';
 import { Dropdown } from 'react-bootstrap';
-import PopUp1 from '../LandingPage';
-import PopUp2 from '../HomePage/EditProfile';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';

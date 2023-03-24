@@ -1,4 +1,3 @@
-// import MyBanner from './Image/bannerNepal2.png';
 import MyBanner from './Image/Banner123.jpg';
 import LandingNav from './NavbarFolders/LandingNav';
 import Logo from './Image/logo123.png';
@@ -29,7 +28,7 @@ function Landingpage(){
                     <p className='paragraphcss'>
                         Say goodbye to paper invoices and manual data entry with our water billing system. Our platform automates the billing process, making it easy for you to manage your water bills from anywhere. Plus, our system provides you with valuable usage data insights to help you optimize your water consumption and save money. Sign up today and simplify your billing process while taking control of your water usage.
                         
-                    <br></br>
+                        <br></br>
                     </p>
                     <Link to="/signinas"><button className='button button1'> Get started</button></Link>
                     
@@ -104,56 +103,43 @@ function Landingpage(){
                             <p className='color_name'>Sabin Lohani</p>
                         </div>
 
-                    </div>
-
-
-
-
-                    
-                    
+                    </div>                    
                 </div>
-                
             </section>  
-
 
             <center>
             <section id='ContactUs'  >
                 <div className='contactus-section '>
-                    <center><h2 className='MyContact '>Contact Us</h2></center>
+                    <center><h2 className='MyContact'>Contact Us</h2></center>
                     <center><div className=''>
                         <Contact />
                     </div></center><br/>
                     
                     <div className='contact'>
                         <div className='address-section'>
-                            
-                            <p>
-                                <h2>Wave Billing</h2><br></br>
-                                <div className='d-flex justify-content-center'>
-                                    <div>
-                                         <b>Address</b> <br></br>
-                                            Herald College Kathmandu<br></br>
-                                            Naxal, Kathmandu<br></br>
-                                            Street No: 5<br></br>
-                                    </div>
-                                    <div>
-                                            
-                                            <b>Our Contact</b>
-                                            <br></br>
-                                            01-4444444<br></br>
-                                            wavebill@gmail.com<br></br>
-                                            P.O.Box: 17375<br></br>
-                                            Fax: 4117327 <br></br>
-                                            <br></br>
-                                    </div>
+                            <h2>Wave Billing</h2><br></br>
+                            <div className='d-flex justify-content-center'>
+                                <div>
+                                    <p>
+                                        <b>Address</b> <br></br>
+                                        Herald College Kathmandu<br></br>
+                                        Naxal, Kathmandu<br></br>
+                                        Street No: 5<br></br>
+                                    </p>
                                 </div>
-                               
-                                
-                               
-                             </p>
+                                <div>
+                                    <p>    
+                                        <b>Our Contact</b>
+                                        <br></br>
+                                        01-4444444<br></br>
+                                        wavebill@gmail.com<br></br>
+                                        P.O.Box: 17375<br></br>
+                                        Fax: 4117327 <br></br>
+                                        <br></br>
+                                    </p>
+                                </div>
+                            </div>  
                         </div> 
-
-                        
                     </div>
                 </div>
             </section>    
@@ -165,8 +151,6 @@ function Landingpage(){
                     <p>Designed and Developed by Herald Engineers</p>
                 </div>
             </div>
-
-
         </div>
     )
 }

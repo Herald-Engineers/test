@@ -36,7 +36,10 @@
   }
   
   .myForms{
-    background-color: antiquewhite;
+    background-color: #fff;
     padding: 20px;
     width: 400px;
   }
+.select_option{
+  width: 321px;
+}
