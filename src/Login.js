@@ -79,7 +79,7 @@ import axios from 'axios';
       password: password
     })
     .then(res => {
-      
+      console.log(res.data);
       // Redirect to the user's dashboard or some other page
       navigate("/homela");
     })

@@ -17,6 +17,8 @@ function Register(){
     const [addressWardNum, setWard] = useState("");
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [passwordMatch, setPasswordMatch] = useState(true);
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
@@ -34,6 +36,10 @@ function Register(){
     const handleContact = (event) => {
         setContact(event.target.value);
     };
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+        setPasswordMatch(event.target.value === password);
+      };
     
 
     
@@ -232,8 +238,10 @@ function Register(){
                 <input type="number" id="inputField" placeholder='Contact '  value={contactNum} className='login-field' onChange={handleContact}/><br/>
                 <input type="text" id="inputField" placeholder='Username for admin ' value={username} className='login-field' onChange={handleUsernameChange}/><br/>
                 <input type="password" id="inputField" placeholder='Create Password ' value={password} className='login-field' onChange={handlePasswordChange}/><br/>
-                {/* <input type="password" id="inputField" placeholder='Confirm Password '  className='login-field'/><br/> */}
+                <input type="password" id="inputField" placeholder='Confirm Password ' value={confirmPassword} className='login-field' onChange={handleConfirmPasswordChange} /><br/>
 
+                {/* <input type="password" id="inputField" placeholder='Confirm Password '  className='login-field'/><br/> */}
+                {passwordMatch ? "" : <div>Passwords do not match</div>}
 
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />

@@ -97,7 +97,6 @@ function User() {
   //   };
     const handleSubmit = (event) => {
       event.preventDefault();
-      const selectedDistrict = event.target.district.value;
       
       
       const data = {
@@ -246,17 +245,17 @@ function User() {
       <div className="d-flex">
         <div>
           <label >- Citizenship Document:</label><br/>
-      <input type="file" id="citizenshipDoc" value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required/><br/>
+      <input type="file" id="citizenshipDoc" value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required onChange={handleCitizenDoc}/><br/>
         </div>
         <div>
           <label >- Land Ownership Document:</label><br/>
-      <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required/><br/>
+      <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required onChange={handleLandDoc}/><br/>
         </div>
       
       
       </div>
       
-      <input type="submit" value="submit" id="my-button" onClick={handleSubmit}/>
+      <input type="submit" value="Submit" id="my-button" />
       <Link  to='/signinas'>  <button className='goBack'> Go Back</button></Link>
 
       {/* <Modal show={show} onHide={handleClose} animation={false}>
