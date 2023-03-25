@@ -29,6 +29,7 @@ import Report from './HomePage/Report';
 import BillHistory from './HomePage/BillHIstory';
 import Payment from './HomePage/PaymentHistory';
 import TableHistory from './Components/Table';
+import Kukl from './HomePage/KUKLPay';
 
 
 
@@ -64,6 +65,7 @@ function App() {
         <Route path="/billHistory" element={<BillHistory />} />
         <Route path="/paymentHistory" element={<Payment />} />
         <Route path="/table" element={<TableHistory />} />
+        <Route path="/kukl" element={<Kukl />} />
         
         
       </Routes>

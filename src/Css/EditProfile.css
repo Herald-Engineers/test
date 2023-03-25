@@ -83,3 +83,15 @@ select#PaymentSelection{
     width: 50%;
     
 }
+
+.branch{
+    background-color: #f2f2f2;
+    width: 600px;
+    height: 360px;
+    padding: 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   
+}
+.Kukl_center{
+        /* center the section */
+}

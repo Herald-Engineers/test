@@ -1,17 +1,49 @@
+import React from 'react';
 import MyNav from '../NavbarFolders/Navbar';
 import MyImage2 from '../Image/logo123.png';
 import MyImage3 from '../Image/iconuser.png';
 import MyImage4 from '../Image/logout1.png';
 import MyImage5 from '../Image/iconuniqueid.png';
+import MyImage6 from '../Image/KUKL.png';
+import MyImage7 from '../Image/Community.png';
 import  '../Components/SmallLogo.css';
 import { useLocation } from 'react-router-dom';
 import  '../HomePage/Homepage.css';
 import MyGraph from '../HomePage/Chart';
 import Sidebar from '../HomePage/Sidebar';
+
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+function MyVerticallyCenteredModal(props) {
+
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Khanepani options
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>PLease choose an option</p>
+          <Link to='/kukl'><img src={MyImage6} alt="Kathmandu Upatyaka Khanepani Limited" className="Kukl-image" /> </Link>
+          <Link to='/'><img src={MyImage7} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" /> </Link>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 function HomeLayout(){
     const location = useLocation();
     const { inputValue } = location.state || {};
-    
+    const [modalShow, setModalShow] = React.useState(false);
   
     return (
         <div className='containerHome'>
@@ -121,19 +153,26 @@ function HomeLayout(){
 
                             {/* button part */}
                             <div>
-                                <button className='btn btn-primary button-width'>Checkout</button>
-                            </div>
-                        </div>
+                            <Button variant="primary" onClick={() => setModalShow(true)} className='CheckoutButton'>
+                                    Checkout
+                                </Button>                       
+                         </div>
+                         <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+                           </div>
                     </div>
-                  
+            </div>       
+
+          
                     
                     
                     
 
                 </div>
             </div>
-            
-        </div>
+         
     );
 }
 export default HomeLayout;

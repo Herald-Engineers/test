@@ -166,20 +166,20 @@ function User() {
                     <option value="Pokhara">    Pokhara Metropolitan City</option>
                     <option value="Biratnagar">    Biratnagar Metropolitan City</option>
                     <option value="Dharan">    Dharan Sub-metropolitan City</option>
-                    <option value="">    Birgunj Metropolitan City</option>
-                    <option value="">    Janakpur Sub-metropolitan City</option>
-                    <option value="">    Hetauda Sub-metropolitan City</option>
-                    <option value="">    Butwal Sub-metropolitan City</option>
-                    <option value="">    Nepalgunj Sub-metropolitan City</option>
-                    <option value="">    Tulsipur Sub-metropolitan City</option>
-                    <option value="">    Siddharthanagar Municipality</option>
-                    <option value="">    Dhangadhi Sub-metropolitan City</option>
-                    <option value="">    Mahendranagar Municipality</option>
-                    <option value="">    Birendranagar Municipality</option>
-                    <option value="">    Surkhet Municipality</option>
-                    <option value="">    Gulariya Municipality</option>
-                    <option value="">   Rajbiraj Municipality</option>
-                    <option value="">    Dhankuta Municipality</option>
+                    <option value="Birgunj">    Birgunj Metropolitan City</option>
+                    <option value="Janakpur">    Janakpur Sub-metropolitan City</option>
+                    <option value="Hetauda">    Hetauda Sub-metropolitan City</option>
+                    <option value="Butwal">    Butwal Sub-metropolitan City</option>
+                    <option value="Nepalgunj">    Nepalgunj Sub-metropolitan City</option>
+                    <option value="Tulsipur">    Tulsipur Sub-metropolitan City</option>
+                    <option value="Siddharthanagar">    Siddharthanagar Municipality</option>
+                    <option value="Dhangadhi">    Dhangadhi Sub-metropolitan City</option>
+                    <option value="Mahendranagar">    Mahendranagar Municipality</option>
+                    <option value="Birendranagar">    Birendranagar Municipality</option>
+                    <option value="Surkhet">    Surkhet Municipality</option>
+                    <option value="Gulariya">    Gulariya Municipality</option>
+                    <option value="Rajbiraj">   Rajbiraj Municipality</option>
+                    <option value="Dhankuta">    Dhankuta Municipality</option>
                     
             </select>
           </div>
