@@ -20,7 +20,7 @@ function MyVerticallyCenteredModal(props) {
     return (
       <Modal
         {...props}
-        size="lg"
+       size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -39,7 +39,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Footer>
       </Modal>
     );
-  }
+}
 function HomeLayout(){
     const location = useLocation();
     const { inputValue } = location.state || {};
@@ -156,22 +156,13 @@ function HomeLayout(){
                             <Button variant="primary" onClick={() => setModalShow(true)} className='CheckoutButton'>
                                     Checkout
                                 </Button>                       
-                         </div>
-                         <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-                           </div>
+                            </div>
+                            <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
+                        </div>
                     </div>
-            </div>       
-
-          
-                    
-                    
-                    
-
-                </div>
+                </div>       
             </div>
+        </div>
          
     );
 }

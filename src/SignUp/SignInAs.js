@@ -28,18 +28,10 @@ function Signin() {
             <p style={myStyle}>Company</p>
           </div>
 
-          <div className='box-container'>
-          <Link to='/nextpage'> <img src={Sign1} alt="Meter Reader" className="image_spacing" /></Link>
-            <p style={myStyle}>Meter Reader</p>
-          </div>
-
-          <div className='box-container'>
-          <Link to='/nextpage'> <img src={Sign1} alt="Meter Reader" className="image_spacing" /></Link>
-            <p style={myStyle}>Distributor</p>
-          </div>
+          
           <br></br>
         </div>
-        <div><Link to='/login'><p>Already have an account?</p></Link></div> <Link to='/'><button className='btn btn-primary'>Go Back</button></Link>
+        <div><Link to='/login'><p>Already have an account?</p></Link></div> <Link to='/'><button className='btn btn-primary' style={{width: '211px'}}>Go Back</button></Link>
       </div>
      
     

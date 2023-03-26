@@ -45,9 +45,9 @@ function Register(){
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        const selectedDistrict = event.target.district.value;
+        
         if (!isChecked) {
-            setErrorMsg('Please agree to all terms and conditions');
+            setErrorMsg('*Please agree to all terms and conditions');
         } else {
             // handle form submission
         
@@ -241,15 +241,15 @@ function Register(){
                 <input type="password" id="inputField" placeholder='Confirm Password ' value={confirmPassword} className='login-field' onChange={handleConfirmPasswordChange} /><br/>
 
                 {/* <input type="password" id="inputField" placeholder='Confirm Password '  className='login-field'/><br/> */}
-                {passwordMatch ? "" : <div>Passwords do not match</div>}
+                {passwordMatch ? "" : <div style={{color:'red'}}>*Passwords do not match</div>}
 
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
-                    <label className="form-check-label">
+                    <label className="form-check-label" >
                         Agreed to all terms and conditions.
                     </label>
                 </div>
-                {errorMsg && <p className="error">{errorMsg}</p>}
+                {errorMsg && <p className="error" style={{color:'red'}}>{errorMsg}</p>}
                 <input type="submit" value="Submit" id="my-button" />
                 
             </form>

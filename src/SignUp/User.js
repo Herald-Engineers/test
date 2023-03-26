@@ -136,7 +136,7 @@ function User() {
           <b style={color_style}>Personal Information</b>
         </h4>
         <form action="" onSubmit={handleSubmit}>
-          <label for="first-name" className="align_items" >Name:</label><br/>
+          <label  className="align_items" >Name:</label><br/>
           <div className="d-flex">
             <div>
               <input type="text" id="first-name"  value={firstName}placeholder="Firstname" required  onChange={handleFirstName}/><br/>
@@ -146,7 +146,7 @@ function User() {
             </div>
           </div>  
       
-            <label for="address">Address:</label><br/>
+            <label >Address:</label><br/>
       <div className="d-flex">
         <div>
          <input type="text" id="houseNo" name="houseNo" placeholder="House No" required onChange={handleHouseNo}/>{'\n'}</div>
@@ -189,25 +189,25 @@ function User() {
       <div className="d-flex">
         <div>
 
-            <label for="telephone">Telephone(1):</label><br/>
+            <label >Telephone(1):</label><br/>
       <input type="tel" id="telephone" name="tel1" placeholder="Telephone No. 1" required value={tel1} onChange={handleTel1}/><br/>
         </div>
 
         <div>
-        <label for="telephone">Telephone(2):</label><br/>
+        <label>Telephone(2):</label><br/>
       <input type="tel" id="telephone2" name="tel2" placeholder="Telephone no. 2(Optional)" value={tel2} onChange={handleTel2}/><br/>
      
       </div>
       </div>
-       <label for="email">Email Address:</label><br/>
+       <label>Email Address:</label><br/>
       <input type="email" id="myemail" name="email" placeholder="Email Address" required value={email}onChange={handleEmail}/><br/>
       <div className="d-flex">
           <div>
-            <label for="nationality">Nationality:</label><br/>
+            <label>Nationality:</label><br/>
         <input type="text" id="nationality" name="nationality"value={nationality} placeholder="Nationality" required onChange={handleNationality}/><br/>
           </div>
         <div>
-          <label for="citizenship-number">Citizenship Number:</label><br/>
+          <label >Citizenship Number:</label><br/>
           <input type="text" id="citizenship-number"  value={citizenshipNo} placeholder="Citizenship No." required onChange={handleCitizen}/><br/>
 
         </div>
