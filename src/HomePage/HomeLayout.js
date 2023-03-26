@@ -142,7 +142,8 @@ function HomeLayout(){
                                     Total</p>
                                     <hr id="hr-width"/>
                                     
-                                    <p className='align-right totalamt'>
+                                    <p className='align-right totalamt'> 
+                                    
                                         Rs. 2996
                                     </p>
 
