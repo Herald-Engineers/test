@@ -56,17 +56,13 @@ p{
     border: none;
    
 }
-.heading:hover{
-    
-    color: #0095ff;
 
-}
 .banner-section{
     padding-left: 40px;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 680px;
+    height: 744px;
     width: 100%;
     margin-bottom: 28px;
    
@@ -74,7 +70,7 @@ p{
 .paragraph_section{
     padding-left: 40px;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 118px;
     padding-bottom: 20px;
     font-family: 'Poppins';
     font-size: 20px;
@@ -86,7 +82,7 @@ p{
 .image_section{
     padding-left: 10px;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 145px;
     padding-bottom: 20px;
     float: right;
 }

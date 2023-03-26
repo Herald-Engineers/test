@@ -4,6 +4,8 @@
     color: white;
     padding-top: 10px;
     padding-right: 10px;
+    position: fixed;
+    width: 100%;
      
 }
 /* .nav_pills {

@@ -56,6 +56,7 @@ import axios from 'axios';
   // } else {
 
 
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbWVzaCIsImlkIjoiNjQxYWZkNTgyYjM2MWQyNzg2Njc0ZjYxIiwiaWF0IjoxNjc5ODM5MDAzfQ.N61yNl2GfLEGT49Pia9Kg-xW1cO9MqwZ0pQE2xfU3HM';
 
 
   const navigate = useNavigate();
@@ -79,9 +80,24 @@ import axios from 'axios';
       password: password
     })
     .then(res => {
+      const token = res.data.token;
+      const role = res.data.role;
+  
+      if (role === 'consumer') {
+          // Navigate to another page
+          navigate("/homela");
+      } 
+      else if(role === 'admin'){
+        navigate("/kukl");
+      }
+      else {
+          // Display error message or redirect to a different page
+          navigate("/ ");
+      }
+      
       console.log(res.data);
       // Redirect to the user's dashboard or some other page
-      navigate("/homela");
+      
     })
     .catch(error => {
       console.log(error);

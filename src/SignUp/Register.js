@@ -48,10 +48,11 @@ function Register(){
         
         if (!isChecked) {
             setErrorMsg('*Please agree to all terms and conditions');
-        } else {
+        } 
+        else {
             // handle form submission
         
-        const data = {
+            const data = {
             companyName: event.target.companyName.value,
             addressDistrict: event.target.addressDistrict.value,
             addressProvince: event.target.addressProvince.value,
@@ -62,13 +63,13 @@ function Register(){
             username: username,
             password: password,
 
-        };
-        axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
-          .then(response => {
-            <p>successful</p>
-            console.log(response)})
-          .catch(error => console.log(error));
-    }
+            };
+            axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
+            .then(response => {
+                <p>successful</p>
+                console.log(response)})
+            .catch(error => console.log(error));
+        }
       };
     return(
         <div>

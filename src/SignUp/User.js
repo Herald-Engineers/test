@@ -18,9 +18,9 @@ function User() {
   const [lastName, setLastName] = useState("");
   const [houseNo, setHouseNo] = useState("");
   const [tole, setTole] = useState("");
-  const [wardNo, setwardNo] = useState("");
-  const [tel1, settel] = useState("");
-  const [tel2, settel2] = useState("");
+  const [wardNo, setWardNo] = useState("");
+  const [tel1, setTel] = useState("");
+  const [tel2, setTel2] = useState("");
   const [email, setEmail] = useState("");
   const [nationality, setNationality] = useState("");
   const [citizenshipNo, setcitizenshipNo] = useState("");
@@ -28,8 +28,8 @@ function User() {
   const [supName, setSupName] = useState("");
   const [supTelephone, setSupTelephone] = useState("");
   const [supEmail, setSupEmail] = useState("");
-  const [citizenshipDoc, setcitizenshipDoc] = useState("");
-  const [landOwnershipDoc, setlandOwnershipDoc] = useState("");
+  const [citizenshipDoc, setCitizenshipDoc] = useState("");
+  const [landOwnershipDoc, setLandOwnershipDoc] = useState("");
 
   const handleFirstName = (event) => {
           setFirstName(event.target.value);
@@ -46,13 +46,13 @@ function User() {
           setTole(event.target.value);
   };
   const handleWard = (event) => {
-          setwardNo(event.target.value);
+          setWardNo(event.target.value);
   };
   const handleTel1 = (event) => {
-      settel(event.target.value);
+      setTel(event.target.value);
     };
   const handleTel2 = (event) => {
-      settel2(event.target.value);
+      setTel2(event.target.value);
   };
   const handleEmail = (event) => {
     setEmail(event.target.value); 
@@ -76,10 +76,10 @@ function User() {
     setSupEmail(event.target.value);
   };
   const handleCitizenDoc = (event) => {
-    setcitizenshipDoc(event.target.value);
+    setCitizenshipDoc(event.target.value);
   };
   const handleLandDoc = (event) => {
-    setlandOwnershipDoc(event.target.value);
+    setLandOwnershipDoc(event.target.value);
   };
   
 
@@ -119,12 +119,13 @@ function User() {
           landOwnershipDoc: landOwnershipDoc,
       };
       axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', data)
-        .then(response => {
-         
-          console.log(response)})
-        .catch(error => console.log(error));
-
-        }
+      .then(response => {
+        console.log(response);
+        console.log("successful");
+      })
+          .catch(error => console.log(error));
+    
+  };
   return ( 
     <div className="container">
       <div className="contanier-box">
@@ -135,7 +136,7 @@ function User() {
         <h4>
           <b style={color_style}>Personal Information</b>
         </h4>
-        <form action="" onSubmit={handleSubmit}>
+        <form action="/action_page.php" onSubmit={handleSubmit}>
           <label  className="align_items" >Name:</label><br/>
           <div className="d-flex">
             <div>
@@ -149,13 +150,13 @@ function User() {
             <label >Address:</label><br/>
       <div className="d-flex">
         <div>
-         <input type="text" id="houseNo" name="houseNo" placeholder="House No" required onChange={handleHouseNo}/>{'\n'}</div>
-        <div>  <input type="text" id="tol" name="tole" placeholder="Tol" required onChange={handleTole}/><br/>{'\n'}</div>
+         <input type="text" id="houseNo" name="houseNo"value={houseNo} placeholder="House No" required onChange={handleHouseNo}/>{'\n'}</div>
+        <div>  <input type="text" id="tol" name="tole" value={tole} placeholder="Tol" required onChange={handleTole}/><br/>{'\n'}</div>
           
         </div>
         <div className="d-flex">
        
-          <div><input type="number" id="ward" name="wardNo" placeholder="Ward" required onChange={handleWard}/>{'\n'} </div>
+          <div><input type="number" id="ward" name="wardNo" placeholder="Ward" value={wardNo} required onChange={handleWard}/>{'\n'} </div>
           <div>
             <select id="Municipalities" name="municipality" className="select_option" >
                 <option value="">    Address(Municiplaity)</option>
@@ -245,7 +246,7 @@ function User() {
       <div className="d-flex">
         <div>
           <label >- Citizenship Document:</label><br/>
-      <input type="file" id="citizenshipDoc" value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required onChange={handleCitizenDoc}/><br/>
+      <input type="file" id="citizenshipDoc" name="citizenshipDoc"value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required onChange={handleCitizenDoc}/><br/>
         </div>
         <div>
           <label >- Land Ownership Document:</label><br/>
@@ -255,7 +256,7 @@ function User() {
       
       </div>
       
-      <input type="submit" value="Submit" id="my-button" />
+      <input type="submit" value="submit" id="my-button" />
       <Link  to='/signinas'>  <button className='goBack'> Go Back</button></Link>
 
       {/* <Modal show={show} onHide={handleClose} animation={false}>
