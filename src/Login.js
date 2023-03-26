@@ -8,7 +8,9 @@ import {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CopyRightTag from './Components/Copyright';
 import HomePage from './HomePage/HomeLayout';
+import LoginSec from './Image/LoginSec.png';
 import axios from 'axios';
+
 
 // const url = 'https://wavebilling-backend-sabinlohani.onrender.com/login ';
  function Login() {
@@ -58,7 +60,7 @@ import axios from 'axios';
 
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbWVzaCIsImlkIjoiNjQxYWZkNTgyYjM2MWQyNzg2Njc0ZjYxIiwiaWF0IjoxNjc5ODM5MDAzfQ.N61yNl2GfLEGT49Pia9Kg-xW1cO9MqwZ0pQE2xfU3HM';
 
-
+ 
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -211,31 +213,51 @@ import axios from 'axios';
     // </div>
 
     
-<div className='container-login'>
-    <div className="form">
-     <center> <img src={MyImage} alt='Wave Billing System Logo'  className='forgetLogo text-center' /></center>
-      <h4 className='fontfamily text-center'>LOGIN TO CONTINUE</h4>
-      <form onSubmit={handleSubmit}>
-      {/* {error && <p>{error}</p>} */}
-        <div className="input-container">
-         
-          <input type="text" required value={username} placeholder='Username' className='login-field'  onChange={handleUsernameChange}/>
-         
-        </div>
-        <div className="input-container">
+<div className='Container'>
+    <div className='MyLogoImageSection'> 
+      <img src={LoginSec} alt='Protect Water'  className='MyLogoImage' />
+    </div>
+   
+    <div className="form" >
+      <div className=''>
+        <center> <img src={MyImage} alt='Wave Billing System Logo'  className='myLogo text-center' /></center>
+       <center> <h4 style={{paddingBottom:'40px'}}>LOGIN TO CONTINUE</h4></center>
+       <div className='myItems'>
+        <form onSubmit={handleSubmit}>
+          {/* {error && <p>{error}</p>} */}
+                   <div className="input-container">
+            <label className='ridhtalignlabel'>Username</label><br/>
+            <input type="text" required value={username} placeholder='Username' className='login-field'  onChange={handleUsernameChange}/>
           
-          <input type="password"  required  value={password} placeholder='Password' className='login-field'  onChange={handlePasswordChange}/>
-         
+          </div>
+          <div className="input-container">
+          <label>Password</label><br/>
+            <input type="password"  required  value={password} placeholder='Password' className='login-field'  onChange={handlePasswordChange}/>
+          
+          </div>
+          {errorMessage && <div>{errorMessage}</div>}
+
+          <div className="button-container">
+          <input
+                  type="checkbox"
+                  
+                  name="lsRememberMe"
+                  
+                />
+                <label>Remember me</label>
+          <Link to='/nextpage'><span style={{ fontSize: '14px'}}className='myforgot' >Forgot Password?</span></Link>
+           
+          </div>
+           <button type="submit" className='btn btn-primary' >Login</button>
+           <p style={{color: '#B1ABAB',fontSize:'12px',paddingLeft:'42px',paddingTop:'10px'}}>Don't have an account?<Link>Gets yours now</Link></p>
+        </form>
         </div>
-        {errorMessage && <div>{errorMessage}</div>}
-        <div className="button-container">
-        <button type="submit" className='btn btn-primary'>Login</button>
-        </div>
-      </form>
-      
-      <Link to='/nextpage'><p style={{paddingTop: '8px'}}className='text-center' >Forgot Password?</p></Link>
-      <CopyRightTag />
-    </div></div>
+        
+        <center> <CopyRightTag /></center>
+      </div>
+    </div>
+   
+  </div>
   
       
   );

@@ -17,6 +17,31 @@ function Mychart(){
           },
           colors : ['#6092C0']
         },
+        colors: {
+          ranges: [
+            {
+              from: 0,
+              to: 5000,
+              color: '#6092C0'
+            },
+            {
+              from: 5000,
+              to: 10000,
+              color: '#60C080'
+            },
+            {
+              from: 10000,
+              to: 15000,
+              color: 'bluex`'
+            },
+            {
+              from: 15000,
+              to: 20000,
+              color: 'red'
+            }
+          ]
+        },
+      
         series: [
           {
             name: "series-1",

@@ -53,7 +53,7 @@ body {
 }
 
 .fontfamily{
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans';
   font-size: 20px;
   padding-bottom: 0%;
 }
@@ -90,5 +90,6 @@ body {
   position: absolute;
   bottom: 0px;
   color: gray;
+  padding-left: 88px;
 
 }
