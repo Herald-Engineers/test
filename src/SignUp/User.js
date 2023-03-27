@@ -95,37 +95,43 @@ function User() {
   //   const handleEditProfile = () => {
   //     navigate('/editprofile');
   //   };
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      
-      
-      const data = {
-          firstName: firstName,
-          lastName: lastName,
-          houseNo: houseNo,
-          tole: tole,
-          wardNo: wardNo,
-          municipality: event.target.municipality.value,
-          tel1: tel1,
-          tel2: tel2,
-          email: email,
-          nationality: nationality,
-          citizenshipNo: citizenshipNo,
-          passportNo: passportNo,
-          supName: supName,
-          supTelephone: supTelephone,
-          supEmail: supEmail,
-          citizenshipDoc: citizenshipDoc,
-          landOwnershipDoc: landOwnershipDoc,
-      };
-      axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', data)
-      .then(response => {
-        console.log(response);
-        console.log("successful");
-      })
-      .catch(error => console.log(error));
+  const handleSubmit = (event) => {
+    event.preventDefault();
     
-    };
+    const citizenshipDocFile = event.target.citizenshipDoc.files[0];
+    const landOwnershipDocFile = event.target.landOwnershipDoc.files[0];
+  
+    const formData = new FormData();
+    formData.append('firstName', firstName);
+    formData.append('lastName', lastName);
+    formData.append('houseNo', houseNo);
+    formData.append('tole', tole);
+    formData.append('wardNo', wardNo);
+    formData.append('municipality', event.target.municipality.value);
+    formData.append('tel1', tel1);
+    formData.append('tel2', tel2);
+    formData.append('email', email);
+    formData.append('nationality', nationality);
+    formData.append('citizenshipNo', citizenshipNo);
+    formData.append('passportNo', passportNo);
+    formData.append('supName', supName);
+    formData.append('supTelephone', supTelephone);
+    formData.append('supEmail', supEmail);
+    formData.append('citizenshipDoc', citizenshipDocFile);
+    formData.append('landOwnershipDoc', landOwnershipDocFile);      
+  
+    axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      console.log(response);
+      console.log("successful");
+    })
+    .catch(error => console.log(error));
+  };
+  
   return ( 
     <div className="container">
       <div className="contanier-box">
@@ -235,7 +241,7 @@ function User() {
         </div>
         <div>
           
-      <input type="email" id="supplementary-email" name="supEmail" value={supEmail}placeholder="Email" className="spacing"  onChange={handleSupEmail}/><br/>
+      <input type="email" id="supplementary-email" name="supEmail" value={supEmail} placeholder="Email" className="spacing"  onChange={handleSupEmail}/><br/>
         </div>
         
       </div>
@@ -246,7 +252,7 @@ function User() {
       <div className="d-flex">
         <div>
           <label >- Citizenship Document:</label><br/>
-      <input type="file" id="citizenshipDoc" name="citizenshipDoc"value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required onChange={handleCitizenDoc}/><br/>
+      <input type="file" id="citizenshipDoc" name="citizenshipDoc" value={citizenshipDoc} accept=".pdf,.doc,.docx" className="choosefile" required onChange={handleCitizenDoc}/><br/>
         </div>
         <div>
           <label >- Land Ownership Document:</label><br/>
