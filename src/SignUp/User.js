@@ -98,43 +98,38 @@ function User() {
   //   const handleEditProfile = () => {
   //     navigate('/editprofile');
   //   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-
-    const data = {
-      firstName: firstName,
-      lastName: lastName,
-      houseNo: houseNo,
-      tole: tole,
-      wardNo: wardNo,
-      municipality: event.target.municipality.value,
-      tel1: tel1,
-      tel2: tel2,
-      email: email,
-      nationality: nationality,
-      citizenshipNo: citizenshipNo,
-      passportNo: passportNo,
-      supName: supName,
-      supTelephone: supTelephone,
-      supEmail: supEmail,
-      citizenshipDoc: citizenshipDoc,
-      landOwnershipDoc: landOwnershipDoc,
-    };
-    axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', data)
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      
+      
+      const data = {
+          firstName: firstName,
+          lastName: lastName,
+          houseNo: houseNo,
+          tole: tole,
+          wardNo: wardNo,
+          municipality: event.target.municipality.value,
+          tel1: tel1,
+          tel2: tel2,
+          email: email,
+          nationality: nationality,
+          citizenshipNo: citizenshipNo,
+          passportNo: passportNo,
+          supName: supName,
+          supTelephone: supTelephone,
+          supEmail: supEmail,
+          citizenshipDoc: citizenshipDoc,
+          landOwnershipDoc: landOwnershipDoc,
+      };
+      axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', data)
       .then(response => {
-        console.log(data);
         console.log(response);
         console.log("successful");
       })
-      .catch(error => {
-        console.log('Hi everyone: ' + event.target);
-        console.log("I am catch");
-        console.log(error);
-      });
-
-  };
-  return (
+      .catch(error => console.log(error));
+    
+    };
+  return ( 
     <div className="container">
       <div className="contanier-box">
         <h1 style={color_style}>User account request</h1>
@@ -236,48 +231,48 @@ function User() {
               <label>Passport Number(Optional):</label><br />
               <input type="text" id="passport-number" value={passportNo} placeholder="Passport No." onChange={handlePassport} /><br />
 
-            </div>
-
-          </div>
-
-          <h4 style={supplementary}>
-            <b>Add Supplementary Information(Optional)</b>
-          </h4>
-          <div className="d-flex ">
-            <div>
-
-              <input type="text" id="supplementary-name" name="supName" value={supName} placeholder="Name" className="spacing" onChange={handleSupName} /><br />
-            </div>
-            <div>
-
-              <input type="tel" id="supplementary-telephone" name="supTelephone" value={supTelephone} placeholder="Telephone" className="spacing" onChange={handleSupTel} /><br />
-
-            </div>
-            <div>
-
-              <input type="email" id="supplementary-email" name="supEmail" value={supEmail} placeholder="Email" className="spacing" onChange={handleSupEmail} /><br />
-            </div>
-
-          </div>
-
-          <h4 style={supplementary}>
-            <b>Please submit the softcopy of the following documents:</b>
-          </h4>
-          <div className="d-flex">
-            <div>
-              <label >- Citizenship Document:</label><br />
-              <input type="file" id="citizenshipDoc" name="citizenshipDoc" value={citizenshipDoc} accept=".pdf,.doc,.docx" className="choosefile" required onChange={handleCitizenDoc} /><br />
-            </div>
-            <div>
-              <label >- Land Ownership Document:</label><br />
-              <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required onChange={handleLandDoc} /><br />
-            </div>
-
-
-          </div>
-
-          <input type="submit" value="submit" id="my-button" />
-          <Link to='/signinas'>  <button className='goBack'> Go Back</button></Link>
+        </div>
+        
+      </div>
+      
+      <h4 style={supplementary}>
+          <b>Add Supplementary Information(Optional)</b>
+        </h4>
+      <div className="d-flex ">
+        <div>
+          
+      <input type="text" id="supplementary-name" name="supName"value={supName} placeholder="Name" className="spacing" onChange={handleSupName}/><br/>
+        </div>
+        <div>
+        
+      <input type="tel" id="supplementary-telephone" name="supTelephone" value={supTelephone} placeholder="Telephone" className="spacing"  onChange={handleSupTel}/><br/>
+      
+        </div>
+        <div>
+          
+      <input type="email" id="supplementary-email" name="supEmail" value={supEmail}placeholder="Email" className="spacing"  onChange={handleSupEmail}/><br/>
+        </div>
+        
+      </div>
+    
+      <h4 style={supplementary}>
+          <b>Please submit the softcopy of the following documents:</b>
+        </h4>
+      <div className="d-flex">
+        <div>
+          <label >- Citizenship Document:</label><br/>
+      <input type="file" id="citizenshipDoc" name="citizenshipDoc"value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required onChange={handleCitizenDoc}/><br/>
+        </div>
+        <div>
+          <label >- Land Ownership Document:</label><br/>
+      <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required onChange={handleLandDoc}/><br/>
+        </div>
+      
+      
+      </div>
+      
+      <input type="submit" value="submit" id="my-button" />
+      <Link  to='/signinas'>  <button className='goBack'> Go Back</button></Link>
 
           {/* <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
