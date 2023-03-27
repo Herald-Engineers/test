@@ -6,6 +6,7 @@ import step2 from '../Image/step2.png';
 import step3 from '../Image/step3.png';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import MyLogo from '../Image/logo123.png';
 
 
 function User() {
@@ -18,6 +19,7 @@ function User() {
     marginBottom: '10px',
   };
   const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [houseNo, setHouseNo] = useState("");
   const [tole, setTole] = useState("");
@@ -28,14 +30,14 @@ function User() {
   const [nationality, setNationality] = useState("");
   const [citizenshipNo, setcitizenshipNo] = useState("");
   const [passportNo, setpassportNo] = useState("");
-  const [supName, setSupName] = useState("");
-  const [supTelephone, setSupTelephone] = useState("");
-  const [supEmail, setSupEmail] = useState("");
   const [citizenshipDoc, setCitizenshipDoc] = useState("");
   const [landOwnershipDoc, setLandOwnershipDoc] = useState("");
 
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
+  };
+  const handleMiddleName = (event) => {
+    setMiddleName(event.target.value);
   };
 
   const handleLastName = (event) => {
@@ -54,6 +56,8 @@ function User() {
   const handleTel1 = (event) => {
     setTel(event.target.value);
   };
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const handleTel2 = (event) => {
     setTel2(event.target.value);
   };
@@ -68,15 +72,6 @@ function User() {
   };
   const handlePassport = (event) => {
     setpassportNo(event.target.value);
-  };
-  const handleSupName = (event) => {
-    setSupName(event.target.value);
-  };
-  const handleSupTel = (event) => {
-    setSupTelephone(event.target.value);
-  };
-  const handleSupEmail = (event) => {
-    setSupEmail(event.target.value);
   };
   const handleCitizenDoc = (event) => {
     setCitizenshipDoc(event.target.value);
@@ -98,183 +93,235 @@ function User() {
   //   const handleEditProfile = () => {
   //     navigate('/editprofile');
   //   };
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      
-      
-      const data = {
-          firstName: firstName,
-          lastName: lastName,
-          houseNo: houseNo,
-          tole: tole,
-          wardNo: wardNo,
-          municipality: event.target.municipality.value,
-          tel1: tel1,
-          tel2: tel2,
-          email: email,
-          nationality: nationality,
-          citizenshipNo: citizenshipNo,
-          passportNo: passportNo,
-          supName: supName,
-          supTelephone: supTelephone,
-          supEmail: supEmail,
-          citizenshipDoc: citizenshipDoc,
-          landOwnershipDoc: landOwnershipDoc,
-      };
-      axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', data)
-      .then(response => {
-        console.log(response);
-        console.log("successful");
-      })
-      .catch(error => console.log(error));
-    
-    };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!isChecked) {
+      setErrorMsg('*Please agree to all terms and conditions');
+  } 
+  else {
+    const citizenshipDocFile = event.target.citizenshipDoc.files[0];
+    const landOwnershipDocFile = event.target.landOwnershipDoc.files[0];
+  
+    const formData = new FormData();
+    formData.append('firstName', firstName);
+    formData.append('middleName', middleName);
+    formData.append('lastName', lastName);
+    formData.append('houseNo', houseNo);
+    formData.append('tole', tole);
+    formData.append('wardNo', wardNo);
+    formData.append('municipality', event.target.municipality.value);
+    formData.append('province', event.target.province.value);
+    formData.append('tel1', tel1);
+    formData.append('tel2', tel2);
+    formData.append('email', email);
+    formData.append('nationality', nationality);
+    formData.append('citizenshipNo', citizenshipNo);
+    formData.append('passportNo', passportNo);
+    formData.append('citizenshipDoc', citizenshipDocFile);
+    formData.append('landOwnershipDoc', landOwnershipDocFile);      
+  
+    axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      console.log(response);
+      console.log("successful");
+    })
+    .catch(error => console.log(error));
+  }
+  };
+  
   return ( 
-    <div className="container">
-      <div className="contanier-box">
-        <h1 style={color_style}>User account request</h1>
-        <p style={color_style}>Fill the form below to create an account.</p>
-        <br />
-        <div className='d-flex myimagecontainer'>
-          <div>
-            <img src={step1} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
-          </div>
-          <div>
-            <img src={step2} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
-          </div>
-          <div>
-            <img src={step3} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
-
-          </div>
+    <div>
+      {/* top part */}
+      <div className='d-flex' style={{borderBottom:'1px solid #B9B9B9'}}>
+        <div style={{ height:'100px'}}>
+          <img src={MyLogo} alt="Kathmandu Upatyaka Khanepani Limited" className="userImage" />
         </div>
-
-        <h4>
-          <b style={color_style}>Personal Information</b>
-        </h4>
-        <form onSubmit={handleSubmit}>
-          <label className="align_items" >Name:</label><br />
-          <div className="d-flex">
-            <div>
-              <input type="text" id="first-name" value={firstName} placeholder="Firstname" required onChange={handleFirstName} /><br />
-            </div>
-            <div>
-              <input type="text" id="last-name" value={lastName} placeholder="Lastname" required onChange={handleLastName} /><br />
-            </div>
-          </div>
-
-          <label >Address:</label><br />
-          <div className="d-flex">
-            <div>
-              <input type="text" id="houseNo" name="houseNo" value={houseNo} placeholder="House No" required onChange={handleHouseNo} />{'\n'}</div>
-            <div>  <input type="text" id="tol" name="tole" value={tole} placeholder="Tol" required onChange={handleTole} /><br />{'\n'}</div>
-
-          </div>
-          <div className="d-flex">
-
-            <div><input type="number" id="ward" name="wardNo" placeholder="Ward" value={wardNo} required onChange={handleWard} />{'\n'} </div>
-            <div>
-              <select id="Municipalities" name="municipality" className="select_option" >
-                <option value="">    Address(Municiplaity)</option>
-                <option value="Kathmandu">    Kathmandu Metropolitan City  </option>
-                <option value="Lalitpur">    Lalitpur Metropolitan City </option>
-                <option value="Bhaktapur">    Bhaktapur Municipality</option>
-                <option value="Pokhara">    Pokhara Metropolitan City</option>
-                <option value="Biratnagar">    Biratnagar Metropolitan City</option>
-                <option value="Dharan">    Dharan Sub-metropolitan City</option>
-                <option value="Birgunj">    Birgunj Metropolitan City</option>
-                <option value="Janakpur">    Janakpur Sub-metropolitan City</option>
-                <option value="Hetauda">    Hetauda Sub-metropolitan City</option>
-                <option value="Butwal">    Butwal Sub-metropolitan City</option>
-                <option value="Nepalgunj">    Nepalgunj Sub-metropolitan City</option>
-                <option value="Tulsipur">    Tulsipur Sub-metropolitan City</option>
-                <option value="Siddharthanagar">    Siddharthanagar Municipality</option>
-                <option value="Dhangadhi">    Dhangadhi Sub-metropolitan City</option>
-                <option value="Mahendranagar">    Mahendranagar Municipality</option>
-                <option value="Birendranagar">    Birendranagar Municipality</option>
-                <option value="Surkhet">    Surkhet Municipality</option>
-                <option value="Gulariya">    Gulariya Municipality</option>
-                <option value="Rajbiraj">   Rajbiraj Municipality</option>
-                <option value="Dhankuta">    Dhankuta Municipality</option>
-
-              </select>
-            </div>
-
-
-          </div>
-
-          <div className="d-flex">
-            <div>
-
-              <label >Telephone(1):</label><br />
-              <input type="tel" id="telephone" name="tel1" placeholder="Telephone No. 1" required value={tel1} onChange={handleTel1} /><br />
-            </div>
-
-            <div>
-              <label>Telephone(2):</label><br />
-              <input type="tel" id="telephone2" name="tel2" placeholder="Telephone no. 2(Optional)" value={tel2} onChange={handleTel2} /><br />
-
-            </div>
-          </div>
-          <label>Email Address:</label><br />
-          <input type="email" id="myemail" name="email" placeholder="Email Address" required value={email} onChange={handleEmail} /><br />
-          <div className="d-flex">
-            <div>
-              <label>Nationality:</label><br />
-              <input type="text" id="nationality" name="nationality" value={nationality} placeholder="Nationality" required onChange={handleNationality} /><br />
-            </div>
-            <div>
-              <label >Citizenship Number:</label><br />
-              <input type="text" id="citizenship-number" value={citizenshipNo} placeholder="Citizenship No." required onChange={handleCitizen} /><br />
-
-            </div>
-            <div>
-              <label>Passport Number(Optional):</label><br />
-              <input type="text" id="passport-number" value={passportNo} placeholder="Passport No." onChange={handlePassport} /><br />
-
+        <div> 
+          <h3 style={{paddingTop:'39px'}}>Request User Account</h3>
         </div>
-        
       </div>
-      
-      <h4 style={supplementary}>
-          <b>Add Supplementary Information(Optional)</b>
-        </h4>
-      <div className="d-flex ">
-        <div>
-          
-      <input type="text" id="supplementary-name" name="supName"value={supName} placeholder="Name" className="spacing" onChange={handleSupName}/><br/>
+
+      {/* down section */}
+
+      <div className="container">
+        <div className="contanier-box">
+          <p style={{color: '#525252',paddingLeft: '23px', paddingTop:'60px'}} >Fill the form below to create an account.</p>
+          <br />
+          <form>
+          {/* image section flex */}
+          <div className='d-flex myimagecontainer'>
+            <div>
+              <img src={step1} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+            </div>
+            <div>
+              <img src={step2} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+            </div>
+            <div>
+              <img src={step3} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+            </div>
+          </div>
+
+
+          <div className='second-section'>
+            <h4>
+              <b style={color_style} className="PersonalInformation">Personal Information</b>
+            </h4>
+            <div className='formSection'>
+              
+                <label className="align_items" >Full Name:</label><br />
+                
+                <div className="d-flex">
+                  <div>
+                    <input type="text" id="first-name" value={firstName} placeholder="Firstname" required onChange={handleFirstName} /><br />
+                  </div>
+                  <div>
+                    <input type="text" id="middle-name" value={middleName} placeholder="Middlename"  onChange={handleMiddleName} /><br />
+                  </div>
+                  <div>
+                    <input type="text" id="last-name" value={lastName} placeholder="Lastname" required onChange={handleLastName} /><br />
+                  </div>
+                </div>
+
+                <label>Address:</label><br />
+
+                <div className="d-flex">
+                  <div>
+                    <input type="text" id="houseNo" name="houseNo" value={houseNo} placeholder="House No" required onChange={handleHouseNo} />{'\n'}
+                  </div>
+                  <div>  
+                    <input type="text" id="tol" name="tole" value={tole} placeholder="Tol No" required onChange={handleTole} /><br />{'\n'}
+                  </div>  
+                  <div>
+                    <input type="number" id="ward" name="wardNo" placeholder="Ward No" value={wardNo} required onChange={handleWard} />{'\n'}
+                  </div>
+                </div>
+              
+            
+
+              <div className="d-flex">
+                <div>
+                  <select id="Municipalities" name="municipality" className="select_option" >
+                    <option value="">Municiplaity</option>
+                    <option value="Kathmandu">    Kathmandu Metropolitan City  </option>
+                    <option value="Lalitpur">    Lalitpur Metropolitan City </option>
+                    <option value="Bhaktapur">    Bhaktapur Municipality</option>
+                    <option value="Pokhara">    Pokhara Metropolitan City</option>
+                    <option value="Biratnagar">    Biratnagar Metropolitan City</option>
+                    <option value="Dharan">    Dharan Sub-metropolitan City</option>
+                    <option value="Birgunj">    Birgunj Metropolitan City</option>
+                    <option value="Janakpur">    Janakpur Sub-metropolitan City</option>
+                    <option value="Hetauda">    Hetauda Sub-metropolitan City</option>
+                    <option value="Butwal">    Butwal Sub-metropolitan City</option>
+                    <option value="Nepalgunj">    Nepalgunj Sub-metropolitan City</option>
+                    <option value="Tulsipur">    Tulsipur Sub-metropolitan City</option>
+                    <option value="Siddharthanagar">    Siddharthanagar Municipality</option>
+                    <option value="Dhangadhi">    Dhangadhi Sub-metropolitan City</option>
+                    <option value="Mahendranagar">    Mahendranagar Municipality</option>
+                    <option value="Birendranagar">    Birendranagar Municipality</option>
+                    <option value="Surkhet">    Surkhet Municipality</option>
+                    <option value="Gulariya">    Gulariya Municipality</option>
+                    <option value="Rajbiraj">   Rajbiraj Municipality</option>
+                    <option value="Dhankuta">    Dhankuta Municipality</option>
+
+                  </select>
+                </div> 
+                <div>
+                  <select id="province" name="addressProvince" className="select_option" >
+                    <option value="" style={color_style} >Province</option>
+                    <option value="Koshi Province">Koshi Province</option>
+                    <option value="Madhesh Province">Madhesh Province</option>
+                    <option value="Bagmati Province">Bagmati Province</option>
+                    <option value="Gandaki Province">Gandaki Province</option>
+                    <option value="Province 5">Lumbini Province </option>
+                    <option value="Karnali Province">Karnali Province</option>
+                    <option value="Sudurpashchim Province">Sudurpashchim Province</option>    
+                  </select>
+                </div>
+              </div>
+
+              <label >Contact No:</label><br />
+              <div className="d-flex">
+                <div>
+                  <input type="tel" id="telephone" name="tel1" placeholder="Telephone No" required value={tel1} onChange={handleTel1} /><br />
+                </div>
+
+                <div>
+                  <input type="tel" id="telephone2" name="tel2" placeholder="Mobile No" value={tel2} onChange={handleTel2} /><br />
+                </div>
+              </div>
+
+              <label>Email Address:</label><br />
+              <input type="email" id="myemail" name="email" placeholder="Email Address" required value={email} onChange={handleEmail} /><br />
+              
+              <div className="d-flex">
+                <div>
+                  <label>Nationality:</label><br />
+                  <input type="text" id="nationality" name="nationality" value={nationality} placeholder="Nationality" required onChange={handleNationality} /><br />
+                </div>
+                <div>
+                  <label >Citizenship No:</label><br />
+                  <input type="text" id="citizenship-number" value={citizenshipNo} placeholder="Citizenship No." required onChange={handleCitizen} /><br />
+
+                </div>
+                <div>
+                  <label>Issue Date:</label><br />
+                  <input type="date" id="date-number"  placeholder="Issue Date"/><br />
+
+                </div>
+              
+              </div>
+            </div>
+          </div>
+
+          <div className='second_sectio'>
+            <h4 style={supplementary}>
+              <b  className="PersonalInformatio">Documents</b>
+            </h4>
+            <div className='formSection'>
+              <div className="d-flex ">
+                <div>
+                  <label >Citizenship:</label><br />
+                  <input type="file" id="citizenshipDoc" name="citizenshipDoc" value={citizenshipDoc} accept=".pdf,.doc,.docx" className="choosefile" required onChange={handleCitizenDoc} /><br />
+                </div>
+                <div>
+                  <label >Land Ownership Certificate:</label><br />
+                  <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required onChange={handleLandDoc} /><br />
+                </div>
+              </div>
+              <div>
+                <label>Passport(Optional):</label><br />
+                <input type="text" id="passport-number" value={passportNo} placeholder="Passport No." onChange={handlePassport} /><br />
+
+              </div>
+            </div>
+          </div>
+          <div  className='secondSection'>
+
+            <div className='lastsec' d-flex >
+              <div><input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} /></div>
+              <div><p>I hereby confirm that the information I have submitted is accurate and complete. I attest that all the details provided are true to the best of my knowledge.</p></div>
+             
+            </div>
+          </div> 
+          <div style={{textAlign:'center',paddingRight: '246px'}}>
+            <center><input type="submit" value="Submit" id="my-button" /><br/>
+            <Link to='/signinas'>  <button className='goBack'> Go Back</button></Link></center></div>
+            </form>
+          </div> 
         </div>
-        <div>
-        
-      <input type="tel" id="supplementary-telephone" name="supTelephone" value={supTelephone} placeholder="Telephone" className="spacing"  onChange={handleSupTel}/><br/>
-      
-        </div>
-        <div>
-          
-      <input type="email" id="supplementary-email" name="supEmail" value={supEmail}placeholder="Email" className="spacing"  onChange={handleSupEmail}/><br/>
-        </div>
-        
+     
       </div>
     
-      <h4 style={supplementary}>
-          <b>Please submit the softcopy of the following documents:</b>
-        </h4>
-      <div className="d-flex">
-        <div>
-          <label >- Citizenship Document:</label><br/>
-      <input type="file" id="citizenshipDoc" name="citizenshipDoc"value={citizenshipDoc}accept=".pdf,.doc,.docx" className="choosefile"required onChange={handleCitizenDoc}/><br/>
-        </div>
-        <div>
-          <label >- Land Ownership Document:</label><br/>
-      <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required onChange={handleLandDoc}/><br/>
-        </div>
-      
-      
-      </div>
-      
-      <input type="submit" value="submit" id="my-button" />
-      <Link  to='/signinas'>  <button className='goBack'> Go Back</button></Link>
+  );
+}
 
-          {/* <Modal show={show} onHide={handleClose} animation={false}>
+export default User;
+
+{/* <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Create an account </Modal.Title>
         </Modal.Header>
@@ -289,14 +336,3 @@ function User() {
       
         </Modal.Footer>
       </Modal> */}
-
-        </form>
-
-      </div>
-
-
-    </div>
-  );
-}
-
-export default User;

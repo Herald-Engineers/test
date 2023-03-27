@@ -74,7 +74,7 @@ p{
 .paragraph_section{
     padding-left: 40px;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 108px;
     padding-bottom: 20px;
     font-family: 'Poppins';
     font-size: 20px;
@@ -259,7 +259,7 @@ input[type=email], select {
 }
 
   
-  input[type=submit] {
+input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -268,9 +268,17 @@ input[type=email], select {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
+input[type=date] {
+  padding: 12px 44px;
+  margin: 8px 0;
+   display: inline-block;
+   border: 1px solid #ccc;
+  border-radius: 4px;
+    box-sizing: border-box;
+}
   
-  input[type=submit]:hover {
+input[type=submit]:hover {
     background-color: #45a049;
   }
   .address-section{
@@ -307,10 +315,16 @@ input[type=email], select {
   .container{
     width: 100%;
     background-color: #fff;
-    padding: 20px;
-  }
+    padding-left: 49px;
+    padding-right: 0;
+    margin-left: 225px;
+    margin-right: 30px;
+}
+  
   .container-box{
-    width: 100px;
+    padding: 70px;
+    margin: 60px;
+    width: 200px;
   }
   #my-button {
     background-color: #0095ff; /*Change color to blue*/
@@ -335,11 +349,11 @@ input[type=email], select {
     margin-right: 20px;
   }
   #myemail{
-    width: 463px;
+    width: 710px;
   }
   .goBack{
-    background-color: #777c80; /*Change color to blue*/
-    color: white; /*Change text color to white*/
+    background-color: #F5F5F5; /*Change color to blue*/
+    color: black; /*Change text color to white*/
     font-size: 20px; /*Change font size to 20px*/
     padding: 10px 20px; /*Add padding to increase button size*/
     width: 200px;

@@ -238,12 +238,7 @@ import axios from 'axios';
           {errorMessage && <div>{errorMessage}</div>}
 
           <div className="button-container">
-          <input
-                  type="checkbox"
-                  
-                  name="lsRememberMe"
-                  
-                />
+          <input type="checkbox"  name="lsRememberMe"/>
                 <label style={{color:'#B1ABAB',fontSize:'14px'}}>Remember me</label>
           <Link to='/nextpage'><span style={{ fontSize: '13px'}}className='myforgot' >Forgot Password?</span></Link>
            
@@ -253,7 +248,7 @@ import axios from 'axios';
         </form>
         </div>
         
-        <CopyRightTag className='text-center copyright-css' />
+        <CopyRightTag className='copyright-css' />
       </div>
     </div>
    

@@ -69,18 +69,6 @@ body {
   height: 20px;
 }
 
-
-/* .navbar-expand-lg {
-  width: 100%;
-  padding: 50px;
-} */
-/* 
-.a-nav-link{
-  padding-left: 50px;
-  padding-right: 50px;
-} */
-
-
 .forgetLogo{
   width: 200px;
   height: 200px;
@@ -90,9 +78,27 @@ body {
   position: absolute;
   bottom: 0px;
   text-align: center;
-  color: #B1ABAB;
-  
+  color: #B1ABAB; 
   padding-left: 142px;
   font-size: 13px;
 
+}
+.copyrightCSS{
+  position: absolute;
+  bottom: 0px;
+  color: #B1ABAB; 
+  padding-left: 142px;
+  font-size: 13px;
+
+}
+.PersonalInformation{
+  padding-left: 23px;
+  margin-top: 100px;
+}
+.PersonalInformatio{
+  padding-left: 23px;
+  margin-top: 70px;
+}
+.lastSection{
+  width: 400px;
 }

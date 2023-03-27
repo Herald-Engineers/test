@@ -1,7 +1,7 @@
 function Copyright(){
-    // css in alignPropType.css
+    // css in app.css
     return(
-        <p >Copyright © 2023 Herald Engineers. All rights reserved</p>
+        <p className="copyrightCSS" >Copyright © 2023 Herald Engineers. All rights reserved</p>
     );
 }
 export default Copyright;

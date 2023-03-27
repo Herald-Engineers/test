@@ -31,7 +31,7 @@ function Signin() {
           </div>
 
           <div className='box-container'>
-          <Link to='/admin'><button className='btn btn-primary'>As a company</button></Link>
+          <Link to='/admin'><button className='myCompanyButton '>As a company</button></Link>
             <p style={myStyle}>Company</p>
           </div>
 
@@ -39,7 +39,7 @@ function Signin() {
           <br></br>
         </div>
         <div>
-          <p style={{color:'#B1ABAB'}}>Already have an account? <Link to='/login'><span>Login Now</span></Link></p>
+          <p style={{color:'#B1ABAB', fontSize:'11px'}}>Already have an account? <Link to='/login'><span>Login Now</span></Link></p>
         </div> 
         <Copyright />
       </div>

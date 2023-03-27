@@ -9,7 +9,7 @@
     height: 41px;
 }
 .MyLogoImageSection{
-    width:58%;
+    width:60%;
     height: 745px;
     background-color: #F5F5F5;
     padding: 0px;
@@ -23,7 +23,7 @@
     width: 100%;
 }
 .form{
-    width: 42%;
+    width: 40%;
     height: 100vh;
     background-color: white;
     padding-top: 104px;
@@ -53,4 +53,13 @@
 }
 .button-container{
     padding-bottom: 20px;
+}
+.userImage{
+    margin-top: 14px;
+    margin-left: 48px;
+    width:80px;
+    height: 80px;
+}
+#passport-number{
+    width: 333px;
 }
