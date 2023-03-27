@@ -123,9 +123,9 @@ function User() {
         console.log(response);
         console.log("successful");
       })
-          .catch(error => console.log(error));
+      .catch(error => console.log(error));
     
-  };
+    };
   return ( 
     <div className="container">
       <div className="contanier-box">

@@ -2,8 +2,10 @@ import Sign1 from '../Image/sign1.png';
 import Sign2 from '../Image/sign2.png';
 import '../SignUp/Sign.css';
 // import { useLocation } from 'react-router-dom';
-
+import LoginSec from '../Image/LoginSec.png';
 import { Link } from 'react-router-dom';
+
+import MyImage from '../Image/logo123.png';
 
 function Signin() {
     const myStyle = {
@@ -12,28 +14,32 @@ function Signin() {
     // const location = useLocation();
     // const { inputValue } = location.state || {};
   return (
-    
+    <div>
+      <div className='container-fluid'>
+        <img src={LoginSec} alt='Protect Water'  className='MyLogin' />
+      </div>
       <div className='d-flex justify-content-center text-center SignIn' >
-        <h1 style={myStyle}>Sign Up</h1>
-        <h3  style={myStyle}>As</h3>
+      <img src={MyImage} alt='Wave Billing System Logo'  className='myLogo text-center' />
+        <h1 >Sign Up</h1>
+        <p style={{color:'#BBB6B6'}}>Get Started with WaveBilling</p>
         <div className="image-container">
 
           <div className='box-container'>
-          <Link to='/user'><img src={Sign1} alt="User" className="image_spacing" /></Link>
-            <p style={myStyle}>User</p>
+            <Link to='/user'><button className='btn btn-primary'>As a user</button></Link>
+            
           </div>
 
           <div className='box-container'>
-          <Link to='/admin'><img src={Sign2} alt="Admin" className="image_spacing" /></Link>
+          <Link to='/admin'><button className='btn btn-primary'>As a company</button></Link>
             <p style={myStyle}>Company</p>
           </div>
 
           
           <br></br>
         </div>
-        <div><Link to='/login'><p>Already have an account?</p></Link></div> <Link to='/'><button className='btn btn-primary' style={{width: '211px'}}>Go Back</button></Link>
+        <div>Already have an account? <Link to='/login'><span>Login Now</span></Link></div> 
       </div>
-     
+    </div> 
     
   );
 }

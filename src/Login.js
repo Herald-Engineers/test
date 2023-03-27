@@ -244,12 +244,12 @@ import axios from 'axios';
                   name="lsRememberMe"
                   
                 />
-                <label>Remember me</label>
+                <label style={{color:'#B1ABAB'}}>Remember me</label>
           <Link to='/nextpage'><span style={{ fontSize: '14px'}}className='myforgot' >Forgot Password?</span></Link>
            
           </div>
            <button type="submit" className='btn btn-primary' >Login</button>
-           <p style={{color: '#B1ABAB',fontSize:'12px',paddingLeft:'42px',paddingTop:'10px'}}>Don't have an account?<Link>Gets yours now</Link></p>
+           <p style={{color: '#B1ABAB',fontSize:'12px',paddingLeft:'42px',paddingTop:'10px'}}>Don't have an account?<Link to='/signinas'>Gets yours now</Link></p>
         </form>
         </div>
         
