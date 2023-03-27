@@ -7,7 +7,12 @@ import step3 from '../Image/step3.png';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import MyLogo from '../Image/logo123.png';
-
+function validatePhoneNumber(phoneNumber) {
+  if (phoneNumber.length > 10) {
+    return false; // Phone number is too long
+  }
+  return true; // Phone number is valid
+}
 
 function User() {
   const color_style = {
@@ -29,9 +34,10 @@ function User() {
   const [email, setEmail] = useState("");
   const [nationality, setNationality] = useState("");
   const [citizenshipNo, setcitizenshipNo] = useState("");
-  const [passportNo, setpassportNo] = useState("");
   const [citizenshipDoc, setCitizenshipDoc] = useState("");
   const [landOwnershipDoc, setLandOwnershipDoc] = useState("");
+  const [tel1Error, setTelError] = useState("");
+  const [tel2Error, setTel2Error] = useState("");
 
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
@@ -55,11 +61,21 @@ function User() {
   };
   const handleTel1 = (event) => {
     setTel(event.target.value);
+    if (!validatePhoneNumber(tel1)) {
+      setTelError("Phone number must be 10 digits or less");
+    } else {
+      setTelError("");
+    }
   };
   const [isChecked, setIsChecked] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const handleTel2 = (event) => {
     setTel2(event.target.value);
+    if (!validatePhoneNumber(tel2)) {
+      setTel2Error("Phone number must be 10 digits or less");
+    } else {
+      setTel2Error("");
+    }
   };
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -69,9 +85,6 @@ function User() {
   };
   const handleCitizen = (event) => {
     setcitizenshipNo(event.target.value);
-  };
-  const handlePassport = (event) => {
-    setpassportNo(event.target.value);
   };
   const handleCitizenDoc = (event) => {
     setCitizenshipDoc(event.target.value);
@@ -116,7 +129,6 @@ function User() {
     formData.append('email', email);
     formData.append('nationality', nationality);
     formData.append('citizenshipNo', citizenshipNo);
-    formData.append('passportNo', passportNo);
     formData.append('citizenshipDoc', citizenshipDocFile);
     formData.append('landOwnershipDoc', landOwnershipDocFile);      
   
@@ -247,10 +259,12 @@ function User() {
               <div className="d-flex">
                 <div>
                   <input type="tel" id="telephone" name="tel1" placeholder="Telephone No" required value={tel1} onChange={handleTel1} /><br />
+                  {tel1Error && <div className="error" style={{color:'red'}}>{tel1Error}</div>}
                 </div>
 
                 <div>
                   <input type="tel" id="telephone2" name="tel2" placeholder="Mobile No" value={tel2} onChange={handleTel2} /><br />
+                  {tel2Error && <div className="error" style={{color:'red'}}>{tel2Error}</div>}
                 </div>
               </div>
 
@@ -292,11 +306,7 @@ function User() {
                   <input type="file" id="land-doc" name="landOwnershipDoc" value={landOwnershipDoc} accept=".pdf,.doc,.docx" required onChange={handleLandDoc} /><br />
                 </div>
               </div>
-              <div>
-                <label>Passport(Optional):</label><br />
-                <input type="text" id="passport-number" value={passportNo} placeholder="Passport No." onChange={handlePassport} /><br />
-
-              </div>
+              
             </div>
           </div>
           <div  className='secondSection'>
@@ -314,7 +324,7 @@ function User() {
           </div> 
         </div>
      
-      </div>
+    </div>
     
   );
 }
