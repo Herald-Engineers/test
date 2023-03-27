@@ -89,7 +89,10 @@ body {
 .copyright-css{
   position: absolute;
   bottom: 0px;
-  color: gray;
-  padding-left: 88px;
+  text-align: center;
+  color: #B1ABAB;
+  
+  padding-left: 142px;
+  font-size: 13px;
 
 }

@@ -12,7 +12,16 @@
     display: inline-block;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: -6px;
+    height: 134px;
+  }
+  .copyright{
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    color: #B1ABAB;
+    padding-left: 0px;
+    font-size: 13px;
   }
   
   .image-container img {

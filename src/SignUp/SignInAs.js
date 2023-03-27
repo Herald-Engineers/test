@@ -1,6 +1,7 @@
 import Sign1 from '../Image/sign1.png';
 import Sign2 from '../Image/sign2.png';
 import '../SignUp/Sign.css';
+import Copyright from '../Components/Copyright';
 // import { useLocation } from 'react-router-dom';
 import LoginSec from '../Image/LoginSec.png';
 import { Link } from 'react-router-dom';
@@ -37,8 +38,12 @@ function Signin() {
           
           <br></br>
         </div>
-        <div>Already have an account? <Link to='/login'><span>Login Now</span></Link></div> 
+        <div>
+          <p style={{color:'#B1ABAB'}}>Already have an account? <Link to='/login'><span>Login Now</span></Link></p>
+        </div> 
+        <Copyright />
       </div>
+      
     </div> 
     
   );
