@@ -23,11 +23,13 @@ function Register(){
     const [bankName, setBank] = useState("");
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [passwordMatch, setPasswordMatch] = useState(true);
+    const [dueDate, setDueDate] = useState("");
+    const [waterUsuage, setWaterUsage] = useState("");
+    const [noOfMeters, setNoOfMeters] = useState("");
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
+    
     
       const handlePasswordChange = (event) => {
         setPassword(event.target.value);
@@ -35,7 +37,16 @@ function Register(){
     const handleBillingCycle = (event) => {
         setBillingCycle(event.target.value);
     };
-    ;
+    const handlePaymentDueDate = (event) => {
+        setBillingCycle(event.target.value);
+    };
+    const handleWaterUsage = (event) => {
+        setWaterUsage(event.target.value);
+    };
+    const handleMeters = (event) => {
+        setNoOfMeters(event.target.value);
+    };
+    
     
     const handleBank = (event) => {
         setBank(event.target.value);
@@ -46,10 +57,10 @@ function Register(){
     const handleContact = (event) => {
         setContact(event.target.value);
     };
-    const handleConfirmPasswordChange = (event) => {
-        setConfirmPassword(event.target.value);
-        setPasswordMatch(event.target.value === password);
-      };
+    // const handleConfirmPasswordChange = (event) => {
+    //     setConfirmPassword(event.target.value);
+    //     setPasswordMatch(event.target.value === password);
+    //   };
     
 
     
@@ -65,11 +76,18 @@ function Register(){
             const data = {
             companyName: event.target.companyName.value,
             address: event.target.address.value,
-           
-           
-            contactNum: contactNum,
-            username: username,
-            password: password,
+            email: event.target.email.value,
+            contactNum: event.taget.contactNum.value,
+            fullname: event.target.fullname.value,
+            email: event.target.email.value,
+            jobTitle: event.target.value,
+            billingCycle : billingCycle,
+            accountNo : accountNo,
+            bankName : bankName,
+            dueDate : dueDate,
+            waterUsuage : waterUsuage,
+            noOfMeters : noOfMeters,
+            
 
             };
             axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
@@ -107,8 +125,8 @@ function Register(){
                 </div>
             
             <div>
-                <h4>
-                    <b style={color_style} className="PersonalInformation"> Company Details</b>
+                <h4 className="spacingH4">
+                    <b style={color_style} > Company Details</b>
                 </h4>
             </div>
             <div className='formWrapper'>
@@ -144,10 +162,10 @@ function Register(){
                                     <label>Primary Contact Details:</label>
                                 </td>
                                 <td>
-                                    <input type="text" name = "address" id="inputField" placeholder='Full Name' className='login-field'/><br /> 
+                                    <input type="text" name = "fullname" id="inputField" placeholder='Full Name' className='login-field'/><br /> 
                                     <input type="text" name = "email" id="inputField" placeholder='Email Address' className='login-field'/><br />
                                     <input type="text" name = "jobTitle" id="inputField" placeholder='Job Title' className='login-field'/><br />
-                                    <input type="text" name = "contact" id="inputField" placeholder='Contact Number' className='login-field'/><br />
+                                    <input type="text" name = "contactNum" id="inputField" placeholder='Contact Number' className='login-field'/><br />
 
                                 </td>   
                             </tr>
@@ -155,23 +173,39 @@ function Register(){
                     </div>
                
                     <div>
-                        <h4>
-                            <b style={color_style} className="PersonalInformation"> Payment Details</b>
+                        <h4 className="spacingH4Payment">
+                            <b style={color_style} > Payment Details</b>
                         </h4>
                     </div>
-                    <div>
-                        <table>
-                            <tr>
+                    <div className='MyCompanyDetails'>
+                        <table className='myTable' >
+                            <tr className='myRadioButton'>
                                 <td>
-                                    <label>Bank Name</label>
+                                    <label>Payment Method:</label>
                                 </td>
                                 <td>
-                                    <input type="text" id="inputField" placeholder='Bank Name' name = "bank" value={bankName} className='login-field' onChange={handleBank}/><br/>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                    <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Esewa</span>
+                                
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                    <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Khalti</span>
+                                
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                    <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Bank Name</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Bank Name:</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="inputField" placeholder='Bank Name' name = "bankName" value={bankName} className='login-field' onChange={handleBank}/><br/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Account Number</label>
+                                    <label>Account Number:</label>
                                 </td>
                                 <td>
                                     <input type="text" id="inputField" placeholder='Account Number'  value={accountNo}className='login-field' onChange={handleAccountNo}/><br/>
@@ -179,7 +213,7 @@ function Register(){
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Billing Cycle</label>
+                                    <label>Billing Cycle:</label>
                                 </td>
                                 <td>
                                     <input type="text" id="inputField" placeholder='Billing Cycle '  value={billingCycle} className='login-field' onChange={handleBillingCycle}/><br/>
@@ -190,7 +224,7 @@ function Register(){
                                     <label>Payment Due Date:</label>
                                 </td>
                                 <td>
-                                    <input type="text" id="inputField" placeholder='Username for admin ' value={username} className='login-field' onChange={handleUsernameChange}/><br/>
+                                    <input type="text" id="inputField" placeholder='Due Date' value={dueDate} className='login-field' onChange={handlePaymentDueDate}/><br/>
                                 </td>
                             </tr>
                             <tr>
@@ -198,7 +232,7 @@ function Register(){
                                     <label>Estimated Water Usage:</label>
                                 </td>
                                 <td>
-                                    <input type="password" id="inputField" placeholder='Estimated Water Usuage' value={password} className='login-field' onChange={handlePasswordChange}/><br/>
+                                    <input type="text" id="inputField" placeholder=' Water Usuage' value={waterUsuage} className='login-field' onChange={handleWaterUsage}/><br/>
                                 </td>
                             </tr>
                             <tr>
@@ -206,7 +240,7 @@ function Register(){
                                     <label>No. of meters required: </label>
                                 </td>
                                 <td>
-                                    <input type="password" id="inputField" placeholder='No. of meters required' value={confirmPassword} className='login-field' onChange={handleConfirmPasswordChange} /><br/>
+                                    <input type="text" id="inputField" placeholder='No. of meters ' value={noOfMeters} className='login-field' onChange={handleMeters} /><br/>
                                 </td>
                             </tr>
                         </table>
@@ -216,11 +250,12 @@ function Register(){
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
                         <label className="form-check-label" >
-                            Agreed to all terms and conditions.
+                        By submitting this form, I agree to the terms and conditions of the WaveBilling and any applicable policies, rules, or regulations.
                         </label>
                     </div>
                     {errorMsg && <p className="error" style={{color:'red'}}>{errorMsg}</p>}
-                    <input type="submit" value="Submit" id="my-button" />
+                    <input type="submit" value="Submit" id="my-button" /><br/>
+                    <Link><button >Go Back</button></Link>
                 
                  </form>
             </div>
