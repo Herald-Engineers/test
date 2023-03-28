@@ -92,4 +92,37 @@
     padding: 36px 100px 36px 100px;
 }
 
+.form-check-labels{
+    width: 1000px;
+    text-align: left;
+}
+#submitUser{
+    width: 320px;
+    padding-top: 8px;
+    height: 43px;
+    background-color: #0b5ed7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#submitCompany{
+    width: 320px;
+    padding-top: 8px;
+    height: 43px;
+    background-color: #0b5ed7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.goBackButton{
+    width: 320px;
+    padding-top: 8px;
+    height: 43px;
+    border-radius: 6px;
+    border: none;
+    background-color: #cfd3da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 

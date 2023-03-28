@@ -4,6 +4,9 @@ import MyImage2 from '../Image/logo123.png';
 import MyImage3 from '../Image/iconuser.png';
 import MyImage4 from '../Image/logout1.png';
 import MyImage5 from '../Image/iconuniqueid.png';
+import Money from '../Image/Money.png';
+import Due from '../Image/due.png';
+import Advance from '../Image/advance.png';
 import MyImage6 from '../Image/KUKL.png';
 import MyImage7 from '../Image/Community.png';
 import  '../Components/SmallLogo.css';
@@ -11,7 +14,7 @@ import { useLocation } from 'react-router-dom';
 import  '../HomePage/Homepage.css';
 import MyGraph from '../HomePage/Chart';
 import Sidebar from '../HomePage/Sidebar';
-
+import {FaMoneyBill} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -79,21 +82,48 @@ function HomeLayout(){
                 </div>
             
                 <div className='right'>
+                    <h3 className='text-center' style={{color:'#2F4858'}}>Dashboard</h3>
                     <div className='d-flex'>
                         <div className='FirstBox'>
+                            <div className=''>
+                                <div style={{float:'left'}}>
+                                    <img src={Money} alt="logout" className="" />
+                                </div>
+                                <div style={{float:'right',marginTop: '9px',paddingRight: '25px'}}>
+                                    <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Total Payments</span><br/>
+                                    <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>Rs. 2996</span>
+                                </div>
                                 
-                                <p style={{fontSize:'14px',fontWeight:'700',color:'#0A83F0'}}>Total Payments</p>
-                                <p style={{fontSize:'22px',fontWeight:'700'}}>Rs. 2996</p>
+                                                                
+                            </div>
+                                
                         </div>
                         <div className='FirstBox'>
-                                
-                                <p  style={{fontSize:'14px',fontWeight:'700',color:'#0A83F0'}}>Late Payments</p>
-                                <p style={{fontSize:'22px',fontWeight:'700'}} className=''>2</p>
+                            
+                            <div className=''>
+                                <div style={{float:'left'}}>
+                                    <img src={Due} alt="logout" className="" style={{paddingTop: '7px'}} />
+                                </div>
+                                <div style={{float:'right',marginTop: '9px',paddingRight: '45px'}}>
+                                        <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Due Payments</span><br/>
+                                        <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>0</span>
+                                </div>
+                                    
+                                                                    
+                            </div>
                         </div>
                         <div className='FirstBox'>
-                                
-                                <p style={{fontSize:'14px',fontWeight:'700',color:'#0A83F0'}}>Advance Payments</p>
-                                <p  style={{fontSize:'22px',fontWeight:'700'}} className=''>5</p>
+                            <div className=''>
+                                    <div style={{float:'left'}}>
+                                            <img src={Advance} alt="logout" className="" style={{paddingTop: '7px'}}/>
+                                    </div>
+                                    <div style={{float:'right',marginTop: '9px',paddingRight: '14px'}}>
+                                            <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Advance Payments</span><br/>
+                                            <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>3</span>
+                                    </div>
+                                    
+                                                                    
+                            </div>
                         </div>
                     </div>
                     

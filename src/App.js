@@ -21,6 +21,7 @@ import User from './SignUp/User';
 import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
 import Admin from'./SignUp/Register';
+import MyAdmin from './SignUp/Admin';
 import EditProfile from './HomePage/EditProfile';
 import Sidebar from './HomePage/Sidebar';
 import ContactUs from './Components/ContactUs';
@@ -66,7 +67,7 @@ function App() {
         <Route path="/paymentHistory" element={<Payment />} />
         <Route path="/table" element={<TableHistory />} />
         <Route path="/kukl" element={<Kukl />} />
-        
+        <Route path="/myadmin" element={<MyAdmin />} />
         
       </Routes>
     </BrowserRouter>

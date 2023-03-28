@@ -39,7 +39,7 @@
     width: 190px;
     height: 100%;
     border-right: 2.5px solid #F5F5F5;
-    padding: 6px;;
+    
 }
 .right-right-nav{
     float: right;
@@ -173,13 +173,16 @@
 }
 .graph{
     padding: 20px;
-    background-color: #F7FBFE;
+    background-color: #f6f6f6;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .top-part{
-    background-color: #CEE6FC;
+    background-color: #f0f0f0   ;
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 .align-right{
     text-align: right;
     padding-bottom: 1px;
@@ -228,11 +231,13 @@
 .FirstBox{
     padding: 20px;
     background-color: #f5f5f5;
-    width: 265px;
+    width: 285px;
     height:115px;
     margin-right: 20px;
     margin-bottom: 25px;
-    
+    border-radius: 11px;
+    box-shadow: 0px 0px 12px 0px #00000040;
+
 }
 
 
@@ -246,4 +251,10 @@
 .Community-image{
     width: 319px;
     margin-left: 20px;
+}
+
+.money{
+    height: 50px;
+    width: 70px;
+    margin-top: 9px;
 }

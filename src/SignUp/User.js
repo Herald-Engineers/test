@@ -309,17 +309,19 @@ function User() {
               
             </div>
           </div>
-          <div  className='secondSection'>
-
-            <div className='lastsec' d-flex >
-              <div><input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} /></div>
-              <div><p>I hereby confirm that the information I have submitted is accurate and complete. I attest that all the details provided are true to the best of my knowledge.</p></div>
-             
-            </div>
-          </div> 
+          
+          <div className="form-check">
+            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+            <label className="form-check-labels" >
+              I hereby confirm that the information I have submitted is accurate and complete. I attest that all the details provided are true to the best of my knowledge.                        
+            </label>
+          </div>
+            
           <div style={{textAlign:'center',paddingRight: '246px'}}>
-            <center><input type="submit" value="Submit" id="my-button" /><br/>
-            <Link to='/signinas'>  <button className='goBack'> Go Back</button></Link></center></div>
+            <center><input type="submit" value="Submit" id="submitUser" /><br/>
+            <Link to='/signinas'>  <button className='myCompanyButton'> Go Back</button></Link></center>
+          </div>
+          
             </form>
           </div> 
         </div>

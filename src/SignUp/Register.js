@@ -7,7 +7,7 @@ import step22 from '../Image/step22.png';
 import step33 from '../Image/step33.png';
 import axios from 'axios';
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register(){
     // const navigate = useNavigate();
@@ -254,14 +254,15 @@ function Register(){
                         </label>
                     </div>
                     {errorMsg && <p className="error" style={{color:'red'}}>{errorMsg}</p>}
-                    <input type="submit" value="Submit" id="my-button" /><br/>
-                    <Link><button >Go Back</button></Link>
-                
+                    <center>
+                        <input type="submit" value="Submit" id="submitCompany" /><br/>
+                        <Link to='/signinas'><button className='myCompanyButton'>Go Back</button></Link>
+                    </center>
                  </form>
-            </div>
+                </div>
             </div>
             
-        </div>
+            </div>
         </div>
     );
 }

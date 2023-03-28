@@ -90,7 +90,7 @@ import axios from 'axios';
           navigate("/homela");
       } 
       else if(role === 'admin'){
-        navigate("/kukl");
+        navigate("/myadmin");
       }
       else {
           // Display error message or redirect to a different page
