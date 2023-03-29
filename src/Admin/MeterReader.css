@@ -45,6 +45,7 @@
     
 }
 table tr th{
+    
     color: #2F4858;
 }
 .meterReader-table{
@@ -52,5 +53,11 @@ table tr th{
     width:90%;
     margin-right:40px;
     padding: 30px;
-    border: 1px solid blue;
+    border-radius: 20px;
+    border-collapse: collapse;
+    border: 2px solid black; /* outer border */
 }
+.meterReader-table td, .meter-Table th{
+    border: none;
+}
+
