@@ -18,29 +18,58 @@ import {FaMoneyBill} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Guide from '../Components/HowToGuide';
+import {MdVerified} from "react-icons/md";
+
 function MyVerticallyCenteredModal(props) {
 
     return (
-      <Modal
+        <Modal
         {...props}
        size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
+        centered  
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Khanepani options
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>PLease choose an option</p>
-          <Link to='/kukl'><img src={MyImage6} alt="Kathmandu Upatyaka Khanepani Limited" className="Kukl-image" /> </Link>
-          <Link to='/'><img src={MyImage7} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" /> </Link>
+        
+    <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
+            <center>
+        <MdVerified size={40} style={{color: 'green'}}/><br/>
+                <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Your account has been<br/> created successfully</span></center>
+            <div className='main-box text-center'>
+            
+                <p>
+                    It's our great pleasure to welcome you to the WaveBilling and we are<br/> pleased to inform you that your official user ID  has been created.
+                </p><br/>
+                <p>
+                    <b>User Id:</b> np03cs4s<br/>
+                    <b>Password:</b> sugam123
+                </p>
+                <p>You are requested to login using this official User ID and change the<br/> password as soon as you login into your account for future confidentiality. </p>
+                <Button onClick={props.onHide} className='i-understand'>I understand</Button>
+            </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+       
       </Modal>
+    //   <Modal
+    //     {...props}
+    //    size="lg"
+    //     aria-labelledby="contained-modal-title-vcenter"
+    //     centered
+    //   >
+    //     <Modal.Header closeButton>
+    //       <Modal.Title id="contained-modal-title-vcenter">
+    //         Khanepani options
+    //       </Modal.Title>
+    //     </Modal.Header>
+    //     <Modal.Body>
+    //       <p>PLease choose an option</p>
+    //       <Link to='/kukl'><img src={MyImage6} alt="Kathmandu Upatyaka Khanepani Limited" className="Kukl-image" /> </Link>
+    //       <Link to='/'><img src={MyImage7} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" /> </Link>
+    //     </Modal.Body>
+    //     <Modal.Footer>
+    //       <Button onClick={props.onHide}>Close</Button>
+    //     </Modal.Footer>
+    //   </Modal>
     );
 }
 function HomeLayout(){
@@ -82,7 +111,7 @@ function HomeLayout(){
                 </div>
             
                 <div className='right'>
-                    <h3 className='text-center' style={{color:'#2F4858'}}>Dashboard</h3>
+                    <h3 className='text-center' style={{color:'#2F4858',marginTop:'10px',marginBottom:'20px'}}>Dashboard</h3>
                     <div className='d-flex'>
                         <div className='FirstBox'>
                             <div className=''>
@@ -138,8 +167,13 @@ function HomeLayout(){
                            
                         </div>
                         <div className='RightSection'>
-                            <p style={{color: '#8C8E8D'}}>My Current Bill</p>
-                            <div className='top-part'>
+                       
+                            <p style={{color: '#8C8E8D'}}>How-to-Guides</p>
+                            <div className='backgroundSpace'>
+                                 <Guide />
+                            </div>
+                            
+                            {/* <div className='top-part'>
                                 <div>
                                     <h3 className='text-center bills'>Bill</h3>
                                 </div>
@@ -179,15 +213,16 @@ function HomeLayout(){
 
                                 </div>                                  
                                 
-                            </div> {/*top part*/}
+                            </div> top part */}
 
 
                             {/* button part */}
-                            <div>
-                            <Button variant="primary" onClick={() => setModalShow(true)} className='CheckoutButton'>
+                            {/* <div></div> */}
+                            {/* <Button variant="primary" onClick={() => setModalShow(true)} className='CheckoutButton'>
                                     Checkout
-                                </Button>                       
-                            </div>
+                                </Button>                        */}
+                            
+                            
                             <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
                         </div>
                     </div>

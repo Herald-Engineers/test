@@ -16,11 +16,7 @@ function NavbarHomePage() {
   return (
     <div className='navbar-wrapper'>
     <Nav className=' navbar-nav ml-auto' style={{ display: 'flex', alignItems: 'center' }}>
-      <NavItem>
-        <div className=''>
-          <h3 style={{color: 'black', marginRight: '1030px',paddingLeft:'42px'} }className="">Welcome User</h3>
-        </div>
-      </NavItem>
+      
       
         <NavItem>
           <div style={{color: 'black ', marginBottom:'10px'} }>

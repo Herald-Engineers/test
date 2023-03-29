@@ -1,17 +1,46 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import step1 from '../Image/step1.png';
 import step2 from '../Image/step2.png';
 import step3 from '../Image/step3.png';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import MyLogo from '../Image/logo123.png';
+import {MdVerified} from "react-icons/md";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import LoadingSpinner from '../Components/LoadingSpinner';
+
 function validatePhoneNumber(phoneNumber) {
   if (phoneNumber.length > 10) {
     return false; // Phone number is too long
   }
   return true; // Phone number is valid
+}
+function MyVerticallyCenteredModal(props) {
+
+  return (
+      <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered  >
+      
+          <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
+              <center>
+              <MdVerified size={40} style={{color: 'green'}}/><br/>
+              <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Your account has been<br/> created successfully</span></center>
+              <div className='main-box text-center'>
+          
+                  <p>
+                      It's our great pleasure to welcome you to the WaveBilling and we are<br/> pleased to inform you that your official user ID  has been created.
+                  </p><br/>
+                  <p>
+                      <b>User Id:</b> np03cs4s<br/>
+                      <b>Password:</b> sugam123
+                  </p>
+                  <p>You are requested to login using this official User ID and change the<br/> password as soon as you login into your account for future confidentiality. </p>
+                  <Button onClick={props.onHide} className='i-understand'>I understand</Button>
+              </div>
+          </Modal.Body>
+     
+      </Modal>
+  );
 }
 
 function User() {
@@ -27,18 +56,24 @@ function User() {
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [houseNo, setHouseNo] = useState("");
+  
   const [tole, setTole] = useState("");
   const [wardNo, setWardNo] = useState("");
   const [tel1, setTel] = useState("");
   const [tel2, setTel2] = useState("");
   const [email, setEmail] = useState("");
+  const [issueDate, setIssueDate] = useState("");
   const [nationality, setNationality] = useState("");
   const [citizenshipNo, setcitizenshipNo] = useState("");
   const [citizenshipDoc, setCitizenshipDoc] = useState("");
   const [landOwnershipDoc, setLandOwnershipDoc] = useState("");
   const [tel1Error, setTelError] = useState("");
   const [tel2Error, setTel2Error] = useState("");
-
+  const [serverResponseReceived, setServerResponseReceived] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const handleIssueDate = (event) => {
+    setIssueDate(event.target.value);
+  };
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
   };
@@ -108,6 +143,8 @@ function User() {
   //   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
+    const issueDateAsString = new Date(issueDate).toISOString();
     if (!isChecked) {
       setErrorMsg('*Please agree to all terms and conditions');
   } 
@@ -126,6 +163,7 @@ function User() {
     formData.append('province', event.target.province.value);
     formData.append('tel1', tel1);
     formData.append('tel2', tel2);
+    formData.append('issueDate', issueDateAsString);
     formData.append('email', email);
     formData.append('nationality', nationality);
     formData.append('citizenshipNo', citizenshipNo);
@@ -139,7 +177,11 @@ function User() {
     })
     .then(response => {
       console.log(response);
-      console.log("successful");
+     
+      setServerResponseReceived(true);
+       console.log("successful");          
+                setLoading(false);
+                <MyVerticallyCenteredModal />
     })
     .catch(error => console.log(error));
   }
@@ -163,7 +205,7 @@ function User() {
         <div className="contanier-box">
           <p style={{color: '#525252',paddingLeft: '23px', paddingTop:'60px'}} >Fill the form below to create an account.</p>
           <br />
-          <form>
+          <form onSubmit={handleSubmit}>
           {/* image section flex */}
           <div className='d-flex myimagecontainer'>
             <div>
@@ -258,7 +300,7 @@ function User() {
               <label >Contact No:</label><br />
               <div className="d-flex">
                 <div>
-                  <input type="tel" id="telephone" name="tel1" placeholder="Telephone No" required value={tel1} onChange={handleTel1} /><br />
+                  <input type="tel" id="telephone" name="tel1" placeholder="Telephone No"  value={tel1} onChange={handleTel1} /><br />
                   {tel1Error && <div className="error" style={{color:'red'}}>{tel1Error}</div>}
                 </div>
 
@@ -283,7 +325,7 @@ function User() {
                 </div>
                 <div>
                   <label>Issue Date:</label><br />
-                  <input type="date" id="date-number"  placeholder="Issue Date"/><br />
+                  <input type="date" id="date-number" value={issueDate}required onChange={handleIssueDate} placeholder="Issue Date"/><br />
 
                 </div>
               
@@ -323,6 +365,7 @@ function User() {
           </div>
           
             </form>
+            {loading && !serverResponseReceived && <LoadingSpinner />}
           </div> 
         </div>
      

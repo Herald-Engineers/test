@@ -57,7 +57,7 @@ function Mychart(){
                                 options={state.options}
                                 series={state.series}
                                 type="bar"
-                                width="800"
+                                width="740"
                                 height="300"
                                 
                                 />

@@ -120,3 +120,25 @@
   padding-left: 41px;
 
 }
+.loading-spinner {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.myRadioButton tr td select{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  
+
+}

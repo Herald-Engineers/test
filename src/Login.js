@@ -10,6 +10,7 @@ import CopyRightTag from './Components/Copyright';
 import HomePage from './HomePage/HomeLayout';
 import LoginSec from './Image/LoginSec.png';
 import axios from 'axios';
+import LoadingSpinner from './Components/LoadingSpinner';
 
 
 // const url = 'https://wavebilling-backend-sabinlohani.onrender.com/login ';
@@ -60,7 +61,8 @@ import axios from 'axios';
 
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbWVzaCIsImlkIjoiNjQxYWZkNTgyYjM2MWQyNzg2Njc0ZjYxIiwiaWF0IjoxNjc5ODM5MDAzfQ.N61yNl2GfLEGT49Pia9Kg-xW1cO9MqwZ0pQE2xfU3HM';
 
- 
+  const [serverResponseReceived, setServerResponseReceived] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -84,7 +86,8 @@ import axios from 'axios';
     .then(res => {
       const token = res.data.token;
       const role = res.data.role;
-  
+      setServerResponseReceived(true);
+      setLoading(false);
       if (role === 'consumer') {
           // Navigate to another page
           navigate("/homela");
@@ -246,6 +249,7 @@ import axios from 'axios';
            <button type="submit" className='btn btn-primary' >Login</button>
            <p style={{color: '#B1ABAB',fontSize:'12px',paddingLeft:'42px',paddingTop:'10px'}}>Don't have an account?<Link to='/signinas'>{'\n'}Gets yours now</Link></p>
         </form>
+        {loading && !serverResponseReceived && <LoadingSpinner />}
         </div>
         
         <CopyRightTag className='copyright-css' />
