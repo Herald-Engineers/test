@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import LoadingSpinner from '../Components/LoadingSpinner';
 import AdminSidebar from '../Admin/AdminSidebar';
 import MainBox from '../Admin/MainBoxes';
-
+import MeterTable from '../Admin/MeterTable';
 
 function MyVerticallyCenteredModal(props) {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyYW1lc2giLCJ1c2VyUm9sZSI6ImFkbWluIiwiaWQiOiI2NDFhZmQ1ODJiMzYxZDI3ODY2NzRmNjEiLCJpYXQiOjE2ODAwOTI2NjB9.1-rmZNz7uaa_AH6wil2n6L-eRCA5EvXKbhDn9XHYSJU';
@@ -58,7 +58,13 @@ function MyVerticallyCenteredModal(props) {
             email:email,
             token:storedToken,
             
-        })
+        },
+        {
+            headers: {
+              Authorization: `Bearer ${storedToken}`, // Add token to headers
+            },
+          }
+        )
         .then(response => { 
             console.log("successful");  
             console.log(response);
@@ -159,10 +165,17 @@ function MeterRead(){
                     </div>
                     <div className="d-flex">
                         <BiAddToQueue size={27}/>
-                        <u> <p onClick={() => setModalShow(true)} style={{marginLeft:'5px'}}>Create an account</p></u>
-                        <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
-                        
-                    </div>
+                        <div style={{display:'block'}}>
+                            <u> <p onClick={() => setModalShow(true)} style={{marginLeft:'5px'}}>Create an account</p></u>
+
+                        </div>
+                    </div>   
+                     <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
+                     <div className='myTables'>
+                        <MeterTable />
+                     </div>
+                    
+                    
                 </div>
             </div>
             
