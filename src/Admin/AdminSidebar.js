@@ -12,6 +12,8 @@ import  { TbCalendarTime } from "react-icons/tb";
 import {RiAccountPinCircleLine} from "react-icons/ri";
 import {FiSettings} from "react-icons/fi";
 import {FiUser} from "react-icons/fi";
+import {MdOutlineFeedback} from "react-icons/md";
+
 
 function AdminSidebar(){
     const links = document.querySelectorAll('.sidebar-link');
@@ -41,8 +43,8 @@ function AdminSidebar(){
                         <Nav.Link as={Link} to='/homela' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
-                                <TbDashboard size={27}/>
-                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
+                                <TbDashboard size={18}/>
+                                <p style={{fontSize: '18px', paddingLeft: '1px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
                             </div>
                         </Nav.Link>
                         <Nav.Link as={Link} to='/homela' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-user sidebar-link' >
@@ -52,7 +54,7 @@ function AdminSidebar(){
                                 <p style={{fontSize: '14px', paddingLeft: '5px',margin: '0px',paddingBottom:'15px'}} className="myfontcolor">Users</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/homela' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-meter sidebar-link' >
+                        <Nav.Link as={Link} to='/meterReader' active={activeLink === 'meterReader'} onClick={() => setActiveLink('meterReader')} className='sidebar-fonts-meter sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <FiUser size={18}/>
@@ -71,7 +73,7 @@ function AdminSidebar(){
                         {/* <img src={DashboardIcon} alt="Wave Billing System" className="" /> <br/> */}
                         
                             <div className='d-flex'>
-                                <RiAccountPinCircleLine  size={18} style={{paddingTop:'2px'}}/>
+                                <MdOutlineFeedback  size={18} style={{paddingTop:'2px'}}/>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Feedback</p> 
                             </div>
                     </Nav.Link>

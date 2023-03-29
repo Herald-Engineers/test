@@ -16,7 +16,7 @@ import  './Components/SmallLogo.css';
 import Homepage from './HomePageComp/Homepage';
 import Landingpage from './LandingPage';
 import SignIn from './SignUp/SignInAs';
-import MeterReader from './SignUp/MeterReader';
+import MeterReader from './Admin/MeterReader';
 import User from './SignUp/User';
 import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
@@ -38,8 +38,7 @@ import Kukl from './HomePage/KUKLPay';
 function App() {
   return (
     
-      
-      <BrowserRouter>
+    <BrowserRouter>
         
       <Routes>
       
@@ -54,7 +53,6 @@ function App() {
         <Route path="/signinas" element={<SignIn />} />
         <Route path="/user" element={<User />} />
         <Route path="/meterReader" element={<MeterReader />} />
-       
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Landingpage />} />
         <Route path="/chart" element={<Graph />} />

@@ -10,7 +10,7 @@ function AdminDashboard(){
                 </div>
             </div>
             <div className='right-right-nav-Home'>
-                
+                <p>My page</p>
             </div>
         </div>
     )
