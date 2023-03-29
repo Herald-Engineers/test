@@ -31,7 +31,7 @@ function Signin() {
           </div>
 
           <div className='box-container'>
-          <Link to='/admin'><button className='myCompanyButton '>As a company</button></Link>
+          <Link to='/register'><button className='myCompanyButton '>As a company</button></Link>
             <p style={myStyle}>Company</p>
           </div>
 

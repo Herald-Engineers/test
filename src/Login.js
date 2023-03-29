@@ -96,6 +96,9 @@ import LoadingSpinner from './Components/LoadingSpinner';
       else if(role === 'admin'){
         navigate("/myadmin");
       }
+      else if(role === 'reader'){
+        navigate("/");
+      }
       else {
           // Display error message or redirect to a different page
           navigate("/ ");

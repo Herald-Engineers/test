@@ -5,6 +5,7 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import LoadingSpinner from '../Components/LoadingSpinner';
+import AdminSidebar from '../Admin/AdminSidebar';
 
 
 function MyVerticallyCenteredModal(props) {
@@ -145,10 +146,19 @@ function MeterRead(){
     const [modalShow, setModalShow] = React.useState(false);
     return(
         <div>
-            <div className="d-flex">
-                <BiAddToQueue />
-                <p onClick={() => setModalShow(true)}>Create an account</p>
-                <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
+            <div className='containerHome'>
+                <div className='left-left-nav'>
+                    <AdminSidebar/>
+                </div>
+            
+            
+                <div className='right-right-nav-Home'>
+                    <div className="d-flex">
+                        <BiAddToQueue />
+                        <p onClick={() => setModalShow(true)}>Create an account</p>
+                        <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
+                    </div>
+                </div>
             </div>
             
 

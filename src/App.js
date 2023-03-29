@@ -22,7 +22,7 @@ import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
 import MyAdmin from'./Admin/AdminSidebar';
 import AdminDashboard from'./Admin/AdminDash';
-
+import Register  from './SignUp/Register';
 import EditProfile from './HomePage/EditProfile';
 import Sidebar from './HomePage/Sidebar';
 import ContactUs from './Components/ContactUs';
@@ -52,6 +52,7 @@ function App() {
         <Route path="/myaccount" element={<Myaccount />} />
         <Route path="/signinas" element={<SignIn />} />
         <Route path="/user" element={<User />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/meterReader" element={<MeterReader />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Landingpage />} />
