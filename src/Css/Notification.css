@@ -1,0 +1,29 @@
+.notification-icon-container {
+    position: relative;
+    float: right;
+}
+  
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
+.citbell{
+  align-items: center;
+  display: flex;
+  
+  padding: 0 3.3px;
+  width: 30px;
+}
+.overlap-group{
+  align-items: flex-start;
+  display: flex;
+
+  justify-content: flex-end;
+  min-width: 23px;
+  padding: 0.1px 0.6px;
+}

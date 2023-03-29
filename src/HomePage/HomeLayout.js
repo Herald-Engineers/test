@@ -14,7 +14,6 @@ import { useLocation } from 'react-router-dom';
 import  '../HomePage/Homepage.css';
 import MyGraph from '../HomePage/Chart';
 import Sidebar from '../HomePage/Sidebar';
-import {FaMoneyBill} from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -76,6 +75,7 @@ function HomeLayout(){
     const location = useLocation();
     const { inputValue } = location.state || {};
     const [modalShow, setModalShow] = React.useState(false);
+    
   
     return (
         <div className='containerHome'>

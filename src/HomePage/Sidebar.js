@@ -60,11 +60,11 @@ links.forEach(link => {
                             </div>
                     </Nav.Link>
 
-                        <Nav.Link as={Link} to='/settings' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/editprofile' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
                                     <FiSettings  size={18} style={{paddingTop:'2px'}}/>
-                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Settings</p> 
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My Profile</p> 
                             </div>
                         </Nav.Link>
                     </Nav>

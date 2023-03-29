@@ -29,14 +29,14 @@ select#PaymentSelection{
     box-sizing: border-box;
     width: 200px;
 }
-#editContact{
+#editEmail{
     padding: 9px 10px;
     margin: 8px 3px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    width: 200px;
+    width: 300px;
 }
 #editFirstName{
     padding: 9px 10px;
@@ -58,10 +58,15 @@ select#PaymentSelection{
 }
 #EditProfile{
     
-    padding-top: 30px; 
-    margin: 0 auto;
+    width: 616px;
+    border: 1px solid black;
+    padding: 30px 30px; 
+    margin: 66px auto;
     text-align: center;
       
+}
+.changeSection{
+    margin-right: 30px;
 }
 .whole-sec{
     height: 100vh;

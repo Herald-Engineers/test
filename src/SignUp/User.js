@@ -74,6 +74,8 @@ function User() {
   const handleIssueDate = (event) => {
     setIssueDate(event.target.value);
   };
+  console.log(issueDate);
+
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
   };
@@ -144,14 +146,14 @@ function User() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-    const issueDateAsString = new Date(issueDate).toISOString();
+    
     if (!isChecked) {
       setErrorMsg('*Please agree to all terms and conditions');
   } 
   else {
     const citizenshipDocFile = event.target.citizenshipDoc.files[0];
     const landOwnershipDocFile = event.target.landOwnershipDoc.files[0];
-  
+    const issueDateAsString = new Date(issueDate).toISOString();
     const formData = new FormData();
     formData.append('firstName', firstName);
     formData.append('middleName', middleName);
@@ -247,7 +249,7 @@ function User() {
                     <input type="text" id="houseNo" name="houseNo" value={houseNo} placeholder="House No" required onChange={handleHouseNo} />{'\n'}
                   </div>
                   <div>  
-                    <input type="text" id="tol" name="tole" value={tole} placeholder="Tol No" required onChange={handleTole} /><br />{'\n'}
+                    <input type="text" id="tol" name="tole" value={tole} placeholder="Tol " required onChange={handleTole} /><br />{'\n'}
                   </div>  
                   <div>
                     <input type="number" id="ward" name="wardNo" placeholder="Ward No" value={wardNo} required onChange={handleWard} />{'\n'}
