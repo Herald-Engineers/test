@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import LoadingSpinner from '../Components/LoadingSpinner';
 import AdminSidebar from '../Admin/AdminSidebar';
+import MainBox from '../Admin/MainBoxes';
 
 
 function MyVerticallyCenteredModal(props) {
@@ -152,11 +153,15 @@ function MeterRead(){
                 </div>
             
             
-                <div className='right-right-nav-Home'>
+                <div className='right-right-nav-Home2'>
+                    <div>
+                        <MainBox />
+                    </div>
                     <div className="d-flex">
-                        <BiAddToQueue />
-                        <p onClick={() => setModalShow(true)}>Create an account</p>
+                        <BiAddToQueue size={27}/>
+                        <u> <p onClick={() => setModalShow(true)} style={{marginLeft:'5px'}}>Create an account</p></u>
                         <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
+                        
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import MyAdmin from '../Admin/AdminSidebar';
 import  '../HomePage/Homepage.css';
+import  '../Admin/AdminDash.css';
 import  '../Components/SmallLogo.css';
 import MeterReader from '../Admin/MeterReader';
 import Main from '../Admin/MainBoxes';
@@ -13,7 +14,7 @@ function AdminDashboard(){
                     <MyAdmin/>
                 </div>
            
-                <div className='right-right-nav-Home'>
+                <div className='right-right-nav-Home2'>
                     <div>
                         <Main/>
                     </div>
