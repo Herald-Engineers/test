@@ -15,6 +15,7 @@ import {FiUser} from "react-icons/fi";
 import {MdOutlineFeedback} from "react-icons/md";
 
 
+
 function AdminSidebar(){
     const links = document.querySelectorAll('.sidebar-link');
 
@@ -40,7 +41,7 @@ function AdminSidebar(){
                 </Link>
                 <div style={{backgroundColor: 'transparent'}}>
                     <Nav className="flex-column">
-                        <Nav.Link as={Link} to='/homela' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
+                        <Nav.Link as={Link} to='/myadmin' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbDashboard size={18}/>

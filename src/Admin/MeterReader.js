@@ -4,13 +4,23 @@ import {BiAddToQueue} from "react-icons/bi";
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-function MyVerticallyCenteredModal(props) {
+import LoadingSpinner from '../Components/LoadingSpinner';
 
+
+function MyVerticallyCenteredModal(props) {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyYW1lc2giLCJ1c2VyUm9sZSI6ImFkbWluIiwiaWQiOiI2NDFhZmQ1ODJiMzYxZDI3ODY2NzRmNjEiLCJpYXQiOjE2ODAwOTI2NjB9.1-rmZNz7uaa_AH6wil2n6L-eRCA5EvXKbhDn9XHYSJU';
+    // Set the token in local storage
+    localStorage.setItem('token', token);
+    
+    // Get the token from local storage
+    const storedToken = localStorage.getItem('token');
     const [fullName, setFullname] = useState("");
     const [readerId, setReader] = useState("");
     const [password, setPassword] = useState("");
-    const [contactNo, setContact] = useState("");
+    const [contactNum, setContact] = useState("");
     const [email, setEmail] = useState("");
+    // Retrieve the token from localStorage
+    // const token = localStorage.getItem('token');
     const handleFullName = (event) => {
         setFullname(event.target.value);
     };
@@ -27,31 +37,32 @@ function MyVerticallyCenteredModal(props) {
     const handleEmail = (event) => {
         setEmail(event.target.value);
     };
+    console.log(fullName);
+    console.log(readerId);
+    console.log(password);
+    console.log(storedToken);
+
     const [serverResponseReceived, setServerResponseReceived] = useState(false);
     const [loading, setLoading] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
-       
+        console.log("on process");
+        axios.post('https://wavebilling-backend-sabinlohani.onrender.com/admin/add-reader',  {
+            fullName:fullName,
+            readerId:readerId,
+            password:password,
+            contactNum:contactNum,
+            email:email,
+            token:storedToken,
             
-            const formData = new FormData();
-            formData.append('fullName', fullName);
-            formData.append('readerId', readerId);
-            formData.append('password', password);
-            formData.append('contactNo', contactNo);
-            formData.append('email', email);
-                  
-        
-            axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-            })
-            .then(response => {
+        })
+        .then(response => { 
+            console.log("successful");  
             console.log(response);
             
             setServerResponseReceived(true);
-            console.log("successful");          
+                   
             setLoading(false);
             
             })
@@ -71,17 +82,17 @@ function MyVerticallyCenteredModal(props) {
                 <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Create an account</span>
             </center>
             <div className='main-box text-center'>
-            
+             <form onSubmit={handleSubmit}>
                 <p>Please enter the Reader ID and temporary password for the Reader.</p>
                 <div className='meter-Table'>
-                    <form onSubmit={handleSubmit}>
+                   
                         <table >
                             <tr>
                                 <td>
                                     <label>Full Name:</label> 
                                 </td>
                                 <td>
-                                    <input type="text" id="editFirstName" placeholder='Full Name'   value={fullName} onChange={handleFullName} requiredclassName='login-field'/>{'\n'}<br/>
+                                    <input type="text" id="editFirstName" placeholder='Full Name'   value={fullName} onChange={handleFullName} required className='login-field'/>{'\n'}<br/>
                                 </td>
                             </tr>
                             <tr>    
@@ -96,14 +107,14 @@ function MyVerticallyCenteredModal(props) {
                                     <label>Password:</label> 
                                 </td>
                                 <td>
-                                    <input type="text" id="editFirstName" placeholder='Password' required value={password} onChange={handlePassword}className='login-field'/>{'\n'}<br/>
+                                    <input type="text" id="editFirstName" placeholder='Password' required value={password} onChange={handlePassword} className='login-field'/>{'\n'}<br/>
                                 </td>
                             </tr>
                             <tr>    
                                 <td> <label>Contact No:</label><br/>
                                 </td>
                                 <td>
-                                    <input type="text" id="editFirstName" placeholder='Contact' required value={contactNo} onChange={handleContact}className='login-field'/>{'\n'}<br/>
+                                    <input type="text" id="editFirstName" placeholder='Contact' required value={contactNum} onChange={handleContact} className='login-field'/>{'\n'}<br/>
                                 </td>
                             </tr>
                             <tr>    
@@ -114,14 +125,15 @@ function MyVerticallyCenteredModal(props) {
                                 </td>
                             </tr>
                         </table>
-                    </form>
+                    
+                    {loading && !serverResponseReceived && <LoadingSpinner />}
                     
                 </div>
                
                
-                <p>You are requested to login using this official User ID and change the<br/> password as soon as you login into your account for future confidentiality. </p>
-                <Button onClick={props.onHide} className='i-understand'>Go Back</Button>
-                <Button onClick={props.onHide} className='i-understand'>Save and Submit</Button>
+                <Button onClick={props.onHide} className='meterButtons'>Go Back</Button>
+                <input onClick={props.onHide} className='meterButtons2' type='submit' value="submit"  />
+                </form>
             </div>
         </Modal.Body>
        
