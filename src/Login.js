@@ -78,6 +78,7 @@ import LoadingSpinner from './Components/LoadingSpinner';
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
     console.log("hello");
     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
       username: username,

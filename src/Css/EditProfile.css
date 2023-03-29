@@ -58,15 +58,18 @@ select#PaymentSelection{
 }
 #EditProfile{
     
-    width: 616px;
-    border: 1px solid black;
-    padding: 30px 30px; 
+    width: 635px;
+    border: none;
+    padding: 40px 40px; 
     margin: 66px auto;
     text-align: center;
+    border-radius: 20px;
+    background-color: rgba(206, 230, 252, 0.1);;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       
 }
 .changeSection{
-    margin-right: 30px;
+    margin-right: 50px;
 }
 .whole-sec{
     height: 100vh;

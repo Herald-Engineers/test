@@ -20,8 +20,9 @@ import MeterReader from './SignUp/MeterReader';
 import User from './SignUp/User';
 import Graph from './HomePage/Chart';
 import PopUpBox from './Components/PopUpMenu';
-import Admin from'./SignUp/Register';
-import MyAdmin from './SignUp/Admin';
+import MyAdmin from'./Admin/AdminSidebar';
+import AdminDashboard from'./Admin/AdminDash';
+
 import EditProfile from './HomePage/EditProfile';
 import Sidebar from './HomePage/Sidebar';
 import ContactUs from './Components/ContactUs';
@@ -53,7 +54,7 @@ function App() {
         <Route path="/signinas" element={<SignIn />} />
         <Route path="/user" element={<User />} />
         <Route path="/meterReader" element={<MeterReader />} />
-        <Route path="/admin" element={<Admin />} />
+       
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Landingpage />} />
         <Route path="/chart" element={<Graph />} />
@@ -67,7 +68,8 @@ function App() {
         <Route path="/paymentHistory" element={<Payment />} />
         <Route path="/table" element={<TableHistory />} />
         <Route path="/kukl" element={<Kukl />} />
-        <Route path="/myadmin" element={<MyAdmin />} />
+        <Route path="/myadmin" element={<AdminDashboard />} />
+        <Route path="/myadminsidebar" element={<MyAdmin />} />
         
       </Routes>
     </BrowserRouter>

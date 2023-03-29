@@ -4,9 +4,30 @@
     color: #8C8E8D;
     padding: 15px;
     margin-left:18px;
-    
-
 }
+.sidebar-fonts-dashboard{
+ 
+  width: 140px;
+   color: #8C8E8D;
+   padding: 15px;
+   height: 47px;
+   margin-left:18px;
+}
+.sidebar-fonts-user{
+  height: 37px;
+  width: 140px;
+  color: #8C8E8D;
+  padding-left: 29px;
+   margin-left:18px;
+}
+.sidebar-fonts-meter{
+  height: 37px;
+  width: 177px;
+  color: #8C8E8D;
+  padding-left: 29px;
+   margin-left:18px;
+}
+
 .sidebar{
   background-color: #F9F9F9;
 }
