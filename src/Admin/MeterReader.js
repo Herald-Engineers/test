@@ -9,6 +9,13 @@ import AdminSidebar from '../Admin/AdminSidebar';
 import MainBox from '../Admin/MainBoxes';
 import MeterTable from '../Admin/MeterTable';
 
+function validatePhoneNumber(phoneNumber) {
+    if (phoneNumber.length > 10) {
+      return false; // Phone number is too long
+    }
+    return true; // Phone number is valid
+}
+
 function MyVerticallyCenteredModal(props) {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyYW1lc2giLCJ1c2VyUm9sZSI6ImFkbWluIiwiaWQiOiI2NDFhZmQ1ODJiMzYxZDI3ODY2NzRmNjEiLCJpYXQiOjE2ODAwOTI2NjB9.1-rmZNz7uaa_AH6wil2n6L-eRCA5EvXKbhDn9XHYSJU';
     // Set the token in local storage
@@ -21,6 +28,9 @@ function MyVerticallyCenteredModal(props) {
     const [password, setPassword] = useState("");
     const [contactNum, setContact] = useState("");
     const [email, setEmail] = useState("");
+    const [tel1Error, setTelError] = useState("");
+    const [isChecked, setIsChecked] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
     // Retrieve the token from localStorage
     // const token = localStorage.getItem('token');
     const handleFullName = (event) => {
@@ -33,11 +43,18 @@ function MyVerticallyCenteredModal(props) {
     const handlePassword = (event) => {
         setPassword(event.target.value);
     };
-    const handleContact = (event) => {
-        setContact(event.target.value);
-    };
+    
     const handleEmail = (event) => {
         setEmail(event.target.value);
+    };
+    const handleContact = (event) => {
+        setContact(event.target.value);
+        if (!validatePhoneNumber(contactNum)) {
+          setTelError("Phone number must be 10 digits or less");
+        } 
+        else {
+          setTelError("");
+        }
     };
     console.log(fullName);
     console.log(readerId);
@@ -49,33 +66,37 @@ function MyVerticallyCenteredModal(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
-        console.log("on process");
-        axios.post('https://wavebilling-backend-sabinlohani.onrender.com/admin/add-reader',  {
-            fullName:fullName,
-            readerId:readerId,
-            password:password,
-            contactNum:contactNum,
-            email:email,
-            token:storedToken,
-            
-        },
-        {
-            headers: {
-              Authorization: `Bearer ${storedToken}`, // Add token to headers
+        if (!isChecked) {
+            setErrorMsg('*Please agree to all terms and conditions');
+        }
+        else {
+            console.log("on process");
+            axios.post('https://wavebilling-backend-sabinlohani.onrender.com/admin/add-reader',  {
+                fullName:fullName,
+                readerId:readerId,
+                password:password,
+                contactNum:contactNum,
+                email:email,
+                token:storedToken,
+                
             },
-          }
-        )
-        .then(response => { 
-            console.log("successful");  
-            console.log(response);
-            
-            setServerResponseReceived(true);
+            {
+                headers: {
+                Authorization: `Bearer ${storedToken}`, // Add token to headers
+                },
+            }
+            )
+            .then(response => { 
+                console.log("successful");  
+                console.log(response);
+                
+                setServerResponseReceived(true);
                    
-            setLoading(false);
-            
+                setLoading(false);
+                
             })
             .catch(error => console.log(error));
-        
+        }
     };
     return (
         <Modal
@@ -126,6 +147,7 @@ function MyVerticallyCenteredModal(props) {
                                 </td>
                                 <td>
                                     <input type="text" id="editFirstName" placeholder='Contact' required value={contactNum} onChange={handleContact} className='login-field'/>{'\n'}<br/>
+                                    {tel1Error && <div className="error" style={{ color: 'red' }}>{tel1Error}</div>}
                                 </td>
                             </tr>
                             <tr>    

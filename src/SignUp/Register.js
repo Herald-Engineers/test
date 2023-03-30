@@ -51,7 +51,6 @@ function Register(){
             color: '#525252',
     };
     
-  
     const [accountNo, setAccountNo] = useState("");
     const [contactNum, setContact] = useState("");
     const [bankName, setBank] = useState("");
@@ -225,13 +224,13 @@ function Register(){
                                     <label>Payment Method:</label>
                                 </td>
                                 <td>
-                                    <input class="form-check-input" type="radio" name="paymentMethod"value="Esewa" id="flexRadioDefault1" />
+                                    <input className="form-check-input" type="radio" name="paymentMethod" value="Esewa" id="flexRadioDefault1" />
                                     <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Esewa</span>
                                 
-                                    <input class="form-check-input" type="radio" name="paymentMethod"value="Khalti" id="flexRadioDefault1" />
+                                    <input className="form-check-input" type="radio" name="paymentMethod" value="Khalti" id="flexRadioDefault1" />
                                     <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Khalti</span>
                                 
-                                    <input class="form-check-input" type="radio" name='paymentMethod' value="Bank" id="flexRadioDefault1" />
+                                    <input className="form-check-input" type="radio" name='paymentMethod' value="Bank" id="flexRadioDefault1" />
                                     <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Bank Name</span>
                                 </td>
 
@@ -249,7 +248,7 @@ function Register(){
                                     <label>Account Number:</label>
                                 </td>
                                 <td>
-                                    <input type="text" id="inputField" placeholder='Account Number'  value={accountNo}className='login-field'  required onChange={handleAccountNo}/><br/>
+                                    <input type="text" id="inputField" placeholder='Account Number'  value={accountNo} className='login-field'  required onChange={handleAccountNo}/><br/>
                                 </td>
                             </tr>
                             <tr>
@@ -257,7 +256,7 @@ function Register(){
                                     <label>Billing Cycle:</label>
                                 </td>
                                 <td>
-                                    <select name=''>
+                                    <select className='selectOption'>
                                         <option value="Monthly">Monthly</option>
                                         <option value="Quarterly">Quarterly</option>
                                         <option value="Half Yearly">Half Yearly</option>
@@ -271,7 +270,7 @@ function Register(){
                                     <label>Payment Due Date:</label>
                                 </td>
                                 <td>
-                                    <input type="date" id="inputField" placeholder='Due Date' value={paymentDueDate} className='login-field' required onChange={handlePaymeDueDate}/><br/>
+                                    <input type="date" id="inputField" placeholder='Due Date' value={paymentDueDate} className='login-field' required onChange={handlePaymeDueDate} style={{color:'rgba(0, 0, 0, 0.4)'}}/><br/>
                                 </td>
                             </tr>
                             <tr>
