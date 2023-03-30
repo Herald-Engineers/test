@@ -1,4 +1,10 @@
 import '../Css/LandingPage.css';
+const [accountNo, setAccountNo] = useState("");
+const [contactNum, setContact] = useState("");
+const [bankName, setBank] = useState("");
+const [isChecked, setIsChecked] = useState(false);
+const [errorMsg, setErrorMsg] = useState('');
+const [paymentDueDate, setDueDate] = useState("");
 function Contact(){
     return(
         <div className='form-section'> 

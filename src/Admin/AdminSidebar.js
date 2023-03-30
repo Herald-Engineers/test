@@ -7,13 +7,11 @@ import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import DashboardIcon from '../Image/PayBill.png';
 import DashboardIcon2 from '../Image/dashboard.png';
+import MyProfile from '../Image/MyProfile.png';
 import  { TbDashboard } from "react-icons/tb";
 import  { TbCalendarTime } from "react-icons/tb";
-import {RiAccountPinCircleLine} from "react-icons/ri";
-import {FiSettings} from "react-icons/fi";
 import {FiUser} from "react-icons/fi";
 import {RiArrowGoBackFill} from "react-icons/ri";
-
 import {TbMessageReport} from "react-icons/tb";
 
 
@@ -39,7 +37,7 @@ function AdminSidebar(){
     return (
         <div className="sidebar">
             <div className='sidebar-section text-center'>
-                <Link to='/homela' className='navbar-brand'>
+                <Link to='/userTable' className='navbar-brand'>
                     <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" />
                 </Link>
                 <div style={{backgroundColor: 'transparent'}}>
@@ -80,13 +78,21 @@ function AdminSidebar(){
                                 < TbMessageReport size={18} style={{paddingTop:'2px'}}/>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Issues</p> 
                             </div>
-                    </Nav.Link>
+                        </Nav.Link>
 
                         <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
                                     <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Sign Out</p> 
+                            </div>
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                    
+                            <div className='' style={{bottom:'0',position:'absolute',paddingBottom:'10px'}}>
+                                <img src={MyProfile} alt="Profile Picture" className="myProfilePic" /> <br/>
+                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Sugam Paudyal</p>
+                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'300'}} className="">npo3cs4s2</p> 
                             </div>
                         </Nav.Link>
                     </Nav>

@@ -173,6 +173,7 @@ function Register(){
                 <form action="/action_page.php" onSubmit={handleSubmit} className=" ">
                     <div className='MyCompanyDetails'>
                         <table className='myTable'>
+                            <tbody>
                             <tr>
                                 <td>
                                     <label>Company Name:</label>
@@ -205,10 +206,11 @@ function Register(){
                                     <input type="text" name = "fullname" id="inputField" placeholder='Full Name' required className='login-field'/><br /> 
                                     <input type="text" name = "email2" id="inputField" placeholder='Email Address' required  className='login-field'/><br />
                                     <input type="text" name = "jobTitle" id="inputField" placeholder='Job Title' required className='login-field'/><br />
-                                    <input type="text" name = "contactNum" value={contactNum }id="inputField" placeholder='Contact Number' required className='login-field' onChange={handleContact}/><br />
+                                    <input type="text" name = "contactNum" value={contactNum } id="inputField" placeholder='Contact Number' required className='login-field' onChange={handleContact}/><br />
 
                                 </td>   
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                
@@ -256,7 +258,7 @@ function Register(){
                                     <label>Billing Cycle:</label>
                                 </td>
                                 <td>
-                                    <select className='selectOption'>
+                                    <select className='selectOption' name='billingCycle'>
                                         <option value="Monthly">Monthly</option>
                                         <option value="Quarterly">Quarterly</option>
                                         <option value="Half Yearly">Half Yearly</option>

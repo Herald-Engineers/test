@@ -56,9 +56,7 @@ function MyVerticallyCenteredModal(props) {
           setTelError("");
         }
     };
-    console.log(fullName);
-    console.log(readerId);
-    console.log(password);
+    
     console.log(storedToken);
 
     const [serverResponseReceived, setServerResponseReceived] = useState(false);
@@ -66,10 +64,7 @@ function MyVerticallyCenteredModal(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
-        if (!isChecked) {
-            setErrorMsg('*Please agree to all terms and conditions');
-        }
-        else {
+        
             console.log("on process");
             axios.post('https://wavebilling-backend-sabinlohani.onrender.com/admin/add-reader',  {
                 fullName:fullName,
@@ -96,7 +91,7 @@ function MyVerticallyCenteredModal(props) {
                 
             })
             .catch(error => console.log(error));
-        }
+        
     };
     return (
         <Modal
@@ -166,8 +161,8 @@ function MyVerticallyCenteredModal(props) {
                
                
                 <Button onClick={props.onHide} className='meterButtons'>Go Back</Button>
-                <Button onClick={props.onHide} type='submit' className='meterButtons2' value="submit" >Submit</Button>
-                {/* <input onClick={props.onHide}   className='meterButtons2'  /> */}
+                <Button onClick={props.onHide}   type='submit'  className='meterButtons2' value="submit"  >Submit</Button>
+                {/* <input onClick={props.onHide}   className='meterButtons2' /> */}
                 </form>
             </div>
         </Modal.Body>

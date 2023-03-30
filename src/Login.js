@@ -94,7 +94,7 @@ import LoadingSpinner from './Components/LoadingSpinner';
           navigate("/homela");
       } 
       else if(role === 'admin'){
-        navigate("/myadmin");
+        navigate("/meterReader");
       }
       else if(role === 'reader'){
         navigate("/");
@@ -242,7 +242,7 @@ import LoadingSpinner from './Components/LoadingSpinner';
             <input type="password"  required  value={password} placeholder='Password' className='login-field'  onChange={handlePasswordChange}/>
           
           </div>
-          {errorMessage && <div>{errorMessage}</div>}
+          {errorMessage && <div style={{color:'red'}}>{errorMessage}</div>}
 
           <div className="button-container">
           <input type="checkbox"  name="lsRememberMe"/>

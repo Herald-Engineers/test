@@ -20,7 +20,7 @@ function NavbarHomePage() {
       
       
         <NavItem>
-          <div style={{color: 'black ', marginBottom:'10px'} }>
+          <div style={{color: '#2F4858 ', marginBottom:'10px'} }>
             <Notify  hasNotification={hasNotification}/>
             {/* <Dropp/> */}
           </div>

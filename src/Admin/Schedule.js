@@ -14,19 +14,19 @@ function Schedule(){
            
                 <div className='justify-content-center right-right-nav-Home2'>
                     <div className='justify-content-center right-width '>
-                        <div className='d-flex justify-content-center headingBorder'>
+                        <div className='d-flex justify-content-center headingBorder' style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
                             <div>
-                                <img src={Calendar} alt="Schedule" className="" />
+                                <img src={Calendar} alt="Schedule" className="" style={{width: '30px',height: '30px',left: '873px',top: '207px'}}/>
                                
                             </div>
                             <div>
-                                 <h3 className='text-center'style={{color:'#2F4858'}}>Add Schedule</h3>
+                                 <h4 className='text-center'style={{color:'#2F4858',height:'37px',fontWeight:'600'}}>Add Schedule</h4>
                             </div>
                         </div>
                         <form>
                             <div className='d-flex justify-content-center' style={{paddingTop:'45px'}}>
                                 <div>
-                                    <div>
+                                    <div style={{paddingRight:'20px'}}>
                                         <label>Address</label><br/>
                                         <input type="text" name="address1" placeholder="Enter Address" className='inputBox'/><br/>
                                         <input type="text" name="address2" placeholder="Enter Address" className='inputBox'/><br/>

@@ -9,9 +9,8 @@ import DashboardIcon from '../Image/PayBill.png';
 import DashboardIcon2 from '../Image/dashboard.png';
 import  { TbDashboard } from "react-icons/tb";
 import  { TbCalendarTime } from "react-icons/tb";
-import {RiAccountPinCircleLine} from "react-icons/ri";
-import {FiSettings} from "react-icons/fi";
 import {RiArrowGoBackFill} from "react-icons/ri";
+import {FiUser} from "react-icons/fi";
 function Sidebar(){
     const links = document.querySelectorAll('.sidebar-link');
 
@@ -44,7 +43,7 @@ function Sidebar(){
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/bollhistory' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')} className='sidebar-fonts sidebar-link' >
+                        <Nav.Link as={Link} to='/billhistory' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')} className='sidebar-fonts sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbCalendarTime  size={18} style={{paddingTop:'2px'}}/>
@@ -52,19 +51,12 @@ function Sidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link as={Link} to='/billHistory' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')}  className='sidebar-fonts sidebar-link'>
-                        {/* <img src={DashboardIcon} alt="Wave Billing System" className="" /> <br/> */}
                         
-                            <div className='d-flex'>
-                                <RiAccountPinCircleLine  size={18} style={{paddingTop:'2px'}}/>
-                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My History</p> 
-                            </div>
-                    </Nav.Link>
 
                         <Nav.Link as={Link} to='/editprofile' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
-                                    <FiSettings  size={18} style={{paddingTop:'2px'}}/>
+                                    <FiUser  size={18} style={{paddingTop:'2px'}}/>
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My Profile</p> 
                             </div>
                         </Nav.Link>
