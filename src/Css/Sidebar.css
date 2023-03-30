@@ -1,5 +1,5 @@
 .sidebar-fonts{
-   height: 80px;
+   height: 47px;
    width: 140px;
     color: #8C8E8D;
     padding: 15px;
@@ -51,5 +51,15 @@
     color: white;
   }
 
+
+  .dashbaord-image{
+  width: 143.6px;
+  height: 24px;
+  left: 41px;
+  top: 218px;
+  display: flex;
+    align-items: center; /* vertically center the items */
+    flex-wrap: nowrap; /* prevent wrapping */
+  }
  
 

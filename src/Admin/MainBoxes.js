@@ -9,7 +9,7 @@ function MainBox(){
         <div>
             
             <div className='d-flex'>
-                <Link to='/myadmin'>
+                <Link to='/userTable'>
                         <div className='firstbox' onClick={<Metereader/>}>
                             <div className=''>
                                 <div style={{float:'left'}}>
@@ -48,7 +48,7 @@ function MainBox(){
                                             <img src={Image3} alt="logout" className="" style={{paddingTop: '7px'}}/>
                                     </div>
                                     <div style={{float:'right',marginTop: '2px',paddingRight: '93px'}}>
-                                            <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Total Readers</span><br/>
+                                            <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Total Online</span><br/>
                                             <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>3</span>
                                     </div>
                                     

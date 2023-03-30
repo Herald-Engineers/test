@@ -95,6 +95,9 @@ function MyVerticallyCenteredModal(props) {
                 <div className='meter-Table'>
                    
                         <table >
+                            <tbody>
+
+                            
                             <tr>
                                 <td>
                                     <label>Full Name:</label> 
@@ -132,6 +135,7 @@ function MyVerticallyCenteredModal(props) {
                                     <input type="text" id="editFirstName" placeholder='Email' required value={email} onChange={handleEmail} className='login-field'/>{'\n'}<br/>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     
                     {loading && !serverResponseReceived && <LoadingSpinner />}
@@ -140,7 +144,8 @@ function MyVerticallyCenteredModal(props) {
                
                
                 <Button onClick={props.onHide} className='meterButtons'>Go Back</Button>
-                <input onClick={props.onHide} className='meterButtons2' type='submit' value="submit"  />
+                <Button onClick={props.onHide} type='submit' className='meterButtons2' value="submit" >Submit</Button>
+                {/* <input onClick={props.onHide}   className='meterButtons2'  /> */}
                 </form>
             </div>
         </Modal.Body>

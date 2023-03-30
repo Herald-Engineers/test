@@ -11,6 +11,7 @@ import  { TbDashboard } from "react-icons/tb";
 import  { TbCalendarTime } from "react-icons/tb";
 import {RiAccountPinCircleLine} from "react-icons/ri";
 import {FiSettings} from "react-icons/fi";
+import {RiArrowGoBackFill} from "react-icons/ri";
 function Sidebar(){
     const links = document.querySelectorAll('.sidebar-link');
 
@@ -65,6 +66,13 @@ function Sidebar(){
                             <div className='d-flex'>
                                     <FiSettings  size={18} style={{paddingTop:'2px'}}/>
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My Profile</p> 
+                            </div>
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                    
+                            <div className='d-flex'>
+                                    <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Sign Out</p> 
                             </div>
                         </Nav.Link>
                     </Nav>

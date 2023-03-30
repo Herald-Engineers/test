@@ -12,7 +12,10 @@ import  { TbCalendarTime } from "react-icons/tb";
 import {RiAccountPinCircleLine} from "react-icons/ri";
 import {FiSettings} from "react-icons/fi";
 import {FiUser} from "react-icons/fi";
-import {MdOutlineFeedback} from "react-icons/md";
+import {RiArrowGoBackFill} from "react-icons/ri";
+
+import {TbMessageReport} from "react-icons/tb";
+
 
 
 
@@ -40,15 +43,15 @@ function AdminSidebar(){
                     <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" />
                 </Link>
                 <div style={{backgroundColor: 'transparent'}}>
-                    <Nav className="flex-column">
+                    <Nav className="flex-column ">
                         <Nav.Link as={Link} to='/myadmin' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
-                            <div className='d-flex'>
+                            <div className='d-flex dashbaord-image'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbDashboard size={18}/>
-                                <p style={{fontSize: '18px', paddingLeft: '1px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
+                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Dashboard</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/homela' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-user sidebar-link' >
+                        <Nav.Link as={Link} to='/userTable' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-user sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <FiUser size={18}/>
@@ -66,7 +69,7 @@ function AdminSidebar(){
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbCalendarTime  size={18} style={{paddingTop:'2px'}}/>
-                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Schedule</p> 
+                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Schedule</p> 
                             </div>
                         </Nav.Link>
 
@@ -74,16 +77,16 @@ function AdminSidebar(){
                         {/* <img src={DashboardIcon} alt="Wave Billing System" className="" /> <br/> */}
                         
                             <div className='d-flex'>
-                                <MdOutlineFeedback  size={18} style={{paddingTop:'2px'}}/>
-                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Feedback</p> 
+                                < TbMessageReport size={18} style={{paddingTop:'2px'}}/>
+                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Issues</p> 
                             </div>
                     </Nav.Link>
 
                         <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
-                                    <FiSettings  size={18} style={{paddingTop:'2px'}}/>
-                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Sign Out</p> 
+                                    <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Sign Out</p> 
                             </div>
                         </Nav.Link>
                     </Nav>

@@ -32,6 +32,7 @@ import BillHistory from './HomePage/BillHIstory';
 import Payment from './HomePage/PaymentHistory';
 import TableHistory from './Components/Table';
 import Kukl from './HomePage/KUKLPay';
+import UserTable from './Admin/UserTable';
 
 
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/kukl" element={<Kukl />} />
         <Route path="/myadmin" element={<AdminDashboard />} />
         <Route path="/myadminsidebar" element={<MyAdmin />} />
+        <Route path="/userTable" element={<UserTable />} />
         
       </Routes>
     </BrowserRouter>
