@@ -44,7 +44,7 @@ function AdminSidebar(){
                 </Link>
                 <div style={{backgroundColor: 'transparent'}}>
                     <Nav className="flex-column ">
-                        <Nav.Link as={Link} to='/myadmin' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
+                        <Nav.Link as={Link} to='/userTable' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex dashbaord-image'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbDashboard size={18}/>
@@ -65,7 +65,7 @@ function AdminSidebar(){
                                 <p style={{fontSize: '14px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Meter Reader</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/bollhistory' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')} className='sidebar-fonts-dashboard sidebar-link' >
+                        <Nav.Link as={Link} to='/schedule' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbCalendarTime  size={18} style={{paddingTop:'2px'}}/>
@@ -73,7 +73,7 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link as={Link} to='/billHistory' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/issue' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')}  className='sidebar-fonts sidebar-link'>
                         {/* <img src={DashboardIcon} alt="Wave Billing System" className="" /> <br/> */}
                         
                             <div className='d-flex'>
