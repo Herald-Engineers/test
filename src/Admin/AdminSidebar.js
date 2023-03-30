@@ -37,12 +37,12 @@ function AdminSidebar(){
     return (
         <div className="sidebar">
             <div className='sidebar-section text-center'>
-                <Link to='/userTable' className='navbar-brand'>
+                <Link to='/meterReader' className='navbar-brand'>
                     <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" />
                 </Link>
                 <div style={{backgroundColor: 'transparent'}}>
                     <Nav className="flex-column ">
-                        <Nav.Link as={Link} to='/userTable' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
+                        <Nav.Link as={Link} to='/meterReader' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex dashbaord-image'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbDashboard size={18}/>

@@ -1,4 +1,4 @@
-#customers {
+/* #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -19,17 +19,15 @@
     text-align: left;
     background-color: #6092C0;
     color: white;
-  }
+  } */
   .viewButton{
-    background-color: #F0750A;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
+    color: black;
   }
+.meterReader-table12{
+  padding: 20px;
+}
+.MyBody{
+  margin: 30px;
+  padding: 40px;
+}
+

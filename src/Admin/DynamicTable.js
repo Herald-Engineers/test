@@ -312,7 +312,7 @@ const handleEditSubmit = (editedRow) => {
               <center>
          
                   <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
-              <div className='main-box text-center'>
+              <div className='main-box  meter-Table2'>
               
                   <p>
                   Please enter the Reader ID and temporary password for  the Reader.
@@ -330,7 +330,7 @@ const handleEditSubmit = (editedRow) => {
                       </tr>
                       <tr>
                         <td>Contact No:</td>
-                        <td><input type="telephone" name="contactNum" placeholder="Enter Contact No"  value={contactNum} onChange={handleContactNum} /></td>
+                        <td><input type="text" name="contactNum" placeholder="Enter Contact No"  value={contactNum} onChange={handleContactNum} /></td>
                       </tr>
                       <tr>
                         <td>Email Address: </td>
@@ -341,7 +341,7 @@ const handleEditSubmit = (editedRow) => {
                   </table>
                   
                   <Button className='meterButtons'>Go Back</Button>
-                  <input className='meterButtons2' type='submit' value="submit"  />
+                  <Button className='meterButtons2' type='submit' value="submit"  >Submit</Button>
                   {/* onClick={() => handleEdit(row._id)} */}{loading && !serverResponseReceived && <LoadingSpinner />}
                 </form>
                   

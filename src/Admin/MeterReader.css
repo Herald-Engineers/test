@@ -4,6 +4,23 @@
     font-size: 12px;
     padding-left: 200px;
 }
+.meter-Table2{
+   
+    font-size: 12px;
+    
+    padding-right: 0px;
+    padding-left: 149px;
+}
+.meter-Table2,input[type=text], select {
+    
+    padding: 12px 58px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 .meterButtons{
     width: 180px;
     border: none;
