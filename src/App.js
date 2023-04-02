@@ -1,5 +1,5 @@
+//import necessary files and folders
 import React from 'react';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -13,7 +13,6 @@ import ConversationTip from './Conversation';
 import Myaccount from './MyAccount';
 import HomeLayout from './HomePage/HomeLayout';
 import  './Components/SmallLogo.css';
-import Homepage from './HomePageComp/Homepage';
 import Landingpage from './LandingPage';
 import SignIn from './SignUp/SignInAs';
 import MeterReader from './Admin/MeterReader';
@@ -36,12 +35,10 @@ import UserTable from './Admin/UserTable';
 import Issue from './Admin/Issue';
 import Schedule from './Admin/Schedule';
 
-
-
-
 function App() {
   return (
-    
+
+    // allowing users to navigate between different pages or components within the app.
     <BrowserRouter>
         
       <Routes>
@@ -50,7 +47,6 @@ function App() {
         <Route path="/otp" element={<Otp />} />
         <Route path="/createAcc" element={<CreateAccount />} />
         <Route path="/homela" element={<HomeLayout />} />
-        <Route path="/homepage" element={<Homepage />} />
         <Route path="/mybills" element={<Mybills />} />
         <Route path="/conversation" element={<ConversationTip />} />
         <Route path="/myaccount" element={<Myaccount />} />
@@ -79,10 +75,7 @@ function App() {
         
       </Routes>
     </BrowserRouter>
-    
-    
   );
- 
 
 }
 

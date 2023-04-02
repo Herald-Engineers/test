@@ -114,7 +114,27 @@ function MyVerticallyCenteredModal(props) {
     
     );
 }
+let gId;
+function submitAddReader(fullName, readerId, contactNum, email) {
+  axios.patch('https://wavebilling-backend-sabinlohani.onrender.com/admin/edit-reader', {
+    fullName: fullName,
+    readerId: readerId,
+    contactNum: contactNum,
+    email: email,
+    _id: gId,
+   
+    }, 
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }).then(response => { 
+      console.log("successful");  
+      console.log(response);
+    }).catch(error => console.log(error));
+};
 
+let gFullName, gReaderId, gContactNum, gEmail;
 
 function DynamicTable(){
   const [show, setShow] = useState(false);
@@ -122,7 +142,7 @@ function DynamicTable(){
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     
-    setShow(true);
+    ;
     console.log("Id: ",id); // prints row._id
   };
   
@@ -148,6 +168,8 @@ function DynamicTable(){
   const [serverResponseReceived, setServerResponseReceived] = useState(false);
   const [loading, setLoading] = useState(false);
   
+  
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
@@ -156,7 +178,7 @@ function DynamicTable(){
     readerId: readerId,
     contactNum: contactNum,
     email: email,
-    _id: "64251495566a0d87b8ed3fef",
+    _id: "6425d769c56d58d9766079e2",
    
     }, 
     {
@@ -254,6 +276,8 @@ function DynamicTable(){
   // );
 };
 
+
+
 const handleEditSubmit = (editedRow) => {
   // Update the tableData state with the updated data
   const updatedData = tableData.map((row) =>
@@ -286,7 +310,14 @@ const handleEditSubmit = (editedRow) => {
           <td>{row.contactNum}</td>
           <td>
           <form onSubmit={handleSubmit}>
-            <img src={Edit} alt="Edit Meter Reader" className="" onClick={() => handleShow(row._id)}/>
+            <img src={Edit} alt="Edit Meter Reader" className="" onClick={() => {
+              setShow(true);
+              // gId = row._id;
+              // gFullName = row.fullName;
+              // gReaderId = row.email;
+              // gContactNum = 
+              // gEmail = 
+            }}/>
             <img src={Delete} alt="Delete Meter Reader" className="" onClick={() => handleDelete(row._id)}/>
           </form> 
             {/* <MyVerticallyCenteredModal
@@ -307,29 +338,24 @@ const handleEditSubmit = (editedRow) => {
   
   
   <Modal  show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
-        
-        <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
-              <center>
-         
-                  <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
-              <div className='main-box  meter-Table2'>
-              
-                  <p>
-                  Please enter the Reader ID and temporary password for  the Reader.
-                  </p><br/>
-                <form  onSubmit={(event) => handleSubmit( event)}>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>Full Name: </td>
-                        <td><input type="text" name="fullName" placeholder="Enter full name"  value={fullName} onChange={handleFullName}/></td>
-                      </tr>
-                      <tr>
-                        <td>Reader Id: </td>
-                        <td><input type="text" name="readerId" placeholder="Enter Reader Id"  value={readerId} onChange={handleReaderId}/></td>
-                      </tr>
-                      <tr>
-                        <td>Contact No:</td>
+    <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
+      <center>
+        <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
+        <div className='main-box  '>
+        <p>Please enter the Reader ID and temporary password for  the Reader.</p><br/>
+        <form  onSubmit={(event) => handleSubmit( event)}>
+          <table>
+            <tbody>
+              <tr>
+                <td>Full Name: </td>
+                <td><input type="text" name="fullName" placeholder="Enter full name"  value={fullName}  className='meter-Table2' onChange={handleFullName}/></td>
+              </tr>
+              <tr>
+                <td>Reader Id: </td>
+                <td><input type="text" name="readerId" placeholder="Enter Reader Id"  value={readerId} onChange={handleReaderId}/></td>
+              </tr>
+              <tr>
+                <td>Contact No:</td>
                         <td><input type="text" name="contactNum" placeholder="Enter Contact No"  value={contactNum} onChange={handleContactNum} /></td>
                       </tr>
                       <tr>
@@ -340,16 +366,16 @@ const handleEditSubmit = (editedRow) => {
                     </tbody>
                   </table>
                   
-                  <Button className='meterButtons'>Go Back</Button>
-                  <Button className='meterButtons2' type='submit' value="submit"  >Submit</Button>
+                  <Button onClick={handleClose} className='meterButtons'>Go Back</Button>
+                  <Button className='meterButtons2' type='submit' value="submit"  onClick={submitAddReader(fullName, readerId, contactNum, email)} >Submit</Button>
                   {/* onClick={() => handleEdit(row._id)} */}{loading && !serverResponseReceived && <LoadingSpinner />}
-                </form>
+            </form>
                   
-              </div>
-          </Modal.Body>
+          </div>
+        </Modal.Body>
          
-        </Modal>
-        </>
+      </Modal>
+    </>
   );
 }
 export default DynamicTable;

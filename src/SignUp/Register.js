@@ -12,6 +12,13 @@ import LoadingSpinner from '../Components/LoadingSpinner';
 import { Link, useNavigate } from 'react-router-dom';
 import {MdVerified} from "react-icons/md";
 
+let resUsername, resPassword;
+function validatePhoneNumber(phoneNumber) {
+    if (phoneNumber.length > 10) {
+      return false; // Phone number is too long
+    }
+    return true; // Phone number is valid
+  }
 
 function MyVerticallyCenteredModal(props) {
 
@@ -28,8 +35,8 @@ function MyVerticallyCenteredModal(props) {
                         It's our great pleasure to welcome you to the WaveBilling and we are<br/> pleased to inform you that your official user ID  has been created.
                     </p><br/>
                     <p>
-                        <b>User Id:</b> np03cs4s<br/>
-                        <b>Password:</b> sugam123
+                        <b>User Id:</b> {resUsername} <br/>
+                        <b>Password:</b> {resPassword}
                     </p>
                     <p>You are requested to login using this official User ID and change the<br/> password as soon as you login into your account for future confidentiality. </p>
                     <Button onClick={props.onHide} className='i-understand'>I understand</Button>
@@ -39,14 +46,10 @@ function MyVerticallyCenteredModal(props) {
         </Modal>
     );
 }
-function validatePhoneNumber(phoneNumber) {
-    if (phoneNumber.length > 10) {
-      return false; // Phone number is too long
-    }
-    return true; // Phone number is valid
-  }
+
+
 function Register(){
-    // const navigate = useNavigate();
+   
     const color_style ={
             color: '#525252',
     };
@@ -57,14 +60,15 @@ function Register(){
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
     const [paymentDueDate, setDueDate] = useState("");
-    
     const [estimatedWaterUsage, setWaterUsage] = useState("");
     const [noOfMeters, setNoOfMeters] = useState("");
     const [serverResponseReceived, setServerResponseReceived] = useState(false);
     const [loading, setLoading] = useState(false);
     const [tel1Error, setTelError] = useState("");
     const [data, setData] = useState(null);
-   
+    
+    const [modalShow, setModalShow] = React.useState(false);
+  
    
     const handleWaterUsage = (event) => {
         setWaterUsage(event.target.value);
@@ -92,12 +96,6 @@ function Register(){
           setTelError("");
         }
       };
-    
-    // const handleConfirmPasswordChange = (event) => {
-    //     setConfirmPassword(event.target.value);
-    //     setPasswordMatch(event.target.value === password);
-    //   };
-    
    
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -110,30 +108,31 @@ function Register(){
             // handle form submission
         
             const data = {
-            companyName: event.target.companyName.value,
-            address: event.target.address.value,
-            email1: event.target.email1.value,
-            contactNum: contactNum,
-            fullname: event.target.fullname.value,
-            email2: event.target.email2.value,
-            jobTitle: event.target.jobTitle.value,
-            billingCycle : event.target.billingCycle.value,
-            accountNo : accountNo,
-            bankName : bankName,
-            paymentDueDate : paymentDueDate,
-            estimatedWaterUsage : estimatedWaterUsage,
-            noOfMeters : noOfMeters,
-            paymentMethod: event.target.paymentMethod.value,
+                companyName: event.target.companyName.value,
+                address: event.target.address.value,
+                email1: event.target.email1.value,
+                contactNum: contactNum,
+                fullName: event.target.fullname.value,
+                email2: event.target.email2.value,
+                jobTitle: event.target.jobTitle.value,
+                billingCycle : event.target.billingCycle.value,
+                accountNum : accountNo,
+                bankName : bankName,
+                paymentDueDate : paymentDueDate,
+                estimatedWaterUsage : estimatedWaterUsage,
+                noOfMeters : noOfMeters,
+                paymentMethod: event.target.paymentMethod.value,
             
-
             };
-            axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register', data)
+            axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register-company', data)
             .then(response => {
+                resUsername = response.data.userId;
+                resPassword = response.data.password;
                 setServerResponseReceived(true);
-                <p>successful</p>
                 setLoading(false);
-                <MyVerticallyCenteredModal />
-                console.log(response)})
+                console.log(response)
+                
+            })
             .catch(error => console.log(error));
         }
       };
@@ -141,175 +140,177 @@ function Register(){
         <div>
 
       
-        <div className='register_company '> 
-            <div className='d-flex' style={{borderBottom:'1px solid #B9B9B9'}}>
-                <div style={{ height:'100px'}}>
-                    <img src={MyLogo} alt="Kathmandu Upatyaka Khanepani Limited" className="userImage" />
-                </div>
-                <div> 
-                    <h3 style={{paddingTop:'39px'}}>Register Your Account</h3>
-                </div>
-            </div>
-            <div className='container_wrapper'>
-                <p style={{color: '#525252',paddingLeft: '23px', paddingTop:'60px'}} >Fill the form below to create an account.</p>
-                <div className='d-flex myimagecontainer'>
-                    <div>
-                    <img src={step11} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+            <div className='register_company '> 
+                <div className='d-flex' style={{borderBottom:'1px solid #B9B9B9'}}>
+                    <div style={{ height:'100px'}}>
+                        <img src={MyLogo} alt="Kathmandu Upatyaka Khanepani Limited" className="userImage" />
                     </div>
-                    <div>
-                    <img src={step22} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
-                    </div>
-                    <div>
-                    <img src={step33} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+                    <div> 
+                        <h3 style={{paddingTop:'39px'}}>Register Your Account</h3>
                     </div>
                 </div>
-            
-            <div>
-                <h4 className="spacingH4">
-                    <b style={color_style} > Company Details</b>
-                </h4>
-            </div>
-            <div className='formWrapper'>
-                <form action="/action_page.php" onSubmit={handleSubmit} className=" ">
-                    <div className='MyCompanyDetails'>
-                        <table className='myTable'>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <label>Company Name:</label>
-                                </td>
-                                <td>
-                                    <input type="text" name = "companyName"id="inputField" placeholder='Company Name'  required className='login-field'/><br />       
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Address:</label>
-                                </td>
-                                <td>
-                                    <input type="text" name = "address"id="inputField" placeholder='Address' required className='login-field'/><br />    
-                                </td>   
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Email:</label>
-                                </td>
-                                <td>
-                                    <input type="text" name = "email1"id="inputField" placeholder='Email Address' required className='login-field'/><br />    
-                                </td>   
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Primary Contact Details:</label>
-                                </td>
-                                <td>
-                                    <input type="text" name = "fullname" id="inputField" placeholder='Full Name' required className='login-field'/><br /> 
-                                    <input type="text" name = "email2" id="inputField" placeholder='Email Address' required  className='login-field'/><br />
-                                    <input type="text" name = "jobTitle" id="inputField" placeholder='Job Title' required className='login-field'/><br />
-                                    <input type="text" name = "contactNum" value={contactNum } id="inputField" placeholder='Contact Number' required className='login-field' onChange={handleContact}/><br />
-
-                                </td>   
-                            </tr>
-                            </tbody>
-                        </table>
+                <div className='container_wrapper'>
+                    <p style={{color: '#525252',paddingLeft: '23px', paddingTop:'60px'}} >Fill the form below to create an account.</p>
+                    <div className='d-flex myimagecontainer'>
+                        <div>
+                        <img src={step11} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+                        </div>
+                        <div>
+                        <img src={step22} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+                        </div>
+                        <div>
+                        <img src={step33} alt="Kathmandu Upatyaka Khanepani Limited" className="Community-image" />
+                        </div>
                     </div>
-               
-                    <div>
-                        <h4 className="spacingH4Payment">
-                            <b style={color_style} > Payment Details</b>
-                        </h4>
-                    </div>
-                    <div className='MyCompanyDetails'>
-                        <table className='myTable' >
-                            <tr className='myRadioButton'>
-                                <td>
-                                    <label>Payment Method:</label>
-                                </td>
-                                <td>
-                                    <input className="form-check-input" type="radio" name="paymentMethod" value="Esewa" id="flexRadioDefault1" />
-                                    <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Esewa</span>
-                                
-                                    <input className="form-check-input" type="radio" name="paymentMethod" value="Khalti" id="flexRadioDefault1" />
-                                    <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Khalti</span>
-                                
-                                    <input className="form-check-input" type="radio" name='paymentMethod' value="Bank" id="flexRadioDefault1" />
-                                    <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Bank Name</span>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Bank Name:</label>
-                                </td>
-                                <td>
-                                    <input type="text" id="inputField" placeholder='Bank Name' name = "bankName" value={bankName} className='login-field' required onChange={handleBank}/><br/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Account Number:</label>
-                                </td>
-                                <td>
-                                    <input type="text" id="inputField" placeholder='Account Number'  value={accountNo} className='login-field'  required onChange={handleAccountNo}/><br/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Billing Cycle:</label>
-                                </td>
-                                <td>
-                                    <select className='selectOption' name='billingCycle'>
-                                        <option value="Monthly">Monthly</option>
-                                        <option value="Quarterly">Quarterly</option>
-                                        <option value="Half Yearly">Half Yearly</option>
-                                        <option value="Yearly">Yearly</option>
-                                    </select>
+                
+                <div>
+                    <h4 className="spacingH4">
+                        <b style={color_style} > Company Details</b>
+                    </h4>
+                </div>
+                <div className='formWrapper'>
+                    <form action="/action_page.php" onSubmit={handleSubmit} className=" ">
+                        <div className='MyCompanyDetails'>
+                            <table className='myTable'>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <label>Company Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name = "companyName"id="inputField" placeholder='Company Name'  required className='login-field'/><br />       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Address:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name = "address"id="inputField" placeholder='Address' required className='login-field'/><br />    
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Email:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name = "email1"id="inputField" placeholder='Email Address' required className='login-field'/><br />    
+                                    </td>   
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Primary Contact Details:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name = "fullname" id="inputField" placeholder='Full Name' required className='login-field'/><br /> 
+                                        <input type="text" name = "email2" id="inputField" placeholder='Email Address' required  className='login-field'/><br />
+                                        <input type="text" name = "jobTitle" id="inputField" placeholder='Job Title' required className='login-field'/><br />
+                                        <input type="text" name = "contactNum" value={contactNum } id="inputField" placeholder='Contact Number' required className='login-field' onChange={handleContact}/><br />
+                                        {tel1Error && <div className="error" style={{ color: 'red' }}>{tel1Error}</div>}
+                                    </td>   
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                
+                        <div>
+                            <h4 className="spacingH4Payment">
+                                <b style={color_style} > Payment Details</b>
+                            </h4>
+                        </div>
+                        <div className='MyCompanyDetails'>
+                            <table className='myTable' >
+                                <tr className='myRadioButton'>
+                                    <td>
+                                        <label>Payment Method:</label>
+                                    </td>
+                                    <td>
+                                        <input className="form-check-input" type="radio" name="paymentMethod" value="Esewa" id="flexRadioDefault1" />
+                                        <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Esewa</span>
                                     
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Payment Due Date:</label>
-                                </td>
-                                <td>
-                                    <input type="date" id="inputField" placeholder='Due Date' value={paymentDueDate} className='login-field' required onChange={handlePaymeDueDate} style={{color:'rgba(0, 0, 0, 0.4)'}}/><br/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Estimated Water Usage:</label>
-                                </td>
-                                <td>
-                                    <input type="text" id="inputField" placeholder=' Water Usuage' value={estimatedWaterUsage} className='login-field' required onChange={handleWaterUsage}/><br/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>No. of meters required: </label>
-                                </td>
-                                <td>
-                                    <input type="text" id="inputField" placeholder='No. of meters ' value={noOfMeters} className='login-field' required onChange={handleMeters} /><br/>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    
+                                        <input className="form-check-input" type="radio" name="paymentMethod" value="Khalti" id="flexRadioDefault1" />
+                                        <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Khalti</span>
+                                    
+                                        <input className="form-check-input" type="radio" name='paymentMethod' value="Bank" id="flexRadioDefault1" />
+                                        <span style={{paddindLeft:'10px',paddingRight:'10px'}}> Bank Name</span>
+                                    </td>
 
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" required checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
-                        <label className="form-check-label" >
-                        By submitting this form, I agree to the terms and conditions of the WaveBilling and any applicable policies, rules, or regulations.
-                        </label>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Bank Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="inputField" placeholder='Bank Name' name = "bankName" value={bankName} className='login-field' required onChange={handleBank}/><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Account Number:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="inputField" placeholder='Account Number'  value={accountNo} className='login-field'  required onChange={handleAccountNo}/><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Billing Cycle:</label>
+                                    </td>
+                                    <td>
+                                        <select className='selectOption' name='billingCycle'>
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                            <option value="Half Yearly">Half Yearly</option>
+                                            <option value="Yearly">Yearly</option>
+                                        </select>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Payment Due Date:</label>
+                                    </td>
+                                    <td>
+                                        <input type="date" id="inputField" placeholder='Due Date' value={paymentDueDate} className='login-field' required onChange={handlePaymeDueDate} style={{color:'rgba(0, 0, 0, 0.4)'}}/><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Estimated Water Usage:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="inputField" placeholder=' Water Usuage' value={estimatedWaterUsage} className='login-field' required onChange={handleWaterUsage}/><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>No. of meters required: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="inputField" placeholder='No. of meters ' value={noOfMeters} className='login-field' required onChange={handleMeters} /><br/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" required checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+                            <label className="form-check-label" >
+                            By submitting this form, I agree to the terms and conditions of the WaveBilling and any applicable policies, rules, or regulations.
+                            </label>
+                        </div>
+                        {errorMsg && <p className="error" style={{color:'red'}}>{errorMsg}</p>}
+                        <center>
+                            <input type="submit" value="Submit" id="submitCompany"   onClick={() => setModalShow(true)}/><br/>
+                            <Link to='/signinas'><button className='myCompanyButton'>Go Back</button></Link>
+                        </center>
+                    </form>
+                        {loading && !serverResponseReceived && <LoadingSpinner />}
+                        {serverResponseReceived ? (
+                        <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />) : null}
                     </div>
-                    {errorMsg && <p className="error" style={{color:'red'}}>{errorMsg}</p>}
-                    <center>
-                        <input type="submit" value="Submit" id="submitCompany" /><br/>
-                        <Link to='/signinas'><button className='myCompanyButton'>Go Back</button></Link>
-                    </center>
-                 </form>
-                 {loading && !serverResponseReceived && <LoadingSpinner />}
                 </div>
-            </div>
             
             </div>
         </div>

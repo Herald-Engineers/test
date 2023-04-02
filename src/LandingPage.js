@@ -13,14 +13,15 @@ import Contact from './Components/ContactUs';
 //import Icon4 from './Image/icon4.png';
 import './Css/LandingPage.css';
 import { Link } from 'react-router-dom';
+
 function Landingpage(){
     return(
         <div className="landingpage">
             <div className='nav_section'>
-                <LandingNav/>
+                <LandingNav/>             {/* call the landing page navabr component */}
             </div>
             
-           
+           {/* divide sectionas as banner, service, about us, contact us, footer */}
             <div className='banner-section' style={{ backgroundImage:`linear-gradient(#003366, #6699cc 90%), url(${MyBanner})` }}>
                 <div className='paragraph_section' >
                     <h1 className='heading'>Wave <br></br>Billing</h1>
@@ -38,8 +39,8 @@ function Landingpage(){
                 </div>
             </div>
 
-
-            <section id="services"> 
+            
+            <section id="services">                             {/* section to link between the same page */}
                 <div className='services-section'>
                     <h2 className='service_heading'> Our Services</h2>
                     <div className='whole section'>

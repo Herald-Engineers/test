@@ -1,4 +1,5 @@
 import '../Css/LandingPage.css';
+import axios from 'axios';
 import React, { useState } from 'react';
 function Contact(){
     const [firstName, setFirstName] = useState("");
@@ -6,6 +7,7 @@ function Contact(){
     const [email, setEmail] = useState("");
     const [contactNum, setContact] = useState("");
     const [queries, setQueries] = useState("");
+
     const handleFirstName = (event) => {
         setFirstName(event.target.value);
     };
@@ -23,9 +25,32 @@ function Contact(){
     const handleQueries = (event) => {
         setQueries(event.target.value);
     };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        
+        console.log("hello");
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/contact-wavebilling", {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+            contactNum: contactNum,
+            queries: queries
+        })
+        .then(res => {
+         
+          console.log(res.data);
+          // Redirect to the user's dashboard or some other page
+          
+        })
+        .catch(error => {
+          console.log(error);
+          
+        });
+      };
+    
     return(
         <div className='form-section'> 
-            <form>             
+            <form onSubmit={handleSubmit}>             
                 <div className='d-flex '>
                     <div className='line_space'>
                         <label>First Name</label><br></br>

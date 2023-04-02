@@ -11,15 +11,15 @@
     padding-right: 0px;
     padding-left: 149px;
 }
-.meter-Table2,input[type=text], select {
+/* input[type=text], select .meter-Table2 {
     
-    padding: 12px 58px;
+    padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
+} */
 
 .meterButtons{
     width: 180px;
@@ -91,4 +91,6 @@ table tr th{
     border: none;
 }
 
-
+input[type=submit],.submitSchedule{
+    background-color: #0d6efd;
+}

@@ -16,6 +16,7 @@ function validatePhoneNumber(phoneNumber) {
   }
   return true; // Phone number is valid
 }
+let resUsername, resPassword;
 function MyVerticallyCenteredModal(props) {
 
   return (
@@ -31,8 +32,8 @@ function MyVerticallyCenteredModal(props) {
             It's our great pleasure to welcome you to the WaveBilling and we are<br /> pleased to inform you that your official user ID  has been created.
           </p><br />
           <p>
-            <b>User Id:</b> np03cs4s<br />
-            <b>Password:</b> sugam123
+            <b>User Id:</b> {resUsername}<br />
+            <b>Password:</b> {resPassword}
           </p>
           <p>You are requested to login using this official User ID and change the<br /> password as soon as you login into your account for future confidentiality. </p>
           <Link to='/login'><Button onClick={props.onHide} className='i-understand'>I understand</Button></Link>
@@ -174,14 +175,15 @@ function User() {
       formData.append('citizenshipDoc', citizenshipDocFile);
       formData.append('landOwnershipDoc', landOwnershipDocFile);
 
-      axios.post('https://wavebilling-backend-sabinlohani.onrender.com/request-account', formData, {
+      axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register-user', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
         .then(response => {
           console.log(response);
-
+          resUsername = response.data.userId;
+          resPassword = response.data.password;
           setServerResponseReceived(true);
           console.log("successful");
           setLoading(false);
@@ -357,7 +359,7 @@ function User() {
             </div>
 
             <div className="form-check">
-              <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
+              <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" required checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
               <label className="form-check-labels" >
                 I hereby confirm that the information I have submitted is accurate and complete. I attest that all the details provided are true to the best of my knowledge.
               </label>

@@ -30,7 +30,7 @@ function MyVerticallyCenteredModal(props) {
     const [email, setEmail] = useState("");
     const [tel1Error, setTelError] = useState("");
     const [isChecked, setIsChecked] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
     // Retrieve the token from localStorage
     // const token = localStorage.getItem('token');
     const handleFullName = (event) => {
