@@ -4,7 +4,22 @@ import Image2 from '../Image/total2.png';
 import Image3 from '../Image/total3.png';
 import Metereader from '../Admin/MeterReader';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
 function MainBox(){
+    const [totalUsers, setTotalUsers] = useState(0);
+
+  useEffect(() => {
+    async function fetchTotalUsers() {
+      const response = await fetch('https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers');
+      const data = await response.json();
+      setTotalUsers(data.totalUsers); 
+      console.log(totalUsers)
+
+    }
+    fetchTotalUsers();
+  }, []);
+    
     return(
         <div>
             
@@ -35,7 +50,8 @@ function MainBox(){
                                     </div>
                                     <div style={{float:'right',marginTop: '0px',paddingRight: '32px'}}>
                                             <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Total Meter Readers</span><br/>
-                                            <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>0</span>
+                                          
+                                            <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>{totalUsers}</span>
                                     </div>
                                         
                                                                         

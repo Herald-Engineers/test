@@ -137,6 +137,7 @@ function submitAddReader(fullName, readerId, contactNum, email) {
 let gFullName, gReaderId, gContactNum, gEmail;
 
 function DynamicTable(){
+ 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
