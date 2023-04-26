@@ -28,11 +28,11 @@ function Schedule(){
                                 <div>
                                     <div style={{paddingRight:'20px'}}>
                                         <label>Address</label><br/>
-                                        <input type="text" name="address1" placeholder="Enter Address" className='inputBox'/><br/>
-                                        <input type="text" name="address2" placeholder="Enter Address" className='inputBox'/><br/>
-                                        <input type="text" name="address3" placeholder="Enter Address" className='inputBox'/><br/>
-                                        <input type="text" name="address4" placeholder="Enter Address" className='inputBox'/><br/>
-                                        <input type="text" name="address5" placeholder="Enter Address" className='inputBox'/><br/>
+                                        <input type="text" name="address1" placeholder="Enter Address 1" className='inputBox'/><br/>
+                                        <input type="text" name="address2" placeholder="Enter Address 2" className='inputBox'/><br/>
+                                        <input type="text" name="address3" placeholder="Enter Address 3" className='inputBox'/><br/>
+                                        <input type="text" name="address4" placeholder="Enter Address 4" className='inputBox'/><br/>
+                                        <input type="text" name="address5" placeholder="Enter Address 5" className='inputBox'/><br/>
 
                                     </div>
                                 </div>
