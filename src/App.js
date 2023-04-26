@@ -34,6 +34,10 @@ import Kukl from './HomePage/KUKLPay';
 import UserTable from './Admin/UserTable';
 import Issue from './Admin/Issue';
 import Schedule from './Admin/Schedule';
+import ViewSchedule from './Admin/ViewSchedule';
+import IssueUser from './HomePage/Issue';
+import AdminProfile from './Admin/AdminProfile';
+
 
 function App() {
   return (
@@ -72,6 +76,9 @@ function App() {
         <Route path="/userTable" element={<UserTable />} />
         <Route path="/issue" element={<Issue />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/viewschedule" element={<ViewSchedule />} />
+        <Route path="/issue" element={<IssueUser />} />
+        <Route path="/adminProfile" element={<AdminProfile />} />
         
       </Routes>
     </BrowserRouter>

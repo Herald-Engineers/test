@@ -25,8 +25,8 @@ function MyVerticallyCenteredModal(props) {
                 <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Are you sure you want to log out?</span></center>
                 <div className='main-box text-center'>
 
-                    <Link to="/">
-                        <Button onClick="/" className='i-understand'>Confirm</Button>
+                    <Link to="/login">
+                        <Button  className='i-understand'>Confirm</Button>
                     </Link><br/><br/>
                     <Button onClick={props.onHide} className='myCancelButton'>Cancel</Button>
                 </div>
@@ -114,7 +114,7 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link  active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/adminProfile' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='' style={{bottom:'0',position:'absolute',paddingBottom:'10px'}}>
                                 <img src={MyProfile} alt="Profile Picture" className="myProfilePic" /> <br/>

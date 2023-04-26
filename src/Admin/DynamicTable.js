@@ -335,7 +335,22 @@ const handleEditSubmit = (editedRow) => {
       ))}
     </tbody>
   </table>
-  
+
+  <Modal  show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
+    <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
+      <center>
+        <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
+        <div className='main-box  '>
+        <p>Are you sure you want to delete it?.</p><br/>
+        <Button onClick={handleClose} className='meterButtons'>Go Back</Button>
+        <Button className='meterButtons2' type='submit' value="submit" >Del</Button>
+        {/* onClick={() => handleEdit(row._id)} */}{loading && !serverResponseReceived && <LoadingSpinner />}
+            
+                  
+          </div>
+        </Modal.Body>
+         
+      </Modal>
   
   <Modal  show={show} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
     <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>

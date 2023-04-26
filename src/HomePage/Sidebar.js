@@ -11,7 +11,33 @@ import  { TbDashboard } from "react-icons/tb";
 import  { TbCalendarTime } from "react-icons/tb";
 import {RiArrowGoBackFill} from "react-icons/ri";
 import {FiUser} from "react-icons/fi";
+import {TbMessageReport} from "react-icons/tb";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+function MyVerticallyCenteredModal(props) {
+
+    return (
+        <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+
+            <Modal.Body style={{padding:'40px',backgroundColor:'#D9D9D9'}}>
+                <center>
+                <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Are you sure you want to log out?</span></center>
+                <div className='main-box text-center'>
+
+                    <Link to="/login">
+                        <Button  className='i-understand'>Confirm</Button>
+                    </Link><br/><br/>
+                    <Button onClick={props.onHide} className='myCancelButton'>Cancel</Button>
+                </div>
+            </Modal.Body>
+
+        </Modal>
+    );
+}
+
 function Sidebar(){
+    const [modalShow, setModalShow] = React.useState(false);
     const links = document.querySelectorAll('.sidebar-link');
 
     links.forEach(link => {
@@ -53,21 +79,30 @@ function Sidebar(){
 
                         
 
-                        <Nav.Link as={Link} to='/editprofile' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/editprofile' active={activeLink === 'profile'} onClick={() => setActiveLink('profile')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
                                     <FiUser  size={18} style={{paddingTop:'2px'}}/>
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My Profile</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/editprofile' active={activeLink === 'issue'} onClick={() => setActiveLink('issue')}  className='sidebar-fonts sidebar-link'>
+                    
+                            <div className='d-flex'>
+                                    < TbMessageReport size={18} style={{paddingTop:'2px'}}/>
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Issues</p> 
+                            </div>
+                        </Nav.Link>
+                        
+                        <Nav.Link active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'> 
                     
                             <div className='d-flex'>
                                     <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
-                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Sign Out</p> 
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor" onClick={() => setModalShow(true)}>Sign Out</p> 
                             </div>
                         </Nav.Link>
                     </Nav>
+                    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
                 </div>
             </div>
             

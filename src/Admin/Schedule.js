@@ -5,6 +5,7 @@ import  '../Components/SmallLogo.css';
 import Main from '../Admin/MainBoxes';
 import {  useState, useEffect} from 'react';
 import axios from 'axios';
+import ViewSchedule from '../Admin/ViewSchedule';
 
 import Calendar from '../Image/Calendar.png';
 function Schedule(){
@@ -151,6 +152,7 @@ function Schedule(){
                         </form>
                       
                     </div>
+                    <ViewSchedule />
                 
                 </div> 
             </div>
