@@ -13,11 +13,32 @@ import  { TbCalendarTime } from "react-icons/tb";
 import {FiUser} from "react-icons/fi";
 import {RiArrowGoBackFill} from "react-icons/ri";
 import {TbMessageReport} from "react-icons/tb";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+function MyVerticallyCenteredModal(props) {
 
+    return (
+        <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+
+            <Modal.Body style={{padding:'40px',backgroundColor:'#D9D9D9'}}>
+                <center>
+                <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Are you sure you want to log out?</span></center>
+                <div className='main-box text-center'>
+
+                    <Link to="/">
+                    <Button onClick="/" className='i-understand'>Confirm</Button></Link><br/><br/>
+                    <Button onClick={props.onHide} className='myCancelButton'>Cancel</Button>
+                </div>
+            </Modal.Body>
+
+        </Modal>
+    );
+}
 
 
 
 function AdminSidebar(){
+    const [modalShow, setModalShow] = React.useState(false);
     const links = document.querySelectorAll('.sidebar-link');
 
     links.forEach(link => {
@@ -80,7 +101,7 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => {
+                        <Nav.Link  active={activeLink === 'settings'} onClick={() => {
                                 localStorage.removeItem('token');
                                 localStorage.removeItem('fullName');
                                 setActiveLink('settings')
@@ -88,7 +109,7 @@ function AdminSidebar(){
                     
                             <div className='d-flex'>
                                     <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
-                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Sign Out</p> 
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor" onClick={() => setModalShow(true)}>Sign Out</p> 
                             </div>
                         </Nav.Link>
 
@@ -101,6 +122,7 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
                     </Nav>
+                    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
                 </div>
             </div>
             
