@@ -13,10 +13,7 @@ import axios from 'axios';
 import LoadingSpinner from './Components/LoadingSpinner';
 
 
-// const url = 'https://wavebilling-backend-sabinlohani.onrender.com/login ';
  function Login() {
-  
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbWVzaCIsImlkIjoiNjQxYWZkNTgyYjM2MWQyNzg2Njc0ZjYxIiwiaWF0IjoxNjc5ODM5MDAzfQ.N61yNl2GfLEGT49Pia9Kg-xW1cO9MqwZ0pQE2xfU3HM';
   const navigate = useNavigate();
 
   // Set up state variables for handling server response, loading state, username, password, and error message
@@ -46,10 +43,8 @@ import LoadingSpinner from './Components/LoadingSpinner';
       password: password
     })
     .then(res => {
-      localStorage.setItem(res.data.fullName);
-      localStorage.setItem(res.data.role);
-      localStorage.setItem(res.data.token);
-      const token = res.data.token;
+      localStorage.setItem('fullName', res.data.fullName);
+      localStorage.setItem('token', res.data.token);
       const role = res.data.role;
       setServerResponseReceived(true);
       setLoading(false);
@@ -72,6 +67,7 @@ import LoadingSpinner from './Components/LoadingSpinner';
       
     })
     .catch(error => {
+      setLoading(false);
       console.log(error);
       setErrorMessage("Invalid username or password");
     });
