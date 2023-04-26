@@ -1,12 +1,17 @@
 import '../Css/LandingPage.css';
 import axios from 'axios';
 import React, { useState } from 'react';
-function Contact(){
+import Loader from './LoadingSpinner';
+
+function Contact() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [contactNum, setContact] = useState("");
     const [queries, setQueries] = useState("");
+
+    const [loading, setLoading] = useState(false);
+
 
     const handleFirstName = (event) => {
         setFirstName(event.target.value);
@@ -26,27 +31,31 @@ function Contact(){
         setQueries(event.target.value);
     };
     const handleSubmit = (event) => {
+        const submitBtn = document.getElementById('contact-submit');
+        submitBtn.disabled = true;
+        setLoading(true);
+
         event.preventDefault();
-        
-        console.log("hello");
         axios.post("https://wavebilling-backend-sabinlohani.onrender.com/contact-wavebilling", {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
             contactNum: contactNum,
             queries: queries
         })
         .then(res => {
-         
-          console.log(res.data);
-          // Redirect to the user's dashboard or some other page
-          
+            submitBtn.disabled = false;
+            setLoading(false);
+
+            alert(res.data.message);
+            console.log(res.data);
+            // Redirect to the user's dashboard or some other page
         })
         .catch(error => {
-          console.log(error);
-          
+            setLoading(true);
+            console.log(error);
         });
-      };
+    };
     
     return(
         <div className='form-section'> 
@@ -69,9 +78,10 @@ function Contact(){
                 <div className='line_space'>
                     <p >Queries</p>
                     <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' value={queries}onChange={handleQueries} /><br>
-                    </br> <input type="submit" value="Submit" />
+                    </br> <input id='contact-submit' type="submit" value="Submit" />
+                    {loading && <Loader />}
                 </div>
-            </form>             
+            </form>
         </div>
     );
 }
