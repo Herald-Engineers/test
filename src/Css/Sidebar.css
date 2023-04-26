@@ -40,16 +40,20 @@
 .sidebar-link {
     /*   */
   }
+  .sidebar-link:focus, .sidebar-link:hover {
+    color: #0A83F0;
+  }
   
   .sidebar-link.active {
-   color: #0A83F0;
+    color: #0A83F0;
   }
+  
   .myfontcolor.active{
     color: #ffffff;
   }
-  .sidebar-link.active > p {
+  /* .sidebar-link.active > p {
     color: white;
-  }
+  } */
 
 
   .dashbaord-image{
@@ -66,3 +70,11 @@
   height: 30px;
 } 
 
+.myCancelButton{
+  background-color: rgb(171, 171, 171);
+  border: gray;
+}
+.myCancelButton:hover{
+  background-color: rgb(146, 146, 146);
+  border: gray;
+}

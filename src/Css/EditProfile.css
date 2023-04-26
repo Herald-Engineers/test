@@ -87,8 +87,8 @@ select#PaymentSelection{
 }
 #bill-history-section{
     padding-top: 30px;
-    padding-left: 20px;
-    width: 50%;
+    margin-left: 70px;
+    margin-right: 70px;
     
 }
 

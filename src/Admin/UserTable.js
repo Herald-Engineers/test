@@ -9,6 +9,7 @@ import AdminSidebar from '../Admin/AdminSidebar';
 import MainBox from '../Admin/MainBoxes';
 import MeterTable from '../Admin/MeterTable';
 function UserTable(){
+    const [tableData, setTableData] = useState([]);
     return(
         
             <div>
@@ -26,8 +27,28 @@ function UserTable(){
                             
                               
                          
-                         <div className='myTables'>
+                         <div className='myTables'style={{ width: '1200px', overflowX: 'scroll' }}>
                             
+                            <div style={{ width: '2000px', overflowX: 'scroll' }}>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th style={{ width: '300px' }}>Name</th>
+                                        <th style={{ width: '300px' }}>User Id</th>
+                                        <th style={{ width: '300px' }}>Meter No</th>
+                                        <th style={{ width: '300px' }}>Contact No</th>
+                                        <th style={{ width: '300px' }}>Email</th>
+                                        <th style={{ width: '300px' }}>Address</th>
+                                        <th style={{ width: '300px' }}>Payment Status</th>
+                                        <th style={{ width: '100px' }}>Action</th>
+                                       
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
                          </div>
                         </div>
                         

@@ -1,5 +1,4 @@
-import Sign1 from '../Image/sign1.png';
-import Sign2 from '../Image/sign2.png';
+
 import '../SignUp/Sign.css';
 import Copyright from '../Components/Copyright';
 // import { useLocation } from 'react-router-dom';

@@ -1,28 +1,6 @@
-/* #customers {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #customers tr:hover {background-color: #ddd;}
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #6092C0;
-    color: white;
-  } */
-  .viewButton{
+.viewButton{
     color: black;
-  }
+}
 .meterReader-table12{
   padding: 20px;
 }
@@ -30,4 +8,24 @@
   margin: 30px;
   padding: 40px;
 }
+.MyBody td a {
+  color: black; 
+  text-decoration-color: #0A83F0;
+}
+.MyBody td a :hover {
+  color: #0A83F0; 
+  text-decoration-color: #0A83F0;
+}
+.outer-border{
+  border-radius: 11px;
+  box-shadow: 0px 0px 12px 0px #00000040;
+  border-collapse: collapse;
+  width: 100%;
+}
+.captions {
+  text-align: center;
+  caption-side: top;
+  width: 100%;
+}
+
 

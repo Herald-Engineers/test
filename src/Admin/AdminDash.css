@@ -28,3 +28,6 @@
     display: flex;
     margin-left: 117px;
 }
+#submitSchedule:hover{
+    background-color: #094eb5;
+}

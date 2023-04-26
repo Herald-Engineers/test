@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import step1 from '../Image/step1.png';
 import step2 from '../Image/step2.png';
 import step3 from '../Image/step3.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import MyLogo from '../Image/logo123.png';
 import { MdVerified } from "react-icons/md";
@@ -265,7 +265,7 @@ function User() {
                 <div className="d-flex">
                   <div>
                     <select id="Municipalities" name="municipality" className="select_option" >
-                      <option value="">Municiplaity</option>
+                      <option value="">Municipality</option>
                       <option value="Kathmandu">    Kathmandu Metropolitan City  </option>
                       <option value="Lalitpur">    Lalitpur Metropolitan City </option>
                       <option value="Bhaktapur">    Bhaktapur Municipality</option>
@@ -385,7 +385,7 @@ function User() {
 
 export default User;
 
-{/* <Modal show={show} onHide={handleClose} animation={false}>
+/* <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Create an account </Modal.Title>
         </Modal.Header>
@@ -399,4 +399,4 @@ export default User;
           </Button>
       
         </Modal.Footer>
-      </Modal> */}
+      </Modal> */

@@ -5,6 +5,57 @@ import  '../Components/SmallLogo.css';
 import Main from '../Admin/MainBoxes';
 import Calendar from '../Image/Calendar.png';
 function Schedule(){
+    
+    
+    // const [address1, setAddress1] = useState("");
+    // const [address2, setAddress2] = useState("");
+    // const [address3, setAddress3] = useState("");
+    // const [address4, setAddress4] = useState("");
+    // const [date, setDate] = useState("");
+    // const handleAddress1 = (event) => {
+    //     setAddress1(event.target.value);
+    // };
+    // const handleAddress2 = (event) => {
+    //     setAddress2(event.target.value);
+    // };
+    // const handleAddress3 = (event) => {
+    //     setAddress3(event.target.value);
+    // };
+    // const handleAddress4 = (event) => {
+    //     setAddress4(event.target.value);
+    // };
+  
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     setLoading(true);
+    //     console.log("hello");
+    
+    //      // Send a POST request to the server with the entered username and password
+    //     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
+    //       address1: address1,
+    //       address2: address2,
+    //       address3: address3,
+    //       address4: address4,
+    //       date: date,
+    //       shift: shift,
+    //       assignedto: assignedto,
+
+    //     })
+    //     .then(res => {
+    //       const token = res.data.token;
+    //       const role = res.data.role;
+    //       setServerResponseReceived(true);
+    //       setLoading(false);
+    //        // Depending on the user role, navigate to a different page
+          
+    //       console.log(res.data);
+          
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //       setErrorMessage("Invalid username or password");
+    //     });
+    //   };
     return (
         <div>
             <div className='containerHome'>
@@ -23,12 +74,12 @@ function Schedule(){
                                  <h4 className='text-center'style={{color:'#2F4858',height:'37px',fontWeight:'600'}}>Add Schedule</h4>
                             </div>
                         </div>
-                        <form>
+                        <form >
                             <div className='d-flex justify-content-center' style={{paddingTop:'45px'}}>
                                 <div>
                                     <div style={{paddingRight:'20px'}}>
                                         <label>Address</label><br/>
-                                        <input type="text" name="address1" placeholder="Enter Address" className='inputBox'/><br/>
+                                        <input type="text" name="address1" placeholder="Enter Address" className='inputBox' required  /><br/>
                                         <input type="text" name="address2" placeholder="Enter Address" className='inputBox'/><br/>
                                         <input type="text" name="address3" placeholder="Enter Address" className='inputBox'/><br/>
                                         <input type="text" name="address4" placeholder="Enter Address" className='inputBox'/><br/>
@@ -48,7 +99,7 @@ function Schedule(){
 
                                 </div>
                             </div>
-                            <input type="submit" value="submit" id='submitSchedule'/>
+                            <input type="submit" value="Submit" id='submitSchedule'/>
                         </form>
                     </div>
                 

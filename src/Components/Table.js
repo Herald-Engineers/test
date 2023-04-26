@@ -5,50 +5,64 @@ import '../Admin/MeterReader.css';
 function Table(){
     return(
         <div className="">
-            <table className="table table-striped meterReader-table12 outer-border" id="customers">
+            <table className="table table-striped meterReader-table12 outer-border" id="customers" style={{width:'100%'}}>
+               
+              
                 <thead className=''>
+                
                     <tr>
-                        <th scope="col">Bill No</th>
-                        <th scope="col">Payment Date</th>
-                        <th scope="col"> Total Charge</th>
-                    
-                    
+                        <th scope="col">Date</th>
+                        <th scope="col">Transaction No</th>
+                        <th scope="col">Amount</th>
                         <th scope="col">Status</th>
                         <th scope='col'>Action</th>
                     </tr>
                 </thead>
                 <tbody className='MyBody'>
                     <tr>
-                        <th scope="">1</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 2000</td>
+                        <td>2/02/2022</td>
+                        <td>99235</td>
+                        <td>Rs. 2044</td>
                         <td style={{color:'red'}}>Overdue</td>
-                        <td><Link><p className='viewButton'>View</p></Link> <p className='viewButton'>Download</p></td>
+                        <td><Link><p className='viewButton'>View Details</p></Link> <p className='viewButton'>Download</p></td>
                         
                        
                     </tr>
                     <tr>
-                        <th scope="">2</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 2588</td>
+                        <td>2/02/2022</td>
+                        <td>99235</td>
+                        <td>Rs. 2044</td>
                         <td style={{color:'red'}}>Overdue</td>
-                        <td><Link><button  className='viewButton'>View</button></Link></td>
+                        <td><Link><p className='viewButton'>View Details</p></Link> <p className='viewButton'>Download</p></td>
                         
-                        
+                       
                     </tr>
                     <tr>
-                        <th scope="">3</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 1580</td>
-                        <td style={{color:'green'}}>Paid</td>
-                        <td><Link><button  className='viewButton'>View</button></Link></td> 
+                        <td>2/02/2022</td>
+                        <td>99235</td>
+                        <td>Rs. 2044</td>
+                        <td style={{color:'red'}}>Overdue</td>
+                        <td><Link><p className='viewButton'>View Details</p></Link> <p className='viewButton'>Download</p></td>
+                        
+                       
                     </tr>
                     <tr>
-                        <th scope="">4</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 1620</td>
-                        <td style={{color:'#C0BB43'}}>Pending</td>
-                        <td><Link><button  className='viewButton'>View</button></Link></td> 
+                        <td>2/02/2022</td>
+                        <td>99235</td>
+                        <td>Rs. 2044</td>
+                        <td style={{color:'red'}}>Overdue</td>
+                        <td><Link><p className='viewButton'>View Details</p></Link> <p className='viewButton'>Download</p></td>
+                        
+                       
+                    </tr>
+                    <tr>
+                        <td>2/02/2022</td>
+                        <td>99235</td>
+                        <td>Rs. 2044</td>
+                        <td style={{color:'red'}}>Overdue</td>
+                        <td><Link><p className='viewButton'>View Details</p></Link> <p className='viewButton'>Download</p></td>
+                        
+                       
                     </tr>
                 </tbody>
             </table>

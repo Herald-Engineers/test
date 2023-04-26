@@ -21,7 +21,7 @@ function BillHistory(){
                 </div>
                 
                 <div className='' id='bill-history-section'>
-                    <p>My Bill History</p>
+                   
                     <div>
                         <History/>
                     </div>

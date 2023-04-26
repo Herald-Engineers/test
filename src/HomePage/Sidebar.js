@@ -35,6 +35,7 @@ function Sidebar(){
                     <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" />
                 </Link>
                 <div style={{backgroundColor: 'transparent'}}>
+                    
                     <Nav className="flex-column">
                         <Nav.Link as={Link} to='/homela' active={activeLink === 'dashboard'} onClick={() => setActiveLink('dashboard')} className='sidebar-fonts sidebar-link' >
                             <div className='d-flex'>

@@ -14,6 +14,15 @@ import LoadingSpinner from './Components/LoadingSpinner';
 
 
 // const url = 'https://wavebilling-backend-sabinlohani.onrender.com/login ';
+function getNotificationMessage(username, password) {
+  if (username === "" || password === "") {
+    return "Please enter both username and password.";
+  } else if (username !== "example" || password !== "password") {
+    return "Invalid username or password.";
+  } else {
+    return "Login successful.";
+  }
+}
  function Login() {
   
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbWVzaCIsImlkIjoiNjQxYWZkNTgyYjM2MWQyNzg2Njc0ZjYxIiwiaWF0IjoxNjc5ODM5MDAzfQ.N61yNl2GfLEGT49Pia9Kg-xW1cO9MqwZ0pQE2xfU3HM';
@@ -53,7 +62,8 @@ import LoadingSpinner from './Components/LoadingSpinner';
        // Depending on the user role, navigate to a different page
       if (role === 'individualConsumer') {
           // Navigate to another page
-          navigate("/homela");
+          const notificationMessage = getNotificationMessage(username, password);
+          navigate("/homela", { state: { username, password } });
       } 
       else if(role === 'admin'){
         navigate("/meterReader");
@@ -62,7 +72,7 @@ import LoadingSpinner from './Components/LoadingSpinner';
         navigate("/");
       }
       else {
-          navigate("/ ");
+          navigate("/meterReaderDash");
       }
       
       console.log(res.data);

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function Drop() {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
-  const [showPopUp, setShowPopUp] = useState(false);
+  // const [showPopUp, setShowPopUp] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleLogOut = () => {
@@ -31,7 +31,7 @@ function Drop() {
     <div className="Dropp ml-auto">
       <Dropdown className='Dropp'>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-        <img src={Account}  className="" />
+        <img src={Account} alt='My dropdown menus' className="" />
         </Dropdown.Toggle>
 
         <Dropdown.Menu style={{ backgroundColor: "#fff" }}>

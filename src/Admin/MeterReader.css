@@ -94,3 +94,7 @@ table tr th{
 input[type=submit],.submitSchedule{
     background-color: #0d6efd;
 }
+.mainbox-inner{
+    display: flex;
+    justify-content: center;
+}

@@ -34,6 +34,7 @@ import Kukl from './HomePage/KUKLPay';
 import UserTable from './Admin/UserTable';
 import Issue from './Admin/Issue';
 import Schedule from './Admin/Schedule';
+import MeterReaderPage from './MeterReaderPage/MeterReaderDash';
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
         <Route path="/userTable" element={<UserTable />} />
         <Route path="/issue" element={<Issue />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/meterReaderDash" element={<MeterReaderPage/>} />
         
       </Routes>
     </BrowserRouter>

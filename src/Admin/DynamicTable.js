@@ -115,24 +115,24 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 let gId;
-function submitAddReader(fullName, readerId, contactNum, email) {
-  axios.patch('https://wavebilling-backend-sabinlohani.onrender.com/admin/edit-reader', {
-    fullName: fullName,
-    readerId: readerId,
-    contactNum: contactNum,
-    email: email,
-    _id: gId,
+// function submitAddReader(fullName, readerId, contactNum, email) {
+//   axios.patch('https://wavebilling-backend-sabinlohani.onrender.com/admin/edit-reader', {
+//     fullName: fullName,
+//     readerId: readerId,
+//     contactNum: contactNum,
+//     email: email,
+//     _id: gId,
    
-    }, 
-    {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    }).then(response => { 
-      console.log("successful");  
-      console.log(response);
-    }).catch(error => console.log(error));
-};
+//     }, 
+//     {
+//       headers: {
+//         Authorization: `Bearer ${localStorage.getItem('token')}`,
+//       },
+//     }).then(response => { 
+//       console.log("successful");  
+//       console.log(response);
+//     }).catch(error => console.log(error));
+// };
 
 let gFullName, gReaderId, gContactNum, gEmail;
 
@@ -143,7 +143,7 @@ function DynamicTable(){
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     
-    ;
+    
     console.log("Id: ",id); // prints row._id
   };
   
@@ -168,7 +168,28 @@ function DynamicTable(){
   };
   const [serverResponseReceived, setServerResponseReceived] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [reader, setReader] = useState(null);
+
   
+  axios.get('https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers')
+  .then(response => {
+    const reader = response.data.find(reader => reader.fullName === fullName);
+    console.log("Meter reader: ",reader);
+    if (reader) {
+      // pass the reader object to your state hooks
+      setFullname(reader.fullName);
+      setReaderId(reader.readerId);
+      setContact(reader.contactNum);
+      setEmail(reader.email);
+      setReader(reader); // add this line to save the reader object for later use
+    } else {
+      // handle case where reader is not found
+    }
+  })
+  .catch(error => {
+    // handle errors
+    console.log(error);
+  });
   
   
   const handleSubmit = (event) => {
@@ -176,10 +197,10 @@ function DynamicTable(){
     setLoading(true);
     axios.patch('https://wavebilling-backend-sabinlohani.onrender.com/admin/edit-reader', {
     fullName: fullName,
-    readerId: readerId,
+    readerId: readerId, 
     contactNum: contactNum,
     email: email,
-    _id: "6425d769c56d58d9766079e2",
+    
    
     }, 
     {
@@ -195,9 +216,9 @@ function DynamicTable(){
       setReaderId("");
       setContact("");
       setEmail(""); 
+      setReader(null);
     }).catch(error => console.log(error));
   };
-  const [modalShow, setModalShow] = React.useState(false);
   useEffect(() => {
     axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers", {
     headers: {
@@ -206,7 +227,9 @@ function DynamicTable(){
   })
   .then((response) => setTableData(response.data))
   .catch((error) => console.log(error));
-  }, []);
+  }, [reader]);
+  const [modalShow, setModalShow] = React.useState(false);
+  
   
   const handleDelete = (_id) => {
     console.log('The id is ' + _id);
@@ -289,8 +312,11 @@ const handleEditSubmit = (editedRow) => {
   // Hide the edit modal after updating data
   setModalShow(false);
 };
-    
-
+const [defaultFullName, setDefaultFullName] = useState("");  
+const [defaultReaderid, setDefaultReaderid] = useState("");
+const [defaultEmail, setDefaultEmail] = useState("");
+const [defaultContact, setDefaultContact] = useState("");
+const rowNumber = tableData.length;
 
   return (
     <>
@@ -309,10 +335,11 @@ const handleEditSubmit = (editedRow) => {
           <td>{row.fullName}</td>
           <td>{row.email}</td>
           <td>{row.contactNum}</td>
+         
           <td>
           <form onSubmit={handleSubmit}>
             <img src={Edit} alt="Edit Meter Reader" className="" onClick={() => {
-              setShow(true);
+              setShow(true); setDefaultFullName(row.fullName);  setDefaultEmail(row.email); setDefaultContact(row.contactNum); 
               // gId = row._id;
               // gFullName = row.fullName;
               // gReaderId = row.email;
@@ -342,40 +369,47 @@ const handleEditSubmit = (editedRow) => {
     <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
       <center>
         <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
-        <div className='main-box  '>
-        <p>Please enter the Reader ID and temporary password for  the Reader.</p><br/>
-        <form  onSubmit={(event) => handleSubmit( event)}>
-          <table>
-            <tbody>
-              <tr>
-                <td>Full Name: </td>
-                <td><input type="text" name="fullName" placeholder="Enter full name"  value={fullName}  className='meter-Table2' onChange={handleFullName}/></td>
-              </tr>
-              <tr>
-                <td>Reader Id: </td>
-                <td><input type="text" name="readerId" placeholder="Enter Reader Id"  value={readerId} onChange={handleReaderId}/></td>
-              </tr>
-              <tr>
-                <td>Contact No:</td>
-                        <td><input type="text" name="contactNum" placeholder="Enter Contact No"  value={contactNum} onChange={handleContactNum} /></td>
-                      </tr>
-                      <tr>
-                        <td>Email Address: </td>
-                        <td><input type="text" name="email" placeholder="Enter Email"  value={email} onChange={handleEmail}/></td>
-                      </tr>
-  
-                    </tbody>
-                  </table>
-                  
-                  <Button onClick={handleClose} className='meterButtons'>Go Back</Button>
-                  <Button className='meterButtons2' type='submit' value="submit"  onClick={submitAddReader(fullName, readerId, contactNum, email)} >Submit</Button>
-                  {/* onClick={() => handleEdit(row._id)} */}{loading && !serverResponseReceived && <LoadingSpinner />}
-            </form>
-                  
+        <div className='main-box'>
+          <div>
+          <p>Please enter the Reader ID and temporary password for  the Reader.</p><br/>
+          <div className='mainbox-inner'>
+          <form  onSubmit={handleSubmit}>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Full Name: </td>
+                  <td><input type="text" name="fullName" placeholder="Enter full name"  value={fullName || defaultFullName}  className='meter-Table2' onChange={handleFullName}/></td>
+                </tr>
+                <tr>
+                  <td>Reader Id: </td>
+                  <td><input type="text" name="readerId" placeholder="Enter Reader Id"  value={readerId || defaultReaderid} className='meter-Table2' onChange={handleReaderId}/></td>
+                </tr>
+                <tr>
+                  <td>Contact No:</td>
+                          <td><input type="text" name="contactNum" placeholder="Enter Contact No"  value={contactNum || defaultContact} onChange={handleContactNum} /></td>
+                        </tr>
+                        <tr>
+                          <td>Email Address: </td>
+                          <td><input type="text" name="email" placeholder="Enter Email"  value={email || defaultEmail} onChange={handleEmail}/></td>
+                        </tr>
+    
+                      </tbody>
+                    </table>
+                    
+                    <Button onClick={handleClose} className='meterButtons'>Go Back</Button>
+                    <Button className='meterButtons2' type='submit' value="submit"   >Submit</Button><br/><br/>
+                    {/* onClick={() => handleEdit(row._id)} */}{loading && !serverResponseReceived && <LoadingSpinner />}
+                    {/* onClick={submitAddReader(fullName, readerId, contactNum, email)} */}
+          </form>
           </div>
-        </Modal.Body>
+          
+          </div>
+          
+                  
+        </div>
+      </Modal.Body>
          
-      </Modal>
+    </Modal>
     </>
   );
 }

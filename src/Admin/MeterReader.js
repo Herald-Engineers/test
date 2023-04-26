@@ -186,7 +186,7 @@ function MeterRead(){
                         <MainBox />
                     </div>
                     <div className="d-flex">
-                        <BiAddToQueue size={27}/>
+                        <BiAddToQueue size={27} onClick={() => setModalShow(true)} />
                         <div style={{display:'block'}}>
                             <u> <p onClick={() => setModalShow(true)} style={{marginLeft:'5px'}}>Create an account</p></u>
 
