@@ -45,7 +45,7 @@ function Schedule(){
         event.preventDefault();
 
         console.log("hello");
-        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/add-schedule", {
+        const data = {
             address1: address1,
             address2: address2,
             address3: address3,
@@ -54,14 +54,16 @@ function Schedule(){
             date: date,
             shift: event.target.shift.value,
             assignedTo: event.target.assignedTo.value,
-        }, 
+
+        };
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/add-schedule", data , 
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then(res => {
-          const token = res.data.token;
+          
           console.log(res);
         })
         .catch(error => {
@@ -99,7 +101,7 @@ function Schedule(){
                                  <h4 className='text-center'style={{color:'#2F4858',height:'37px',fontWeight:'600'}}>Add Schedule</h4>
                             </div>
                         </div>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className='d-flex justify-content-center' style={{paddingTop:'45px'}}>
                                 <div>
                                     <div style={{paddingRight:'20px'}}>
