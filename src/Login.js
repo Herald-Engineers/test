@@ -46,6 +46,9 @@ import LoadingSpinner from './Components/LoadingSpinner';
       password: password
     })
     .then(res => {
+      localStorage.setItem(res.data.fullName);
+      localStorage.setItem(res.data.role);
+      localStorage.setItem(res.data.token);
       const token = res.data.token;
       const role = res.data.role;
       setServerResponseReceived(true);
