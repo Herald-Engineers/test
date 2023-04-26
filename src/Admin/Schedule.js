@@ -2,9 +2,12 @@ import MyAdmin from '../Admin/AdminSidebar';
 import  '../HomePage/Homepage.css';
 import  '../Admin/AdminDash.css';
 import  '../Components/SmallLogo.css';
+import {  useState, useEffect} from 'react';
 import Main from '../Admin/MainBoxes';
+import axios from 'axios';
 import Calendar from '../Image/Calendar.png';
 function Schedule(){
+    const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
     const [reader, setReader] = useState(null);
 
@@ -18,55 +21,55 @@ function Schedule(){
       .catch((error) => console.log(error));
       }, [reader]);
     
-    // const [address1, setAddress1] = useState("");
-    // const [address2, setAddress2] = useState("");
-    // const [address3, setAddress3] = useState("");
-    // const [address4, setAddress4] = useState("");
-    // const [date, setDate] = useState("");
-    // const handleAddress1 = (event) => {
-    //     setAddress1(event.target.value);
-    // };
-    // const handleAddress2 = (event) => {
-    //     setAddress2(event.target.value);
-    // };
-    // const handleAddress3 = (event) => {
-    //     setAddress3(event.target.value);
-    // };
-    // const handleAddress4 = (event) => {
-    //     setAddress4(event.target.value);
-    // };
+    const [address1, setAddress1] = useState("");
+    const [address2, setAddress2] = useState("");
+    const [address3, setAddress3] = useState("");
+    const [address4, setAddress4] = useState("");
+    const [date, setDate] = useState("");
+    const [shift, setShift] = useState("");
+    const [assignedTo, setAssignedTo] = useState("");
+    const handleAddress1 = (event) => {
+        setAddress1(event.target.value);
+    };
+    const handleAddress2 = (event) => {
+        setAddress2(event.target.value);
+    };
+    const handleAddress3 = (event) => {
+        setAddress3(event.target.value);
+    };
+    const handleAddress4 = (event) => {
+        setAddress4(event.target.value);
+    };
   
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     setLoading(true);
-    //     console.log("hello");
+    const handleSubmit = (event) => {
+        event.preventDefault();
+       
+        console.log("hello");
     
-    //      // Send a POST request to the server with the entered username and password
-    //     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
-    //       address1: address1,
-    //       address2: address2,
-    //       address3: address3,
-    //       address4: address4,
-    //       date: date,
-    //       shift: shift,
-    //       assignedto: assignedto,
+         // Send a POST request to the server with the entered username and password
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
+          address1: address1,
+          address2: address2,
+          address3: address3,
+          address4: address4,
+          date: date,
+          shift: shift,
+          assignedto: assignedto,
 
-    //     })
-    //     .then(res => {
-    //       const token = res.data.token;
-    //       const role = res.data.role;
-    //       setServerResponseReceived(true);
-    //       setLoading(false);
-    //        // Depending on the user role, navigate to a different page
+        })
+        .then(res => {
+          const token = res.data.token;
+         
+           // Depending on the user role, navigate to a different page
           
-    //       console.log(res.data);
+          console.log(res.data);
           
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //       setErrorMessage("Invalid username or password");
-    //     });
-    //   };
+        })
+        .catch(error => {
+          console.log(error);
+        
+        });
+      };
     return (
         <div>
             <div className='containerHome'>
