@@ -6,7 +6,15 @@ import MeterReader from '../Admin/MeterReader';
 import Main from '../Admin/MainBoxes';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-function AdminDashboard(){
+function AdminDashboard() {
+    if(!localStorage.token) {
+        console.log('No token is: ' + !localStorage.token);
+        // return (
+        //     <div>
+        //         Unauthorized user
+        //     </div>
+        // );
+    }
     return (
         <div>
             <div className='containerHome'>

@@ -105,14 +105,19 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link  active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => {
+                                localStorage.removeItem('token');
+                                localStorage.removeItem('fullName');
+                                setActiveLink('settings')
+                            }}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
                                     <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor" onClick={() => setModalShow(true)}>Sign Out</p> 
                             </div>
-                        </Nav.Link> 
-                        <Nav.Link  active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        </Nav.Link>
+
+                        <Nav.Link as={Link} to='/' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='' style={{bottom:'0',position:'absolute',paddingBottom:'10px'}}>
                                 <img src={MyProfile} alt="Profile Picture" className="myProfilePic" /> <br/>

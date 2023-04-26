@@ -17,9 +17,9 @@ function validatePhoneNumber(phoneNumber) {
 }
 
 function MyVerticallyCenteredModal(props) {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyYW1lc2giLCJ1c2VyUm9sZSI6ImFkbWluIiwiaWQiOiI2NDFhZmQ1ODJiMzYxZDI3ODY2NzRmNjEiLCJpYXQiOjE2ODAwOTI2NjB9.1-rmZNz7uaa_AH6wil2n6L-eRCA5EvXKbhDn9XHYSJU';
+    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyYW1lc2giLCJ1c2VyUm9sZSI6ImFkbWluIiwiaWQiOiI2NDFhZmQ1ODJiMzYxZDI3ODY2NzRmNjEiLCJpYXQiOjE2ODAwOTI2NjB9.1-rmZNz7uaa_AH6wil2n6L-eRCA5EvXKbhDn9XHYSJU';
     // Set the token in local storage
-    localStorage.setItem('token', token);
+    // localStorage.setItem('token', token);
     
     // Get the token from local storage
     const storedToken = localStorage.getItem('token');
@@ -103,7 +103,7 @@ function MyVerticallyCenteredModal(props) {
         
     <Modal.Body style={{padding:'60px',backgroundColor:'#D9D9D9'}}>
             <center>
-                <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Create an account</span>
+                <span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Add new reader</span>
             </center>
             <div className='main-box text-center'>
              <form onSubmit={handleSubmit}>
@@ -188,8 +188,7 @@ function MeterRead(){
                     <div className="d-flex">
                         <BiAddToQueue size={27} onClick={() => setModalShow(true)} />
                         <div style={{display:'block'}}>
-                            <u> <p onClick={() => setModalShow(true)} style={{marginLeft:'5px'}}>Create an account</p></u>
-
+                            <u> <p onClick={() => setModalShow(true)} style={{marginLeft:'5px', cursor: 'pointer'}}>Add new reader</p></u>
                         </div>
                     </div>   
                      <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
