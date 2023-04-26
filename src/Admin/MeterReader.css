@@ -94,3 +94,9 @@ table tr th{
 input[type=submit],.submitSchedule{
     background-color: #0d6efd;
 }
+.meter-Table td{
+    padding-right: 18px;
+    border: none;
+   
+    text-align: center;
+}

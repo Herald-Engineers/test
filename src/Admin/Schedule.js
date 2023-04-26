@@ -3,8 +3,84 @@ import  '../HomePage/Homepage.css';
 import  '../Admin/AdminDash.css';
 import  '../Components/SmallLogo.css';
 import Main from '../Admin/MainBoxes';
+import {  useState, useEffect} from 'react';
+import axios from 'axios';
+
 import Calendar from '../Image/Calendar.png';
 function Schedule(){
+    const token = localStorage.getItem('token');
+    const [tableData, setTableData] = useState([]);
+    const [reader, setReader] = useState(null);
+
+
+    const [address1, setAddress1] = useState("");
+    const [address2, setAddress2] = useState("");
+    const [address3, setAddress3] = useState("");
+    const [address4, setAddress4] = useState("");
+    const [address5, setAddress5] = useState("");
+    const [date, setDate] = useState("");
+   
+   
+    const handleAddress1 = (event) => {
+        setAddress1(event.target.value);
+    };
+    const handleAddress2 = (event) => {
+        setAddress2(event.target.value);
+    };
+    const handleAddress3 = (event) => {
+        setAddress3(event.target.value);
+    };
+    const handleAddress4 = (event) => {
+        setAddress4(event.target.value);
+    }
+    const handleAddress5 = (event) => {
+        setAddress5(event.target.value);
+    }
+    const handleDate = (event) => {
+        setDate(event.target.value);
+    }
+    
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log("hello");
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/add-schedule", {
+            address1: address1,
+            address2: address2,
+            address3: address3,
+            address4: address4,
+            address5: address5,
+            date: date,
+            shift: event.target.shift.value,
+            assignedTo: event.target.assignedTo.value,
+        }, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(res => {
+          const token = res.data.token;
+          console.log(res);
+        })
+        .catch(error => {
+          console.log(error);
+
+        });
+      };
+
+   
+    useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => setTableData(response.data))
+      .catch((error) => console.log(error));
+      }, [reader]);
+
     return (
         <div>
             <div className='containerHome'>
@@ -28,22 +104,40 @@ function Schedule(){
                                 <div>
                                     <div style={{paddingRight:'20px'}}>
                                         <label>Address</label><br/>
-                                        <input type="text" name="address1" placeholder="Enter Address 1" className='inputBox'/><br/>
-                                        <input type="text" name="address2" placeholder="Enter Address 2" className='inputBox'/><br/>
-                                        <input type="text" name="address3" placeholder="Enter Address 3" className='inputBox'/><br/>
-                                        <input type="text" name="address4" placeholder="Enter Address 4" className='inputBox'/><br/>
-                                        <input type="text" name="address5" placeholder="Enter Address 5" className='inputBox'/><br/>
+                                        <input type="text" name="address1" placeholder="Enter Address 1" className='inputBox' onClick={handleAddress1} required/><br/>
+                                        <input type="text" name="address2" placeholder="Enter Address 2" className='inputBox' onClick={handleAddress2}/><br/>
+                                        <input type="text" name="address3" placeholder="Enter Address 3" className='inputBox' onClick={handleAddress3}/><br/>
+                                        <input type="text" name="address4" placeholder="Enter Address 4" className='inputBox' onClick={handleAddress4}/><br/>
+                                        <input type="text" name="address5" placeholder="Enter Address 5" className='inputBox' onClick={handleAddress5}/><br/>
 
                                     </div>
                                 </div>
                                 <div>
                                     <div>
                                         <label>Date</label><br/>
-                                        <input type="date" name="date" placeholder="Enter Date" className='inputBox'/><br/>
+                                        <input type="date" name="date" placeholder="Enter Date" className='inputBox' onClick={handleDate} required /><br/>
+
                                         <label>Shift</label><br/>
-                                        <input type="text" name="shift" placeholder="Select the type of shift" className='inputBox'/><br/>
+                                        <select className='inputBox' name='shift'>
+                                            <option>Select the type of shift </option>
+                                            <option value="Morning">Morning</option>
+                                            <option value="Afternoon"> Afternoon</option>
+                                            <option value="Evening">Evening</option>
+
+                                        </select>
+                                        <br/>
                                         <label>Assigned to:</label><br/>
-                                        <input type="text" name="assignedTo" placeholder="Enter the name of the reader" className='inputBox'/>
+
+                                       
+                                        <select className='inputBox' name='assignedTo'>
+                                        <option>Enter the name of the reader</option>
+                                            {tableData.map((row) => (
+                                        <option key={row._id} value={row.fullName}>
+                                        {row.fullName}
+                                        
+                                        </option>
+                                    ))}
+                                    </select>
                                     </div>
 
                                 </div>

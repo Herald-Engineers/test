@@ -66,3 +66,11 @@
   height: 30px;
 } 
 
+.myCancelButton{
+  background-color: rgb(161, 161, 161);
+  border:  rgb(161, 161, 161);
+}
+.myCancelButton:hover{
+  background-color: gray;
+
+}
