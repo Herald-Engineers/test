@@ -132,11 +132,16 @@ function Schedule(){
                                         <select className='inputBox' name='assignedTo'>
                                         <option>Enter the name of the reader</option>
                                             {tableData.map((row) => (
-                                        <option key={row._id} value={row.fullName}>
+                                        <option key={row._id} value={row._id}>
                                         {row.fullName}
                                         
                                         </option>
+                                       
+                                      
                                     ))}
+                                    {tableData.forEach(row => {
+  console.log(row._id);
+})}
                                     </select>
                                     </div>
 
@@ -144,6 +149,7 @@ function Schedule(){
                             </div>
                             <input type="submit" value="submit" id='submitSchedule'/>
                         </form>
+                      
                     </div>
                 
                 </div> 
