@@ -64,7 +64,7 @@ function Schedule(){
         })
         .then(res => {
           
-          console.log(res);
+          console.log(res.data);
         })
         .catch(error => {
           console.log(error);
@@ -106,10 +106,10 @@ function Schedule(){
                                 <div>
                                     <div style={{paddingRight:'20px'}}>
                                         <label>Address</label><br/>
-                                        <input type="text" name="address1" placeholder="Enter Address 1" className='inputBox' onClick={handleAddress1} required/><br/>
-                                        <input type="text" name="address2" placeholder="Enter Address 2" className='inputBox' onClick={handleAddress2}/><br/>
-                                        <input type="text" name="address3" placeholder="Enter Address 3" className='inputBox' onClick={handleAddress3}/><br/>
-                                        <input type="text" name="address4" placeholder="Enter Address 4" className='inputBox' onClick={handleAddress4}/><br/>
+                                        <input type="text" name="address1" placeholder="Enter Address 1" className='inputBox' onChange={handleAddress1} required value={address1}/><br/>
+                                        <input type="text" name="address2" placeholder="Enter Address 2" className='inputBox' onChange={handleAddress2}/><br/>
+                                        <input type="text" name="address3" placeholder="Enter Address 3" className='inputBox' onChange={handleAddress3}/><br/>
+                                        <input type="text" name="address4" placeholder="Enter Address 4" className='inputBox' onChange={handleAddress4}/><br/>
                                         <input type="text" name="address5" placeholder="Enter Address 5" className='inputBox' onClick={handleAddress5}/><br/>
 
                                     </div>
@@ -117,7 +117,7 @@ function Schedule(){
                                 <div>
                                     <div>
                                         <label>Date</label><br/>
-                                        <input type="date" name="date" placeholder="Enter Date" className='inputBox' onClick={handleDate} required /><br/>
+                                        <input type="date" name="date" placeholder="Enter Date" className='inputBox' onChange={handleDate} value={date} required /><br/>
 
                                         <label>Shift</label><br/>
                                         <select className='inputBox' name='shift'>
@@ -141,9 +141,7 @@ function Schedule(){
                                        
                                       
                                     ))}
-                                    {tableData.forEach(row => {
-  console.log(row._id);
-})}
+                                   
                                     </select>
                                     </div>
 
