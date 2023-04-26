@@ -24,8 +24,6 @@ function getNotificationMessage(username, password) {
   }
 }
  function Login() {
-  
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbWVzaCIsImlkIjoiNjQxYWZkNTgyYjM2MWQyNzg2Njc0ZjYxIiwiaWF0IjoxNjc5ODM5MDAzfQ.N61yNl2GfLEGT49Pia9Kg-xW1cO9MqwZ0pQE2xfU3HM';
   const navigate = useNavigate();
 
   // Set up state variables for handling server response, loading state, username, password, and error message
@@ -55,7 +53,8 @@ function getNotificationMessage(username, password) {
       password: password
     })
     .then(res => {
-      const token = res.data.token;
+      localStorage.setItem('fullName', res.data.fullName);
+      localStorage.setItem('token', res.data.token);
       const role = res.data.role;
       setServerResponseReceived(true);
       setLoading(false);
@@ -79,6 +78,7 @@ function getNotificationMessage(username, password) {
       
     })
     .catch(error => {
+      setLoading(false);
       console.log(error);
       setErrorMessage("Invalid username or password");
     });

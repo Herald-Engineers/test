@@ -5,7 +5,18 @@ import  '../Components/SmallLogo.css';
 import Main from '../Admin/MainBoxes';
 import Calendar from '../Image/Calendar.png';
 function Schedule(){
-    
+    const [tableData, setTableData] = useState([]);
+    const [reader, setReader] = useState(null);
+
+    useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => setTableData(response.data.length))
+      .catch((error) => console.log(error));
+      }, [reader]);
     
     // const [address1, setAddress1] = useState("");
     // const [address2, setAddress2] = useState("");
@@ -93,8 +104,22 @@ function Schedule(){
                                         <input type="date" name="date" placeholder="Enter Date" className='inputBox'/><br/>
                                         <label>Shift</label><br/>
                                         <input type="text" name="shift" placeholder="Select the type of shift" className='inputBox'/><br/>
+                                        <select>
+                                            <option value="1">Morning</option>
+                                            <option value="2">Afternoon</option>
+                                            <option value="3">Evening</option>
+                                        </select>
                                         <label>Assigned to:</label><br/>
                                         <input type="text" name="assignedTo" placeholder="Enter the name of the reader" className='inputBox'/>
+                                        <select>
+                                            {tableData.map((row) => (
+                                                <option key={row._id}>
+                                                <td>{row.fullName}</td>
+                                                
+                                                
+                                                </option>
+                                            ))} 
+                                            </select>
                                     </div>
 
                                 </div>
