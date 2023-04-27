@@ -12,7 +12,7 @@ import LoadingSpinner from '../Components/LoadingSpinner';
 import { Link, useNavigate } from 'react-router-dom';
 import {MdVerified} from "react-icons/md";
 
-let resUsername, resPassword;
+let resMsg;
 function validatePhoneNumber(phoneNumber) {
     if (phoneNumber.length > 10) {
       return false; // Phone number is too long
@@ -32,14 +32,12 @@ function MyVerticallyCenteredModal(props) {
                 <div className='main-box text-center'>
             
                     <p>
-                        It's our great pleasure to welcome you to the WaveBilling and we are<br/> pleased to inform you that your official user ID  has been created.
+                        Please be patient and wait for the approval.
                     </p><br/>
                     <p>
-                        <b>User Id:</b> {resUsername} <br/>
-                        <b>Password:</b> {resPassword}
+                        <b>{resMsg}</b> <br/>
                     </p>
-                    <p>You are requested to login using this official User ID and change the<br/> password as soon as you login into your account for future confidentiality. </p>
-                    <Button onClick={props.onHide} className='i-understand'>I understand</Button>
+                    <Link to='/'><Button onClick={props.onHide} className='i-understand'>Okay</Button></Link>
                 </div>
             </Modal.Body>
        
@@ -126,8 +124,7 @@ function Register(){
             };
             axios.post('https://wavebilling-backend-sabinlohani.onrender.com/register-company', data)
             .then(response => {
-                resUsername = response.data.userId;
-                resPassword = response.data.password;
+                resMsg = response.data.message;
                 setServerResponseReceived(true);
                 setLoading(false);
                 console.log(response)

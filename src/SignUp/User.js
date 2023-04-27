@@ -16,7 +16,7 @@ function validatePhoneNumber(phoneNumber) {
   }
   return true; // Phone number is valid
 }
-let resUsername, resPassword;
+let resMsg;
 function MyVerticallyCenteredModal(props) {
 
   return (
@@ -25,18 +25,16 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body style={{ padding: '68px', backgroundColor: '#D9D9D9' }}>
         <center>
           <MdVerified size={40} style={{ color: 'green' }} /><br />
-          <span style={{ color: '#32325D', fontSize: '30px', fontWeight: '700' }}>Your account has been<br /> created successfully</span></center>
+          <span style={{ color: '#32325D', fontSize: '30px', fontWeight: '700' }}>Your account has been<br /> successfully registered</span></center>
         <div className='main-box text-center'>
 
           <p>
-            It's our great pleasure to welcome you to the WaveBilling and we are<br /> pleased to inform you that your official user ID  has been created.
+            Please be patient and wait for the approval.
           </p><br />
           <p>
-            <b>User Id:</b> {resUsername}<br />
-            <b>Password:</b> {resPassword}
+            <b>{resMsg}</b><br />
           </p>
-          <p>You are requested to login using this official User ID and change the<br /> password as soon as you login into your account for future confidentiality. </p>
-          <Link to='/login'><Button onClick={props.onHide} className='i-understand'>I understand</Button></Link>
+          <Link to='/'><Button onClick={props.onHide} className='i-understand'>Okay</Button></Link>
         </div>
       </Modal.Body>
 
@@ -182,8 +180,7 @@ function User() {
       })
         .then(response => {
           console.log(response);
-          resUsername = response.data.userId;
-          resPassword = response.data.password;
+          resMsg = response.data.message;
           setServerResponseReceived(true);
           console.log("successful");
           setLoading(false);
