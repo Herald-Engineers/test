@@ -54,7 +54,7 @@ function Schedule(){
             address5: address5,
             date: date,
             shift: event.target.shift.value,
-            assignedTo: event.target.assignedTo.value,
+            readerId: event.target.assignedTo.value,
 
         };
         axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/add-schedule", data , 
