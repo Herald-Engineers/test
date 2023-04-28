@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import '../Admin/MeterReader.css';
 import {BiAddToQueue} from "react-icons/bi";
 import axios from 'axios';
@@ -9,7 +9,21 @@ import AdminSidebar from '../Admin/AdminSidebar';
 import MainBox from '../Admin/MainBoxes';
 import MeterTable from '../Admin/MeterTable';
 function UserTable(){
+    const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
+    const [reader, setReader] = useState(null);
+    useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-consumers   ", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => {
+        console.log(response);
+        setTableData(response.data);
+      })
+      .catch((error) => console.log(error));
+      }, [reader]);
     return(
         
             <div>
@@ -43,7 +57,18 @@ function UserTable(){
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                    {tableData.map((row) => (
+                                        <tr key={row._id}>
+                                            <td>{row.fullName}</td>
+                                            <td>-</td>
+                                            <td>{row.address2}</td>
+                                            <td>{row.contactNum}</td>
+                                            <td>{row.email}</td>
+                                            <td>{row.address}</td>
+                                            <td>{row.paymentStatus}</td>
+                                            <td>image</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>

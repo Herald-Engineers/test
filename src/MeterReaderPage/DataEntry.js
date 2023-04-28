@@ -11,7 +11,7 @@ import Nav from '../NavbarFolders/Navbar';
 function DataEntry(){
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
-    const [reader, setReader] = useState(null);
+    const [consumers, setconsumer] = useState(null);
     const [previousReading, setPreviousReading] = useState("");
     const [currentReading, setCurrentReading] = useState("");
     const [unitRate, setUnitRate] = useState(10); // assuming a default unit rate of 10
@@ -56,14 +56,14 @@ function DataEntry(){
       };
 
     useEffect(() => {
-        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers", {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-consumers", {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      .then((response) => console.log(response.data))
+      .then((response) => setTableData(response.data))
       .catch((error) => console.log(error));
-      }, [reader]);
+      }, [consumers]);
     return(
         
         <div>
@@ -101,7 +101,7 @@ function DataEntry(){
                                         <option>Enter the id of the customer</option>
                                         {tableData.map((row) => (
                                             <option key={row._id} value={row._id}>
-                                            {row.fullName}
+                                            {row.readerId}
                                             </option>
                                         ))}
                                     </select>
