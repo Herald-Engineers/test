@@ -24,6 +24,7 @@ import AdminDashboard from'./Admin/AdminDash';
 import Register  from './SignUp/Register';
 import EditProfile from './HomePage/EditProfile';
 import Sidebar from './HomePage/Sidebar';
+import ViewDetails from './HomePage/ViewDetails';
 import ContactUs from './Components/ContactUs';
 import ContactUsHome from './HomePage/ContactHome';
 import Report from './HomePage/Report';
@@ -35,10 +36,14 @@ import UserTable from './Admin/UserTable';
 import Issue from './Admin/Issue';
 import Schedule from './Admin/Schedule';
 import ViewSchedule from './Admin/ViewSchedule';
-import IssueUser from './HomePage/Issue';
+import IssueUser from './HomePage/UserIssue';
 import AdminProfile from './Admin/AdminProfile';
-
-
+import MeterDash from './MeterReaderPage/MeterDash';
+import MeterReaderSidebar from './MeterReaderPage/MeterSidebar';
+import DataEntry from './MeterReaderPage/DataEntry';
+import ScheduleMeterReader from './MeterReaderPage/ScheduleMeterReader';
+import MeterIssue from './MeterReaderPage/MeterIssue';
+import MeterProfile from './MeterReaderPage/MeterProfile';
 function App() {
   return (
 
@@ -57,6 +62,7 @@ function App() {
         <Route path="/signinas" element={<SignIn />} />
         <Route path="/user" element={<User />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/viewDetails" element={<ViewDetails />} />
         <Route path="/meterReader" element={<MeterReader />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Landingpage />} />
@@ -77,8 +83,14 @@ function App() {
         <Route path="/issue" element={<Issue />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/viewschedule" element={<ViewSchedule />} />
-        <Route path="/issue" element={<IssueUser />} />
+        <Route path="/issueUser" element={<IssueUser />} />
         <Route path="/adminProfile" element={<AdminProfile />} />
+        <Route path="/dashboardMeterReader" element={<MeterDash />} />
+        <Route path="/meterSidebar" element={<MeterReaderSidebar />} />
+        <Route path="/dataEntry" element={<DataEntry />} />
+        <Route path="/schdeuleMeterReader" element={<ScheduleMeterReader />} />
+        <Route path="/meterIssue" element={<MeterIssue />} />
+        <Route path="/meterProfile" element={<MeterProfile />} />
         
       </Routes>
     </BrowserRouter>

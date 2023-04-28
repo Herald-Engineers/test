@@ -29,12 +29,22 @@ function MyVerticallyCenteredModal(props) {
     const [contactNum, setContact] = useState("");
     const [email, setEmail] = useState("");
     const [tel1Error, setTelError] = useState("");
+    const [isValidEmail, setIsValidEmail] = useState(false);
+    const [emailError, setEmailError] = useState("");
+    const [fullnameError, setFullNameError] = useState("");
     const [isChecked, setIsChecked] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
     // Retrieve the token from localStorage
     // const token = localStorage.getItem('token');
     const handleFullName = (event) => {
         setFullname(event.target.value);
+        const regex = /^[a-zA-Z]+(?: [a-zA-Z]+){0,2}$/;
+        if (!regex.test(fullName)) {
+            setFullNameError("Please enter a valid name");
+        }
+        else{
+            setFullNameError("");
+        }
     };
     const handleReader = (event) => {
         setReader(event.target.value);
@@ -45,7 +55,16 @@ function MyVerticallyCenteredModal(props) {
     };
     
     const handleEmail = (event) => {
+        const emailValue = event.target.value;
         setEmail(event.target.value);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setIsValidEmail(emailRegex.test(emailValue));
+        if (!emailRegex.test(emailValue)) {
+          setEmailError("Please entera valid email");
+        } 
+        else{
+          setEmailError("");
+        }
     };
     const handleContact = (event) => {
         setContact(event.target.value);
@@ -152,6 +171,9 @@ function MyVerticallyCenteredModal(props) {
                                     <input type="text" id="editFirstName" placeholder='Email' required value={email} onChange={handleEmail} className='login-field'/>{'\n'}<br/>
                                 </td>
                             </tr>
+                            <tr>
+                                <td> {emailError &&<div className="error" style={{ color: 'red' }}>{emailError}</div>}</td>
+                                    </tr>
                             </tbody>
                         </table>
                     

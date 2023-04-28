@@ -56,8 +56,8 @@ import LoadingSpinner from './Components/LoadingSpinner';
       else if(role === 'admin'){
         navigate("/meterReader");
       }
-      else if(role === 'companyConsumer'){
-        navigate("/");
+      else if(role === 'reader'){
+        navigate("/dashboardMeterReader");
       }
       else {
           navigate("/ ");

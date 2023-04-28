@@ -23,7 +23,7 @@ function Table(){
                         <td>12/12/2020</td>
                         <td>Rs. 2000</td>
                         <td style={{color:'red'}}>Overdue</td>
-                        <td><Link><p className='viewButton'>View</p></Link> <p className='viewButton'>Download</p></td>
+                        <td><Link to="/viewDetails"><p className='viewButton'>View</p></Link> <p className='viewButton'>Download</p></td>
                         
                        
                     </tr>

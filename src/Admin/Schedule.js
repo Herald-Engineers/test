@@ -2,7 +2,6 @@ import MyAdmin from '../Admin/AdminSidebar';
 import  '../HomePage/Homepage.css';
 import  '../Admin/AdminDash.css';
 import  '../Components/SmallLogo.css';
-import Main from '../Admin/MainBoxes';
 import {  useState, useEffect} from 'react';
 import axios from 'axios';
 import ViewSchedule from '../Admin/ViewSchedule';

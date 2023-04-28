@@ -32,7 +32,7 @@ function submitAddReader(fullName, readerId, contactNum, email,editId) {
 };
 
 function validatePhoneNumber(phoneNumber) {
-  if (phoneNumber.length > 10) {
+  if (phoneNumber.length !== 10) {
     return false; // Phone number is too long
   }
   return true; // Phone number is valid
@@ -55,12 +55,13 @@ function DynamicTable(){
   const handleClose2 = () => setShow2(false);
   const [tel1Error, setTelError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [fullnameError, setFullNameError] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
   const handleContactNum = (event) => {
     const phoneNumber = event.target.value;
     setContact(phoneNumber);
     const regex = /^[0-9]+$/; // regex pattern to match only digits
-    if (regex.test(phoneNumber)) {
+    if (!regex.test(phoneNumber)) {
       setTelError("Please enter numbers only");
     } else if (phoneNumber.length !== 10) {
       setTelError("Phone number must be 10 digits or less");
@@ -71,6 +72,13 @@ function DynamicTable(){
   
   const handleFullName = (event) => {
       setFullname(event.target.value);
+      const regex = /^[a-zA-Z]+(?: [a-zA-Z]+){0,2}$/;
+      if (!regex.test(fullName)) {
+        setFullNameError("Please enter a valid name");
+      }
+      else{
+        setFullNameError("");
+      }
   };
   const handleReaderId = (event) => {
     setReaderId(event.target.value);
@@ -82,8 +90,11 @@ function DynamicTable(){
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setIsValidEmail(emailRegex.test(emailValue));
     if (!emailRegex.test(emailValue)) {
-      setEmailError("Please enter numbers only");
+      setEmailError("Please entera valid email");
     } 
+    else{
+      setEmailError("");
+    }
   };
   const [serverResponseReceived, setServerResponseReceived] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -208,7 +219,7 @@ function DynamicTable(){
         <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
           <center><span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
           <div className='main-box  text-center'>
-            <p>Please enter the Reader ID and temporary password for  the Reader.</p><br/>
+            <p>Please enter the Reader ID and temporary password for the Reader.</p><br/>
             <form  onSubmit={(event) => handleSubmit( event)}>
               <div className='meter-Table'>
                 <table>
@@ -216,6 +227,9 @@ function DynamicTable(){
                     <tr>
                       <td>Full Name: </td>
                       <td><input type="text" name="fullName" placeholder="Enter full name"  value={fullName}  className='meter-Table2' onChange={handleFullName} required/></td>
+                    </tr>
+                    <tr>
+                      <td>{fullnameError && <div className="error" style={{ color: 'red' }}>{fullnameError}</div>}</td>
                     </tr>
                     <tr>
                       <td>Reader Id: </td>
@@ -227,24 +241,32 @@ function DynamicTable(){
                       
                     </tr>
                     <tr>
-                    <td>{tel1Error && <div className="error" style={{ color: 'red' }}>{tel1Error}</div>}</td></tr>
+                      <td>{tel1Error && <div className="error" style={{ color: 'red' }}>{tel1Error}</div>}</td>
+                    </tr>
                     <tr>
                         <td>Email Address: </td>
                         <td><input type="text" name="email" placeholder="Enter Email"  value={email} onChange={handleEmail} required/></td>
                        
                     </tr>
                     <tr>
-                    <td> {isValidEmail && <p>Please enter a valid email.</p>}</td></tr>
+                      <td> {emailError &&<div className="error" style={{ color: 'red' }}>{emailError}</div>}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
               <Button onClick={handleClose} className='meterButtons'>Go Back</Button>
               <Button className='meterButtons2' type='submit' value="submit"  onClick={() => {
-                if(isValidEmail){
-                  submitAddReader(fullName, readerId, contactNum, email,editId);
+                if(fullName=="" || readerId=="" || contactNum=="" || email==""){
+                  setTelError("Phone number must be 10 digits or less");
+                  
+                }
+                else if(!validatePhoneNumber(contactNum))
+                {
+                  setTelError("Phone number must be 10 digits or less");
                 }
                 else{
-                 {isValidEmail && <p>Please enter a valid email.</p>}
+                  submitAddReader(fullName, readerId, contactNum, email,editId);
+                 
                 }
               }}>  Submit</Button>
               

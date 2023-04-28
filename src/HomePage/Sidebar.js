@@ -86,7 +86,7 @@ function Sidebar(){
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My Profile</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/editprofile' active={activeLink === 'issue'} onClick={() => setActiveLink('issue')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/issueUser' active={activeLink === 'issueUser'} onClick={() => setActiveLink('issueUser ')}  className='sidebar-fonts sidebar-link'>
                     
                             <div className='d-flex'>
                                     < TbMessageReport size={18} style={{paddingTop:'2px'}}/>
