@@ -15,24 +15,18 @@ import Delete from '../Image/delete.png';
 
 function handleApprove(approveId,consumerType) {
     const token = localStorage.getItem('token');
-    console.log(consumerType);  
-    console.log(approveId);  
-    axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/approve-user",{
-        _id: approveId,
-        userType: consumerType,
-    },{
+    axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/approve-user", {
         headers: {
-          Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         },
-      
-      data: {
-          approveId,
-          consumerType
-      }
+        data: {
+            _id: approveId,
+            userType: consumerType
+        }
     }).then(response => { 
         console.log("successful");  
         console.log(response);
-      }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
 };
 function handleDelete2(deleteId2,consumerType2) {
     
@@ -93,32 +87,27 @@ function UserTable(){
         setServerResponseReceived(false);
         console.log('The id is ' + _id);
         axios.delete(`https://wavebilling-backend-sabinlohani.onrender.com/admin/delete-user`, {
-            _id: _id,
-            userType: consumerType3,
-        },{
-        headers: {
-            Authorization: `Bearer ${token}`
-        },
-        data: {
-            _id,
-            consumerType3
-
-        }
-        })
-        .then((response) => {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            data: {
+                _id,
+                userType: consumerType3,
+            }
+        }).then((response) => {
             // remove deleted row from tableData
+            console.log('The response is: ' + response);
             setServerResponseReceived(true);
             setLoading(false);
             setTableData(tableData.filter(row => row._id !== _id));
             console.log(`Deleted row with ID ${_id}`);
             handleClose();
-        })
-        .catch((error) => {
-            console.log(error);
+        }).catch((error) => {
+            console.log('The error is: ' + error);
             setServerResponseReceived(true);
             setLoading(false);
         });
-        };
+    };
 
 
         //delete function before approving
@@ -247,7 +236,7 @@ function UserTable(){
                     <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
                         <center><span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}> Are you sure?</span></center>
                         <div className='justify-content-center main-box2  '>
-                            <Button className='meterButtons2' type='submit' value="submit" onClick={() => handleApprove(approveId,consumerType)} >Approve</Button><br/><br/>
+                            <Button className='meterButtons2' type='submit' value="submit" onClick={() => handleApprove(approveId, consumerType)} >Approve</Button><br/><br/>
                             <Button onClick={handleClose2} className='meterButtons'>Go Back</Button><br/>
                             {loading && !serverResponseReceived && <LoadingSpinner />}
                         </div>
