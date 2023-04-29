@@ -10,7 +10,7 @@ function AdminProfile(){
         
         
             <div className='right-right-nav-Home2'>
-                
+                <h1>Admin Profile</h1>
                 
                 
             </div>

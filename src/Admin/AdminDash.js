@@ -17,7 +17,7 @@ function AdminDashboard() {
     }
     return (
         <div>
-            <div className='containerHome'>
+            <div className='containerHome2'>
                 <div className='left-left-nav'>
                     <MyAdmin/>
                 </div>

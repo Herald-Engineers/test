@@ -1,6 +1,6 @@
 .sidebar-fonts{
-   height: 47px;
-   width: 140px;
+   height: 100%;
+   width: 100%;
     color: #8C8E8D;
     padding: 15px;
     margin-left:18px;
@@ -10,7 +10,7 @@
   width: 140px;
    color: #8C8E8D;
    padding: 15px;
-   height: 47px;
+   height: 100%;
    margin-left:18px;
 }
 .sidebar-fonts-user{
@@ -30,15 +30,22 @@
 
 .sidebar{
   background-color: #F9F9F9;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 
 .sidebar-section{
-  height: 100vh;
-    
+  background-color: #F9F9F9;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+    
+
 .sidebar-section2{
-  height: 127vh;
+  height: 100%;
     
 }
 .sidebar-link {

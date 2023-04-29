@@ -149,9 +149,9 @@ function Schedule(){
                             </div>
                             <input type="submit" value="submit" id='submitSchedule'/>
                         </form>
-                      
+                    
                     </div>
-                    <ViewSchedule />
+                    <ViewSchedule />  
                 
                 </div> 
             </div>

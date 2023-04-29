@@ -11,7 +11,9 @@ import { useEffect } from "react";
 function MainBox(){
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
+    const [tableData2, setTableData2] = useState([]);
     const [reader, setReader] = useState(null);
+    const [consumer, setConsumers] = useState(null);
     useEffect(() => {
         axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-readers", {
         headers: {
@@ -21,6 +23,15 @@ function MainBox(){
       .then((response) => setTableData(response.data.length))
       .catch((error) => console.log(error));
       }, [reader]);
+      useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-consumers", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => setTableData2(response.data.length))
+      .catch((error) => console.log(error));
+      }, [consumer]);
     return(
        
         <div>
@@ -34,7 +45,7 @@ function MainBox(){
                                 </div>
                                 <div style={{float:'right',marginTop: '0px',paddingRight: '110px'}}>
                                     <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Total Users</span><br/>
-                                    <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>4</span>
+                                    <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>{tableData2}</span>
                                 </div>
                                 
                                                                 
