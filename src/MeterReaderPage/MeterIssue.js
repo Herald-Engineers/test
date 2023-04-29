@@ -66,6 +66,7 @@ function MeterIssue(){
                         </p>
                         <form onSubmit={handleSubmit}>
                             <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' value={queries}onChange={handleQueries} /><br/>
+                            <input type='submit'/>
                         </form>
                     </div>
                         

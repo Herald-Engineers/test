@@ -12,13 +12,14 @@ import MeterTable from '../Admin/MeterTable';
 import { Link } from 'react-router-dom';
 import Edit from '../Image/edit.png';
 import Delete from '../Image/delete.png';
+
 function handleApprove(approveId,consumerType) {
     const token = localStorage.getItem('token');
     console.log(consumerType);  
     console.log(approveId);  
     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/approve-user",{
         _id: approveId,
-        consumerType: consumerType,
+        userType: consumerType,
     },{
         headers: {
           Authorization: `Bearer ${token}`
@@ -33,16 +34,39 @@ function handleApprove(approveId,consumerType) {
         console.log(response);
       }).catch(error => console.log(error));
 };
+function handleDelete2(deleteId2,consumerType2) {
+    
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJyYW1lc2giLCJ1c2VyUm9sZSI6ImFkbWluIiwiaWQiOiI2NDFhZmQ1ODJiMzYxZDI3ODY2NzRmNjEiLCJpYXQiOjE2ODI3ODAzODJ9.H8pIY8v5s4ZsIs5aekS77oRWsqh4P7toqVFHIRxZeOw";
+    console.log(token);
+    console.log(deleteId2);  
+    console.log(consumerType2);  
+    axios.delete("https://wavebilling-backend-sabinlohani.onrender.com/admin/reject-request",{
+        _id: deleteId2,
+        userType: consumerType2,
+    },{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+    }).then(response => { 
+        // remove deleted row from tableData
+        console.log(response.data)
+       
+      }).catch(error => console.log(error));
+};
 function UserTable(){
     const token = localStorage.getItem('token');
     const [show, setShow] = useState(false);
+    const [show4, setShow4] = useState(false);
     const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
     const [tableData, setTableData] = useState([]);
     const [reader, setReader] = useState(null);
     const [serverResponseReceived, setServerResponseReceived] = useState(false);
     const [loading, setLoading] = useState(false);  
     const handleClose = () => setShow(false);
     const handleClose2 = () => setShow2(false);
+    const handleClose3 = () => setShow3(false);
+    const handleClose4 = () => setShow4(false);
     useEffect(() => {
         axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-consumers", {
         headers: {
@@ -58,17 +82,26 @@ function UserTable(){
     );
     const [approveId, setApproveId] = useState(null);
     const [consumerType, setConsumerType] = useState(null);
+    const [consumerType2, setConsumerType2] = useState(null);
+    const [consumerType3, setConsumerType3] = useState(null);
     const [deleteId, setDeleteId] = useState(null);
-    const handleDelete = (_id) => {
+    const [deleteId2, setDeleteId2] = useState(null);
+
+    //delete function after approving
+    const handleDelete = (_id,consumerType3) => {
         setLoading(true);
         setServerResponseReceived(false);
         console.log('The id is ' + _id);
-        axios.delete(`https://wavebilling-backend-sabinlohani.onrender.com/admin/delete-reader`, {
+        axios.delete(`https://wavebilling-backend-sabinlohani.onrender.com/admin/delete-user`, {
+            _id: _id,
+            userType: consumerType3,
+        },{
         headers: {
             Authorization: `Bearer ${token}`
         },
         data: {
-            _id
+            _id,
+            consumerType3
 
         }
         })
@@ -86,6 +119,40 @@ function UserTable(){
             setLoading(false);
         });
         };
+
+
+        //delete function before approving
+    // const handleDelete2 = (deleteId2,consumerType2) => {
+    //     setLoading(true);
+    //     setServerResponseReceived(false);
+    //     console.log('The id is ' + deleteId2);
+    //     axios.delete(`https://wavebilling-backend-sabinlohani.onrender.com/admin/reject-request`,{
+    //         _id: deleteId2,
+    //         userType: consumerType2,
+    //     }, {
+    //     headers: {
+    //         Authorization: `Bearer ${token}`
+    //     },
+    //     data: {
+    //         deleteId2,
+    //         consumerType2,
+
+    //     }
+    //     })
+    //     .then((response) => {
+    //         // remove deleted row from tableData
+    //         setServerResponseReceived(true);
+    //         setLoading(false);
+    //         setTableData(tableData.filter(row => row._id !== deleteId2));
+    //         console.log(`Deleted row with ID ${deleteId2}`);
+    //         handleClose3();
+    //     })
+    //     .catch((error) => {
+    //         console.log(error);
+    //         setServerResponseReceived(true);
+    //         setLoading(false);
+    //     });
+    //     };
     return(
         
             <div>
@@ -99,12 +166,16 @@ function UserTable(){
                         <div>
                             <MainBox />
                         </div>
-                        <div className="d-flex">
+                        <div className="d-flex ">
+                        
                                                   
-                            <div className='myTables'style={{ width: '1200px', overflowX: 'scroll' }}>
+                            <div className='myTables meter-table'style={{ width: '1200px', overflowX: 'scroll' }}>
+                            <div>
+                                <center><h4>Kulekhani Upatyaka Khanepani Limited <span style={{color:'#0A83F0',fontFamily:'Montserrat',fontStyle:'normal',fontWeight:'700'}}>(Users)</span></h4></center>
+                            </div>  
 
                         <div style={{ width: '2000px', overflowX: 'scroll' }}>
-                            <table>
+                            <table className="table table-striped meterReader-table outer-border"> 
                                 <thead>
                                 <tr>
                                     <th style={{ width: '300px' }}>Name</th>
@@ -127,12 +198,16 @@ function UserTable(){
                                             <td>{row.contactNum}</td>
                                             <td>{row.email}</td>
                                             <td>{row.address}</td>
-                                            <td>{row.paymentStatus}</td>
-                                            <td>{row.meterNo ? <p><img src={Edit} alt="Edit Consumer"/> <img src={Delete} alt="Delete Consumer"/></p>: <p><span onClick={() => {setApproveId(row._id); setConsumerType(row.consumerType);
+                                            <td>{row.paymentStatus ? (row.paymentStatus === true ? 'Paid' : 'Pending') : '-'}</td>
+
+                                            
+                                            <td>{row.meterNo ? <p><img src={Edit} alt="Edit Consumer"/> <img src={Delete} alt="Delete Consumer" onClick={() => {
+                                                setDeleteId(row._id); setConsumerType3(row.consumerType);
+                                                setShow(true); }}/></p>: <p><span onClick={() => {setApproveId(row._id); setConsumerType(row.consumerType);
                                                 setShow2(true);
                                             }} style={{color:'#2F4858',marginRight:'20px'}}>Approve</span> <span  style={{color:'#9F4040', borderBottom:'1px solid #9F4040'}} onClick={() => {
-                                                setDeleteId(row._id);
-                                                setShow(true);
+                                                setDeleteId2(row._id); setConsumerType2(row.consumerType);
+                                                setShow3(true);
                                             }}>Delete</span></p>}</td> 
                                             
                                         </tr>
@@ -150,8 +225,20 @@ function UserTable(){
                     <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
                         <center><span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}> Are you sure?</span></center>
                         <div className='justify-content-center main-box2  '>
-                            <Button className='meterButtons2' type='submit' value="submit" onClick={() => handleDelete(deleteId)} >Delete</Button><br/><br/>
+                            <Button className='meterButtons2' type='submit' value="submit" onClick={() => handleDelete(deleteId,consumerType3)} >Delete</Button><br/><br/>
                             <Button onClick={handleClose} className='meterButtons'>Go Back</Button><br/>
+                            {loading && !serverResponseReceived && <LoadingSpinner />}
+                        </div>
+                    </Modal.Body>
+                </Modal>
+
+                {/* approve delete */}
+                <Modal  show={show3} onHide={handleClose3} size="lg" aria-labelledby="contained-modal-title-vcenter" centered className='DeletePopOver'>
+                    <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
+                        <center><span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}> Are you sure?</span></center>
+                        <div className='justify-content-center main-box2  '>
+                            <Button className='meterButtons2' type='submit' value="submit" onClick={() => handleDelete2(deleteId2,consumerType2)} >Delete</Button><br/><br/>
+                            <Button onClick={handleClose3} className='meterButtons'>Go Back</Button><br/>
                             {loading && !serverResponseReceived && <LoadingSpinner />}
                         </div>
                     </Modal.Body>

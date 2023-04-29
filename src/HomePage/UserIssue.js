@@ -44,33 +44,33 @@ function UserIssue(){
        
        
         <div className='containerHome'>
-        <div className='left-left-nav'>
-            <Sidebars/>
-        </div>
-        <div className='right-right-nav-Home'>
+            <div className='left-left-nav'>
+                <Sidebars/>
+            </div>
+            <div className='right-right-nav-Home'>
 
-        
-        <div className=''>
-            <Nav/>
-        </div>
-        
-        <div className='' id='EditProfile'>
-            <div className='d-flex'>
-                <div className='changeSection'>
-                    <div>
-                           
-                        <h1>Issue</h1>
-                        <p>
-                            Report an issue if any:
-                        </p>
-                        <form onSubmit={handleSubmit}>
-                            <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' value={queries}onChange={handleQueries} /><br/>
-                        </form>
+            <div className=''>
+                <Nav/>
+            </div>
+            
+            <div className='' id='EditProfile'>
+                <div className='d-flex'>
+                    <div className='changeSection'>
+                        <div>
+                            
+                            <h1>Issue</h1>
+                            <p>
+                                Report an issue if any:
+                            </p>
+                            <form onSubmit={handleSubmit}>
+                                <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' value={queries}onChange={handleQueries} /><br/>
+                                <input type='submit' />
+                            </form>
+                        </div>
+                            
                     </div>
-                        
-                </div>
-            </div >       
-        </div>
+                </div >       
+            </div>
 
         </div>
     </div>
