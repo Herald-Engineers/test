@@ -110,16 +110,16 @@ function DataEntry(){
     useEffect(() => {
         if(selectedConsumer){
             console.log("selectedConsumer:", selectedConsumer);
-        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-previous-reading",{
-            consumerId: selectedConsumer,
-        },{
-        headers: {
-          Authorization: `Bearer ${token}`,
+            const headers = {
+                Authorization: `Bearer ${token}`
+            };
+            const params = {
+                consumerId: selectedConsumer
+            }
+            axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-previous-reading",{ headers, params })
+        .then((response) => {console.log("Its me hi"); console.log(response);setPreviousReading(response.data.previousReading)})
+        .catch((error) => console.log(error.response.data));
         }
-        
-      })
-      .then((response) => {console.log("Its me hi"); console.log(response.data.consumerId);setPreviousReading(response.data.consumerId)})
-      .catch((error) => console.log(error.response.data));}
       }, [selectedConsumer]);
     const handleCustomerSelect = (event) => {
         setSelectedConsumer(event.target.value);
@@ -160,16 +160,17 @@ function DataEntry(){
                                     <p>Select the name of the customer: </p>
                                     <select className='inputBox' name='assignedTo' required style={{marginRight:'10px'}} onChange={handleCustomerSelect} >
                                         <option>Select the name of the customer</option>
-                                        {tableData.map((row) => (
-                                            <option key={row._id} value={row.consumerId}>
+                                        {
+                                            tableData.map((row) => (
+                                            <option key={row._id} value={row._id}>
                                             {row.name} : {row.meterNo}
                                             </option>                                      
                                         ))}
                                     </select>
                                     {previousReading && (
-        <div>
-          Previous reading: {previousReading}
-        </div>
+                                    <div>
+                                    Previous reading: {previousReading}
+                                    </div>
       )}
                                     
                                     <p>Previous Reading: </p>
@@ -193,7 +194,7 @@ function DataEntry(){
                                     <input type="text" name="units" placeholder='Units consumed' value="m"/>
                                     {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
                                     <p>Amount: </p>
-                                    <input type="text" name="amount" placeholder='Amount' value={amount}/>
+                                    <input type="text" name="amount" placeholder='Amount' value={amount?amount:0}/>
                                     <input type="submit" />
                                 </form>
                             </div>
