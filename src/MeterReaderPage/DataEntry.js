@@ -13,6 +13,7 @@ function DataEntry(){
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
     const [tableData2, setTableData2] = useState([]);
+    const [selectedCustomerId, setSelectedCustomerId] = useState('');
     const [consumers, setconsumer] = useState(null);
     const [previousReading, setPreviousReading] = useState("");
     const [currentReading, setCurrentReading] = useState("");
@@ -97,7 +98,7 @@ function DataEntry(){
     useEffect(() => {
         axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-consumers", {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization:`Bearer ${token}`,
         }
       })
       .then((response) => {console.log(response.data); setTableData(response.data)})
@@ -106,14 +107,18 @@ function DataEntry(){
 
 
     useEffect(() => {
+        if(selectedCustomerId){
         axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-previous-reading", {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         }
       })
-      .then((response) => setTableData2(response.data))
-      .catch((error) => console.log(error));
-      }, [consumers]);
+      .then((response) => setPreviousReading(response.data.previousReading))
+      .catch((error) => console.log(error));}
+      }, [selectedCustomerId]);
+    const handleCustomerSelect = (event) => {
+        setSelectedCustomerId(event.target.value);
+      }
     return(
         
         <div>
@@ -148,7 +153,7 @@ function DataEntry(){
                             <div className='myTables'>
                                 <form onSubmit={handleSubmit}>
                                     <p>Select the name of the customer: </p>
-                                    <select className='inputBox' name='assignedTo' required style={{marginRight:'10px'}} >
+                                    <select className='inputBox' name='assignedTo' required style={{marginRight:'10px'}} onChange={handleCustomerSelect} >
                                         <option>Select the name of the customer</option>
                                         {tableData.map((row) => (
                                             <option key={row._id} value={row._id}>
@@ -158,15 +163,16 @@ function DataEntry(){
                                     </select>
                                     
                                     <p>Previous Reading: </p>
-                                    {tableData2.map((myRow) => (
+                                    {/* {tableData2.map((myRow) => (
                                                 
                                         
                                        <p key={myRow._id}>
-                                        <input type="text" name="previous" placeholder='Previous reading' value={myRow.consumerId} />
+                                        <input type="text" name="previous" placeholder='Previous reading' value={previousReading} />
                                        </p>
                                        
                                       
-                                    ))}
+                                    ))} */}
+                                     <input type="text" name="previous" placeholder='Previous reading' value={previousReading} />
                                     
                                     {errorMessage2 && <p style={{color: 'red'}}>{errorMessage2}</p>}
                                     <p>Current Reading: </p>
