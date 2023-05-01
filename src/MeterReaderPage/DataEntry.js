@@ -13,26 +13,27 @@ function DataEntry(){
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
     const [tableData2, setTableData2] = useState([]);
-    const [selectedCustomerId, setSelectedCustomerId] = useState('');
+    const [selectedConsumer, setSelectedConsumer] = useState(null);
+    const [previousReading, setPreviousReading] = useState(null);
     const [consumers, setconsumer] = useState(null);
-    const [previousReading, setPreviousReading] = useState("");
+   
     const [currentReading, setCurrentReading] = useState("");
     const [errorMessage, setErrorMessage] = useState('');
     const [errorMessage2, setErrorMessage2] = useState('');
     const [errorMessage3, setErrorMessage3] = useState('');
     const [unitRate, setUnitRate] = useState(10); // assuming a default unit rate of 10
-    const handlePreviousReading = (event) => {
-        const previous_reading =event.target.value;
-        setPreviousReading(event.target.value);
-        if (/^[0-9]*$/.test(previous_reading)) {
-            setPreviousReading(previous_reading);
-            setErrorMessage2('');
-        }
-        else{
-            setPreviousReading('');
-            setErrorMessage2('Please enter numbers only');
-        }
-    };
+    // const handlePreviousReading = (event) => {
+    //     const previous_reading =event.target.value;
+    //     setPreviousReading(event.target.value);
+    //     if (/^[0-9]*$/.test(previous_reading)) {
+    //         setPreviousReading(previous_reading);
+    //         setErrorMessage2('');
+    //     }
+    //     else{
+    //         setPreviousReading('');
+    //         setErrorMessage2('Please enter numbers only');
+    //     }
+    // };
     const handleCurrentReading = (event) => {
         const current_reading =event.target.value;
         setCurrentReading(event.target.value);
@@ -107,17 +108,21 @@ function DataEntry(){
 
 
     useEffect(() => {
-        if(selectedCustomerId){
-        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-previous-reading", {
+        if(selectedConsumer){
+            console.log("selectedConsumer:", selectedConsumer);
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-previous-reading",{
+            consumerId: selectedConsumer,
+        },{
         headers: {
           Authorization: `Bearer ${token}`,
         }
+        
       })
-      .then((response) => setPreviousReading(response.data.previousReading))
-      .catch((error) => console.log(error));}
-      }, [selectedCustomerId]);
+      .then((response) => {console.log("Its me hi"); console.log(response.data.consumerId);setPreviousReading(response.data.consumerId)})
+      .catch((error) => console.log(error.response.data));}
+      }, [selectedConsumer]);
     const handleCustomerSelect = (event) => {
-        setSelectedCustomerId(event.target.value);
+        setSelectedConsumer(event.target.value);
       }
     return(
         
@@ -156,11 +161,16 @@ function DataEntry(){
                                     <select className='inputBox' name='assignedTo' required style={{marginRight:'10px'}} onChange={handleCustomerSelect} >
                                         <option>Select the name of the customer</option>
                                         {tableData.map((row) => (
-                                            <option key={row._id} value={row._id}>
+                                            <option key={row._id} value={row.consumerId}>
                                             {row.name} : {row.meterNo}
                                             </option>                                      
                                         ))}
                                     </select>
+                                    {previousReading && (
+        <div>
+          Previous reading: {previousReading}
+        </div>
+      )}
                                     
                                     <p>Previous Reading: </p>
                                     {/* {tableData2.map((myRow) => (
