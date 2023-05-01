@@ -72,7 +72,6 @@ function DataEntry(){
         console.log(unitRate);
         console.log(event.target.assignedTo.value);
         const data = {
-            
             currentReading: currentReading,
             unitPrice: unitRate,
             consumerId: event.target.assignedTo.value,
@@ -83,7 +82,7 @@ function DataEntry(){
         {
           headers: {
             Authorization: `Bearer ${token}`,
-          },
+          }
         })
         .then(res => {
           
@@ -150,15 +149,12 @@ function DataEntry(){
                                 <form onSubmit={handleSubmit}>
                                     <p>Select the name of the customer: </p>
                                     <select className='inputBox' name='assignedTo' required style={{marginRight:'10px'}} >
-                                    <option>Select the name of the customer</option>
+                                        <option>Select the name of the customer</option>
                                         {tableData.map((row) => (
-                                                <option key={row._id} value={row._id}>
-                                                {row.name} : {row.meterNo}
-                                        
-                                        </option>
-                                       
-                                      
-                                    ))}
+                                            <option key={row._id} value={row._id}>
+                                            {row.name} : {row.meterNo}
+                                            </option>                                      
+                                        ))}
                                     </select>
                                     
                                     <p>Previous Reading: </p>
