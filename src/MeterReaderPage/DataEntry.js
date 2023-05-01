@@ -12,6 +12,7 @@ import Nav from '../NavbarFolders/Navbar';
 function DataEntry(){
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
+    const [tableData2, setTableData2] = useState([]);
     const [consumers, setconsumer] = useState(null);
     const [previousReading, setPreviousReading] = useState("");
     const [currentReading, setCurrentReading] = useState("");
@@ -57,6 +58,7 @@ function DataEntry(){
         }
     };
     const calculateAmount = () => {
+        
     const unitsUsed = parseInt(currentReading) - parseInt(previousReading);
     const amount = unitsUsed * unitRate;
     return amount;
@@ -66,15 +68,18 @@ function DataEntry(){
         event.preventDefault();
 
         console.log("hello");
+        console.log(currentReading);
+        console.log(unitRate);
+        console.log(event.target.assignedTo.value);
         const data = {
-            previousReading: previousReading,
+            
             currentReading: currentReading,
-            unitRate: unitRate,
-            amount: amount,
-            id: event.target.assignedTo.value,
+            unitPrice: unitRate,
+            consumerId: event.target.assignedTo.value,
 
         };
-        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/add-schedule", data , 
+        console.log(data);
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/reader/add-bill", data , 
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -96,7 +101,18 @@ function DataEntry(){
           Authorization: `Bearer ${token}`
         }
       })
-      .then((response) => setTableData(response.data))
+      .then((response) => {console.log(response.data); setTableData(response.data)})
+      .catch((error) => console.log(error));
+      }, [consumers]);
+
+
+    useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/reader/fetch-previous-reading", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then((response) => setTableData2(response.data))
       .catch((error) => console.log(error));
       }, [consumers]);
     return(
@@ -135,9 +151,9 @@ function DataEntry(){
                                     <p>Select the name of the customer: </p>
                                     <select className='inputBox' name='assignedTo' required style={{marginRight:'10px'}} >
                                     <option>Select the name of the customer</option>
-                                            {tableData.map((row) => (
-                                        <option key={row._id} value={row._id}>
-                                        {row.name} : {row.meterNo}
+                                        {tableData.map((row) => (
+                                                <option key={row._id} value={row._id}>
+                                                {row.name} : {row.meterNo}
                                         
                                         </option>
                                        
@@ -145,9 +161,17 @@ function DataEntry(){
                                     ))}
                                     </select>
                                     
-                                    
                                     <p>Previous Reading: </p>
-                                    <input type="text" name="previous" placeholder='Previous reading' onChange={handlePreviousReading} required/>
+                                    {tableData2.map((myRow) => (
+                                                
+                                        
+                                       <p key={myRow._id}>
+                                        <input type="text" name="previous" placeholder='Previous reading' value={myRow.consumerId} />
+                                       </p>
+                                       
+                                      
+                                    ))}
+                                    
                                     {errorMessage2 && <p style={{color: 'red'}}>{errorMessage2}</p>}
                                     <p>Current Reading: </p>
                                     <input type="text" name="current" placeholder='Current reading' onChange={handleCurrentReading} required/>

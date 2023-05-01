@@ -65,7 +65,7 @@ function Sidebar(){
                         <Nav.Link as={Link} to='/homela' active={activeLink === 'dashboard'} onClick={() => setActiveLink('dashboard')} className='sidebar-fonts sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
-                                <TbDashboard size={27}/>
+                                <TbDashboard size={18}/>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Dashboard</p> 
                             </div>
                         </Nav.Link>
