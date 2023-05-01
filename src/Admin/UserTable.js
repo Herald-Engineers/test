@@ -15,18 +15,19 @@ import Delete from '../Image/delete.png';
 
 function handleApprove(approveId,consumerType) {
     const token = localStorage.getItem('token');
-    axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/approve-user", {
+    const data = {
+        _id: approveId,
+        userType: consumerType
+    };
+
+    axios.post("https://wavebilling-backend-sabinlohani.onrender.com/admin/approve-user", data, {
         headers: {
             Authorization: `Bearer ${token}`
-        },
-        data: {
-            _id: approveId,
-            userType: consumerType
         }
     }).then(response => { 
         console.log("successful");  
         console.log(response);
-    }).catch(error => console.log(error));
+    }).catch(error => console.log(error.response.data));
 };
 function handleDelete2(deleteId2,consumerType2) {
     
