@@ -68,6 +68,24 @@ select#PaymentSelection{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       
 }
+#UserIssue{
+    
+    width: 80%;
+    border: none;
+    margin: 40px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+   
+    
+    border-radius: 20px;
+    background-color: rgba(206, 230, 252, 0.1);;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      
+}
+.MySubject{
+    width:457px;
+}
 .changeSection{
     margin-right: 50px;
 }
@@ -102,4 +120,7 @@ select#PaymentSelection{
 }
 .Kukl_center{
         /* center the section */
+}
+.IssueSubmit:hover{
+background-color: rgb(13, 66, 106);
 }

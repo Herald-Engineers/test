@@ -7,10 +7,14 @@ import '../Css/EditProfile.css';
 
 function UserIssue(){
     const [queries, setQueries] = useState("");
+    const [subject, setSubject] = useState("");
     const [loading, setLoading] = useState(false);
     const token = localStorage.getItem('token');
     const handleQueries = (event) => {
         setQueries(event.target.value);
+    };
+    const handleSubject = (event) => {
+        setSubject(event.target.value);
     };
     const handleSubmit = (event) => {
         const submitBtn = document.getElementById('contact-submit');
@@ -18,9 +22,11 @@ function UserIssue(){
         setLoading(true);
 
         event.preventDefault();
-        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/contact-wavebilling", {
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/submit-issue", {
             
-            queries: queries
+            
+            subject: subject,
+            issue: queries,
         },
         {
             headers: {
@@ -53,18 +59,29 @@ function UserIssue(){
                 <Nav/>
             </div>
             
-            <div className='' id='EditProfile'>
+            <div className='' id='UserIssue'>
                 <div className='d-flex'>
                     <div className='changeSection'>
                         <div>
                             
-                            <h1>Issue</h1>
-                            <p>
-                                Report an issue if any:
-                            </p>
+                            <h1>Report An Issue</h1>
+                            
+                            
                             <form onSubmit={handleSubmit}>
-                                <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' value={queries}onChange={handleQueries} /><br/>
-                                <input type='submit' />
+                                <table>
+                                    <tr>
+                                        <td >Subject: </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <input type='text' placeholder='Enter your issue' name="subject"onChange={handleSubject} className='MySubject'/>
+                                    </tr>
+                                   
+                                </table>
+                                <br/>
+                                <p>Details:</p>
+                                <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' placeholder="Explain your issue"value={queries} onChange={handleQueries} /><br/>
+                                <input type='submit' className='IssueSubmit'/>
                             </form>
                         </div>
                             

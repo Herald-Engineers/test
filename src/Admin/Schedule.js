@@ -86,7 +86,7 @@ function Schedule(){
     return (
         <div>
             <div className='containerHome'>
-                <div className='left-left-nav'>
+                <div className='leftnav'>
                     <MyAdmin/>
                 </div>
            

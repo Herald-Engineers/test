@@ -38,6 +38,7 @@
     width: 190px;
     height: 100%;
     border-right: 2.5px solid #F5F5F5;
+    position: fixed;
     
 }
 .right-right-nav{

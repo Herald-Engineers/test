@@ -62,7 +62,7 @@ function AdminSidebar(){
                 <Link to='/meterReader' className='navbar-brand'>
                     <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" />
                 </Link>
-                <div style={{backgroundColor: 'transparent'}}>
+                <div style={{backgroundColor: 'transparent',height:'100vh'}}>
                     <Nav className="flex-column ">
                         <Nav.Link as={Link} to='/meterReader' active={activeLink === 'admindashboard'} onClick={() => setActiveLink('admindashboard')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex dashbaord-image'>
@@ -85,7 +85,7 @@ function AdminSidebar(){
                                 <p style={{fontSize: '14px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Meter Reader</p> 
                             </div>
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/schedule' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')} className='sidebar-fonts-dashboard sidebar-link' >
+                        <Nav.Link as={Link} to='/schedule' active={activeLink === 'schedule'} onClick={() => setActiveLink('schedule')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbCalendarTime  size={18} style={{paddingTop:'2px'}}/>
@@ -93,7 +93,7 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link as={Link} to='/issue' active={activeLink === 'billhistory'} onClick={() => setActiveLink('billhistory')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/issue' active={activeLink === 'issue'} onClick={() => setActiveLink('issue')}  className='sidebar-fonts sidebar-link'>
                         {/* <img src={DashboardIcon} alt="Wave Billing System" className="" /> <br/> */}
                         
                             <div className='d-flex'>
@@ -114,9 +114,9 @@ function AdminSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link as={Link} to='/adminProfile' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/adminProfile' active={activeLink === 'settings'} style={{ flex: 1, bottom:'0', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
-                            <div className='' style={{bottom:'0',position:'fixed',paddingBottom:'10px'}}>
+                            <div className='' style={{bottom:'0',position:'fixed',paddingBottom:'10px',marginBottom:'30px'}}>
                                 <img src={MyProfile} alt="Profile Picture" className="myProfilePic" /> <br/>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Sugam Paudyal</p>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'300'}} className="">npo3cs4s2</p> 

@@ -64,7 +64,7 @@ function MeterReaderSidebar(){
                 <Link to='/meterReader' className='navbar-brand'>
                     <img src={MyImage2} alt="Wave Billing System" className="my-specific-image" />
                 </Link>
-                <div style={{backgroundColor: 'transparent'}}>
+                <div style={{backgroundColor: 'transparent',height:'100vh'}}>
                     <Nav className="flex-column ">
                         <Nav.Link as={Link} to='/schdeuleMeterReader' active={activeLink === 'meterdashboard'} onClick={() => setActiveLink('meterdashboard')} className='sidebar-fonts-dashboard sidebar-link' >
                             <div className='d-flex dashbaord-image'>
@@ -116,9 +116,9 @@ function MeterReaderSidebar(){
                             </div>
                         </Nav.Link>
 
-                        <Nav.Link as={Link} to='/adminProfile' active={activeLink === 'settings'} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
+                        <Nav.Link as={Link} to='/adminProfile' active={activeLink === 'settings'} style={{ flex: 1, bottom:'0', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }} onClick={() => setActiveLink('settings')}  className='sidebar-fonts sidebar-link'>
                     
-                            <div className='' style={{bottom:'0',position:'absolute',paddingBottom:'10px'}}>
+                            <div className='' style={{bottom:'0',position:'fixed',paddingBottom:'10px',marginBottom:'30px'}}>
                                 <img src={MyProfile} alt="Profile Picture" className="myProfilePic" /> <br/>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'600'}} className="myfontcolor">Sugam Paudyal</p>
                                 <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px',fontWeight:'300'}} className="">npo3cs4s2</p> 
