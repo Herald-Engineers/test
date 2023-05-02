@@ -53,6 +53,9 @@ import LoadingSpinner from './Components/LoadingSpinner';
           // Navigate to another page
           navigate("/homela");
       } 
+      else if(role === 'companyConsumer'){
+        navigate("/homela");
+      }
       else if(role === 'admin'){
         navigate("/meterReader");
       }

@@ -1,138 +1,74 @@
 import '../Css/Table.css';
+import React, { useState,useEffect } from 'react';
 import {Link} from  'react-router-dom';
 import '../Admin/MeterReader.css';
 import ReactDOMServer from 'react-dom/server';
 import { Document, Page } from 'react-pdf';
+import axios from 'axios';
 
 function Table(){
-    const handleDownloadClick = () => {
-        downloadFile();
-    }   
+    const token = localStorage.getItem('token');
+    const [tableData, setTableData] = useState([]);
+    useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-bills", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then((response) => {console.log(response.data);setTableData(response.data)})
+        .catch((error) => console.log(error.response.data));
+      }, []);
+    // const handleDownloadClick = () => {
+    //     downloadFile();
+    // }   
     
-    const downloadFile = ()=>{
-        const content = createFileContent();
-        const blob = new Blob([ReactDOMServer.renderToStaticMarkup(content)], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'MyAmounts.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
+    // const downloadFile = ()=>{
+    //     const content = createFileContent();
+    //     const blob = new Blob([ReactDOMServer.renderToStaticMarkup(content)], { type: 'application/pdf' });
+    //     const url = URL.createObjectURL(blob);
+    //     const a = document.createElement('a');
+    //     a.href = url;
+    //     a.download = 'MyAmounts.pdf';
+    //     document.body.appendChild(a);
+    //     a.click();
+    //     document.body.removeChild(a);
+    //     URL.revokeObjectURL(url);
+    //   }
     
     
-      const createFileContent=() =>{
-        return(
-            <div className='' id='bill-history-section'>
-            <p>My Bill History</p>
-            <div>
-               <table className='table table-striped meterReader-table outer-border'>
-                    <tr>
-                        <th>Date:</th>
-                        <td>2023/03/23</td>
-                    </tr>
-                    <tr>
-                        <th>Customer Id:</th>
-                        <td>2023/03/23</td>
-                    </tr>
-                    <tr>
-                        <th>Customer Name:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Payment Mode:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Water Charges:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Sewage charges:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Meter Reader Rent:</th>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <th>Miscellanous:</th>
-                        <td>20</td>
-                    </tr>
-                    <tr>
-                        <th>Penalty:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Tax Amount:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Bill Amount:</th>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <th>Total To Be Paid:</th>
-                        <td>Name</td>
-                    </tr>
-               </table>
-            </div>
-            
-        </div>
-        );
-    }
     return(
         <div className="">
-            <table className="table table-striped meterReader-table12 outer-border" id="customers">
-                <thead className=''>
-                    <tr>
-                        <th scope="col">Bill No</th>
-                        <th scope="col">Payment Date</th>
-                        <th scope="col"> Total Charge</th>
-                    
-                    
-                        <th scope="col">Status</th>
-                        <th scope='col'>Action</th>
-                    </tr>
-                </thead>
-                <tbody className='MyBody'>
-                    <tr>
-                        <th scope="">1</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 2000</td>
-                        <td style={{color:'red'}}>Overdue</td>
-                        <td><Link to="/viewDetails"><p className='viewButton'>View</p></Link >  <button onClick={handleDownloadClick}>
-      Download </button>    </td>
-                        
-                       
-                    </tr>
-                    <tr>
-                        <th scope="">2</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 2588</td>
-                        <td style={{color:'red'}}>Overdue</td>
-                        <td><Link><button  className='viewButton'>View</button></Link></td>
-                        
-                        
-                    </tr>
-                    <tr>
-                        <th scope="">3</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 1580</td>
-                        <td style={{color:'green'}}>Paid</td>
-                        <td><Link><button  className='viewButton'>View</button></Link></td> 
-                    </tr>
-                    <tr>
-                        <th scope="">4</th>
-                        <td>12/12/2020</td>
-                        <td>Rs. 1620</td>
-                        <td style={{color:'#C0BB43'}}>Pending</td>
-                        <td><Link><button  className='viewButton'>View</button></Link></td> 
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div style={{ height: '500px', }}>
+                            <table className="table table-striped meterReader-table outer-border"> 
+                                <thead>
+                                <tr>
+                                    <th style={{ width: '300px' }}>Date</th>
+                                    <th style={{ width: '300px' }}>Transaction No</th>
+                                    <th style={{ width: '300px' }}>Amount</th>
+                                    
+                                    <th style={{ width: '300px' }}>Payment Status</th>
+                                    <th style={{ width: '300px' }}>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {tableData.map((row) => (
+                                        <tr key={row._id}>
+                                           
+                                            <td>{row.billDate}</td>
+                                            <td>{row.consumerId}</td>
+                                            <td>{row.billAmount}</td>
+                                           
+                                            <td>{row.paid ? (row.paid === true ? 'Paid' : 'Pending') : 'Pending'}</td>
+                                            <td><Link to="/viewDetails"><p className='viewButton'>View</p></Link >  <button >
+                                            Download </button>    </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
         </div>
     );
 }
