@@ -56,6 +56,7 @@ function Table(){
                                     
                                     {tableData.map((row) => (
                                         <tr key={row._id}>
+                                            
                                            
                                             <td>{row.billDate}</td>
                                             <td>{row.consumerId}</td>
