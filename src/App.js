@@ -32,6 +32,8 @@ import BillHistory from './HomePage/BillHIstory';
 import Payment from './HomePage/PaymentHistory';
 import TableHistory from './Components/Table';
 import Kukl from './HomePage/KUKLPay';
+import PayNow from './HomePage/PayNow';
+import ConfirmPayment from './HomePage/ConfirmBill';
 import UserTable from './Admin/UserTable';
 import Issue from './Admin/Issue';
 import Schedule from './Admin/Schedule';
@@ -91,6 +93,8 @@ function App() {
         <Route path="/schdeuleMeterReader" element={<ScheduleMeterReader />} />
         <Route path="/meterIssue" element={<MeterIssue />} />
         <Route path="/meterProfile" element={<MeterProfile />} />
+        <Route path="/payNow" element={<PayNow />} />
+        <Route path="/confirmPayment" element={<ConfirmPayment />} />
         
       </Routes>
     </BrowserRouter>

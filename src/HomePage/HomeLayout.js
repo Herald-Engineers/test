@@ -7,8 +7,7 @@ import MyImage5 from '../Image/iconuniqueid.png';
 import Money from '../Image/Money.png';
 import Due from '../Image/due.png';
 import Advance from '../Image/advance.png';
-import MyImage6 from '../Image/KUKL.png';
-import MyImage7 from '../Image/Community.png';
+
 import  '../Components/SmallLogo.css';
 import { useLocation } from 'react-router-dom';
 import  '../HomePage/Homepage.css';

@@ -74,13 +74,13 @@ function UserIssue(){
                                         
                                     </tr>
                                     <tr>
-                                        <input type='text' placeholder='Enter your issue' name="subject"onChange={handleSubject} className='MySubject'/>
+                                        <input type='text' placeholder='Enter your issue' name="subject"onChange={handleSubject} className='MySubject' required/>
                                     </tr>
                                    
                                 </table>
                                 <br/>
                                 <p>Details:</p>
-                                <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' placeholder="Explain your issue"value={queries} onChange={handleQueries} /><br/>
+                                <textarea name="queries" id="queries" cols="60" rows="10" className='input_name' placeholder="Explain your issue"value={queries} onChange={handleQueries} required /><br/>
                                 <input type='submit' className='IssueSubmit'/>
                             </form>
                         </div>

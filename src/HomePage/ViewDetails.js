@@ -1,6 +1,6 @@
 import Nav from '../NavbarFolders/Navbar';
 import Sidebars from '../HomePage/Sidebar';
-
+import {Link} from  'react-router-dom';
 function ViewDetails(){
     return(
         <div className='containerHome'>
@@ -30,10 +30,7 @@ function ViewDetails(){
                                 <th>Customer Name:</th>
                                 <td>Name</td>
                             </tr>
-                            <tr>
-                                <th>Payment Mode:</th>
-                                <td>Name</td>
-                            </tr>
+                            
                             <tr>
                                 <th>Water Charges:</th>
                                 <td>Name</td>
@@ -67,6 +64,7 @@ function ViewDetails(){
                                 <td>Name</td>
                             </tr>
                        </table>
+                       <Link to="/payNow"><button className='btn btn-primary'>Pay Now</button></Link>
                     </div>
                     
                 </div>

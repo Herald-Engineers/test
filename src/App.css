@@ -102,3 +102,32 @@ body {
 .lastSection{
   width: 400px;
 }
+
+.logoImage{
+  width: 300px;
+  margin-left: 9px;
+}
+.Pay-section{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+.nextButton{
+  margin-left: 20px;
+  width: 70px;
+}
+.buttonAlign{
+  margin-top: 10px;
+  text-align: right;
+}
+.PaySectionPlease{
+  padding: 20px;
+  background-color: #FAFAFA;
+}
+.ConfirmBill{
+  box-shadow: 0px 0px 12px 0px #00000040;
+  padding: 40px;
+  color: #2F4858;
+  border-radius: 20px;
+}
