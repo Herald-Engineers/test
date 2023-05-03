@@ -15,6 +15,31 @@ function ConfirmPay(){
         .then((response) => {console.log(response.data);setTableData(response.data)})
         .catch((error) => console.log(error.response.data));
       }, []);
+
+      const handleSubmit = (event) => {
+        event.preventDefault();
+       
+        console.log("hello");
+    
+         // Send a POST request to the server with the entered username and password
+        axios.post("https://wavebilling-backend-sabinlohani.onrender.com/pay-bill", {
+        //   paymentMode: paymentMode,
+        //   advancePayment: advancePayment
+        })
+        .then(res => {
+          
+          
+           // Depending on the user role, navigate to a different page
+         
+          console.log(res.data);
+          
+        })
+        .catch(error => {
+        
+          console.log(error);
+          
+        });
+      };
     
     return(
         <div className='containerHome'>
@@ -52,7 +77,7 @@ function ConfirmPay(){
                                 </table>
                                 <div className='buttonAlign'> 
                                     <Link to="/payNow"><button className='btn btn-secondary'>Back</button></Link>
-                                    <button className='btn btn-primary nextButton' >Pay</button>
+                                    <button className='btn btn-primary nextButton' type='submit' >Pay</button>
                                 </div>
                             </center>
                         </div>

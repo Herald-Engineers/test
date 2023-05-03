@@ -64,7 +64,7 @@ function Table(){
                                             <td>{row.billAmount}</td>
                                            
                                             <td>{row.paid ? (row.paid === true ? <span style={{color:'green'}}>'Paid'</span> : 'Overdue') : <span style={{color:'red'}}>Pending</span>}</td>
-                                            <td><Link to="/viewDetails"><>View</></Link></td>
+                                            <td><Link to="/viewDetails" ><>View</></Link></td>
                                         </tr>
                                     ))}
                                 </tbody>

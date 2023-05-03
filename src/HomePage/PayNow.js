@@ -21,6 +21,7 @@ function handleNextClick() {
   }
 function PayNow(){
     
+    
     return(
         <div className='containerHome'>
             <div className='left-left-nav'>

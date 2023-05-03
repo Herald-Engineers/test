@@ -22,7 +22,7 @@ function MyVerticallyCenteredModal(props) {
           <div className='main-box text-center'>
   
             
-            <Link to='/'><Button onClick={props.onHide} className='i-understand'>Continue</Button></Link>
+            <Link to='/dataEntry'><Button onClick={props.onHide} className='i-understand'>Continue</Button></Link>
           </div>
         </Modal.Body>
   

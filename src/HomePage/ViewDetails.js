@@ -249,8 +249,8 @@ function ViewDetails() {
           <div>
             <Link to='/payNow'>
             
-            <button className='btn btn-primary' style={{margin:'10px'}}>Pay Now</button>
-          </Link>
+              <button className='btn btn-primary' style={{margin:'10px'}}>Pay Now</button>
+            </Link>
           </div>
           
         </div> 
