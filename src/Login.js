@@ -60,7 +60,7 @@ import LoadingSpinner from './Components/LoadingSpinner';
         navigate("/meterReader");
       }
       else if(role === 'reader'){
-        navigate("/dashboardMeterReader");
+        navigate("/schdeuleMeterReader");
       }
       else {
           navigate("/ ");

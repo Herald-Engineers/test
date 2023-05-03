@@ -122,5 +122,5 @@ select#PaymentSelection{
         /* center the section */
 }
 .IssueSubmit:hover{
-background-color: rgb(13, 66, 106);
+background-color: #095bd7;
 }

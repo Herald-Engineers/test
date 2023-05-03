@@ -3,7 +3,7 @@ import '../Admin/MeterReader.css';
 import axios from 'axios';
 import  { TbCalendarTime } from "react-icons/tb";
 import MeterSidebar from '../MeterReaderPage/MeterSidebar';
-
+import Nav from '../NavbarFolders/Navbar';
 
 function ScheduleMeterReader(){
     const [tableData, setTableData] = useState([]);
@@ -31,9 +31,11 @@ function ScheduleMeterReader(){
                 </div>
             
             
-                <div className='right-right-nav-Home2'>
-                     
-                   
+                <div className='right-right-nav'>
+                    <div className=''>
+                            <Nav/>
+                    </div>
+                    
                      <div className='MyScheduleBorder'>
                         <div className='d-flex justify-content-center headingBorder' style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',marginBottom:'40px'}}>
                             <div>
@@ -44,34 +46,44 @@ function ScheduleMeterReader(){
                                  <b><h4 className='text-center'style={{color:'#2F4858',height:'37px',fontWeight:'700'}}>My Schedule</h4></b>
                             </div>
                         </div>
-                        <div className='d-flex justify-content-center'>
-                            <div className=''>
-                                <b style={{color:'#2F4858',fontSize:'20px'}}>
-                                <p>Address1</p>
-                                <p>Address2</p>
-                                <p>Address3</p>
-                                <p>Address4</p>
-                                <p>Address5</p>
-                                <p>Date</p>
-                                <p>Shift</p>
-                                </b>
-                            </div>
-                            <div className=''>
-                                {tableData.map((row) => (
-                                <React.Fragment key={row._id} className="">
-                                    <p className='MyClass' style={{fontSize:'20px'}}>
-                                <p> {row.address1} </p>
-                                <p>{row.address2?row.address2:"-"} </p>
-                                <p>{row.address3?row.address3:"-"} </p>
-                                <p>{row.address4?row.address4:"-"} </p>
-                                <p>{row.address5?row.address5:"-"} </p>
-                                <p>{row.date} </p>
-                                <p> {row.shift} </p>
+                        <div className='d-flex justify-content-center' style={{ height: '500px',  width: '1218px', overflowX: 'scroll',overflowY: 'scroll',paddingLeft:'37px'}}>
+                            <div>
+                                <table className='table table-striped meterReader-table outer-border' style={{margin:'30px',width:'95%'}}>
+                                    <thead>
+                                    <tr>
+                                        <th style={{ width: '300px' }}>Address1</th>
+                                        <th style={{ width: '300px' }}>Address2</th>
+                                        <th style={{ width: '300px' }}>Address3</th>
+                                        <th style={{ width: '300px' }}>Address4</th>
+                                        <th style={{ width: '300px' }}>Address5</th>
+                                        <th style={{ width: '300px' }}>Date</th>
+                                        <th style={{ width: '100px' }}>Shift</th>
+
+                                    </tr> </thead>
+                                    <tbody> {tableData.map((row) => (
                                 
-                                </p>
+                                    <tr key={row._id}>
+                                       
+                                   
+                                    <td> {row.address1}                 </td>
+                                    <td>{row.address2?row.address2:"-"} </td>
+                                    <td>{row.address3?row.address3:"-"} </td>
+                                    <td>{row.address4?row.address4:"-"} </td>
+                                    <td>{row.address5?row.address5:"-"} </td>
+                                    <td>{row.date}                      </td>
+                                    <td> {row.shift}                    </td>
+                                
+                                
                                
-                            </React.Fragment>
-                            ))}
+                      
+                            
+                                    </tr>))}</tbody>
+                                   
+                                </table>
+                            </div>
+                           
+                            <div className=''>
+                                
                             </div>
                         
                         </div>                      

@@ -1,22 +1,21 @@
+import React , { useState,useEffect }from 'react';
 import Nav from '../NavbarFolders/Navbar';
 import Sidebars from '../HomePage/Sidebar';
 import {Link} from  'react-router-dom'; 
-import Khalti from '../Image/khalti.png';
-import Esewa from '../Image/esewa.png';
-function confirmPay(){
-    function handleNextClick() {
-        // Get the selected payment method
-        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-        
-        // If no payment method is selected, show an error message and return
-        if (!paymentMethod) {
-          alert("Please select a payment method");
-          return;
-        }
-        
-        // Otherwise, proceed to the next page
-        window.location.href = "/confirmPayment";
-      }
+import axios from 'axios';
+function ConfirmPay(){
+    const token = localStorage.getItem('token');
+    const [tableData, setTableData] = useState([]);
+    useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-bills", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then((response) => {console.log(response.data);setTableData(response.data)})
+        .catch((error) => console.log(error.response.data));
+      }, []);
+    
     return(
         <div className='containerHome'>
             <div className='left-left-nav'>
@@ -40,7 +39,8 @@ function confirmPay(){
                                        
                                     </tr>
                                     <tr>
-                                        <input value={1234.0} style={{width:'220.800px',height:'24px',padding:'20px 20px',margin:'8px 20px 8px 0px',borderRadius:'4px'}}/>
+                                    {tableData.map((row) => (
+                                        <input value={row.totalAmount} style={{width:'220.800px',height:'24px',padding:'20px 20px',margin:'8px 20px 8px 0px',borderRadius:'4px'}}/>))}
                                     </tr>
                                     <tr>
                                         <td>Advance Payment (Optional):</td>
@@ -62,4 +62,4 @@ function confirmPay(){
         </div>
     );
 }
-export default confirmPay;
+export default ConfirmPay;

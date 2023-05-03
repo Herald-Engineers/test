@@ -86,10 +86,11 @@
     
 }
 .MyScheduleBorder{
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
     border-spacing: 0;
     border-radius: 20px;
+    margin-left: 30px;
     margin-top: 20px;
     background-color: #FAFAFA;
     padding-top: 20px;
@@ -155,4 +156,9 @@ input[type=submit],.submitSchedule{
  }
  .inputBox{
     width: 400px;
+}
+.right-right-nav{
+    float: right;
+    height: 100%;
+    width: 1346px;
 }

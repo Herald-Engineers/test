@@ -171,7 +171,7 @@ function DataEntry(){
                                     <div>
                                     Previous reading: {previousReading}
                                     </div>
-      )}
+                                    )}
                                     
                                     <p>Previous Reading: </p>
                                     {/* {tableData2.map((myRow) => (
