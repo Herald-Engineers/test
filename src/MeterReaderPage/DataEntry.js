@@ -7,16 +7,39 @@ import LoadingSpinner from '../Components/LoadingSpinner';
 import MeterSidebar from '../MeterReaderPage/MeterSidebar';
 import {useEffect} from 'react';
 import {TbFileText} from "react-icons/tb";
-
+import { Link, useNavigate } from 'react-router-dom';
+import { MdVerified } from "react-icons/md";
 import Nav from '../NavbarFolders/Navbar';
+function MyVerticallyCenteredModal(props) {
+
+    return (
+      <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered  >
+  
+        <Modal.Body style={{ padding: '68px', backgroundColor: '#D9D9D9' }}>
+          <center>
+            <MdVerified size={40} style={{ color: 'green' }} /><br />
+            <span style={{ color: '#32325D', fontSize: '30px', fontWeight: '700' }}>The data you’ve entered has <br/>been submitted successfully.</span></center>
+          <div className='main-box text-center'>
+  
+            
+            <Link to='/'><Button onClick={props.onHide} className='i-understand'>Continue</Button></Link>
+          </div>
+        </Modal.Body>
+  
+      </Modal>
+    );
+  }
 function DataEntry(){
+
     const token = localStorage.getItem('token');
+    const [modalShow, setModalShow] = React.useState(false);
     const [tableData, setTableData] = useState([]);
     const [tableData2, setTableData2] = useState([]);
     const [selectedConsumer, setSelectedConsumer] = useState(null);
     const [previousReading, setPreviousReading] = useState(null);
     const [consumers, setconsumer] = useState(null);
-   
+    const [serverResponseReceived, setServerResponseReceived] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [currentReading, setCurrentReading] = useState("");
     const [errorMessage, setErrorMessage] = useState('');
     const [errorMessage2, setErrorMessage2] = useState('');
@@ -87,8 +110,9 @@ function DataEntry(){
           }
         })
         .then(res => {
-          
-          console.log(res.data);
+            setServerResponseReceived(true);
+            setLoading(false);
+            console.log(res.data);
         })
         .catch(error => {
           console.log(error);
@@ -167,11 +191,7 @@ function DataEntry(){
                                             </option>                                      
                                         ))}
                                     </select>
-                                    {previousReading && (
-                                    <div>
-                                    Previous reading: {previousReading}
-                                    </div>
-                                    )}
+                                    
                                     
                                     <p>Previous Reading: </p>
                                     {/* {tableData2.map((myRow) => (
@@ -195,8 +215,12 @@ function DataEntry(){
                                     {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
                                     <p>Amount: </p>
                                     <input type="text" name="amount" placeholder='Amount' value={amount?amount:0}/>
-                                    <input type="submit" />
+                                    <input type="submit"  onClick={() => setModalShow(true)}/>
                                 </form>
+                                {loading && !serverResponseReceived && <LoadingSpinner />}
+                                {serverResponseReceived ? (
+                                    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+                                ) : null}
                             </div>
                         </div>
                     </div>
