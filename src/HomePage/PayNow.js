@@ -1,25 +1,40 @@
+import React , { useState,useEffect }from 'react';
 import Nav from '../NavbarFolders/Navbar';
 import Sidebars from '../HomePage/Sidebar';
 import {Link} from  'react-router-dom'; 
 import Khalti from '../Image/khalti.png';
 import Esewa from '../Image/esewa.png';
-function handleNextClick() {
-    // Get the selected payment method
-    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-    
-    // If no payment method is selected, show an error message and return
-    if (!paymentMethod) {
-      alert("Please select a payment method");
-      return;
-    }
-   
-         // Otherwise, proceed to the next page
-    window.location.href = "/confirmPayment";
-    
-    
-   
-  }
+import { useParams } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 function PayNow(){
+    const navigate = useNavigate();
+    const location = useLocation();
+    const id = location.state.id;
+    console.log("Pay Now Id: ",id);
+
+    function handleViewClick(paymentMethod){
+        // Render the ViewDetails component
+        navigate("/confirmPayment", { state: { id,paymentMethod } });
+    };
+    function handleView(){
+        // Render the ViewDetails component
+        navigate("/viewDetails", { state: { id } });
+    };
+      
+    function handleNextClick(id) {
+        // Get the selected payment method
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        
+        // If no payment method is selected, show an error message and return
+        if (!paymentMethod) {
+        alert("Please select a payment method");
+        return;
+        }
+    
+            // Otherwise, proceed to the next page
+         handleViewClick(paymentMethod.value);
+    }
     
     
     return(
@@ -38,6 +53,9 @@ function PayNow(){
                         <div className='PaySectionPlease'>
                             <center>
                                 <p>Choose Your payment option:</p>
+                                <form>
+
+                               
                                 <div className='d-flex '>
                                     <div className='pay-now-1'>
                                         <input class="form-check-input" type="radio" name="paymentMethod" value="khalti" id="flexCheckDefault" />
@@ -46,16 +64,16 @@ function PayNow(){
                                         </label>
                                     </div>
                                     <div className='pay-now-2'>
-                                        <input class="form-check-input" type="radio" name="paymentMethod" value="esewa" id="flexCheckDefault"/>
+                                        <input class="form-check-input" type="radio" name="paymentMethod" value="esewa" id="flexCheckDefault" />
                                         <label for="flexCheckDefault">
                                             <img src={Esewa} alt="logout" className="logoImage" />
                                         </label>
                                     </div>
                                 </div>
                                 <div className='buttonAlign'> 
-                                    <Link to="/viewDetails"><button className='btn btn-secondary'>Back</button></Link>
-                                    <button className='btn btn-primary nextButton' onClick={handleNextClick}>Next</button>
-                                </div>
+                                    <button className='btn btn-secondary' onClick={() => handleView()}>Back</button>
+                                    <button className='btn btn-primary nextButton' onClick={() => handleNextClick(id)} >Next</button>
+                                </div> </form>
                             </center>
                         </div>
                     </div>

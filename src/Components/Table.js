@@ -1,16 +1,35 @@
-import '../Css/Table.css';
+
 import React, { useState,useEffect } from 'react';
-import {Link} from  'react-router-dom';
+import axios from 'axios';
+import '../Css/Table.css';
 import '../Admin/MeterReader.css';
 import ReactDOMServer from 'react-dom/server';
-import { Document, Page } from 'react-pdf';
-import axios from 'axios';
 import  '../Admin/AdminDash.css';
-function Table(){
+import { saveAs } from 'file-saver';
+import Nav from '../NavbarFolders/Navbar';
+import Sidebars from '../HomePage/Sidebar';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import {PDFDownloadLink, Document, Page, View, Text } from '@react-pdf/renderer';
+import ViewDetails from '../HomePage/ViewDetails';
+
+
+import { useNavigate } from 'react-router-dom';
+
+  
+
+
+function Table(){  
+    const navigate = useNavigate();
+    
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
+    const [tableData2, setTableData2] = useState([]);
+    const [editId, setEditId] = useState(null);
+    console.log("Edit id: ",editId);
     useEffect(() => {
-        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-bills", {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-receipts", {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -18,37 +37,71 @@ function Table(){
         .then((response) => {console.log(response.data);setTableData(response.data)})
         .catch((error) => console.log(error.response.data));
       }, []);
-    // const handleDownloadClick = () => {
-    //     downloadFile();
-    // }   
-    
-    // const downloadFile = ()=>{
-    //     const content = createFileContent();
-    //     const blob = new Blob([ReactDOMServer.renderToStaticMarkup(content)], { type: 'application/pdf' });
-    //     const url = URL.createObjectURL(blob);
-    //     const a = document.createElement('a');
-    //     a.href = url;
-    //     a.download = 'MyAmounts.pdf';
-    //     document.body.appendChild(a);
-    //     a.click();
-    //     document.body.removeChild(a);
-    //     URL.revokeObjectURL(url);
-    //   }
-    
+
+      useEffect(() => {
+        axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-bills", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          
+          }
+        })
+        .then((response) => {console.log(response.data);setTableData2(response.data)})
+        .catch((error) => console.log(error.response.data));
+      }, [editId]);
+      function handleViewClick(id){
+        // Render the ViewDetails component
+        console.log("ViewCLick",id);
+       
+        navigate("/viewDetails", { state: { id } });
+      };
+      function handleViewClick2(id){
+        // Render the ViewDetails component
+        navigate("/paymentSuccess", { state: { id } });
+      };
     
     return(
         <div className="justify-content-center ">
             
             <div style={{ height: '500px',  width: '1036px', overflowX: 'scroll',overflowY: 'scroll'}} className='HistoryTableCss'>
+                <center><h1 style={{color:'#2F4858'}}>Pay Bills now</h1></center>
+                            <table className="table table-striped meterReader-table outer-border"> 
+                                <thead>
+                                <tr>
+                                    <th style={{ width: '300px' }}>Receipt Date:</th>
+                                    <th style={{ width: '300px' }}>Due Date:</th>
+                                    <th style={{ width: '300px' }}>Total</th>
+                                    
+                                    <th style={{ width: '300px' }}>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {tableData2.map((row) => (
+                                        <tr key={row._id}>
+                                            
+                                           
+                                            <td>{new Date(row.billDate).toLocaleDateString()}</td>
+                                            <td>{row.dueBy}</td>
+                                            <td>{row.totalAmount}</td>
+                                           
+                                            {/* <td>{row.paid ? (row.paid === true ? <span style={{color:'green'}}>'Paid'</span> : 'Overdue') : <span style={{color:'red'}}>Pending</span>}</td> */}
+                                            <td><button  onClick={() => {setEditId(row._id);handleViewClick(row._id) }}>View</button></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                    </table>
+            </div>
+
+            <div style={{ height: '500px',  width: '1036px', overflowX: 'scroll',overflowY: 'scroll'}} className='HistoryTableCss'>
                 <center><h1 style={{color:'#2F4858'}}>History</h1></center>
                             <table className="table table-striped meterReader-table outer-border"> 
                                 <thead>
                                 <tr>
-                                    <th style={{ width: '300px' }}>Date</th>
-                                    <th style={{ width: '300px' }}>Transaction No</th>
+                                    <th style={{ width: '300px' }}>Payment Date</th>
+                                    <th style={{ width: '300px' }}>Payment Mode</th>
                                     <th style={{ width: '300px' }}>Amount</th>
                                     
-                                    <th style={{ width: '300px' }}>Payment Status</th>
                                     <th style={{ width: '300px' }}>Action</th>
 
                                 </tr>
@@ -59,12 +112,12 @@ function Table(){
                                         <tr key={row._id}>
                                             
                                            
-                                            <td>{new Date(row.billDate).toLocaleDateString()}</td>
-                                            <td>{row.consumerId}</td>
-                                            <td>{row.billAmount}</td>
+                                            <td>{new Date(row.paymentDate).toLocaleDateString()}</td>
+                                            <td>{row.paymentMode}</td>
+                                            <td>{row.totalAmount}</td>
                                            
-                                            <td>{row.paid ? (row.paid === true ? <span style={{color:'green'}}>'Paid'</span> : 'Overdue') : <span style={{color:'red'}}>Pending</span>}</td>
-                                            <td><Link to="/viewDetails" ><>View</></Link></td>
+                                            {/* <td>{row.paid ? (row.paid === true ? <span style={{color:'green'}}>'Paid'</span> : 'Overdue') : <span style={{color:'red'}}>Pending</span>}</td> */}
+                                            <td><button  onClick={() => handleViewClick2(row._id)}>View</button></td>
                                         </tr>
                                     ))}
                                 </tbody>

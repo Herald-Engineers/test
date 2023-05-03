@@ -46,6 +46,7 @@ import DataEntry from './MeterReaderPage/DataEntry';
 import ScheduleMeterReader from './MeterReaderPage/ScheduleMeterReader';
 import MeterIssue from './MeterReaderPage/MeterIssue';
 import MeterProfile from './MeterReaderPage/MeterProfile';
+import PaymentSuccess from './HomePage/PaymentSuccess';
 function App() {
   return (
 
@@ -95,6 +96,7 @@ function App() {
         <Route path="/meterProfile" element={<MeterProfile />} />
         <Route path="/payNow" element={<PayNow />} />
         <Route path="/confirmPayment" element={<ConfirmPayment />} />
+        <Route path="/paymentSuccess" element={<PaymentSuccess />} />
         
       </Routes>
     </BrowserRouter>

@@ -1,9 +1,14 @@
 import React from 'react';
-
+import  { useEffect }from 'react';
 import Chart from "react-apexcharts";
 import { useState } from 'react';
+import axios from 'axios';
 
 function Mychart(){
+  const token = localStorage.getItem('token');
+  const [tableData, setTableData] = useState([]);
+  
+
     const [state,setState] = useState({
         options: {
           chart: {
@@ -45,10 +50,33 @@ function Mychart(){
         series: [
           {
             name: "series-1",
-            data: [4000,5000,7000,8000,11000,7283,12000,3000,2000,5000,6888,7000]
+            data: []
           }
         ]
       });
+      useEffect(() => {
+        axios
+          .get('https://wavebilling-backend-sabinlohani.onrender.com/get-report', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            const { data } = response;
+    
+            // Update the data property of the series object in the state
+            setState((prevState) => ({
+              ...prevState,
+              series: [
+                {
+                  name: 'Series 1',
+                  data: data.map((item) => item.units), // map the billAmount data from the response
+                },
+              ],
+            }));
+          })
+          .catch((error) => console.log(error.response.data));
+      }, []);
      return(
         <div>
             <div className='row'>

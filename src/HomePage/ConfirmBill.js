@@ -3,9 +3,28 @@ import Nav from '../NavbarFolders/Navbar';
 import Sidebars from '../HomePage/Sidebar';
 import {Link} from  'react-router-dom'; 
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 function ConfirmPay(){
+    const navigate = useNavigate();
+    function handleNextClick(){
+        // Render the ViewDetails component
+        navigate("/paymentSuccess");
+    };
+    const location = useLocation();
+    const id = location.state.id;
+    const paymentMethod = location.state.paymentMethod;
+    console.log("Confirm Pay Id: ",id);
     const token = localStorage.getItem('token');
     const [tableData, setTableData] = useState([]);
+   
+   
+    
+    const [advancePayment, setAdvancePayment] = useState('');
+
+  function handleAdvance(event) {
+    setAdvancePayment(event.target.value);
+  }
     useEffect(() => {
         axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-bills", {
           headers: {
@@ -23,12 +42,17 @@ function ConfirmPay(){
     
          // Send a POST request to the server with the entered username and password
         axios.post("https://wavebilling-backend-sabinlohani.onrender.com/pay-bill", {
-        //   paymentMode: paymentMode,
-        //   advancePayment: advancePayment
+          paymentMode: paymentMethod,
+          billId: id,
+          advancePayment: advancePayment
+        },{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         })
         .then(res => {
           
-          
+            navigate("/paymentSuccess");
            // Depending on the user role, navigate to a different page
          
           console.log(res.data);
@@ -36,7 +60,7 @@ function ConfirmPay(){
         })
         .catch(error => {
         
-          console.log(error);
+          console.log(error.response.data);
           
         });
       };
@@ -58,10 +82,11 @@ function ConfirmPay(){
                             <center>
                                 <h4>Confirm Payment?</h4>
                                 <p>Are you sure want to confirm and pay for the bill?</p>
+                                <form onSubmit={handleSubmit}>
+
                                 <table>
                                     <tr>
                                         <td>Bill Amount:</td>
-                                       
                                     </tr>
                                     <tr>
                                     {tableData.map((row) => (
@@ -72,13 +97,14 @@ function ConfirmPay(){
                                         
                                     </tr>
                                     <tr>
-                                        <td><input type='number' defaultValue={0} /></td>
+                                        <td><input type='number' defaultValue={0} name='advancePayment' onChange={handleAdvance} /></td>
                                     </tr>
                                 </table>
                                 <div className='buttonAlign'> 
                                     <Link to="/payNow"><button className='btn btn-secondary'>Back</button></Link>
-                                    <button className='btn btn-primary nextButton' type='submit' >Pay</button>
+                                    <button className='btn btn-primary nextButton' type='submit'  >Pay</button>
                                 </div>
+                                </form>
                             </center>
                         </div>
                     </div>

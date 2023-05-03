@@ -23,7 +23,7 @@ function ViewSChedule(){
     return(
         <div>
             
-            <div className='justify-content center right-width myTables2'style={{ width: '1078px', height:'400px',marginBottom: '40px'}}>
+            <div className='justify-content center right-width myTables2'style={{ width: '1078px', height:'447px',marginBottom: '40px'}}>
                 <div className='d-flex justify-content-center headingBorder' style={{boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
                                 
                                 <div>
@@ -31,7 +31,7 @@ function ViewSChedule(){
                                 </div>
                 </div>
 
-                <div style={{ width: '1099px', marginTop:'40px' , marginLeft: '40px',marginRight: '40px'}}>
+                <div style={{ width: '1099px', marginTop:'40px' , marginLeft: '40px',marginRight: '40px',height:'320px', overflowX: 'scroll'}}>
                     <table className='table table-striped meterReader-table outer-border'>
                         <thead>
                             <tr>
