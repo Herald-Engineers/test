@@ -1,13 +1,15 @@
 .SignIn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 0px;
-    height: 100vh;
-    background: white;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: white;
+}
 
-
+.myCompanyButton {
+  margin-bottom: 20px;
+}
   .image-container {
     display: inline-block;
     justify-content: space-between;
