@@ -10,7 +10,7 @@
 }
 .MyLogoImageSection{
     width:60%;
-    height: 745px;
+    height: 100vh;
     background-color: #F5F5F5;
     padding: 0px;
     margin: 0px;
@@ -26,9 +26,12 @@
     width: 40%;
     height: 100vh;
     background-color: white;
-    padding-top: 104px;
+    /* padding-top: 104px; */
     margin: 0px;
-    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* float: right; */
 }
 .MyLogoImage{
     width: 100%;
@@ -41,9 +44,9 @@
 .ridhtalignlabel{
     text-align: left;
 }
-.myItems{
+/* .myItems{
     margin-left: 154px;
-}
+} */
 .myforgot{
     padding-left: 114px;
 }
@@ -51,8 +54,15 @@
     width: 130px;
     height: 130px;
 }
-.button-container{
-    padding-bottom: 20px;
+.loader-div {
+    display: flex;
+    justify-content: center;
+}
+.btn-primary {
+    margin: 20px 0;
+}
+.button-container input, .button-container label {
+    cursor: pointer;
 }
 .userImage{
     margin-top: 14px;

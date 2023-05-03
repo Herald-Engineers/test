@@ -4,7 +4,7 @@ import './App.css';
 import 'reactjs-popup/dist/index.css';
 import './Components/form.css';
 import { Link } from 'react-router-dom';
-import {  useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CopyRightTag from './Components/Copyright';
 import HomePage from './HomePage/HomeLayout';
@@ -13,7 +13,7 @@ import axios from 'axios';
 import LoadingSpinner from './Components/LoadingSpinner';
 
 
- function Login() {
+function Login() {
   const navigate = useNavigate();
 
   // Set up state variables for handling server response, loading state, username, password, and error message
@@ -32,93 +32,100 @@ import LoadingSpinner from './Components/LoadingSpinner';
   };
 
   // Define an event handler for submitting the form data to the server
+  
   const handleSubmit = (event) => {
+    const loginBtn = document.getElementById('login-button');
+    loginBtn.disabled = true;
     event.preventDefault();
     setLoading(true);
     console.log("hello");
 
-     // Send a POST request to the server with the entered username and password
+    // Send a POST request to the server with the entered username and password
     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
       username: username,
       password: password
     })
-    .then(res => {
-      localStorage.setItem('fullName', res.data.fullName);
-      localStorage.setItem('token', res.data.token);
-      const role = res.data.role;
-      setServerResponseReceived(true);
-      setLoading(false);
-       // Depending on the user role, navigate to a different page
-      if (role === 'individualConsumer') {
+      .then(res => {
+        loginBtn.disabled = false;
+        localStorage.setItem('fullName', res.data.fullName);
+        localStorage.setItem('token', res.data.token);
+        const role = res.data.role;
+        setServerResponseReceived(true);
+        setLoading(false);
+        // Depending on the user role, navigate to a different page
+        if (role === 'individualConsumer') {
           // Navigate to another page
           navigate("/homela");
-      } 
-      else if(role === 'companyConsumer'){
-        navigate("/homela");
-      }
-      else if(role === 'admin'){
-        navigate("/meterReader");
-      }
-      else if(role === 'reader'){
-        navigate("/schdeuleMeterReader");
-      }
-      else {
+        }
+        else if (role === 'companyConsumer') {
+          navigate("/homela");
+        }
+        else if (role === 'admin') {
+          navigate("/meterReader");
+        }
+        else if (role === 'reader') {
+          navigate("/schdeuleMeterReader");
+        }
+        else {
           navigate("/ ");
-      }
-      
-      console.log(res.data);
-      
-    })
-    .catch(error => {
-      setLoading(false);
-      console.log(error);
-      setErrorMessage("Invalid username or password");
-    });
+        }
+
+        console.log(res.data);
+
+      })
+      .catch(error => {
+        loginBtn.disabled = false;
+        setLoading(false);
+        console.log(error);
+        setErrorMessage("Invalid username or password");
+      });
   };
 
   return (
-    
-  <div className='Container'>
-    <div className='MyLogoImageSection'> 
-        <img src={LoginSec} alt='Protect Water'  className='MyLogoImage' />
-    </div>
-   
-    <div className="form" >
-      <div className=''>  
-        <center> <img src={MyImage} alt='Wave Billing System Logo'  className='myLogo text-center' /></center>
-       <center> <h4 style={{paddingBottom:'40px'}}>LOGIN TO CONTINUE</h4></center>
-       <div className='myItems'>
-        <form onSubmit={handleSubmit}>
-          {/* {error && <p>{error}</p>} */}
-          <div className="input-container">
-            <label className='ridhtalignlabel'>Username</label><br/>
-            <input type="text" required value={username} placeholder='Username' className='login-field'  onChange={handleUsernameChange}/>
-          
-          </div>
-          <div className="input-container">
-          <label>Password</label><br/>
-            <input type="password"  required  value={password} placeholder='Password' className='login-field'  onChange={handlePasswordChange}/>
-          
-          </div>
-          {errorMessage && <div style={{color:'red'}}>{errorMessage}</div>}
 
-          <div className="button-container">
-          <input type="checkbox"  name="lsRememberMe"/>
-                <label style={{color:'#B1ABAB',fontSize:'14px'}}>Remember me</label>
-          <Link to='/nextpage'><span style={{ fontSize: '13px'}}className='myforgot' >Forgot Password?</span></Link>
-           
+    <div className='Container'>
+      <div className='MyLogoImageSection'>
+        <img src={LoginSec} alt='Protect Water' className='MyLogoImage' />
+      </div>
+
+      <div className="form" >
+        <div className=''>
+          <center> <img src={MyImage} alt='Wave Billing System Logo' className='myLogo text-center' /></center>
+          <center> <h4 style={{ paddingBottom: '40px' }}>LOGIN TO CONTINUE</h4></center>
+          <div className='myItems'>
+            <form onSubmit={handleSubmit}>
+              {/* {error && <p>{error}</p>} */}
+              <div className="input-container">
+                <label className='ridhtalignlabel'>Username</label><br />
+                <input type="text" required value={username} placeholder='Username' className='login-field' onChange={handleUsernameChange} />
+
+              </div>
+              <div className="input-container">
+                <label>Password</label><br />
+                <input type="password" required value={password} placeholder='Password' className='login-field' onChange={handlePasswordChange} />
+
+              </div>
+              {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+
+              <div className="button-container">
+                <input type="checkbox" name="lsRememberMe" id='lsRememberMe' />
+                <label style={{ color: '#B1ABAB', fontSize: '14px', margin: '0 5px' }} htmlFor='lsRememberMe'>Remember me</label>
+                <Link to='/nextpage'><span style={{ fontSize: '13px' }} className='myforgot' >Forgot Password?</span></Link>
+
+              </div>
+              <button type="submit" className='btn btn-primary' id='login-button'>Login</button>
+              <p style={{ color: '#B1ABAB', fontSize: '12px', paddingLeft: '42px', paddingTop: '10px' }}>Don't have an account?<Link to='/signinas'>{'\n'}Gets yours now</Link></p>
+            </form>
+            <div className='loader-div'>
+              { loading && !serverResponseReceived && <LoadingSpinner /> }
+            </div>
           </div>
-          <button type="submit" className='btn btn-primary' >Login</button>
-          <p style={{color: '#B1ABAB',fontSize:'12px',paddingLeft:'42px',paddingTop:'10px'}}>Don't have an account?<Link to='/signinas'>{'\n'}Gets yours now</Link></p>
-        </form>
-        {loading && !serverResponseReceived && <LoadingSpinner />}
+
+          <CopyRightTag className='copyright-css' />
         </div>
-        
-        <CopyRightTag className='copyright-css' />
       </div>
     </div>
-  </div>
-      
+
   );
 }
 
@@ -132,20 +139,20 @@ export default Login;
 //       <form onSubmit={handleSubmit}>
 //       {error && <p>{error}</p>}
 //         <div className="input-container">
-         
+
 //           <input type="text" required value={username} placeholder='Username' className='login-field'  onChange={(e) => setUsername(e.target.value)}/>
-         
+
 //         </div>
 //         <div className="input-container">
-          
+
 //           <input type="password"  required   value={password} placeholder='Password' className='login-field'  onChange={(e) => setPassword(e.target.value)}/>
-         
+
 //         </div>
 //         <div className="button-container">
 //         <button type="submit">Login</button>
 //         </div>
 //       </form>
-      
+
 //       <Link to='/nextpage'><p style={myStyle}>Forgot Password?</p></Link>
 //       <CopyRightTag />
 //     </div></div>
@@ -158,18 +165,18 @@ export default Login;
         {renderErrorMessage("pass")}
         <button className='btn btn-primary' onClick={handleButtonClick}>Login</button>
       </form> */}
-       {/* <div className="login-form"> */}
-        
-        {/* {isSubmitted ? <div><HomePage/></div>: renderForm} */}
-      {/* </div> */}
-      {/* <br></br> */}
+{/* <div className="login-form"> */ }
 
-    {/* </div>
+{/* {isSubmitted ? <div><HomePage/></div>: renderForm} */ }
+{/* </div> */ }
+{/* <br></br> */ }
+
+{/* </div>
     </div> */}
 
-    {/* // <div> */}
-    {/* //   {showError && <p className='error-message' style={myError} */}
-   {/* // {showPasswordError && <p className='error-message' style={myError}>Please enter a password.</p>}
+{/* // <div> */ }
+{/* //   {showError && <p className='error-message' style={myError} */ }
+{/* // {showPasswordError && <p className='error-message' style={myError}>Please enter a password.</p>}
     //   <br></br>
     //   <button className='btn btn-primary' onClick={handleButtonClick}>Login</button>
     // </div> */}

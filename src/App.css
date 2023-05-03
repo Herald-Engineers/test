@@ -85,9 +85,8 @@ body {
 }
 .copyrightCSS{
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   color: #B1ABAB; 
-  padding-left: 142px;
   font-size: 13px;
 
 }
