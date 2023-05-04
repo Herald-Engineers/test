@@ -25,14 +25,8 @@ function PayNow(){
     function handleNextClick(id) {
         // Get the selected payment method
         const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-        
-        // If no payment method is selected, show an error message and return
-        if (!paymentMethod) {
-        alert("Please select a payment method");
-        return;
-        }
     
-            // Otherwise, proceed to the next page
+        // Otherwise, proceed to the next page
          handleViewClick(paymentMethod.value);
     }
     
@@ -53,27 +47,26 @@ function PayNow(){
                         <div className='PaySectionPlease'>
                             <center>
                                 <p>Choose Your payment option:</p>
-                                <form>
-
-                               
-                                <div className='d-flex '>
-                                    <div className='pay-now-1'>
-                                        <input class="form-check-input" type="radio" name="paymentMethod" value="khalti" id="flexCheckDefault" />
-                                        <label for="flexCheckDefault">
-                                            <img src={Khalti} alt="logout" className="logoImage" />
-                                        </label>
+                                <form>                               
+                                    <div className='d-flex '>
+                                        <div className='pay-now-1'>
+                                            <input class="form-check-input" type="radio" name="paymentMethod" value="khalti" id="khalti-method" required/>
+                                            <label for="khalti-method">
+                                                <img src={Khalti} alt="logout" className="logoImage" />
+                                            </label>
+                                        </div>
+                                        <div className='pay-now-2'>
+                                            <input class="form-check-input" type="radio" name="paymentMethod" value="esewa" id="esewa-method" required/>
+                                            <label for="esewa-method">
+                                                <img src={Esewa} alt="logout" className="logoImage" />
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div className='pay-now-2'>
-                                        <input class="form-check-input" type="radio" name="paymentMethod" value="esewa" id="flexCheckDefault" />
-                                        <label for="flexCheckDefault">
-                                            <img src={Esewa} alt="logout" className="logoImage" />
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className='buttonAlign'> 
-                                    <button className='btn btn-secondary' onClick={() => handleView()}>Back</button>
-                                    <button className='btn btn-primary nextButton' onClick={() => handleNextClick(id)} >Next</button>
-                                </div> </form>
+                                    <div className='buttonAlign'> 
+                                        <button className='btn btn-secondary' onClick={() => handleView()}>Back</button>
+                                        <button className='btn btn-primary nextButton' onClick={() => handleNextClick(id)} >Next</button>
+                                    </div> 
+                                </form>
                             </center>
                         </div>
                     </div>

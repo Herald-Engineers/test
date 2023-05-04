@@ -7,6 +7,7 @@ import MyImage5 from '../Image/iconuniqueid.png';
 import Money from '../Image/Money.png';
 import Due from '../Image/due.png';
 import Advance from '../Image/advance.png';
+import axios from 'axios';
 
 import  '../Components/SmallLogo.css';
 import { useLocation } from 'react-router-dom';
@@ -71,10 +72,40 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 function HomeLayout(){
+    const token = localStorage.getItem('token');
     const location = useLocation();
     const { inputValue } = location.state || {};
     const [modalShow, setModalShow] = React.useState(false);
+    const [loading, setLoading] = React.useState(true);
+    const [totalPayments, setTotalPayments] = React.useState('Loading...');
+    const [advancePayment, setAdvancePayment] = React.useState('Loading...');
+    const [duePayment, setDuePayment] = React.useState('Loading...');
     
+    React.useEffect(() => {
+        Promise.all([
+            axios.get("https://wavebilling-backend-sabinlohani.onrender.com/get-total-payment", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }),
+            axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-advance-payment", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }),
+            axios.get("https://wavebilling-backend-sabinlohani.onrender.com/my-bills", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            }),
+        ])
+        .then((res) => {
+            setTotalPayments(res[0].data.totalPayment);
+            setAdvancePayment(res[1].data.advanceAmount);
+            setDuePayment(res[2].data.length);
+        })
+        .finally(() => setLoading(false));
+    }, []);
   
     return (
         <div className='containerHome'>
@@ -99,9 +130,8 @@ function HomeLayout(){
                                 </div>
                                 <div style={{float:'right',marginTop: '9px',paddingRight: '25px'}}>
                                     <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Total Payments</span><br/>
-                                    <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>Rs. 2996</span>
+                                    <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>Rs. {totalPayments}</span>
                                 </div>
-                                
                                                                 
                             </div>
                                 
@@ -114,7 +144,7 @@ function HomeLayout(){
                                 </div>
                                 <div style={{float:'right',marginTop: '9px',paddingRight: '45px'}}>
                                         <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Due Payments</span><br/>
-                                        <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>0</span>
+                                        <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>{duePayment}</span>
                                 </div>
                                     
                                                                     
@@ -127,7 +157,7 @@ function HomeLayout(){
                                     </div>
                                     <div style={{float:'right',marginTop: '9px',paddingRight: '14px'}}>
                                             <span style={{fontSize:'18px',fontWeight:'700',marginTop:'10px'}}>Advance Payments</span><br/>
-                                            <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>3</span>
+                                            <span style={{fontSize:'14px',fontWeight:'500',color:'black'}}>Rs. {advancePayment}</span>
                                     </div>
                                     
                                                                     
