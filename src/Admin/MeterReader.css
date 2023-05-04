@@ -144,11 +144,10 @@ input[type=submit],.submitSchedule{
 }
 
 .MyClass{
-    
-    padding-bottom: 20px;
-    padding-left: 30px;
+    margin: 20px;
+    padding: 20px;
     border-radius: 20px;
-    
+    background-color: #f9f9f9;
  }
  .MyColor{
      color: #2F4858;
