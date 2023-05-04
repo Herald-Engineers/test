@@ -98,7 +98,11 @@ function Sidebar(){
                     
                             <div className='d-flex'>
                                     <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
-                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor" onClick={() => setModalShow(true)}>Sign Out</p> 
+                                    <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor" onClick={() => { 
+                                        setModalShow(true);
+                                        localStorage.removeItem('token');
+                                        localStorage.removeItem('fullName');
+                                    }}>Sign Out</p> 
                             </div>
                         </Nav.Link>
                     </Nav>
