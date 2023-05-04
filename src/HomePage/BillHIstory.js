@@ -3,32 +3,29 @@ import Nav from '../NavbarFolders/Navbar';
 import Sidebars from '../HomePage/Sidebar';
 import '../Css/EditProfile.css';
 
-function BillHistory(){
-    const textcolor = {
-        color: '#525252',
-        
-    };
-    return(
+function BillHistory() {
+    return (
         <div className='containerHome'>
+            {/* Navigation sidebar */}
             <div className='left-left-nav'>
-                <Sidebars/>
+                <Sidebars />
             </div>
-            <div className='right-right-nav-Home'>
 
-            
+            <div className='right-right-nav-Home'>
                 <div className=''>
-                    <Nav/>
+                    <Nav />
                 </div>
-                
+
                 <div className='' id='bill-history-section'>
-                    <p>My Bill History</p>
+                    <p style={ { fontSize: '22px', fontWeight: 'bold' } }>Billing and Receipts</p>
                     <div>
-                        <History/>
+                        <History />
                     </div>
-                    
+
                 </div>
-                
+
             </div>
+
         </div>
     );
 }

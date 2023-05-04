@@ -104,10 +104,10 @@ select#PaymentSelection{
     font-size: 10px;
 }
 #bill-history-section{
-    padding-top: 30px;
-    padding-left: 20px;
-    width: 50%;
-    
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .branch{
@@ -117,9 +117,6 @@ select#PaymentSelection{
     padding: 50px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
    
-}
-.Kukl_center{
-        /* center the section */
 }
 .IssueSubmit:hover{
 background-color: #095bd7;

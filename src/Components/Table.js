@@ -34,7 +34,7 @@ function Table(){
             Authorization: `Bearer ${token}`
           }
         })
-        .then((response) => {console.log(response.data);setTableData(response.data)})
+        .then((response) => { console.log(response.data); setTableData(response.data) })
         .catch((error) => console.log(error.response.data));
       }, []);
 
@@ -63,14 +63,13 @@ function Table(){
         <div className="justify-content-center ">
             
             <div style={{ height: '500px',  width: '1036px', overflowX: 'scroll',overflowY: 'scroll'}} className='HistoryTableCss'>
-                <center><h1 style={{color:'#2F4858'}}>Pay Bills now</h1></center>
+                <center><h1 style={{color:'#2F4858', fontSize: '28px'}}>Bills</h1></center>
                             <table className="table table-striped meterReader-table outer-border"> 
                                 <thead>
                                 <tr>
                                     <th style={{ width: '300px' }}>Receipt Date:</th>
                                     <th style={{ width: '300px' }}>Due Date:</th>
                                     <th style={{ width: '300px' }}>Total</th>
-                                    
                                     <th style={{ width: '300px' }}>Action</th>
 
                                 </tr>
@@ -94,14 +93,13 @@ function Table(){
             </div>
 
             <div style={{ height: '500px',  width: '1036px', overflowX: 'scroll',overflowY: 'scroll'}} className='HistoryTableCss'>
-                <center><h1 style={{color:'#2F4858'}}>History</h1></center>
+                <center><h1 style={{color:'#2F4858', fontSize: '28px' }}>Payment History</h1></center>
                             <table className="table table-striped meterReader-table outer-border"> 
                                 <thead>
                                 <tr>
                                     <th style={{ width: '300px' }}>Payment Date</th>
                                     <th style={{ width: '300px' }}>Payment Mode</th>
                                     <th style={{ width: '300px' }}>Amount</th>
-                                    
                                     <th style={{ width: '300px' }}>Action</th>
 
                                 </tr>
