@@ -34,11 +34,11 @@ function Login() {
   // Define an event handler for submitting the form data to the server
   
   const handleSubmit = (event) => {
+    setErrorMessage('');
     const loginBtn = document.getElementById('login-button');
     loginBtn.disabled = true;
     event.preventDefault();
     setLoading(true);
-    console.log("hello");
 
     // Send a POST request to the server with the entered username and password
     axios.post("https://wavebilling-backend-sabinlohani.onrender.com/login", {
@@ -77,7 +77,7 @@ function Login() {
         loginBtn.disabled = false;
         setLoading(false);
         console.log(error);
-        setErrorMessage("Invalid username or password");
+        setErrorMessage(error.response.data.message);
       });
   };
 
@@ -105,7 +105,7 @@ function Login() {
                 <input type="password" required value={password} placeholder='Password' className='login-field' onChange={handlePasswordChange} />
 
               </div>
-              {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+              {errorMessage && <div style={{ color: 'red'}}>{errorMessage}</div>}
 
               <div className="button-container">
                 <input type="checkbox" name="lsRememberMe" id='lsRememberMe' />
