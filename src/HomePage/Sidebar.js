@@ -26,7 +26,10 @@ function MyVerticallyCenteredModal(props) {
                 <div className='main-box text-center'>
 
                     <Link to="/login">
-                        <Button  className='i-understand'>Confirm</Button>
+                        <Button  className='i-understand' onClick={() => {
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('fullName');
+                        }}>Confirm</Button>
                     </Link><br/><br/>
                     <Button onClick={props.onHide} className='myCancelButton'>Cancel</Button>
                 </div>
@@ -100,8 +103,6 @@ function Sidebar(){
                                     <RiArrowGoBackFill  size={18} style={{paddingTop:'2px'}}/>
                                     <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor" onClick={() => { 
                                         setModalShow(true);
-                                        localStorage.removeItem('token');
-                                        localStorage.removeItem('fullName');
                                     }}>Sign Out</p> 
                             </div>
                         </Nav.Link>
