@@ -76,7 +76,7 @@ function Sidebar(){
                             <div className='d-flex'>
                                 {/* <img src={DashboardIcon2} alt="Wave Billing System" className="" />  */}
                                 <TbCalendarTime  size={18} style={{paddingTop:'2px'}}/>
-                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">My Bills</p> 
+                                <p style={{fontSize: '16px', paddingLeft: '5px',margin: '0px'}} className="myfontcolor">Payment</p> 
                             </div>
                         </Nav.Link>
 

@@ -17,7 +17,7 @@ function BillHistory() {
                 </div>
 
                 <div className='' id='bill-history-section'>
-                    <p style={ { fontSize: '22px', fontWeight: 'bold' } }>Billing and Receipts</p>
+                    <p style={ { fontSize: '22px', fontWeight: 'bold' } }>Payment</p>
                     <div>
                         <History />
                     </div>
