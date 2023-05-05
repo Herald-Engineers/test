@@ -12,6 +12,31 @@ import MeterTable from '../Admin/MeterTable';
 import { Link } from 'react-router-dom';
 import Edit from '../Image/edit.png';
 import Delete from '../Image/delete.png';
+function validatePhoneNumber(phoneNumber) {
+    if (phoneNumber.length > 10) {
+      return false; // Phone number is too long
+    }
+    return true; // Phone number is valid
+  }
+function submitAddReader(firstname, middlename, lastname, tel2,email,consumerType,id) {
+    axios.patch('https://wavebilling-backend-sabinlohani.onrender.com/admin/edit-reader', {
+      firstName: firstname,
+      lastName: lastname,
+      middleName: middlename,
+      tel2: tel2,
+      email: email,
+      _id: id,
+     
+      }, 
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }).then(response => { 
+        console.log("successful");  
+        console.log(response);
+      }).catch(error => console.log(error));
+  };
 
 function handleApprove(approveId,consumerType) {
     const token = localStorage.getItem('token');
@@ -52,16 +77,41 @@ function UserTable(){
     const token = localStorage.getItem('token');
     const [show, setShow] = useState(false);
     const [show4, setShow4] = useState(false);
+    const [show5, setShow5] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
     const [tableData, setTableData] = useState([]);
     const [reader, setReader] = useState(null);
     const [serverResponseReceived, setServerResponseReceived] = useState(false);
     const [loading, setLoading] = useState(false);  
+    const [tel2Error, setTel2Error] = useState("");
     const handleClose = () => setShow(false);
     const handleClose2 = () => setShow2(false);
     const handleClose3 = () => setShow3(false);
     const handleClose4 = () => setShow4(false);
+    const handleClose5 = () => setShow5(false);
+    const [firstName, setFirstName] = useState("");
+    const [middleName, setMiddleName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [tel2, setTel2] = useState("");
+    const [email, setEmail] = useState("");
+    const handleFirstName = (event) => {
+        setFirstName(event.target.value);
+    };
+    const handleMiddleName = (event) => {
+        setMiddleName(event.target.value);
+    };
+    const handleLastName = (event) => {
+        setLastName(event.target.value);
+    };
+    const handleTel2 = (event) => {
+        setTel2(event.target.value);
+        if (!validatePhoneNumber(tel2)) {
+          setTel2Error("Phone number must be 10 digits or less");
+        } else {
+          setTel2Error("");
+        }
+      };
     useEffect(() => {
         axios.get("https://wavebilling-backend-sabinlohani.onrender.com/admin/fetch-consumers", {
         headers: {
@@ -75,12 +125,28 @@ function UserTable(){
       .catch((error) => console.log(error));
       }, [reader]
     );
+    const [editId, setEdit] = useState(null);
     const [approveId, setApproveId] = useState(null);
     const [consumerType, setConsumerType] = useState(null);
     const [consumerType2, setConsumerType2] = useState(null);
     const [consumerType3, setConsumerType3] = useState(null);
+    const [consumerType4, setConsumerType4] = useState(null);
     const [deleteId, setDeleteId] = useState(null);
+    const [emailError, setEmailError] = useState("");
     const [deleteId2, setDeleteId2] = useState(null);
+    const [isValidEmail, setIsValidEmail] = useState(false);
+    const handleEmail = (event) => {
+        const emailValue = event.target.value;
+        setEmail(event.target.value);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setIsValidEmail(emailRegex.test(emailValue));
+        if (!emailRegex.test(emailValue)) {
+          setEmailError("Please entera valid email");
+        } 
+        else{
+          setEmailError("");
+        }
+      };
 
     //delete function after approving
     const handleDelete = (_id,consumerType3) => {
@@ -109,7 +175,34 @@ function UserTable(){
             setLoading(false);
         });
     };
-
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setLoading(true);
+        axios.patch('https://wavebilling-backend-sabinlohani.onrender.com/admin/edit-reader', {
+        firstName: firstName,
+        middleName: middleName,
+        lastName: lastName,
+        tel2: tel2,
+        email: email,
+        _id: editId,
+       
+        }, 
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then(response => { 
+          console.log("successful in edit profile of user table");  
+          console.log(response);
+          setServerResponseReceived(true);
+          setLoading(false);
+          setFirstName("");
+          setLastName("");
+          setMiddleName("");
+          setTel2("");
+          setEmail(""); 
+        }).catch(error => console.log(error));
+      };
 
         //delete function before approving
     // const handleDelete2 = (deleteId2,consumerType2) => {
@@ -143,6 +236,18 @@ function UserTable(){
     //         setLoading(false);
     //     });
     //     };
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
+
+    const handleInputChange = (event) => {
+        setSearchTerm(event.target.value);
+
+    const filtered = tableData.filter((item) =>
+      item.name.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setFilteredData(filtered);
+  };
+
     return(
         
             <div>
@@ -157,14 +262,21 @@ function UserTable(){
                             <MainBox />
                         </div>
                         <div className="d-flex ">
-                        
-                                                  
-                            <div className='myTables meter-table'style={{ width: '1200px', overflowX: 'scroll' }}>
-                            <div>
-                                <center><h4>Kulekhani Upatyaka Khanepani Limited <span style={{color:'#0A83F0',fontFamily:'Montserrat',fontStyle:'normal',fontWeight:'700'}}>(Users)</span></h4></center>
+                        {/* <div>
+                            <input type="text" value={searchTerm} onChange={handleInputChange} />
+                            <ul>
+                                {filteredData.map((item) => (
+                                <li key={item._id}>{item.fullName}</li>
+                                ))}
+                            </ul>
+                        </div> */}
+                                                    
+                                <div className='myTables meter-table'style={{ width: '1200px', overflowX: 'scroll' }}>
+                            <div style={{position:'fixed',marginLeft:'215px'}}>
+                                <center><h4 >Kulekhani Upatyaka Khanepani Limited <span style={{color:'#0A83F0',fontFamily:'Montserrat',fontStyle:'normal',fontWeight:'700'}}>(Users)</span></h4></center>
                             </div>  
 
-                        <div style={{ width: '2000px', overflowX: 'scroll' }}>
+                        <div style={{ width: '2000px', overflowX: 'scroll',marginTop:'80px'}}>
                             <table className="table table-striped meterReader-table outer-border"> 
                                 <thead>
                                 <tr>
@@ -191,7 +303,9 @@ function UserTable(){
                                             <td>{row.paymentStatus ? (row.paymentStatus === true ? 'Paid' : 'Pending') : '-'}</td>
 
                                             
-                                            <td>{row.meterNo ? <p><img src={Edit} alt="Edit Consumer"/> <img src={Delete} alt="Delete Consumer" onClick={() => {
+                                            <td>{row.meterNo ? <p><img src={Edit} alt="Edit Consumer" onClick={() => {
+                                                setEdit(row._id); setConsumerType4(row.consumerType);
+                                                setShow4(true); }}/> <img src={Delete} alt="Delete Consumer" onClick={() => {
                                                 setDeleteId(row._id); setConsumerType3(row.consumerType);
                                                 setShow(true); }}/></p>: <p><span onClick={() => {setApproveId(row._id); setConsumerType(row.consumerType);
                                                 setShow2(true);
@@ -244,6 +358,66 @@ function UserTable(){
                     </Modal.Body>
                 </Modal>
                 
+            {/* for edit */}
+            <Modal  show={show4} onHide={handleClose4} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
+                <Modal.Body style={{padding:'68px',backgroundColor:'#D9D9D9'}}>
+          <center><span style={{color: '#32325D',fontSize:'30px',fontWeight:'700'}}>Edit Your Account</span></center>
+          <div className='main-box  text-center'>
+            <p>Please enter the User ID and temporary password for the User.</p><br/>
+            <form  onSubmit={(event) => handleSubmit( event)}>
+              <div className='meter-Table'>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>First Name: </td>
+                      <td><input type="text" name="firstName" placeholder="Enter full name"  value={firstName}  className='meter-Table2' onChange={handleFirstName} required/></td>
+                    </tr>
+                    {/* <tr>
+                      <td>{fullnameError && <div className="error" style={{ color: 'red' }}>{fullnameError}</div>}</td>
+                    </tr> */}
+                    <tr>
+                      <td>Middle Name: </td>
+                      <td><input type="text" name="middleName" placeholder="Enter middle name"  value={middleName} onChange={handleMiddleName} required/></td>
+                    </tr>
+                    <tr>
+                      <td>Last Name: </td>
+                      <td><input type="text" name="lastName" placeholder="Enter last name"  value={lastName} onChange={handleLastName} required/></td>
+                    </tr>
+                    <tr>
+                      <td>Mobile No:</td>
+                      <td><input type="text" name="tel2" placeholder="Enter Contact No"  value={tel2} onChange={handleTel2} required/></td>
+                      
+                    </tr>
+                    <tr>
+                      <td>{tel2Error && <div className="error" style={{ color: 'red' }}>{tel2Error}</div>}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address: </td>
+                        <td><input type="text" name="email" placeholder="Enter Email"  value={email} onChange={handleEmail} required/></td>
+                       
+                    </tr>
+                    <tr>
+                      <td> {emailError &&<div className="error" style={{ color: 'red' }}>{emailError}</div>}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <Button onClick={handleClose4} className='meterButtons'>Go Back</Button>
+              <Button className='meterButtons2' type='submit' value="submit"  onClick={() => {
+                
+                  submitAddReader(firstName, middleName, lastName,tel2,email,consumerType4,editId);
+                 
+                
+              }}>  Submit</Button>
+              
+              {loading && !serverResponseReceived && <LoadingSpinner />}
+            </form>        
+          </div>
+        </Modal.Body>
+      </Modal>
+
+
+      
     
             </div>
         );
